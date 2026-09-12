@@ -150,7 +150,7 @@ Fünf Rubriken mit jeweils fünf Kopfrechen- und Verständnisfragen für die Rea
 
 ## Klasse 10: Startklar – Memes & Wissen
 
-[Direkt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/klasse-10-start-meme-wissen/) · [Aufgabensatz](content/klasse-10-start-meme-wissen.json) · [Quellen und Lernstand](QUELLEN-KLASSE-10-START.md)
+[Direkt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/klasse-10-start-meme-wissen/) · [Aufgabensatz](content/klasse-10-start-meme-wissen.json)
 
 Für den Anfang der zehnten Klasse: 25 neue Fragen zu Netzsprache, Medienkompetenz, Kopfrechnen, Naturwissenschaften und Weltwissen. Grundlagen aus den Vorjahren und Allgemeinwissen; kein neu erarbeiteter Stoff der Klasse 10 nötig. Alle Antworten werden automatisch gewertet.
 

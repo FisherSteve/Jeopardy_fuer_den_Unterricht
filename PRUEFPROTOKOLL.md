@@ -71,7 +71,7 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 
 ## Ergänzung vom 12.09.2026: Meme-Mix ab etwa 14
 
-- Neuer Aufgabensatz mit fünf Rubriken und 25 Fragen (17 Auswahl-, acht Zahlenfragen). Fakten und Deutschland-Bezug der Netz-/Gaming-Themen in QUELLEN-MEME-MIX.md dokumentiert.
+- Neuer Aufgabensatz mit fünf Rubriken und 25 Fragen (17 Auswahl-, acht Zahlenfragen). Fakten und Deutschland-Bezug der Netz-/Gaming-Themen recherchiert.
 - node build.js und npm test: erfolgreich, alle 14 Engine-Tests bestanden. Keine Änderung an Engine oder Oberfläche.
 - tests/meme-mix.cjs in Chromium 131, Firefox 153 und WebKit 26.5: alle 25 unabhängig festgelegten Antworten richtig gewertet, Teamwechsel und Spielende korrekt; falsche Antwort zeigt Lösung und Erklärung. Kleine Touch-Ansicht geprüft.
 - tests/pages.cjs: Startseite, fünf Spiele und Verzeichnis-Links unter Repository-Unterpfad in allen drei Engines bestanden.
@@ -80,7 +80,7 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 
 ## Ergänzung vom 13.09.2026: Klasse 10 – Startklar
 
-- Neues Einstiegsquiz: fünf Rubriken, 25 Fragen (18 Auswahlfragen, sieben Zahleneingaben). Grundlagen aus früheren Jahrgängen und Allgemeinwissen; kein neu behandelter Klasse-10-Stoff vorausgesetzt. Quellen und didaktische Einordnung in QUELLEN-KLASSE-10-START.md.
+- Neues Einstiegsquiz: fünf Rubriken, 25 Fragen (18 Auswahlfragen, sieben Zahleneingaben). Grundlagen aus früheren Jahrgängen und Allgemeinwissen; kein neu behandelter Klasse-10-Stoff vorausgesetzt.
 - Build erfolgreich; alle 14 Engine-Tests bestanden. Engine und Oberfläche unverändert.
 - tests/klasse10-start.cjs in Chromium 131, Firefox 153 und WebKit 26.5 bestanden: alle 25 Antworten gegen unabhängig festgelegte Erwartungen geprüft, Teamfolge und Spielende korrekt. Reset und falsche Antwort mit Lösung/Erklärung ebenfalls geprüft.
 - Längste Frage, längste Antwortoption und längste Erklärung auf schmalem Bildschirm dargestellt und Screenshots visuell kontrolliert; lange Inhalte im Dialog scrollbar.

@@ -13,3 +13,5 @@
 - Inhalte als Text behandeln. Keine externen Abhängigkeiten in fertigen Spielen. Browserzoom, Fokusführung und reduzierte Bewegung erhalten.
 - Historische Original-HTML-Dateien und allgemeine_prompt.txt wurden entfernt. Die verbindliche Prompt ist Framework-Prompt.md; die aktuelle Beispielbefüllung bleibt als Inhaltsauftrag erhalten.
 - Fertige Spiele liegen unter spiele/<kennung>/index.html. node build.js aktualisiert auch die Root-Startseite aus allen Spielordnern. Links relativ halten, damit GitHub Pages unter dem Repository-Unterpfad und lokale Dateien funktionieren.
+
+- Keine separaten Quellen-, Lehrplan- oder Recherchedateien für einzelne Spiele ins Repository aufnehmen. Quellen bei Bedarf in der Chat-Antwort nennen; die Recherche weiterhin durchführen.
