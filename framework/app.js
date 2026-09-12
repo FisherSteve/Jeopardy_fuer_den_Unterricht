@@ -10,19 +10,23 @@
   // Exact content identity prevents stale state when a question or rule changes.
   const signature = JSON.stringify(data);
   const storageKey = 'jeopardy-v2-' + data.id;
-  let state = E.fresh(data), savedOK = true, notice = '';
+  let state = E.fresh(data), savedOK = true, notice = '', pendingFeedback = null;
   try {
     const raw = localStorage.getItem(storageKey);
     if (raw) {
       const saved = JSON.parse(raw);
-      if (saved.signature === signature) { state = E.restore(data, saved.state); notice = 'Gespeicherter Spielstand geladen.'; }
+      if (saved.signature === signature) {
+        state = E.restore(data, saved.state); notice = 'Gespeicherter Spielstand geladen.';
+        const last = state.history[state.history.length - 1];
+        if (last && saved.feedbackId === last.id) pendingFeedback = last.id;
+      }
       else notice = 'Geänderte Aufgaben: neues Spiel gestartet.';
     }
   } catch (_) { notice = 'Kein nutzbarer Spielstand verfügbar. Neues Spiel gestartet.'; }
   let view = null, current = null, revealed = false, selected = 0, returnFocus = null, lastTurn = '', inputValue='', choices=[], inputLocked=false, teacherTools=false;
   function say(text, result) { $('status').textContent = text; if(result)$('status').dataset.result=result;else delete $('status').dataset.result; }
   function save() {
-    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state })); savedOK = true; }
+    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state, feedbackId: pendingFeedback })); savedOK = true; }
     catch (_) { savedOK = false; say('Speichern nicht verfügbar. Dieses Spiel läuft bis zum Schließen weiter.'); }
   }
   function node(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
@@ -66,7 +70,11 @@
   function show(kind, title, focusId) {
     if (!view) returnFocus = document.activeElement;
     view = kind;
-    ['question', 'menu', 'reset'].forEach(v => $(v + '-view').hidden = v !== kind);
+    ['question', 'menu', 'reset', 'feedback'].forEach(v => $(v + '-view').hidden = v !== kind);
+    $('dialog').dataset.view = kind;
+    $('close').hidden = kind === 'feedback';
+    if (kind === 'feedback') $('dialog').setAttribute('aria-describedby', 'feedback-score feedback-next-team');
+    else $('dialog').removeAttribute('aria-describedby');
     $('dialog-title').textContent = title;
     $('overlay').hidden = false; $('app').setAttribute('aria-hidden', 'true');
     if ('inert' in $('app')) $('app').inert = true;
@@ -75,12 +83,18 @@
     $('dialog').scrollTop = 0;
   }
   function close() {
+    const wasFeedback = view === 'feedback';
+    if (wasFeedback) {
+      if (inputLocked) return;
+      pendingFeedback = null; save();
+    }
     view = null; current = null; revealed = false;
     $('overlay').hidden = true; $('app').removeAttribute('aria-hidden');
     if ('inert' in $('app')) $('app').inert = false;
     document.body.classList.remove('modal-open');
     const focus = returnFocus && returnFocus.isConnected && !returnFocus.disabled ? returnFocus : Object.values(tiles).find(b => !b.disabled) || $('settings');
-    focus.focus();
+    if (wasFeedback && state.history.length === all.length) { $('winner').tabIndex=-1; $('winner').focus(); }
+    else focus.focus();
   }
   function openQuestion(q) {
     if (view || inputLocked || state.history.some(e => e.id === q.id)) return;
@@ -136,12 +150,32 @@
     if(view!=='question'||!current) return;
     const id = current.id;
     if (!E.rate(data, state, id, selected, correct)) return;
-    inputLocked=true;save(); render();
-    close(); if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig. Keine Minuspunkte.',correct?'correct':'wrong');
-    if(state.history.length===all.length){$('winner').tabIndex=-1;$('winner').focus();}
-    // Consume the rest of a double tap before enabling the underlying board.
-    setTimeout(()=>{inputLocked=false;render();},450);
+    pendingFeedback=id; inputLocked=true; save(); render();
+    showFeedback();
+    if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig. Keine Minuspunkte.',correct?'correct':'wrong');
+    // A second tap must not dismiss the new feedback or reach the board.
+    setTimeout(()=>{inputLocked=false;$('feedback-continue').disabled=false;render();},450);
   }
+  function showFeedback() {
+    const result = state.history[state.history.length - 1];
+    const q = all.find(item => item.id === result.id);
+    const finished = state.history.length === all.length;
+    const team = state.names[result.team];
+    current = null; revealed = false;
+    $('meta').textContent = 'Antwort von ' + team;
+    $('dialog').dataset.outcome = result.correct ? 'correct' : 'wrong';
+    $('feedback-symbol').textContent = result.correct ? '✓' : '×';
+    $('feedback-score').textContent = result.correct ? '+' + q.points + ' Punkte für ' + team : '0 Punkte · Kein Punktabzug';
+    $('feedback-review').hidden = result.correct;
+    $('feedback-answer').textContent = result.correct ? '' : q.answer;
+    $('feedback-explanation').textContent = result.correct ? '' : q.explanation;
+    $('feedback-next-label').textContent = finished ? 'Spiel abgeschlossen' : 'Teamwechsel';
+    $('feedback-next-team').textContent = finished ? 'Alle Karten sind gespielt!' : state.names[E.turn(state)] + ' ist jetzt dran';
+    $('feedback-continue').textContent = finished ? 'Ergebnis ansehen' : 'Weiter mit ' + state.names[E.turn(state)];
+    $('feedback-continue').disabled = inputLocked;
+    show('feedback', result.correct ? 'Richtig!' : 'Nicht richtig');
+  }
+  $('feedback-continue').addEventListener('click', () => { if (view === 'feedback') close(); });
   function numberKey(key) {
     if(view!=='question'||revealed||!current.response||current.response.type!=='number')return;
     if(key==='⌫')inputValue=inputValue.slice(0,-1);
@@ -181,6 +215,7 @@
   $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
   // No backdrop close: accidental touches on large classroom screens are common.
   document.addEventListener('keydown', e => {
+    if (e.repeat && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); return; }
     if (!view) return;
     if (e.key === 'Tab') {
       const list = Array.from($('dialog').querySelectorAll('button:not(:disabled), input, [tabindex="0"]')).filter(el => el.getClientRects().length);
@@ -189,6 +224,7 @@
       else if (!e.shiftKey && (document.activeElement === last || document.activeElement === $('dialog'))) { e.preventDefault(); first.focus(); }
       return;
     }
+    if (view === 'feedback' && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); close(); return; }
     if (e.key === 'Escape') { e.preventDefault(); close(); return; }
     if(view==='question'&&!revealed&&current.response&&current.response.type==='number'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.repeat){
       if(/^[0-9,.]$/.test(e.key)){e.preventDefault();numberKey(e.key);return;}
@@ -210,4 +246,5 @@
     document.addEventListener('fullscreenchange', () => { $('fullscreen').textContent = document.fullscreenElement ? 'Vollbild beenden' : 'Vollbild'; });
   }
   render(); say(notice); save();
+  if (pendingFeedback) showFeedback();
 })();

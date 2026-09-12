@@ -43,6 +43,28 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
 @media(min-width:700px){#number-response{max-width:900px;display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:auto auto 1fr;column-gap:28px;align-items:start}#numpad{grid-column:2;grid-row:1 / span 3}#number-help{grid-column:1}}
 @keyframes turn-in{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){button{transition:background-color .12s}.turn-change{animation:turn-in .45s ease-out}}
+.dialog[data-view=feedback]{position:relative;border:3px solid #ffb79f;width:min(1100px,100%)}
+.dialog[data-view=feedback][data-outcome=correct]{border-color:#7ae582}
+.dialog[data-view=feedback] #dialog-title{text-align:center;font-size:clamp(40px,6vw,80px);margin:14px 0 8px;color:#ffb79f}
+.dialog[data-view=feedback][data-outcome=correct] #dialog-title{color:#7ae582}
+.feedback-celebration{position:relative;display:flex;align-items:center;justify-content:center;width:96px;height:96px;margin:16px auto;color:#ffb79f;border:3px solid currentColor;border-radius:50%;font-size:66px;font-weight:800;line-height:1}
+[data-outcome=correct] .feedback-celebration{color:#7ae582;background:#20382f}
+.feedback-score{text-align:center;font-size:clamp(24px,3vw,40px);font-weight:800;margin:12px 0 22px;overflow-wrap:anywhere}
+.feedback-review{padding:clamp(16px,2vw,26px);border-radius:14px;background:var(--panel);border-left:5px solid var(--gold)}
+.feedback-review h3{color:var(--muted);font-size:clamp(16px,1.7vw,24px);margin:0 0 8px}
+.feedback-answer{font-size:clamp(26px,3vw,42px);font-weight:800;white-space:pre-line;margin:0 0 20px;overflow-wrap:anywhere}
+.feedback-explanation{font-size:clamp(20px,2vw,30px);white-space:pre-line;overflow-wrap:anywhere;margin:0;line-height:1.45}
+.feedback-next{border:2px solid var(--gold);border-radius:14px;text-align:center;padding:16px;margin-top:24px;background:#302d22}
+.feedback-next p{font-size:clamp(28px,3.8vw,52px);line-height:1.2;font-weight:850;color:var(--gold);margin:8px 0;overflow-wrap:anywhere}
+#feedback-continue{display:block;width:100%;font-size:clamp(22px,2.5vw,34px);min-height:64px;margin-top:18px;overflow-wrap:anywhere}
+.celebration-rays{position:absolute;inset:0;pointer-events:none;display:none}
+[data-outcome=correct] .celebration-rays{display:block}
+.celebration-rays i{position:absolute;left:calc(50% - 4px);top:calc(50% - 8px);width:8px;height:16px;background:var(--gold);border-radius:3px;opacity:0;--angle:0deg}
+.celebration-rays i:nth-child(2){--angle:45deg}.celebration-rays i:nth-child(3){--angle:90deg}.celebration-rays i:nth-child(4){--angle:135deg}.celebration-rays i:nth-child(5){--angle:180deg}.celebration-rays i:nth-child(6){--angle:225deg}.celebration-rays i:nth-child(7){--angle:270deg}.celebration-rays i:nth-child(8){--angle:315deg}
+@keyframes celebrate{0%{transform:scale(.8)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes rays{0%{opacity:0;transform:rotate(var(--angle)) translateY(-45px)}25%{opacity:1}100%{opacity:0;transform:rotate(var(--angle)) translateY(-100px)}}
+@media(prefers-reduced-motion:no-preference){.dialog[data-view=feedback]{animation:turn-in .3s ease-out}[data-outcome=correct] .feedback-celebration{animation:celebrate .65s ease-out}[data-outcome=correct] .celebration-rays i{animation:rays .85s ease-out}.feedback-next{animation:turn-in .45s .15s ease-out backwards}}
+@media(max-width:600px){.feedback-celebration{width:64px;height:64px;font-size:44px;margin:12px auto}.feedback-next{margin-top:16px}}
 </style>
 </head>
 <body>
@@ -80,6 +102,16 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
       <div id="grading" class="grading"><button id="correct" class="correct" disabled>Richtig</button><button id="wrong" class="wrong" disabled>Falsch</button></div>
       <p id="grade-label" class="muted"></p>
     </div>
+    <div id="feedback-view" hidden>
+      <div class="feedback-celebration" aria-hidden="true"><span id="feedback-symbol"></span><div class="celebration-rays"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <p id="feedback-score" class="feedback-score"></p>
+      <section id="feedback-review" class="feedback-review" hidden aria-label="Lösung und Erklärung">
+        <h3>Richtige Antwort</h3><p id="feedback-answer" class="feedback-answer"></p>
+        <h3>Kurz erklärt</h3><p id="feedback-explanation" class="feedback-explanation"></p>
+      </section>
+      <div class="feedback-next"><span id="feedback-next-label" class="eyebrow">Teamwechsel</span><p id="feedback-next-team"></p></div>
+      <button id="feedback-continue" class="primary">Weiter</button>
+    </div>
     <div id="menu-view" hidden>
       <h3>Teams</h3><div id="names" class="names"></div>
       <div class="question-tools team-tools"><button id="add-team">Team hinzufügen</button><button id="remove-team">Letztes Team entfernen</button></div><p id="team-count-help" class="muted"></p>
@@ -87,6 +119,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
       <h3>So wird gespielt</h3><p>Team 1 beginnt und wählt eine Karte. Die Frage beantworten lassen, dann die Antwort aufdecken und bewerten. Sowohl „Richtig“ als auch „Falsch“ schließen die Karte sofort ab. Es gibt keine Übernahme. Danach wählt das nächste Team eine neue Karte: Team 1, Team 2, …, Team 1.</p>
       <p>Bei Aufgaben mit Ziffernfeld oder Antwortauswahl kann das Team seine Antwort selbst eingeben und „Antwort abgeben“ drücken. Das Spiel wertet automatisch. Die Auswahl darf bis zur Abgabe verändert werden. „Antwort anzeigen“ ermöglicht alternativ eine manuelle Bewertung durch die Lehrkraft.</p>
       <p id="rules"></p><p>Schließen ohne Bewertung lässt Karte und Team unverändert. „Rückgängig“ nimmt die zuletzt abgeschlossene Karte samt Punktewertung und Zugwechsel zurück.</p>
+      <p>Nach jeder Bewertung erscheint eine große Rückmeldung mit Punkten und dem nächsten Team. Bei falschen Antworten werden die richtige Lösung und eine kurze Erklärung gezeigt. Zum Weiterlesen gibt es kein Zeitlimit; mit „Weiter“ geht es zum Spielfeld.</p>
       <h3>Tastatur</h3><p>Tab: Bedienelement wählen · Enter/Leertaste: gewählten Button betätigen · A: Antwort ein/aus · R: richtig · F: falsch · H: Lehrkräftehinweise · Esc: schließen. Kürzel gelten nur in der offenen Frage, nicht beim Schreiben.</p>
       <p>Lehrkräftehinweise sind beim Öffnen einer Frage immer ausgeblendet. Eingeblendete Hinweise sehen alle Personen am Bildschirm.</p>
       <p id="storage-info"></p><button id="reset-open" class="danger">Spiel zurücksetzen</button>
@@ -469,19 +502,23 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   // Exact content identity prevents stale state when a question or rule changes.
   const signature = JSON.stringify(data);
   const storageKey = 'jeopardy-v2-' + data.id;
-  let state = E.fresh(data), savedOK = true, notice = '';
+  let state = E.fresh(data), savedOK = true, notice = '', pendingFeedback = null;
   try {
     const raw = localStorage.getItem(storageKey);
     if (raw) {
       const saved = JSON.parse(raw);
-      if (saved.signature === signature) { state = E.restore(data, saved.state); notice = 'Gespeicherter Spielstand geladen.'; }
+      if (saved.signature === signature) {
+        state = E.restore(data, saved.state); notice = 'Gespeicherter Spielstand geladen.';
+        const last = state.history[state.history.length - 1];
+        if (last && saved.feedbackId === last.id) pendingFeedback = last.id;
+      }
       else notice = 'Geänderte Aufgaben: neues Spiel gestartet.';
     }
   } catch (_) { notice = 'Kein nutzbarer Spielstand verfügbar. Neues Spiel gestartet.'; }
   let view = null, current = null, revealed = false, selected = 0, returnFocus = null, lastTurn = '', inputValue='', choices=[], inputLocked=false, teacherTools=false;
   function say(text, result) { $('status').textContent = text; if(result)$('status').dataset.result=result;else delete $('status').dataset.result; }
   function save() {
-    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state })); savedOK = true; }
+    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state, feedbackId: pendingFeedback })); savedOK = true; }
     catch (_) { savedOK = false; say('Speichern nicht verfügbar. Dieses Spiel läuft bis zum Schließen weiter.'); }
   }
   function node(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
@@ -525,7 +562,11 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   function show(kind, title, focusId) {
     if (!view) returnFocus = document.activeElement;
     view = kind;
-    ['question', 'menu', 'reset'].forEach(v => $(v + '-view').hidden = v !== kind);
+    ['question', 'menu', 'reset', 'feedback'].forEach(v => $(v + '-view').hidden = v !== kind);
+    $('dialog').dataset.view = kind;
+    $('close').hidden = kind === 'feedback';
+    if (kind === 'feedback') $('dialog').setAttribute('aria-describedby', 'feedback-score feedback-next-team');
+    else $('dialog').removeAttribute('aria-describedby');
     $('dialog-title').textContent = title;
     $('overlay').hidden = false; $('app').setAttribute('aria-hidden', 'true');
     if ('inert' in $('app')) $('app').inert = true;
@@ -534,12 +575,18 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     $('dialog').scrollTop = 0;
   }
   function close() {
+    const wasFeedback = view === 'feedback';
+    if (wasFeedback) {
+      if (inputLocked) return;
+      pendingFeedback = null; save();
+    }
     view = null; current = null; revealed = false;
     $('overlay').hidden = true; $('app').removeAttribute('aria-hidden');
     if ('inert' in $('app')) $('app').inert = false;
     document.body.classList.remove('modal-open');
     const focus = returnFocus && returnFocus.isConnected && !returnFocus.disabled ? returnFocus : Object.values(tiles).find(b => !b.disabled) || $('settings');
-    focus.focus();
+    if (wasFeedback && state.history.length === all.length) { $('winner').tabIndex=-1; $('winner').focus(); }
+    else focus.focus();
   }
   function openQuestion(q) {
     if (view || inputLocked || state.history.some(e => e.id === q.id)) return;
@@ -595,12 +642,32 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     if(view!=='question'||!current) return;
     const id = current.id;
     if (!E.rate(data, state, id, selected, correct)) return;
-    inputLocked=true;save(); render();
-    close(); if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig. Keine Minuspunkte.',correct?'correct':'wrong');
-    if(state.history.length===all.length){$('winner').tabIndex=-1;$('winner').focus();}
-    // Consume the rest of a double tap before enabling the underlying board.
-    setTimeout(()=>{inputLocked=false;render();},450);
+    pendingFeedback=id; inputLocked=true; save(); render();
+    showFeedback();
+    if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig. Keine Minuspunkte.',correct?'correct':'wrong');
+    // A second tap must not dismiss the new feedback or reach the board.
+    setTimeout(()=>{inputLocked=false;$('feedback-continue').disabled=false;render();},450);
   }
+  function showFeedback() {
+    const result = state.history[state.history.length - 1];
+    const q = all.find(item => item.id === result.id);
+    const finished = state.history.length === all.length;
+    const team = state.names[result.team];
+    current = null; revealed = false;
+    $('meta').textContent = 'Antwort von ' + team;
+    $('dialog').dataset.outcome = result.correct ? 'correct' : 'wrong';
+    $('feedback-symbol').textContent = result.correct ? '✓' : '×';
+    $('feedback-score').textContent = result.correct ? '+' + q.points + ' Punkte für ' + team : '0 Punkte · Kein Punktabzug';
+    $('feedback-review').hidden = result.correct;
+    $('feedback-answer').textContent = result.correct ? '' : q.answer;
+    $('feedback-explanation').textContent = result.correct ? '' : q.explanation;
+    $('feedback-next-label').textContent = finished ? 'Spiel abgeschlossen' : 'Teamwechsel';
+    $('feedback-next-team').textContent = finished ? 'Alle Karten sind gespielt!' : state.names[E.turn(state)] + ' ist jetzt dran';
+    $('feedback-continue').textContent = finished ? 'Ergebnis ansehen' : 'Weiter mit ' + state.names[E.turn(state)];
+    $('feedback-continue').disabled = inputLocked;
+    show('feedback', result.correct ? 'Richtig!' : 'Nicht richtig');
+  }
+  $('feedback-continue').addEventListener('click', () => { if (view === 'feedback') close(); });
   function numberKey(key) {
     if(view!=='question'||revealed||!current.response||current.response.type!=='number')return;
     if(key==='⌫')inputValue=inputValue.slice(0,-1);
@@ -640,6 +707,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
   // No backdrop close: accidental touches on large classroom screens are common.
   document.addEventListener('keydown', e => {
+    if (e.repeat && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); return; }
     if (!view) return;
     if (e.key === 'Tab') {
       const list = Array.from($('dialog').querySelectorAll('button:not(:disabled), input, [tabindex="0"]')).filter(el => el.getClientRects().length);
@@ -648,6 +716,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
       else if (!e.shiftKey && (document.activeElement === last || document.activeElement === $('dialog'))) { e.preventDefault(); first.focus(); }
       return;
     }
+    if (view === 'feedback' && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); close(); return; }
     if (e.key === 'Escape') { e.preventDefault(); close(); return; }
     if(view==='question'&&!revealed&&current.response&&current.response.type==='number'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.repeat){
       if(/^[0-9,.]$/.test(e.key)){e.preventDefault();numberKey(e.key);return;}
@@ -669,6 +738,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     document.addEventListener('fullscreenchange', () => { $('fullscreen').textContent = document.fullscreenElement ? 'Vollbild beenden' : 'Vollbild'; });
   }
   render(); say(notice); save();
+  if (pendingFeedback) showFeedback();
 })();
 </script>
 </body>

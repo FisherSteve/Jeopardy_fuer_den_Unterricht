@@ -25,7 +25,8 @@ Falls GitHub beim Anklicken einer HTML-Datei nur Quelltext zeigt: Die Datei heru
 - **Zahlenaufgabe:** Das Team tippt seine Antwort auf dem Ziffernfeld ein und drückt „Antwort abgeben“.
 - **Auswahlaufgabe:** Das Team markiert die passende Antwort und drückt „Antwort abgeben“. Falls mehrere Antworten möglich sind, steht dies dabei.
 - **Richtig gibt Punkte. Falsch gibt keine Minuspunkte.** In beiden Fällen ist die Karte anschließend erledigt. Es gibt keine Übernahme durch ein anderes Team.
-- Danach ist automatisch das nächste Team mit einer neuen Karte dran. Eine kurze Animation zeigt den Wechsel.
+- Nach jeder Bewertung erscheint ein großes Ergebnis-Popup: **„Richtig!“** mit kurzem visuellen Jubel und Punkteanzeige oder **„Nicht richtig“** mit der richtigen Antwort und einer kurzen Erklärung.
+- Im selben Popup steht deutlich, welches Team als Nächstes dran ist. Mit **„Weiter mit Team …“** gelangt ihr zum Spielfeld. Lösung und Erklärung bleiben ohne Zeitlimit stehen, damit ihr sie gemeinsam besprechen könnt. Nach der letzten Frage führt der Button zum Spielergebnis.
 
 Ein Spiel hat **ein bis fünf Themen mit jeweils fünf Karten**, also 5 bis 25 Fragen. Sobald alle Karten erledigt sind, erscheint das Ergebnis.
 
@@ -86,6 +87,8 @@ Hebe auch den JSON-Aufgabensatz auf. Wenn du später Fragen ändern möchtest, g
 | Größere Bildschirmfläche | „Vollbild“, sofern der Browser diese Funktion anbietet |
 
 **Lehrkräftehinweise sind zunächst vollständig ausgeblendet**, auch ihr Button. Nach der Freigabe im Menü lassen sie sich in einer Frage gezielt einblenden. Bei Zahlen- und Auswahlaufgaben erlaubt diese Freigabe auch das manuelle Aufdecken und Bewerten. Nach dem Neuladen ist die Freigabe wieder aus. Die Menüeinstellung ist keine Passwortsperre; die Lehrkraft bedient das Menü.
+
+Die Erklärung nach einer falschen Antwort ist für die ganze Klasse gedacht und wird immer gezeigt. Interne Lehrkräftehinweise bleiben dabei verborgen. Das Ergebnis-Popup lässt sich auch mit **Enter, Leertaste oder Esc** fortsetzen. Animationen entfallen bei der Systemeinstellung für reduzierte Bewegung; die Rückmeldung bleibt sichtbar.
 
 Das Spiel merkt sich den Spielstand nach Möglichkeit im verwendeten Browser. Wenn Speichern nicht möglich ist, zeigt es einen Hinweis und bleibt spielbar. Für eine neue Lerngruppe das Spiel zurücksetzen. Auf gemeinsam genutzten Geräten am besten neutrale Teamnamen verwenden.
 

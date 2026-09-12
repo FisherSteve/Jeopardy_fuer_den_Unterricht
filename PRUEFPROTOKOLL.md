@@ -2,6 +2,15 @@
 
 Stand: 12. September 2026. Ausgeführt auf Windows. Die fertigen Beispiele und der lokale Spiel-Ersteller wurden mit `node build.js` aus derselben Framework-Version gebaut.
 
+## Ergebnis-Popup und Lernfeedback
+
+Nach jeder Bewertung wird das Ergebnis groß in einem Dialog angezeigt. Richtige Antworten erhalten einen kurzen CSS-Jubel und eine Punkteanzeige. Bei falschen Antworten bleiben richtige Antwort und Erklärung sichtbar, bis fortgesetzt wird. Der nächste Teamname steht im selben Popup; es ist kein zweiter Dialogschritt nötig. Lehrkräftehinweise werden dabei nicht eingeblendet.
+
+- `tests/feedback.cjs` in Chromium, Firefox und WebKit bestanden: richtige/falsche Zahleneingabe, falsche Auswahl und manuelle Bewertung, drei Teams mit zyklischem Wechsel, Lösung und Erklärung ohne Lehrkräftefreigabe, Doppelabgabe und Wiederherstellung einer offenen Rückmeldung nach Neuladen.
+- Fortsetzen per Touch, Enter und Esc, Fokusbegrenzung und deaktivierte Animationen bei reduzierter Bewegung geprüft. Die Rückmeldung besitzt kein Zeitlimit; nach der letzten Karte führt sie zum Spielergebnis.
+- Screenshots der richtigen und falschen Rückmeldung bei 1920 × 1080 und der mobilen Rückmeldung bei 390 × 844 kontrolliert.
+- Die bestehende Engine-Testsuite (13 Tests) sowie Browser- und mobile Spielende-Prüfungen wurden mit dem neuen Ablauf erneut ausgeführt. Der lokale Spiel-Ersteller enthält ebenfalls die aktualisierte Oberfläche.
+
 ## GitHub-Pages-Struktur
 
 Alle drei vorhandenen Spiele liegen jetzt unter `spiele/<kennung>/index.html`. Die Startseite wird aus den vorhandenen Spielordnern erzeugt. Das zusätzlich lokal vorhandene Spiel zur Elektronikerausbildung wurde einschließlich seines JSON-Aufgabensatzes übernommen.

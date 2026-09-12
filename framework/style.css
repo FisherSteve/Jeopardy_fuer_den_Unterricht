@@ -36,3 +36,25 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
 @media(min-width:700px){#number-response{max-width:900px;display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:auto auto 1fr;column-gap:28px;align-items:start}#numpad{grid-column:2;grid-row:1 / span 3}#number-help{grid-column:1}}
 @keyframes turn-in{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){button{transition:background-color .12s}.turn-change{animation:turn-in .45s ease-out}}
+.dialog[data-view=feedback]{position:relative;border:3px solid #ffb79f;width:min(1100px,100%)}
+.dialog[data-view=feedback][data-outcome=correct]{border-color:#7ae582}
+.dialog[data-view=feedback] #dialog-title{text-align:center;font-size:clamp(40px,6vw,80px);margin:14px 0 8px;color:#ffb79f}
+.dialog[data-view=feedback][data-outcome=correct] #dialog-title{color:#7ae582}
+.feedback-celebration{position:relative;display:flex;align-items:center;justify-content:center;width:96px;height:96px;margin:16px auto;color:#ffb79f;border:3px solid currentColor;border-radius:50%;font-size:66px;font-weight:800;line-height:1}
+[data-outcome=correct] .feedback-celebration{color:#7ae582;background:#20382f}
+.feedback-score{text-align:center;font-size:clamp(24px,3vw,40px);font-weight:800;margin:12px 0 22px;overflow-wrap:anywhere}
+.feedback-review{padding:clamp(16px,2vw,26px);border-radius:14px;background:var(--panel);border-left:5px solid var(--gold)}
+.feedback-review h3{color:var(--muted);font-size:clamp(16px,1.7vw,24px);margin:0 0 8px}
+.feedback-answer{font-size:clamp(26px,3vw,42px);font-weight:800;white-space:pre-line;margin:0 0 20px;overflow-wrap:anywhere}
+.feedback-explanation{font-size:clamp(20px,2vw,30px);white-space:pre-line;overflow-wrap:anywhere;margin:0;line-height:1.45}
+.feedback-next{border:2px solid var(--gold);border-radius:14px;text-align:center;padding:16px;margin-top:24px;background:#302d22}
+.feedback-next p{font-size:clamp(28px,3.8vw,52px);line-height:1.2;font-weight:850;color:var(--gold);margin:8px 0;overflow-wrap:anywhere}
+#feedback-continue{display:block;width:100%;font-size:clamp(22px,2.5vw,34px);min-height:64px;margin-top:18px;overflow-wrap:anywhere}
+.celebration-rays{position:absolute;inset:0;pointer-events:none;display:none}
+[data-outcome=correct] .celebration-rays{display:block}
+.celebration-rays i{position:absolute;left:calc(50% - 4px);top:calc(50% - 8px);width:8px;height:16px;background:var(--gold);border-radius:3px;opacity:0;--angle:0deg}
+.celebration-rays i:nth-child(2){--angle:45deg}.celebration-rays i:nth-child(3){--angle:90deg}.celebration-rays i:nth-child(4){--angle:135deg}.celebration-rays i:nth-child(5){--angle:180deg}.celebration-rays i:nth-child(6){--angle:225deg}.celebration-rays i:nth-child(7){--angle:270deg}.celebration-rays i:nth-child(8){--angle:315deg}
+@keyframes celebrate{0%{transform:scale(.8)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes rays{0%{opacity:0;transform:rotate(var(--angle)) translateY(-45px)}25%{opacity:1}100%{opacity:0;transform:rotate(var(--angle)) translateY(-100px)}}
+@media(prefers-reduced-motion:no-preference){.dialog[data-view=feedback]{animation:turn-in .3s ease-out}[data-outcome=correct] .feedback-celebration{animation:celebrate .65s ease-out}[data-outcome=correct] .celebration-rays i{animation:rays .85s ease-out}.feedback-next{animation:turn-in .45s .15s ease-out backwards}}
+@media(max-width:600px){.feedback-celebration{width:64px;height:64px;font-size:44px;margin:12px auto}.feedback-next{margin-top:16px}}

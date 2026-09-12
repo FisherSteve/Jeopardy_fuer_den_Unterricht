@@ -187,7 +187,7 @@ Nach dem Spiel soll die Lehrkraft einen ersten Eindruck zu folgenden Fragen gewo
 
 Die Musterlösungen sollen deshalb bei geeigneten Aufgaben nicht nur das Ergebnis enthalten, sondern auch einen kurzen möglichen Lösungsweg.
 
-Der Lösungsweg gehört in `explanation`, die knappe erwartete Antwort in `answer` und Beobachtungshinweise in `teacherNote`. Im aktiven Spiel wird zunächst nur die Frage gezeigt; nach dem Aufdecken erscheint die kurze Antwort. Erklärung und Hinweise bleiben separat zuschaltbar.
+Der Lösungsweg gehört in `explanation`, die knappe erwartete Antwort in `answer` und Beobachtungshinweise in `teacherNote`. Im aktiven Spiel wird zunächst nur die Frage gezeigt; nach einer falschen Bewertung erscheinen Antwort und verständlicher Lösungsweg automatisch im Ergebnis-Popup. Formuliere `explanation` deshalb für die Lernenden. Interne Beobachtungshinweise bleiben separat freizuschalten. Das Popup nennt auch das nächste Team und bleibt bis zur Bestätigung sichtbar.
 
 ## Antwortformate für dieses Spiel
 

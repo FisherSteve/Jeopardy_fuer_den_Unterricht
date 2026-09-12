@@ -9,7 +9,7 @@ Die Spiele werden aus einer gemeinsamen Engine und separaten Aufgabensätzen geb
 
 Die jeweilige `index.html` aus einem Spielordner auf das Gerät kopieren und in einem Browser öffnen, der lokale HTML-Dateien mit JavaScript ausführt. Sie enthält alle benötigten Bestandteile und benötigt keine Internetverbindung, Installation oder Node.js zum Spielen. Die ursprünglichen veralteten HTML-Dateien wurden entfernt.
 
-**Bedienung:** Das hervorgehobene Team wählt eine Punktekarte. Antwort geben lassen, „Antwort anzeigen“, dann „Richtig“ oder „Falsch“. Beide Bewertungen schließen die Karte sofort ab; es gibt keine Übernahme. Richtig gibt den Kartenwert, falsch keine Punkte und keinen Abzug. Anschließend ist automatisch das nächste Team an der Reihe. Die Bewertungsbuttons nennen das aktive Team. Zwei Teams sind voreingestellt; im Menü lassen sich vor der ersten Bewertung zwei bis sechs Teams anlegen, entfernen und benennen. Im laufenden Spiel bleiben Anzahl und Reihenfolge fest. Reset erhält die Teams und gibt das Ändern der Anzahl wieder frei.
+**Bedienung:** Das hervorgehobene Team wählt eine Punktekarte. Antwort geben lassen, „Antwort anzeigen“, dann „Richtig“ oder „Falsch“. Beide Bewertungen schließen die Karte sofort ab; es gibt keine Übernahme. Richtig gibt den Kartenwert, falsch keine Punkte und keinen Abzug. Danach zeigt ein Ergebnis-Dialog die Wertung und das nächste Team. Bei falsch erscheinen Antwort und Erklärung bis zum bewussten Fortsetzen. Die Bewertungsbuttons nennen das aktive Team. Zwei Teams sind voreingestellt; im Menü lassen sich vor der ersten Bewertung zwei bis sechs Teams anlegen, entfernen und benennen. Im laufenden Spiel bleiben Anzahl und Reihenfolge fest. Reset erhält die Teams und gibt das Ändern der Anzahl wieder frei.
 
 **Umfang:** Ein bis fünf Themen mit jeweils fünf Punktekarten. Das Brett hat entsprechend ein bis fünf Spalten und das Spiel endet nach 5 bis 25 Fragen. Es werden keine fehlenden Themen ergänzt.
 
@@ -66,6 +66,8 @@ Die Klasse-5-Daten übernehmen den vorhandenen Ansatz mit einzelnen Präzisierun
 
 Das Spiel speichert nach Möglichkeit automatisch im Browser. Es speichert Teamnamen und Bewertungsereignisse, keine Schülerprofile. Punkte und aktives Team werden aus den abgeschlossenen Karten berechnet. Eine lediglich geöffnete Frage ist noch nicht abgeschlossen. Schließen und erneutes Öffnen führen deshalb zu keinem Zugwechsel.
 
+Die Ergebnis-Rückmeldung verwendet denselben modalen Dialog mit eigener Ansicht. Eine offene Rückmeldung wird als `feedbackId` neben dem Spielstand gespeichert und nach Neuladen ausschließlich für die letzte abgeschlossene Karte rekonstruiert. Ihr Fortsetzen verändert die Punkte nicht. Eine 450-ms-Sperre verhindert, dass eine Doppelabgabe das Popup sofort überspringt. Danach kann es per Touch, Enter, Leertaste oder Esc bestätigt werden; ein Zeitlimit gibt es nicht. Das letzte Popup führt zum fokussierten Spielergebnis. `explanation` ist öffentliches Lernfeedback, `teacherNote` bleibt intern. Der visuelle Jubel nutzt ausschließlich CSS und respektiert reduzierte Bewegung; Audio und externe Assets sind nicht nötig.
+
 Jedes Spiel hat eine eigene Kennung. Zusätzlich wird der vollständige Inhalt verglichen: Bei geänderten Fragen oder Regeln beginnt ein neuer Spielstand. Beschädigte Speicherstände werden verworfen. Fällt das Speichern aus, bleibt das Spiel bedienbar und zeigt einen Hinweis; nach Neuladen ist der Stand dann möglicherweise weg. Derselbe Aufgabensatz sollte nur in einem Tab gleichzeitig gespielt werden; Tab-Synchronisation und geräteübergreifende Speicherung sind nicht implementiert.
 
 ## Browser und Schuldisplays
@@ -93,6 +95,7 @@ npx playwright install chromium firefox webkit
 node tests/browser.cjs
 node tests/visual.cjs
 node tests/pages.cjs
+node tests/feedback.cjs
 ```
 
 Optional setzen: `PLAYWRIGHT_MODULE` = Pfad zur vorhandenen Playwright-Installation, `CHROMIUM_EXECUTABLE` = Chrome-Programmdatei, `PLAYWRIGHT_BROWSERS_PATH` = Browsercache und `BROWSER_ENGINES` = kommaseparierte Auswahl. Diese Werkzeuge sind nur für Tests nötig, nicht zum Bauen oder Spielen.

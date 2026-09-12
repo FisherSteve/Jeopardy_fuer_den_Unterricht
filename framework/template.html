@@ -42,6 +42,16 @@
       <div id="grading" class="grading"><button id="correct" class="correct" disabled>Richtig</button><button id="wrong" class="wrong" disabled>Falsch</button></div>
       <p id="grade-label" class="muted"></p>
     </div>
+    <div id="feedback-view" hidden>
+      <div class="feedback-celebration" aria-hidden="true"><span id="feedback-symbol"></span><div class="celebration-rays"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <p id="feedback-score" class="feedback-score"></p>
+      <section id="feedback-review" class="feedback-review" hidden aria-label="Lösung und Erklärung">
+        <h3>Richtige Antwort</h3><p id="feedback-answer" class="feedback-answer"></p>
+        <h3>Kurz erklärt</h3><p id="feedback-explanation" class="feedback-explanation"></p>
+      </section>
+      <div class="feedback-next"><span id="feedback-next-label" class="eyebrow">Teamwechsel</span><p id="feedback-next-team"></p></div>
+      <button id="feedback-continue" class="primary">Weiter</button>
+    </div>
     <div id="menu-view" hidden>
       <h3>Teams</h3><div id="names" class="names"></div>
       <div class="question-tools team-tools"><button id="add-team">Team hinzufügen</button><button id="remove-team">Letztes Team entfernen</button></div><p id="team-count-help" class="muted"></p>
@@ -49,6 +59,7 @@
       <h3>So wird gespielt</h3><p>Team 1 beginnt und wählt eine Karte. Die Frage beantworten lassen, dann die Antwort aufdecken und bewerten. Sowohl „Richtig“ als auch „Falsch“ schließen die Karte sofort ab. Es gibt keine Übernahme. Danach wählt das nächste Team eine neue Karte: Team 1, Team 2, …, Team 1.</p>
       <p>Bei Aufgaben mit Ziffernfeld oder Antwortauswahl kann das Team seine Antwort selbst eingeben und „Antwort abgeben“ drücken. Das Spiel wertet automatisch. Die Auswahl darf bis zur Abgabe verändert werden. „Antwort anzeigen“ ermöglicht alternativ eine manuelle Bewertung durch die Lehrkraft.</p>
       <p id="rules"></p><p>Schließen ohne Bewertung lässt Karte und Team unverändert. „Rückgängig“ nimmt die zuletzt abgeschlossene Karte samt Punktewertung und Zugwechsel zurück.</p>
+      <p>Nach jeder Bewertung erscheint eine große Rückmeldung mit Punkten und dem nächsten Team. Bei falschen Antworten werden die richtige Lösung und eine kurze Erklärung gezeigt. Zum Weiterlesen gibt es kein Zeitlimit; mit „Weiter“ geht es zum Spielfeld.</p>
       <h3>Tastatur</h3><p>Tab: Bedienelement wählen · Enter/Leertaste: gewählten Button betätigen · A: Antwort ein/aus · R: richtig · F: falsch · H: Lehrkräftehinweise · Esc: schließen. Kürzel gelten nur in der offenen Frage, nicht beim Schreiben.</p>
       <p>Lehrkräftehinweise sind beim Öffnen einer Frage immer ausgeblendet. Eingeblendete Hinweise sehen alle Personen am Bildschirm.</p>
       <p id="storage-info"></p><button id="reset-open" class="danger">Spiel zurücksetzen</button>

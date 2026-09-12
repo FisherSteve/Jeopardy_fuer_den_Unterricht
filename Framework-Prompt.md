@@ -28,11 +28,11 @@ Fehlende nebensächliche Angaben sinnvoll annehmen und kurz nennen. Wenn Fach, L
 1. **Keine Minuspunkte.** Richtig gibt den Kartenwert, falsch gibt 0 Punkte und zieht nichts ab. `rules.subtractOnWrong` bleibt `false`.
 2. **Automatische Teamreihenfolge.** Zwei Teams sind Standard; im Menü lassen sich vor der ersten Bewertung zwei bis sechs Teams anlegen und benennen. Im laufenden Spiel bleibt die Anzahl fest, nach Reset kann sie geändert werden. Team 1 beginnt. Nach jeder abgeschlossenen Karte beginnt das nächste Team: 1 → 2 → … → 1. Keine manuelle Teamauswahl.
 3. **Keine Übernahme.** Sowohl „Richtig“ als auch „Falsch“ schließen die Karte sofort ab. `rules.takeover` bleibt `false`. Jedes Feld wird genau einmal gewertet.
-4. Danach ist die Karte nicht mehr spielbar und das nächste Team wählt eine neue Karte. Beispiel: Team 1 antwortet falsch; die Karte ist erledigt und Team 2 bekommt eine andere Frage.
+4. Danach ist die Karte nicht mehr spielbar. Ein großes Ergebnis-Popup zeigt richtig/falsch, die Punkte und das nächste Team. Nach Bestätigung mit „Weiter“ wählt dieses eine neue Karte. Beispiel: Team 1 antwortet falsch; die Karte ist erledigt und Team 2 bekommt nach der gemeinsamen Besprechung eine andere Frage.
 5. Öffnen und Schließen ohne Bewertung verändern weder Punkte noch das aktive Team. Die Karte bleibt verfügbar.
-6. Die Antwort ist zunächst verborgen. Bei mündlichen Aufgaben bewertet die Lehrkraft nach dem Aufdecken. Bei Zahleneingaben und Auswahlaufgaben drückt das Team „Antwort abgeben“; das Spiel prüft und wertet automatisch, ohne vorher die Lösung zu zeigen. Richtig gibt den Kartenwert, falsch 0 Punkte; danach sofort zurück zum Spielfeld.
-7. **Lehrkräftehinweise samt Button sind standardmäßig verborgen.** Erst die Freigabe im Menü macht den Hinweisebutton verfügbar. Bei Zahleneingaben/Auswahl ist auch das manuelle Aufdecken zunächst verborgen und wird nur mit dieser Freigabe möglich. Kurze Antwort, Mustererklärung und didaktischer Hinweis sind getrennte Felder. Erklärung und Hinweis nur auf ausdrückliches Einblenden; beim nächsten Öffnen wieder verborgen. Die Freigabe ist nach Neuladen wieder aus. Kürzel dürfen diese Einstellung nicht umgehen.
-8. Das aktive Team ist klar beschriftet und hervorgehoben. Ein kurzer Teamwechsel-Effekt unterstützt die Orientierung, blockiert aber keine Eingabe. Bei reduzierter Bewegung entfällt die Animation.
+6. Die Antwort ist zunächst verborgen. Bei mündlichen Aufgaben bewertet die Lehrkraft nach dem Aufdecken. Bei Zahleneingaben und Auswahlaufgaben drückt das Team „Antwort abgeben“; das Spiel prüft und wertet automatisch, ohne vorher die Lösung zu zeigen. Richtig gibt den Kartenwert, falsch 0 Punkte. Bei falschen Antworten erscheinen anschließend immer die richtige Antwort und die kurze Erklärung im Ergebnis-Popup. Diese bleiben bis zum bewussten Fortsetzen sichtbar, ohne automatisches Zeitlimit.
+7. **Lehrkräftehinweise samt Button sind standardmäßig verborgen.** Erst die Freigabe im Menü macht den Hinweisebutton verfügbar. Bei Zahleneingaben/Auswahl ist auch das manuelle Aufdecken zunächst verborgen und wird nur mit dieser Freigabe möglich. `explanation` ist eine verständliche Erklärung für die Lernenden und wird nach einer falschen Antwort automatisch gezeigt. `teacherNote` enthält ausschließlich interne didaktische Hinweise und bleibt separat geschützt. Die Freigabe ist nach Neuladen wieder aus. Kürzel dürfen sie nicht umgehen.
+8. Das aktive Team ist klar beschriftet und hervorgehoben. Das Ergebnis-Popup zeigt den nächsten Teamnamen besonders groß; ein kurzer visueller Jubel bei richtigen Antworten und eine dezente Einblendung des Teamwechsels unterstützen die Orientierung. Keine zusätzliche Bestätigung nur für den Teamwechsel. Bei reduzierter Bewegung entfallen Animationen, nicht die Rückmeldung.
 9. „Rückgängig“ korrigiert die zuletzt abgeschlossene Karte einschließlich Punkte und Zugwechsel. Reset verlangt einen Dialog innerhalb der Seite und erhält Teamnamen.
 
 ## Aufgabenqualität
@@ -49,7 +49,7 @@ Erstelle die angeforderten **ein bis fünf Kategorien** mit jeweils fünf Aufgab
 
 Passe Sprache und Aufgaben an den tatsächlichen Lernstand an. Eine Förderschule rechtfertigt weder automatisch kindliche Sprache noch pauschal niedrige Anforderungen. Nutze kurze, eindeutige Formulierungen und verschiedene Kompetenzen. Vermeide Trickfragen, persönliche Offenlegungen und ungewollte Mehrdeutigkeiten. Bei offenen Aufgaben nenne akzeptierte Alternativen und Bewertungskriterien.
 
-Die kurze Antwort soll auf den gemeinsamen Bildschirm passen. Die Erklärung umfasst gewöhnlich zwei bis vier gut vorlesbare Sätze. Ein optionaler `teacherNote` beschreibt beispielsweise die beobachtbare Kompetenz oder häufige Fehlvorstellungen; er wiederholt nicht einfach die Antwort.
+Die kurze Antwort soll auf den gemeinsamen Bildschirm passen. `explanation` umfasst gewöhnlich zwei bis vier gut vorlesbare Sätze, die den Lernenden das Ergebnis erklären. Sie erscheint nach einer falschen Antwort direkt auf dem gemeinsamen Bildschirm: keine internen Diagnosevermerke, Lehrkraftanweisungen oder personenbezogenen Bewertungen darin. Ein optionaler `teacherNote` beschreibt beispielsweise die beobachtbare Kompetenz oder häufige Fehlvorstellungen; er wiederholt nicht einfach die Antwort.
 
 Wenn zum Lösen eine Tabelle erforderlich ist, liefere sie tatsächlich als `table`. Eine Aufgabe darf nicht auf eine nicht vorhandene Karte, Skizze, Datei oder Internetquelle verweisen. Das bestehende Format unterstützt Text und Tabellen. Neue Darstellungsarten nur bei ausdrücklichem Bedarf als separate Framework-Erweiterung implementieren, validieren und testen; kein beliebiges HTML in Inhaltsfeldern.
 
@@ -152,6 +152,8 @@ Vollbild und lokales Speichern sind optionale Browserfähigkeiten mit Fehlerbeha
 
 - Ein bis fünf Themen mit je fünf Aufgaben vorhanden; Spaltenzahl und Spielende passen zur tatsächlichen Anzahl. Lösung beim Öffnen verborgen.
 - Kein Lehrkräftehinweis ohne bewusstes Einblenden.
+- Gut sichtbare Rückmeldung nach jeder Bewertung; bei falsch richtige Antwort und verständliche Erklärung, unabhängig von der Lehrkräftefreigabe. Kein automatisches Verschwinden der Erklärung.
+- Teamwechsel im Ergebnis-Popup deutlich benannt; Fortsetzen per Touch, Enter, Leertaste oder Esc. Doppelabgabe und Neuladen dürfen keine zweite Wertung auslösen.
 - Richtig erhöht genau einen Punktestand einmal; falsch zieht nichts ab.
 - Zahlenfeld und Auswahl geben ohne vorheriges Aufdecken eine automatische Wertung ab. Leere bzw. unvollständige Eingaben sind nicht absendbar; die gewählte Antwort darf bis zur Abgabe geändert werden.
 - Dezimalkomma/Punkt sowie Einzelauswahl/Mehrfachauswahl geprüft; richtige Antworten und hinterlegte Prüfkriterien stimmen überein.
