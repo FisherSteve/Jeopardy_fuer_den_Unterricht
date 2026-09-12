@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "id": "meme-mix-ab-14",
+  "title": "Meme-Mix · Wissen, Gaming & kuriose Fakten",
+  "teams": [
+    "Team 1",
+    "Team 2"
+  ],
+  "rules": {
+    "subtractOnWrong": false,
+    "allowNegativeScores": false,
+    "takeover": false
+  },
+  "categories": [
+    {
+      "title": "Memes & Netzsprache",
+      "questions": [
+        {
+          "question": "Was meint „Aura“ in der Jugendsprache meistens?",
+          "answer": "Die Ausstrahlung einer Person",
+          "explanation": "Gemeint ist der Eindruck, den jemand auf andere macht. Der Ausdruck wird oft scherzhaft benutzt und war Jugendwort 2024.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Den Akkustand",
+              "Die Ausstrahlung einer Person",
+              "Die Internetgeschwindigkeit"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k1-100",
+          "points": 100
+        },
+        {
+          "question": "Welcher Ausdruck wurde bei Langenscheidt zum Jugendwort 2025 gewählt?",
+          "answer": "Das crazy",
+          "explanation": "„Das crazy“ gewann 2025. Der Ausdruck kann eine kurze Reaktion sein, wenn einem wenig einfällt; seine Wirkung hängt vom Zusammenhang ab.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Das crazy",
+              "Alles stabil",
+              "Keine Ahnung"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k1-200",
+          "points": 200
+        },
+        {
+          "question": "Was bedeutet es in der Gaming-Sprache, „die Schere zu heben“?",
+          "answer": "Einen eigenen Fehler eingestehen",
+          "explanation": "Damit übernimmt jemand die Verantwortung für einen Fehler. Gemeint ist keine echte Schere.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Eine neue Runde starten",
+              "Den Ton ausschalten",
+              "Einen eigenen Fehler eingestehen"
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k1-300",
+          "points": 300
+        },
+        {
+          "question": "Was trifft auf das Meme „Six Seven“ am ehesten zu?",
+          "answer": "Es hat keine festgelegte eindeutige Bedeutung.",
+          "explanation": "Der Ausdruck wird als wiedererkennbarer Internetwitz verwendet. Eine allgemein verbindliche Übersetzung gibt es nicht; 67 wurde 2026 auch unter den deutschen Jugendwort-Kandidaten genannt.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Es bedeutet immer: sehr gut.",
+              "Es hat keine festgelegte eindeutige Bedeutung.",
+              "Es ist ein offizieller Basketball-Spielstand."
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k1-400",
+          "points": 400
+        },
+        {
+          "question": "Was ist „Ragebait“?",
+          "answer": "Ein Beitrag, der gezielt Wut und Reaktionen auslösen soll",
+          "explanation": "Solche Inhalte sollen Menschen provozieren und dadurch Aufmerksamkeit bekommen. Viele Kommentare sind deshalb kein Beweis dafür, dass eine Behauptung stimmt.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Ein Beitrag, der gezielt Wut und Reaktionen auslösen soll",
+              "Ein besonders langsamer Download",
+              "Ein friedlicher Spielmodus"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k1-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Gaming trifft Wissen",
+      "questions": [
+        {
+          "question": "Welcher Minecraft-Mob ist grün, hat keine Arme und explodiert?",
+          "answer": "Creeper",
+          "explanation": "Der Creeper gehört zu den bekannten Minecraft-Monstern. Seine Explosion kann auch Bauwerke beschädigen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Enderman",
+              "Creeper",
+              "Dorfbewohner"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k2-100",
+          "points": 100
+        },
+        {
+          "question": "Welche typische Fortnite-Aktion entfällt im Modus „Zero Build“?",
+          "answer": "Selbst Wände und Rampen bauen",
+          "explanation": "Zero Build bedeutet Spielen ohne die übliche Baumöglichkeit. Bewegung und die vorhandene Umgebung bleiben wichtig.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Sich bewegen",
+              "Gegenstände einsammeln",
+              "Selbst Wände und Rampen bauen"
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k2-200",
+          "points": 200
+        },
+        {
+          "question": "Wie viele Zutatenfelder hat das 3 × 3-Handwerksraster einer Minecraft-Werkbank? Das Ausgabefeld zählt nicht mit.",
+          "answer": "9 Felder",
+          "explanation": "Drei Reihen mit jeweils drei Feldern ergeben 3 · 3 = 9. Das Feld mit dem fertigen Gegenstand gehört nicht zum Zutatenraster.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "9"
+            ]
+          },
+          "id": "k2-300",
+          "points": 300
+        },
+        {
+          "question": "Aus dem missglückten Modell welches Tieres entstand laut Mojang ursprünglich der Creeper?",
+          "answer": "Schwein",
+          "explanation": "Bei einem Schweinemodell wurden Abmessungen verwechselt. Aus der seltsamen aufrechten Form entwickelte sich später der Creeper.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Schwein",
+              "Huhn",
+              "Schaf"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k2-400",
+          "points": 400
+        },
+        {
+          "question": "Obsidian gibt es auch außerhalb von Minecraft. Was ist echter Obsidian?",
+          "answer": "Natürliches vulkanisches Glas",
+          "explanation": "Obsidian entsteht beim schnellen Abkühlen geeigneter Lava. Anders als sein besonders widerstandsfähiges Spiel-Gegenstück ist echtes Obsidian spröde.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Ein Metall",
+              "Ein künstlicher Kunststoff",
+              "Natürliches vulkanisches Glas"
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k2-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Tiere: echt jetzt?",
+      "questions": [
+        {
+          "question": "Fledermäuse können fliegen. Zu welcher Tiergruppe gehören sie trotzdem?",
+          "answer": "Säugetiere",
+          "explanation": "Fledermäuse haben Fell und säugen ihre Jungen. Flügel allein machen ein Tier also nicht zum Vogel.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Vögel",
+              "Säugetiere",
+              "Insekten"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k3-100",
+          "points": 100
+        },
+        {
+          "question": "Wie viele Herzen hat ein Oktopus?",
+          "answer": "3 Herzen",
+          "explanation": "Ein Herz versorgt den Körper. Zwei weitere Herzen pumpen Blut zu den Kiemen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "3"
+            ]
+          },
+          "id": "k3-200",
+          "points": 200
+        },
+        {
+          "question": "Welches Tier produziert tatsächlich annähernd würfelförmigen Kot?",
+          "answer": "Wombat",
+          "explanation": "Beim Wombat entsteht die ungewöhnliche Form im Darm. Forschende haben untersucht, wie unterschiedlich dehnbare Darmbereiche daran mitwirken.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Koala",
+              "Pinguin",
+              "Wombat"
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k3-300",
+          "points": 300
+        },
+        {
+          "question": "Welche Fähigkeit hat ein Axolotl wirklich?",
+          "answer": "Verlorene Gliedmaßen nachwachsen lassen",
+          "explanation": "Axolotl können Gliedmaßen regenerieren. Diese Fähigkeit ist auch für die biologische Forschung interessant.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Verlorene Gliedmaßen nachwachsen lassen",
+              "Unter Wasser Feuer machen",
+              "Seine Knochen in Metall verwandeln"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k3-400",
+          "points": 400
+        },
+        {
+          "question": "Warum sind viele Flamingos rosa? Das ist kein Fotofilter.",
+          "answer": "Wegen Farbstoffen aus ihrer Nahrung",
+          "explanation": "Flamingos nehmen mit ihrer Nahrung bestimmte Farbstoffe auf, sogenannte Carotinoide. Diese tragen zur Farbe ihres Gefieders bei.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Weil rosa Wasser ihre Federn färbt",
+              "Wegen Farbstoffen aus ihrer Nahrung",
+              "Weil Sonnenlicht alle weißen Federn rosa macht"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k3-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Weltraum-Wow",
+      "questions": [
+        {
+          "question": "Wie viele Planeten hat unser Sonnensystem nach der heutigen Einteilung? Zwergplaneten zählen nicht mit.",
+          "answer": "8 Planeten",
+          "explanation": "Es sind Merkur, Venus, Erde, Mars, Jupiter, Saturn, Uranus und Neptun. Pluto wird als Zwergplanet eingeordnet.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ]
+          },
+          "id": "k4-100",
+          "points": 100
+        },
+        {
+          "question": "Warum wirkt der Mars rötlich?",
+          "answer": "Wegen rostähnlicher Eisenverbindungen im Staub",
+          "explanation": "Eisenhaltige Minerale im Marsstaub sind oxidiert. Solche Verbindungen verleihen dem Staub seine rötliche Farbe.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Wegen rostähnlicher Eisenverbindungen im Staub",
+              "Weil er vollständig aus Lava besteht",
+              "Weil die Sonne nur rotes Licht dorthin sendet"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k4-200",
+          "points": 200
+        },
+        {
+          "question": "Wie lange braucht Sonnenlicht ungefähr bis zur Erde?",
+          "answer": "8 Minuten",
+          "explanation": "Licht ist extrem schnell, aber die Sonne sehr weit entfernt. Deshalb sehen wir sie mit einer Verzögerung von ungefähr acht Minuten.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "8 Sekunden",
+              "8 Stunden",
+              "8 Minuten"
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k4-300",
+          "points": 300
+        },
+        {
+          "question": "Im Science-Fiction-Film knallt eine Explosion im leeren Weltraum. Warum würde ihr Schall nicht durch das Vakuum zu einem entfernten Raumschiff gelangen?",
+          "answer": "Im Vakuum fehlt ein Stoff, der die Schwingungen weiterträgt.",
+          "explanation": "Schall braucht ein Medium, etwa Luft, Wasser oder einen Festkörper. Licht und Funkwellen können sich dagegen auch im Vakuum ausbreiten.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Schall ist zu langsam.",
+              "Im Vakuum fehlt ein Stoff, der die Schwingungen weiterträgt.",
+              "Dunkelheit schluckt Geräusche."
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k4-400",
+          "points": 400
+        },
+        {
+          "question": "Auf welchem Planeten dauert eine volle Drehung um die eigene Achse länger als ein Umlauf um die Sonne?",
+          "answer": "Venus",
+          "explanation": "Die Venus braucht für eine volle Eigendrehung ungefähr 243 Erdtage, für einen Sonnenumlauf rund 225. Hier geht es um die Eigendrehung, nicht um die Zeit von Sonnenaufgang zu Sonnenaufgang.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Mars",
+              "Jupiter",
+              "Venus"
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k4-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Kopf an!",
+      "questions": [
+        {
+          "question": "Kein Meme, eine Rechnung: Wie viel ist 6 · 7?",
+          "answer": "42",
+          "explanation": "6 · 7 bedeutet sechs Gruppen mit jeweils sieben. Das Ergebnis ist 42, nicht die aneinandergeschriebene Zahl 67.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "42"
+            ]
+          },
+          "id": "k5-100",
+          "points": 100
+        },
+        {
+          "question": "Wie viele Sekunden sind drei Viertel einer Minute?",
+          "answer": "45 Sekunden",
+          "explanation": "Eine Minute hat 60 Sekunden. Ein Viertel sind 15 Sekunden, drei Viertel also 45.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "45"
+            ],
+            "unit": "Sekunden"
+          },
+          "id": "k5-200",
+          "points": 200
+        },
+        {
+          "question": "Wie groß ist die Summe aller ganzen Zahlen von 1 bis 10?",
+          "answer": "55",
+          "explanation": "Bilde Paare: 1 + 10, 2 + 9, 3 + 8, 4 + 7 und 5 + 6. Jedes Paar ergibt 11; fünf Paare ergeben 55.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "55"
+            ]
+          },
+          "id": "k5-300",
+          "points": 300
+        },
+        {
+          "question": "Wie viel Prozent des Ganzen ist die Hälfte von der Hälfte?",
+          "answer": "25 %",
+          "explanation": "Eine Hälfte mal eine Hälfte ist ein Viertel. Ein Viertel entspricht 25 %.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "25"
+            ],
+            "unit": "%"
+          },
+          "id": "k5-400",
+          "points": 400
+        },
+        {
+          "question": "Eine Münze wird viermal geworfen. Wie viele verschiedene Folgen aus Kopf und Zahl sind möglich? Die Reihenfolge zählt.",
+          "answer": "16 Folgen",
+          "explanation": "Für jeden Wurf gibt es zwei Möglichkeiten. Deshalb rechnest du 2 · 2 · 2 · 2 = 16. Kopf–Kopf–Kopf–Zahl und Zahl–Kopf–Kopf–Kopf zählen als verschiedene Folgen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "16"
+            ]
+          },
+          "id": "k5-500",
+          "points": 500
+        }
+      ]
+    }
+  ]
+}

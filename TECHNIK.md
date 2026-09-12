@@ -98,6 +98,7 @@ node tests/pages.cjs
 node tests/feedback.cjs
 node tests/scoring.cjs
 node tests/klasse8.cjs
+node tests/meme-mix.cjs
 ```
 
 Optional setzen: `PLAYWRIGHT_MODULE` = Pfad zur vorhandenen Playwright-Installation, `CHROMIUM_EXECUTABLE` = Chrome-Programmdatei, `PLAYWRIGHT_BROWSERS_PATH` = Browsercache und `BROWSER_ENGINES` = kommaseparierte Auswahl. Diese Werkzeuge sind nur für Tests nötig, nicht zum Bauen oder Spielen.

@@ -68,3 +68,12 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 - pages.cjs: Startseite und vier Spiele unter einem Repository-Unterpfad einschließlich Verzeichnis-URLs in allen drei Engines geprüft.
 - Öffentliche Startseite per HTTP mit Status 200 erreichbar. README enthält direkte Pages-Links und den Online-Spiel-Ersteller.
 - Physische Touchdisplays, Android, Linux und echtes Safari auf Apple-Geräten wurden weiterhin nicht direkt getestet.
+
+## Ergänzung vom 12.09.2026: Meme-Mix ab etwa 14
+
+- Neuer Aufgabensatz mit fünf Rubriken und 25 Fragen (17 Auswahl-, acht Zahlenfragen). Fakten und Deutschland-Bezug der Netz-/Gaming-Themen in QUELLEN-MEME-MIX.md dokumentiert.
+- node build.js und npm test: erfolgreich, alle 14 Engine-Tests bestanden. Keine Änderung an Engine oder Oberfläche.
+- tests/meme-mix.cjs in Chromium 131, Firefox 153 und WebKit 26.5: alle 25 unabhängig festgelegten Antworten richtig gewertet, Teamwechsel und Spielende korrekt; falsche Antwort zeigt Lösung und Erklärung. Kleine Touch-Ansicht geprüft.
+- tests/pages.cjs: Startseite, fünf Spiele und Verzeichnis-Links unter Repository-Unterpfad in allen drei Engines bestanden.
+- Screenshots für schmale Ansicht sowie längste Frage, Antwort und Erklärung visuell geprüft. Lange Inhalte bleiben im Dialog scrollbar.
+- Physische Promethean-Displays, echte Android-/Apple-Geräte und Linux wurden nicht direkt getestet.
