@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "faechermix-klasse-6",
+  "title": "Jeopardy · Fächermix · Klasse 6",
+  "teams": [
+    "Team 1",
+    "Team 2"
+  ],
+  "rules": {
+    "subtractOnWrong": false,
+    "takeover": false
+  },
+  "categories": [
+    {
+      "title": "Deutschland – Kartenarbeit",
+      "questions": [
+        {
+          "id": "k1-100",
+          "points": 100,
+          "question": "Wie heißt die Hauptstadt von Deutschland?",
+          "answer": "Berlin.",
+          "explanation": "Die Hauptstadt von Deutschland heißt Berlin. Berlin liegt im Nordosten Deutschlands und ist gleichzeitig ein eigenes Bundesland.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k1-200",
+          "points": 200,
+          "question": "Wie viele Bundesländer hat Deutschland?",
+          "answer": "16 Bundesländer.",
+          "explanation": "Deutschland hat 16 Bundesländer. Jedes Bundesland hat eine eigene Landesregierung. Die Bundesländer sind unterschiedlich groß und haben unterschiedlich viele Einwohner.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k1-300",
+          "points": 300,
+          "question": "Nenne drei Nachbarländer von Deutschland.",
+          "answer": "Zum Beispiel: Niederlande, Belgien und Frankreich.",
+          "explanation": "Deutschland hat neun Nachbarländer. Drei mögliche Antworten sind: die Niederlande, Belgien und Frankreich. Auch Dänemark, Polen, Tschechien, Österreich, die Schweiz und Luxemburg sind richtig.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k1-400",
+          "points": 400,
+          "question": "Auf einer Karte liegt Hamburg nördlich von München. Was bedeutet „nördlich“?",
+          "answer": "Weiter im Norden; bei einer nach Norden ausgerichteten Karte weiter oben.",
+          "explanation": "„Nördlich“ bedeutet, dass ein Ort weiter im Norden liegt. Auf einer üblichen Landkarte ist Norden oben. Hamburg liegt deshalb auf der Karte weiter oben als München.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k1-500",
+          "points": 500,
+          "question": "Du schaust auf eine Deutschlandkarte. Ein Ort liegt südwestlich von Berlin. In welche Himmelsrichtungen musst du von Berlin aus gehen?",
+          "answer": "Nach Süden und nach Westen.",
+          "explanation": "Südwestlich bedeutet zwei Richtungen gleichzeitig: nach Süden und nach Westen. Von Berlin aus müsste man also zuerst gedanklich nach unten und gleichzeitig nach links gehen. Ein Beispiel für eine Stadt in dieser Richtung ist Leipzig.",
+          "teacherNote": ""
+        }
+      ]
+    },
+    {
+      "title": "Englisch – Simple Present",
+      "questions": [
+        {
+          "id": "k2-100",
+          "points": 100,
+          "question": "Setze ein: I ___ football every Monday. (play / plays)",
+          "answer": "I play football every Monday.",
+          "explanation": "Richtig ist: „I play football every Monday.“ Bei I, you, we und they steht das Verb im Simple Present normalerweise ohne -s.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k2-200",
+          "points": 200,
+          "question": "Setze ein: She ___ to school every day. (go / goes)",
+          "answer": "She goes to school every day.",
+          "explanation": "Richtig ist: „She goes to school every day.“ Bei he, she und it bekommt das Verb im Simple Present meistens ein -s. Bei „go“ wird daraus „goes“.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k2-300",
+          "points": 300,
+          "question": "Bilde die Verneinung: „I like bananas.“",
+          "answer": "I don’t like bananas.",
+          "explanation": "Richtig ist: „I don't like bananas.“ Das Hilfsverb „do“ wird bei I, you, we und they verwendet. In der Verneinung wird daraus „do not“ oder kurz „don't“.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k2-400",
+          "points": 400,
+          "question": "Bilde eine Frage: „You speak English.“",
+          "answer": "Do you speak English?",
+          "explanation": "Richtig ist: „Do you speak English?“ Im Simple Present beginnt eine Frage mit I, you, we oder they meistens mit „Do“. Danach kommt die Person und dann das Verb in der Grundform: Do + you + speak.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k2-500",
+          "points": 500,
+          "question": "Was ist richtig? „He don't like cats.“ oder „He doesn't like cats.“ Erkläre kurz warum.",
+          "answer": "He doesn’t like cats. Bei he wird die Verneinung mit doesn’t gebildet; like bleibt in der Grundform.",
+          "explanation": "Richtig ist: „He doesn't like cats.“ Bei he, she und it benutzen wir in der Verneinung „does not“ beziehungsweise „doesn't“. Das Verb „like“ bleibt danach in der Grundform. Deshalb heißt es nicht „doesn't likes“, sondern „doesn't like“.",
+          "teacherNote": ""
+        }
+      ]
+    },
+    {
+      "title": "Mathematik – Rechnen & Brüche",
+      "questions": [
+        {
+          "id": "k3-100",
+          "points": 100,
+          "question": "Rechne: 36 + 27 = ?",
+          "answer": "63.",
+          "explanation": "36 + 27 = 63. Man kann zuerst die Zehner und Einer rechnen: 30 + 20 = 50 und 6 + 7 = 13. Dann 50 + 13 = 63.",
+          "teacherNote": "",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "63"
+            ]
+          }
+        },
+        {
+          "id": "k3-200",
+          "points": 200,
+          "question": "Rechne: 84 − 39 = ?",
+          "answer": "45.",
+          "explanation": "84 − 39 = 45. Ein einfacher Weg ist: 84 − 40 = 44. Weil wir statt 40 nur 39 abziehen, kommt noch 1 dazu. Das Ergebnis ist also 45.",
+          "teacherNote": "",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "45"
+            ]
+          }
+        },
+        {
+          "id": "k3-300",
+          "points": 300,
+          "question": "Rechne: 7 · 8 + 6 = ?",
+          "answer": "62.",
+          "explanation": "Zuerst rechnen wir die Multiplikation: 7 · 8 = 56. Danach addieren wir 6: 56 + 6 = 62. Das Ergebnis ist 62.",
+          "teacherNote": "",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "62"
+            ]
+          }
+        },
+        {
+          "id": "k3-400",
+          "points": 400,
+          "question": "Rechne: 3/4 + 1/4 = ?",
+          "answer": "1 (vier Viertel).",
+          "explanation": "Die Nenner sind gleich, nämlich 4. Deshalb können wir die Zähler addieren: 3 + 1 = 4. Wir erhalten 4/4. Vier Viertel sind ein Ganzes. Das Ergebnis ist also 1.",
+          "teacherNote": "",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1"
+            ]
+          }
+        },
+        {
+          "id": "k3-500",
+          "points": 500,
+          "question": "Lena hat eine Pizza. Sie isst 2/8 der Pizza. Ihr Bruder isst 3/8. Wie viel Pizza haben beide zusammen gegessen und wie viel ist noch übrig?",
+          "answer": "Zusammen gegessen: 5/8. Übrig: 3/8.",
+          "explanation": "Beide Brüche haben den gleichen Nenner 8. Deshalb rechnen wir die Zähler: 2/8 + 3/8 = 5/8. Zusammen wurden 5/8 der Pizza gegessen. Von der ganzen Pizza bleiben 8/8 − 5/8 = 3/8 übrig. Antwort: Gegessen wurden 5/8, übrig bleiben 3/8.",
+          "teacherNote": ""
+        }
+      ]
+    },
+    {
+      "title": "Ägypten",
+      "questions": [
+        {
+          "id": "k4-100",
+          "points": 100,
+          "question": "Auf welchem Kontinent liegt Ägypten?",
+          "answer": "Größtenteils in Afrika; die Sinai-Halbinsel liegt in Asien.",
+          "explanation": "Ägypten liegt größtenteils in Afrika. Ein kleiner Teil des Landes, die Sinai-Halbinsel, liegt geografisch in Asien.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k4-200",
+          "points": 200,
+          "question": "Wie heißt der berühmte Fluss, der durch Ägypten fließt?",
+          "answer": "Nil.",
+          "explanation": "Der berühmte Fluss heißt Nil. Er fließt durch Ägypten und war schon im alten Ägypten sehr wichtig für das Leben der Menschen.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k4-300",
+          "points": 300,
+          "question": "Wie heißt die Hauptstadt von Ägypten?",
+          "answer": "Kairo.",
+          "explanation": "Die Hauptstadt von Ägypten heißt Kairo. Kairo liegt am Nil und ist die größte Stadt Ägyptens.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k4-400",
+          "points": 400,
+          "question": "Warum war der Nil für die Menschen im alten Ägypten so wichtig?",
+          "answer": "Wasser, fruchtbarer Schlamm für die Felder und ein Transportweg.",
+          "explanation": "Der Nil lieferte Wasser in einer sehr trockenen Region. Durch seine Überschwemmungen wurden Felder mit fruchtbarem Schlamm versorgt. Dadurch konnten die Menschen Getreide und andere Pflanzen anbauen. Der Nil war außerdem wichtig für den Transport von Menschen und Waren.",
+          "teacherNote": ""
+        },
+        {
+          "id": "k4-500",
+          "points": 500,
+          "question": "Warum entstanden die großen Städte und die Landwirtschaft im alten Ägypten vor allem am Nil?",
+          "answer": "Am Nil gab es Wasser, fruchtbare Böden und gute Transportmöglichkeiten.",
+          "explanation": "Große Teile Ägyptens sind sehr trocken. Am Nil gab es dagegen dauerhaft Wasser. Die regelmäßigen Überschwemmungen hinterließen fruchtbaren Schlamm auf den Feldern. Dadurch konnten die Menschen Landwirtschaft betreiben. Der Fluss erleichterte außerdem den Transport. Deshalb konzentrierte sich das Leben stark auf das Niltal und das Nildelta.",
+          "teacherNote": ""
+        }
+      ]
+    },
+    {
+      "title": "Sexualkunde – Körper & Pubertät",
+      "questions": [
+        {
+          "id": "k5-100",
+          "points": 100,
+          "question": "Wie nennt man die Zeit, in der sich der Körper vom Kind zum Erwachsenen verändert?",
+          "answer": "Pubertät.",
+          "explanation": "Diese Zeit nennt man Pubertät. In der Pubertät verändert sich der Körper. Auch Gefühle und die eigene Wahrnehmung können sich verändern. Die Pubertät beginnt nicht bei allen Menschen zur gleichen Zeit.",
+          "teacherNote": "Keine persönlichen Erfahrungen abfragen. Antworten dürfen allgemein bleiben."
+        },
+        {
+          "id": "k5-200",
+          "points": 200,
+          "question": "Nenne zwei Veränderungen, die während der Pubertät auftreten können.",
+          "answer": "Zum Beispiel: Wachstum und stärkere Körperbehaarung.",
+          "explanation": "Mögliche Veränderungen sind zum Beispiel stärkeres Körperhaar, Wachstum, eine Veränderung der Stimme, Pickel oder eine stärkere Schweißbildung. Bei manchen Menschen beginnt außerdem die Menstruation, bei anderen verändert sich die Größe der Hoden und der Penis.",
+          "teacherNote": "Keine persönlichen Erfahrungen abfragen. Antworten dürfen allgemein bleiben."
+        },
+        {
+          "id": "k5-300",
+          "points": 300,
+          "question": "Welches Organ bildet bei Menschen mit Hoden die Samenzellen?",
+          "answer": "Die Hoden.",
+          "explanation": "Die Samenzellen werden in den Hoden gebildet. Die Hoden gehören zu den männlichen Geschlechtsorganen. Sie bilden außerdem das Hormon Testosteron.",
+          "teacherNote": "Keine persönlichen Erfahrungen abfragen. Antworten dürfen allgemein bleiben."
+        },
+        {
+          "id": "k5-400",
+          "points": 400,
+          "question": "Welches Organ kann bei einer Schwangerschaft ein Baby aufnehmen und wachsen lassen?",
+          "answer": "Die Gebärmutter.",
+          "explanation": "Das Organ heißt Gebärmutter. Bei einer Schwangerschaft kann sich dort die befruchtete Eizelle einnisten und ein Baby entwickeln. Die Gebärmutter liegt im Unterbauch.",
+          "teacherNote": "Keine persönlichen Erfahrungen abfragen. Antworten dürfen allgemein bleiben."
+        },
+        {
+          "id": "k5-500",
+          "points": 500,
+          "question": "Was bedeutet: „Mein Körper gehört mir“? Nenne zwei Regeln, die daraus für Berührungen folgen.",
+          "answer": "Berührungen brauchen Zustimmung. Ein Nein muss respektiert werden.",
+          "explanation": "„Mein Körper gehört mir“ bedeutet, dass jeder Mensch selbst über seinen Körper bestimmen darf. Zwei wichtige Regeln sind: Erstens darf niemand eine andere Person gegen deren Willen anfassen oder zu einer Berührung zwingen. Zweitens muss ein Nein respektiert werden. Auch bei Freunden oder in einer Familie ist es in Ordnung, keine Umarmung oder andere Berührung zu wollen. Wenn sich eine Berührung unangenehm oder falsch anfühlt, darf man Abstand nehmen und sich Hilfe bei einer vertrauenswürdigen erwachsenen Person holen.",
+          "teacherNote": "Keine persönlichen Erfahrungen abfragen. Antworten dürfen allgemein bleiben."
+        }
+      ]
+    }
+  ]
+}

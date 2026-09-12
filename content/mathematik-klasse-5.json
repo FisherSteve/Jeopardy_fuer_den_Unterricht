@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "id": "mathematik-klasse-5",
+  "title": "Jeopardy · Mathematik · Klasse 5",
+  "teams": [
+    "Team 1",
+    "Team 2"
+  ],
+  "rules": {
+    "subtractOnWrong": false,
+    "takeover": false
+  },
+  "categories": [
+    {
+      "title": "Zahlen & Rechnen",
+      "questions": [
+        {
+          "id": "k1-100",
+          "points": 100,
+          "question": "Welche Zahl ist größer: 408 oder 480?",
+          "answer": "480 ist größer.",
+          "explanation": "Vergleiche zuerst die Hunderter: Beide Zahlen haben vier Hunderter. 480 hat acht Zehner, 408 hat keinen Zehner; deshalb ist 480 größer.",
+          "teacherNote": "Prüft Zahlvergleich und Stellenwertverständnis.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "480"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k1-200",
+          "points": 200,
+          "question": "Rechne: 347 + 125",
+          "answer": "472",
+          "explanation": "Rechne zunächst 347 + 100 = 447. Addiere dann 25: 447 + 25 = 472.",
+          "teacherNote": "Grundlegende Addition mit Übertrag.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "472"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k1-300",
+          "points": 300,
+          "question": "Welche Zahl fehlt? 900 − ___ = 275",
+          "answer": "625",
+          "explanation": "Die gesuchte Zahl ist die Differenz zwischen 900 und 275. 900 − 275 = 625; die Probe lautet 900 − 625 = 275.",
+          "teacherNote": "Umkehraufgabe; Zusammenhang zwischen Subtraktion und Ergänzen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "625"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k1-400",
+          "points": 400,
+          "question": "Ohne genau auszurechnen: Liegt 398 + 207 näher bei 500 oder bei 600?",
+          "answer": "Näher bei 600.",
+          "explanation": "Runde 398 auf 400 und 207 auf 200. Der Überschlag ergibt 600; die tatsächliche Summe liegt daher näher bei 600 als bei 500.",
+          "teacherNote": "Hier zählt die Begründung mit einem sinnvollen Überschlag.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Näher bei 500",
+              "Näher bei 600"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "k1-500",
+          "points": 500,
+          "question": "Ich denke mir eine Zahl. Ich verdopple sie und addiere 6. Das Ergebnis ist 30. Welche Zahl war es?",
+          "answer": "12",
+          "explanation": "Gehe rückwärts: 30 − 6 = 24. Vor dem Verdoppeln war die Zahl 24 : 2 = 12.",
+          "teacherNote": "Mehrschrittiges Rückwärtsdenken mit Grundrechenarten.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "12"
+            ],
+            "unit": ""
+          }
+        }
+      ]
+    },
+    {
+      "title": "Größen, Geld & Zeit",
+      "questions": [
+        {
+          "id": "k2-100",
+          "points": 100,
+          "question": "Was ist mehr: 2 € oder 180 Cent?",
+          "answer": "2 €, denn 2 € = 200 Cent.",
+          "explanation": "Ein Euro sind 100 Cent. Zwei Euro sind 200 Cent und damit 20 Cent mehr als 180 Cent.",
+          "teacherNote": "Euro-Cent-Grundverständnis.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2 €",
+              "180 Cent",
+              "Beides ist gleich viel"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "k2-200",
+          "points": 200,
+          "question": "Ein Heft kostet 2,40 €. Du bezahlst mit 5 €. Wie viel Geld bekommst du zurück?",
+          "answer": "2,60 €.",
+          "explanation": "Ergänze von 2,40 € bis 5 €. Erst 0,60 € bis 3 €, dann 2 € bis 5 €: zusammen 2,60 €.",
+          "teacherNote": "Alltagsnahes Rückgeldrechnen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "2.60"
+            ],
+            "unit": "€"
+          }
+        },
+        {
+          "id": "k2-300",
+          "points": 300,
+          "question": "Der Unterricht beginnt um 8:00 Uhr. Eine Stunde und 35 Minuten später ist Pause. Wann beginnt die Pause?",
+          "answer": "9:35 Uhr.",
+          "explanation": "Eine Stunde nach 8:00 Uhr ist es 9:00 Uhr. Weitere 35 Minuten ergeben 9:35 Uhr.",
+          "teacherNote": "Zeitspanne zu einer Uhrzeit addieren."
+        },
+        {
+          "id": "k2-400",
+          "points": 400,
+          "question": "Ein Schulweg ist 1 km und 250 m lang. Wie viele Meter sind das?",
+          "answer": "1 250 m.",
+          "explanation": "Ein Kilometer entspricht 1000 Metern. Mit den weiteren 250 Metern sind das 1250 Meter.",
+          "teacherNote": "Verbindet Kilometer und Meter.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1250"
+            ],
+            "unit": "m"
+          }
+        },
+        {
+          "id": "k2-500",
+          "points": 500,
+          "question": "Du hast 10 €. Du kaufst ein Getränk für 1,80 € und ein Brötchen für 2,70 €. Reicht das Geld noch für ein Heft für 5,90 €?",
+          "answer": "Nein.",
+          "explanation": "Getränk und Brötchen kosten zusammen 4,50 €. Von 10 € bleiben 5,50 €; für das Heft fehlen noch 0,40 €.",
+          "teacherNote": "Mehrere Geldbeträge verbinden und Ergebnis sinnvoll beurteilen."
+        }
+      ]
+    },
+    {
+      "title": "Formen, Raum & Messen",
+      "questions": [
+        {
+          "id": "k3-100",
+          "points": 100,
+          "question": "Ich habe vier gleich lange Seiten und vier rechte Winkel. Welche Form bin ich?",
+          "answer": "Ein Quadrat.",
+          "explanation": "Ein Quadrat hat vier gleich lange Seiten und vier rechte Winkel. Ohne die Angabe der rechten Winkel könnte auch eine andere Raute gemeint sein.",
+          "teacherNote": "Grundlegende geometrische Begriffe."
+        },
+        {
+          "id": "k3-200",
+          "points": 200,
+          "question": "Wie viele Ecken hat ein Würfel?",
+          "answer": "Ein Würfel hat 8 Ecken.",
+          "explanation": "An jeder Ecke treffen drei Kanten zusammen. Oben sind vier Ecken und unten vier, also insgesamt acht.",
+          "teacherNote": "Räumliche Grundvorstellung.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ],
+            "unit": "Ecken"
+          }
+        },
+        {
+          "id": "k3-300",
+          "points": 300,
+          "question": "Ein Rechteck ist 6 cm lang und 3 cm breit. Wie lang ist sein Umfang?",
+          "answer": "18 cm.",
+          "explanation": "Der Umfang ist die Länge des gesamten Randes. Addiere alle vier Seiten: 6 + 3 + 6 + 3 = 18 cm.",
+          "teacherNote": "Umfang als Länge des Randes.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "18"
+            ],
+            "unit": "cm"
+          }
+        },
+        {
+          "id": "k3-400",
+          "points": 400,
+          "question": "Ein Band ist 1 m lang. Du schneidest 35 cm ab. Wie viele Zentimeter bleiben übrig?",
+          "answer": "65 cm.",
+          "explanation": "Rechne zuerst den Meter in 100 Zentimeter um. Nach dem Abschneiden bleiben 100 − 35 = 65 cm.",
+          "teacherNote": "Verbindet Messen, Umrechnen und Subtrahieren.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "65"
+            ],
+            "unit": "cm"
+          }
+        },
+        {
+          "id": "k3-500",
+          "points": 500,
+          "question": "Ein Rechteck hat einen Umfang von 20 cm. Eine lange Seite ist 7 cm lang. Wie lang ist eine kurze Seite?",
+          "answer": "3 cm.",
+          "explanation": "Die beiden langen Seiten sind zusammen 14 cm lang. Von 20 cm bleiben 6 cm für zwei gleich lange kurze Seiten; jede ist 3 cm lang.",
+          "teacherNote": "Mehrschrittiges geometrisches Denken mit Umfang.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "3"
+            ],
+            "unit": "cm"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sachaufgaben, Tabellen & Daten",
+      "questions": [
+        {
+          "id": "k4-100",
+          "points": 100,
+          "question": "In einer Kiste liegen 12 rote und 7 blaue Bälle. Wie viele Bälle sind es zusammen?",
+          "answer": "19 Bälle.",
+          "explanation": "Gesucht ist die Gesamtzahl der Bälle. Addiere die roten und die blauen Bälle: 12 + 7 = 19.",
+          "teacherNote": "Kurze Sachaufgabe; passende Rechenart erkennen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "19"
+            ],
+            "unit": "Bälle"
+          }
+        },
+        {
+          "id": "k4-200",
+          "points": 200,
+          "question": "Die Klasse sammelt Altpapier. An welchem Tag sammelt sie am meisten?",
+          "answer": "Am Dienstag mit 11 kg.",
+          "explanation": "Vergleiche die drei Werte in der Tabelle. 11 kg ist der größte Wert und gehört zum Dienstag.",
+          "teacherNote": "Informationen vergleichen.",
+          "table": {
+            "headers": [
+              "Tag",
+              "Altpapier"
+            ],
+            "rows": [
+              [
+                "Montag",
+                "8 kg"
+              ],
+              [
+                "Dienstag",
+                "11 kg"
+              ],
+              [
+                "Mittwoch",
+                "6 kg"
+              ]
+            ]
+          },
+          "response": {
+            "type": "choice",
+            "options": [
+              "Montag",
+              "Dienstag",
+              "Mittwoch"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "k4-300",
+          "points": 300,
+          "question": "Buszeiten: 07:35 · 08:05 · 08:35 · 09:05. Du kommst um 08:10 Uhr zur Haltestelle. Welchen Bus kannst du als Nächstes nehmen?",
+          "answer": "Den Bus um 08:35 Uhr.",
+          "explanation": "Der Bus um 08:05 Uhr ist bereits abgefahren. Die erste aufgeführte Abfahrt nach 08:10 Uhr ist 08:35 Uhr.",
+          "teacherNote": "Einfache Fahrplaninformation entnehmen."
+        },
+        {
+          "id": "k4-400",
+          "points": 400,
+          "question": "28 Äpfel werden gleichmäßig auf 4 Kisten verteilt. Wie viele Äpfel liegen in jeder Kiste?",
+          "answer": "7 Äpfel.",
+          "explanation": "Die Äpfel sind gleichmäßig auf vier Kisten verteilt. Teile 28 durch 4; in jeder Kiste liegen sieben Äpfel.",
+          "teacherNote": "Sachkontext erkennen und Division auswählen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "7"
+            ],
+            "unit": "Äpfel"
+          }
+        },
+        {
+          "id": "k4-500",
+          "points": 500,
+          "question": "Eine Gruppe hat 36 € für einen Ausflug. 4 Fahrkarten kosten je 6 €. Wie viel Geld bleibt übrig?",
+          "answer": "12 €.",
+          "explanation": "Vier Fahrkarten kosten 4 × 6 € = 24 €. Ziehe diese Kosten von 36 € ab; es bleiben 12 €.",
+          "teacherNote": "Zwei Rechenschritte und Auswahl der passenden Operationen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "12"
+            ],
+            "unit": "€"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Knobeln, Muster & mathematisches Denken",
+      "questions": [
+        {
+          "id": "k5-100",
+          "points": 100,
+          "question": "Die Reihe wächst immer um 2. Setze fort: 2 – 4 – 6 – 8 – ?",
+          "answer": "10.",
+          "explanation": "Die Zahlen werden jedes Mal um zwei größer. Nach 8 folgt deshalb 10.",
+          "teacherNote": "Einfaches Zahlenmuster erkennen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "10"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k5-200",
+          "points": 200,
+          "question": "Ali sagt: 7 × 5 = 30. Hat er recht?",
+          "answer": "Nein. 7 × 5 = 35.",
+          "explanation": "Sieben Fünfer ergeben 35. Ali hat vermutlich nur sechs Fünfer gezählt: 6 × 5 = 30.",
+          "teacherNote": "Nicht nur Ergebnis nennen lassen: Wie wurde der Fehler erkannt?"
+        },
+        {
+          "id": "k5-300",
+          "points": 300,
+          "question": "Welche Zahl passt nicht in die Reihe? 10 – 20 – 30 – 35 – 40 – 50",
+          "answer": "35 passt nicht. Die anderen Zahlen sind Zehnerschritte.",
+          "explanation": "Alle anderen Zahlen sind Vielfache von zehn. 35 ist kein Vielfaches von zehn und passt nicht zu diesem Muster.",
+          "teacherNote": "Muster begründen lassen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "35"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k5-400",
+          "points": 400,
+          "question": "Ich habe drei Münzen. Zusammen sind es 40 Cent. Welche drei Münzen könnten es sein?",
+          "answer": "Zum Beispiel 20 Cent + 10 Cent + 10 Cent.",
+          "explanation": "20 Cent und zweimal 10 Cent ergeben zusammen 40 Cent. Es sind genau drei Münzen.",
+          "teacherNote": "Eine mögliche Kombination genügt. Weitere richtige Lösungen dürfen besprochen werden."
+        },
+        {
+          "id": "k5-500",
+          "points": 500,
+          "question": "Drei Kinder teilen 24 Murmeln. Mia bekommt doppelt so viele wie Ben. Ben bekommt 6 Murmeln. Wie viele Murmeln bekommt das dritte Kind?",
+          "answer": "6 Murmeln.",
+          "explanation": "Ben erhält 6 und Mia doppelt so viele, also 12 Murmeln. Zusammen sind das 18; für das dritte Kind bleiben 24 − 18 = 6 Murmeln.",
+          "teacherNote": "Mehrere Informationen verbinden; Lösungsweg sichtbar machen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "6"
+            ],
+            "unit": "Murmeln"
+          }
+        }
+      ]
+    }
+  ]
+}

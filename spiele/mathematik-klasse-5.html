@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Jeopardy</title>
+<style>:root{color-scheme:dark;--bg:#10141f;--panel:#1b2435;--text:#f5f7ff;--muted:#bec8da;--gold:#ffd166;--line:#4f607a}
+*{box-sizing:border-box} [hidden]{display:none!important}
+html{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body{margin:0} body.modal-open{overflow:hidden}
+button,input{font:inherit}button{min-height:52px;min-width:52px;padding:12px 18px;border:1px solid var(--line);border-radius:12px;background:#28364e;color:var(--text);font-weight:700;cursor:pointer;touch-action:manipulation}
+button:disabled{cursor:default;background:#303845;color:#aeb8c8;border-color:#59616d}
+button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #fff;outline-offset:3px}
+button:not(:disabled):active{transform:translateY(1px)}
+@media(hover:hover){button:not(:disabled):hover{filter:brightness(1.15)}}
+main{max-width:1900px;margin:auto;padding:clamp(12px,2vw,30px)}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}h1{font-size:clamp(24px,2.6vw,48px);line-height:1.12;margin:5px 0;overflow-wrap:anywhere}
+.eyebrow{font-size:clamp(12px,1vw,17px);font-weight:800;letter-spacing:.08em;color:var(--muted);margin:0}nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}
+.turn-banner{color:var(--gold);font-size:clamp(22px,2.2vw,36px);font-weight:800;margin:0 0 12px;padding-left:4px}
+.teams{display:grid;grid-template-columns:repeat(var(--team-count,2),minmax(0,1fr));gap:10px;margin-bottom:18px}
+.team{display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0;padding:12px 20px;background:var(--panel);border:1px solid var(--line);border-radius:14px;font-size:clamp(18px,1.7vw,30px)}.team-name{overflow-wrap:anywhere}.score{color:var(--gold);font-size:clamp(26px,2.8vw,46px);font-weight:800;white-space:nowrap}
+.board-scroll{overflow-x:auto;padding:4px 4px 10px}.board{display:grid;grid-template-columns:repeat(var(--category-count,5),minmax(118px,1fr));gap:clamp(6px,1vw,14px)}
+.category{display:flex;align-items:center;justify-content:center;min-height:clamp(75px,9vh,125px);padding:10px;border-radius:12px;color:#10141f;background:var(--category);font-weight:800;text-align:center;font-size:clamp(16px,1.5vw,28px);overflow-wrap:anywhere}
+.tile{min-height:clamp(60px,8.7vh,130px);padding:10px;background:var(--panel);border-top:3px solid var(--category);color:var(--gold);font-size:clamp(26px,3vw,52px);font-weight:850}.tile.used{border-top-color:#68717e}.tile small{display:block;font-size:13px;color:var(--text)}
+.tile:disabled:not(.used){background:var(--panel);color:var(--gold);border-color:var(--line);border-top-color:var(--category)}
+footer{display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:14px;margin-top:10px}#status{max-width:65%;text-align:right}.winner{padding:24px;margin-top:16px;background:#234136;border:2px solid #7ae582;border-radius:16px;font-size:clamp(22px,3vw,40px);text-align:center}
+#status[data-result]{font-size:clamp(16px,1.5vw,24px);font-weight:800}#status[data-result=correct]{color:#7ae582}#status[data-result=wrong]{color:#ffb79f}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.83);z-index:10;display:flex;align-items:center;justify-content:center;padding:12px}
+.dialog{width:min(1200px,100%);max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain;border:1px solid #667892;border-radius:20px;padding:clamp(16px,2.4vw,36px);background:var(--bg);box-shadow:0 20px 70px #0008}
+.dialog-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.dialog-top .eyebrow{letter-spacing:.03em}
+h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflow-wrap:anywhere;margin:22px 0}h3{margin:18px 0 8px}p{line-height:1.5}
+.answer{font-size:clamp(24px,2.8vw,40px);line-height:1.35;white-space:pre-line;background:#20382f;border-left:5px solid #7ae582;border-radius:10px;padding:18px;margin-bottom:16px;overflow-wrap:anywhere}
+.player-response{margin:16px 0 22px}.player-response label{display:block;font-size:20px;font-weight:700;margin-bottom:8px}#number-response{max-width:480px;margin:auto}#number-input{width:100%;min-height:62px;font-size:32px;background:var(--panel);border:2px solid var(--gold);color:var(--text);border-radius:10px;padding:8px 14px}.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.numpad button{font-size:24px;min-height:56px}.numpad button:last-child{grid-column:span 2;font-size:18px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choices button{font-size:clamp(20px,2vw,30px);min-height:70px;overflow-wrap:anywhere}.choices [aria-pressed=true]{background:var(--gold);color:#10141f;border-color:var(--gold)}.submit-response{display:block;min-width:220px;margin:16px auto 0;font-size:22px}
+.question-tools{display:flex;gap:10px;flex-wrap:wrap}.primary{background:var(--gold);color:#10141f;border-color:var(--gold)}.notes{background:var(--panel);padding:12px 18px;border-radius:12px;margin-top:12px;white-space:pre-line}.muted{color:var(--muted)}
+.pick-team{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.team-indicator{flex:1;overflow-wrap:anywhere;border:1px solid var(--line);border-radius:10px;padding:12px}.active{outline:3px solid var(--gold);outline-offset:-3px;background:#303747}
+.grading{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.grading button{font-size:clamp(20px,2vw,32px);min-height:68px}.correct{background:#7ae582;color:#102518;border-color:#7ae582}.wrong,.danger{background:#ffb79f;color:#381b10;border-color:#ffb79f}
+.names{display:grid;grid-template-columns:1fr 1fr;gap:12px}.names label{display:grid;gap:6px}.names input{width:100%;min-height:52px;border:1px solid var(--line);padding:10px;border-radius:8px;background:var(--panel);color:var(--text)}
+.team-tools{margin-top:14px}
+.toggle-label{display:flex;gap:14px;align-items:center;min-height:56px;font-size:20px}.toggle-label input{width:28px;height:28px;accent-color:var(--gold)}
+#menu-view{font-size:18px}table{border-collapse:collapse;font-size:clamp(18px,2vw,30px);width:100%;margin:12px 0 20px}th,td{border:1px solid var(--line);padding:10px;text-align:left;overflow-wrap:anywhere}th{background:var(--panel)}
+@media(max-width:700px){header{align-items:flex-start;flex-direction:column}nav{justify-content:flex-start}.eyebrow{font-size:11px}.teams{grid-template-columns:repeat(2,minmax(0,1fr))}.team{padding:10px;gap:6px;flex-wrap:wrap}.names{grid-template-columns:1fr}.grading{gap:8px}footer{flex-direction:column}#status{max-width:100%;text-align:left}}
+@media(min-width:700px){#number-response{max-width:900px;display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:auto auto 1fr;column-gap:28px;align-items:start}#numpad{grid-column:2;grid-row:1 / span 3}#number-help{grid-column:1}}
+@keyframes turn-in{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:no-preference){button{transition:background-color .12s}.turn-change{animation:turn-in .45s ease-out}}
+</style>
+</head>
+<body>
+<main id="app">
+  <header><div><p class="eyebrow">GEMEINSAM DENKEN · GEMEINSAM SPIELEN</p><h1 id="title">Jeopardy</h1></div>
+    <nav aria-label="Spielwerkzeuge"><button id="undo" disabled>Rückgängig</button><button id="fullscreen" hidden>Vollbild</button><button id="settings">Menü</button></nav>
+  </header>
+  <div id="turn-banner" class="turn-banner" role="status" aria-live="polite"></div>
+  <section id="teams" class="teams" aria-label="Teams und Punktestände"></section>
+  <div class="board-scroll" role="region" aria-label="Spielfeld, auf kleinen Displays seitlich scrollbar" tabindex="0"><div id="board" class="board"></div></div>
+  <footer><span id="progress"></span><span id="status" role="status" aria-live="polite"></span></footer>
+  <section id="winner" class="winner" hidden aria-live="polite"></section>
+  <p id="fatal" role="alert" hidden></p>
+</main>
+<div id="overlay" class="overlay" hidden>
+  <section id="dialog" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" tabindex="-1">
+    <div class="dialog-top"><span id="meta" class="eyebrow"></span><button id="close" aria-label="Dialog schließen">Schließen <span aria-hidden="true">×</span></button></div>
+    <h2 id="dialog-title"></h2>
+    <div id="question-view" hidden>
+      <div id="question-table"></div>
+      <div id="player-response" class="player-response" hidden>
+        <div id="number-response" hidden>
+          <label for="number-input">Eure Antwort <span id="number-unit"></span></label>
+          <input id="number-input" type="text" readonly inputmode="none" autocomplete="off" aria-describedby="number-help">
+          <p id="number-help" class="muted">Ziffernfeld oder Tastatur · Komma und Punkt sind möglich.</p>
+          <div id="numpad" class="numpad" role="group" aria-label="Ziffernfeld"></div>
+        </div>
+        <div id="choice-response" hidden><p id="choice-help"></p><div id="choices" class="choices" role="group" aria-labelledby="choice-help"></div></div>
+        <button id="submit-response" class="primary submit-response" disabled>Antwort abgeben</button>
+      </div>
+      <div id="answer" class="answer" hidden></div>
+      <div id="teacher-tools" class="question-tools"><button id="reveal" class="primary">Antwort anzeigen</button><button id="notes-toggle" aria-expanded="false" aria-controls="notes">Lehrkräftehinweise</button></div>
+      <aside id="notes" class="notes" hidden><h3>Erklärung und Lehrkräftehinweis</h3><p id="explanation"></p><p id="teacher-note"></p></aside>
+      <div id="pick-team" class="pick-team" role="group" aria-label="Teamreihenfolge"></div>
+      <div id="grading" class="grading"><button id="correct" class="correct" disabled>Richtig</button><button id="wrong" class="wrong" disabled>Falsch</button></div>
+      <p id="grade-label" class="muted"></p>
+    </div>
+    <div id="menu-view" hidden>
+      <h3>Teams</h3><div id="names" class="names"></div>
+      <div class="question-tools team-tools"><button id="add-team">Team hinzufügen</button><button id="remove-team">Letztes Team entfernen</button></div><p id="team-count-help" class="muted"></p>
+      <h3>Lehrkräftehilfen</h3><label class="toggle-label"><input id="teacher-tools-enabled" type="checkbox"> Lehrkräftehinweise freigeben</label><p>Blendet den Hinweisebutton in Fragen ein. Bei Zahlen- und Auswahlaufgaben wird zusätzlich das manuelle Aufdecken und Bewerten freigegeben. Standardmäßig aus; nach dem Neuladen wieder aus.</p>
+      <h3>So wird gespielt</h3><p>Team 1 beginnt und wählt eine Karte. Die Frage beantworten lassen, dann die Antwort aufdecken und bewerten. Sowohl „Richtig“ als auch „Falsch“ schließen die Karte sofort ab. Es gibt keine Übernahme. Danach wählt das nächste Team eine neue Karte: Team 1, Team 2, …, Team 1.</p>
+      <p>Bei Aufgaben mit Ziffernfeld oder Antwortauswahl kann das Team seine Antwort selbst eingeben und „Antwort abgeben“ drücken. Das Spiel wertet automatisch. Die Auswahl darf bis zur Abgabe verändert werden. „Antwort anzeigen“ ermöglicht alternativ eine manuelle Bewertung durch die Lehrkraft.</p>
+      <p id="rules"></p><p>Schließen ohne Bewertung lässt Karte und Team unverändert. „Rückgängig“ nimmt die zuletzt abgeschlossene Karte samt Punktewertung und Zugwechsel zurück.</p>
+      <h3>Tastatur</h3><p>Tab: Bedienelement wählen · Enter/Leertaste: gewählten Button betätigen · A: Antwort ein/aus · R: richtig · F: falsch · H: Lehrkräftehinweise · Esc: schließen. Kürzel gelten nur in der offenen Frage, nicht beim Schreiben.</p>
+      <p>Lehrkräftehinweise sind beim Öffnen einer Frage immer ausgeblendet. Eingeblendete Hinweise sehen alle Personen am Bildschirm.</p>
+      <p id="storage-info"></p><button id="reset-open" class="danger">Spiel zurücksetzen</button>
+    </div>
+    <div id="reset-view" hidden><p>Alle Bewertungen und Punkte werden gelöscht. Teamnamen bleiben erhalten.</p><div class="question-tools"><button id="reset-cancel">Abbrechen</button><button id="reset-confirm" class="danger">Spiel zurücksetzen</button></div></div>
+  </section>
+</div>
+<noscript>Bitte JavaScript im Browser aktivieren, um das Spiel zu starten.</noscript>
+<!-- Nur diesen JSON-Inhalt durch einen validierten Aufgabensatz ersetzen. -->
+<script id="game-data" type="application/json">{
+  "schemaVersion": 1,
+  "id": "mathematik-klasse-5",
+  "title": "Jeopardy · Mathematik · Klasse 5",
+  "teams": [
+    "Team 1",
+    "Team 2"
+  ],
+  "rules": {
+    "subtractOnWrong": false,
+    "takeover": false
+  },
+  "categories": [
+    {
+      "title": "Zahlen & Rechnen",
+      "questions": [
+        {
+          "id": "k1-100",
+          "points": 100,
+          "question": "Welche Zahl ist größer: 408 oder 480?",
+          "answer": "480 ist größer.",
+          "explanation": "Vergleiche zuerst die Hunderter: Beide Zahlen haben vier Hunderter. 480 hat acht Zehner, 408 hat keinen Zehner; deshalb ist 480 größer.",
+          "teacherNote": "Prüft Zahlvergleich und Stellenwertverständnis.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "480"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k1-200",
+          "points": 200,
+          "question": "Rechne: 347 + 125",
+          "answer": "472",
+          "explanation": "Rechne zunächst 347 + 100 = 447. Addiere dann 25: 447 + 25 = 472.",
+          "teacherNote": "Grundlegende Addition mit Übertrag.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "472"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k1-300",
+          "points": 300,
+          "question": "Welche Zahl fehlt? 900 − ___ = 275",
+          "answer": "625",
+          "explanation": "Die gesuchte Zahl ist die Differenz zwischen 900 und 275. 900 − 275 = 625; die Probe lautet 900 − 625 = 275.",
+          "teacherNote": "Umkehraufgabe; Zusammenhang zwischen Subtraktion und Ergänzen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "625"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k1-400",
+          "points": 400,
+          "question": "Ohne genau auszurechnen: Liegt 398 + 207 näher bei 500 oder bei 600?",
+          "answer": "Näher bei 600.",
+          "explanation": "Runde 398 auf 400 und 207 auf 200. Der Überschlag ergibt 600; die tatsächliche Summe liegt daher näher bei 600 als bei 500.",
+          "teacherNote": "Hier zählt die Begründung mit einem sinnvollen Überschlag.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Näher bei 500",
+              "Näher bei 600"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "k1-500",
+          "points": 500,
+          "question": "Ich denke mir eine Zahl. Ich verdopple sie und addiere 6. Das Ergebnis ist 30. Welche Zahl war es?",
+          "answer": "12",
+          "explanation": "Gehe rückwärts: 30 − 6 = 24. Vor dem Verdoppeln war die Zahl 24 : 2 = 12.",
+          "teacherNote": "Mehrschrittiges Rückwärtsdenken mit Grundrechenarten.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "12"
+            ],
+            "unit": ""
+          }
+        }
+      ]
+    },
+    {
+      "title": "Größen, Geld & Zeit",
+      "questions": [
+        {
+          "id": "k2-100",
+          "points": 100,
+          "question": "Was ist mehr: 2 € oder 180 Cent?",
+          "answer": "2 €, denn 2 € = 200 Cent.",
+          "explanation": "Ein Euro sind 100 Cent. Zwei Euro sind 200 Cent und damit 20 Cent mehr als 180 Cent.",
+          "teacherNote": "Euro-Cent-Grundverständnis.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2 €",
+              "180 Cent",
+              "Beides ist gleich viel"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "k2-200",
+          "points": 200,
+          "question": "Ein Heft kostet 2,40 €. Du bezahlst mit 5 €. Wie viel Geld bekommst du zurück?",
+          "answer": "2,60 €.",
+          "explanation": "Ergänze von 2,40 € bis 5 €. Erst 0,60 € bis 3 €, dann 2 € bis 5 €: zusammen 2,60 €.",
+          "teacherNote": "Alltagsnahes Rückgeldrechnen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "2.60"
+            ],
+            "unit": "€"
+          }
+        },
+        {
+          "id": "k2-300",
+          "points": 300,
+          "question": "Der Unterricht beginnt um 8:00 Uhr. Eine Stunde und 35 Minuten später ist Pause. Wann beginnt die Pause?",
+          "answer": "9:35 Uhr.",
+          "explanation": "Eine Stunde nach 8:00 Uhr ist es 9:00 Uhr. Weitere 35 Minuten ergeben 9:35 Uhr.",
+          "teacherNote": "Zeitspanne zu einer Uhrzeit addieren."
+        },
+        {
+          "id": "k2-400",
+          "points": 400,
+          "question": "Ein Schulweg ist 1 km und 250 m lang. Wie viele Meter sind das?",
+          "answer": "1 250 m.",
+          "explanation": "Ein Kilometer entspricht 1000 Metern. Mit den weiteren 250 Metern sind das 1250 Meter.",
+          "teacherNote": "Verbindet Kilometer und Meter.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1250"
+            ],
+            "unit": "m"
+          }
+        },
+        {
+          "id": "k2-500",
+          "points": 500,
+          "question": "Du hast 10 €. Du kaufst ein Getränk für 1,80 € und ein Brötchen für 2,70 €. Reicht das Geld noch für ein Heft für 5,90 €?",
+          "answer": "Nein.",
+          "explanation": "Getränk und Brötchen kosten zusammen 4,50 €. Von 10 € bleiben 5,50 €; für das Heft fehlen noch 0,40 €.",
+          "teacherNote": "Mehrere Geldbeträge verbinden und Ergebnis sinnvoll beurteilen."
+        }
+      ]
+    },
+    {
+      "title": "Formen, Raum & Messen",
+      "questions": [
+        {
+          "id": "k3-100",
+          "points": 100,
+          "question": "Ich habe vier gleich lange Seiten und vier rechte Winkel. Welche Form bin ich?",
+          "answer": "Ein Quadrat.",
+          "explanation": "Ein Quadrat hat vier gleich lange Seiten und vier rechte Winkel. Ohne die Angabe der rechten Winkel könnte auch eine andere Raute gemeint sein.",
+          "teacherNote": "Grundlegende geometrische Begriffe."
+        },
+        {
+          "id": "k3-200",
+          "points": 200,
+          "question": "Wie viele Ecken hat ein Würfel?",
+          "answer": "Ein Würfel hat 8 Ecken.",
+          "explanation": "An jeder Ecke treffen drei Kanten zusammen. Oben sind vier Ecken und unten vier, also insgesamt acht.",
+          "teacherNote": "Räumliche Grundvorstellung.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ],
+            "unit": "Ecken"
+          }
+        },
+        {
+          "id": "k3-300",
+          "points": 300,
+          "question": "Ein Rechteck ist 6 cm lang und 3 cm breit. Wie lang ist sein Umfang?",
+          "answer": "18 cm.",
+          "explanation": "Der Umfang ist die Länge des gesamten Randes. Addiere alle vier Seiten: 6 + 3 + 6 + 3 = 18 cm.",
+          "teacherNote": "Umfang als Länge des Randes.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "18"
+            ],
+            "unit": "cm"
+          }
+        },
+        {
+          "id": "k3-400",
+          "points": 400,
+          "question": "Ein Band ist 1 m lang. Du schneidest 35 cm ab. Wie viele Zentimeter bleiben übrig?",
+          "answer": "65 cm.",
+          "explanation": "Rechne zuerst den Meter in 100 Zentimeter um. Nach dem Abschneiden bleiben 100 − 35 = 65 cm.",
+          "teacherNote": "Verbindet Messen, Umrechnen und Subtrahieren.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "65"
+            ],
+            "unit": "cm"
+          }
+        },
+        {
+          "id": "k3-500",
+          "points": 500,
+          "question": "Ein Rechteck hat einen Umfang von 20 cm. Eine lange Seite ist 7 cm lang. Wie lang ist eine kurze Seite?",
+          "answer": "3 cm.",
+          "explanation": "Die beiden langen Seiten sind zusammen 14 cm lang. Von 20 cm bleiben 6 cm für zwei gleich lange kurze Seiten; jede ist 3 cm lang.",
+          "teacherNote": "Mehrschrittiges geometrisches Denken mit Umfang.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "3"
+            ],
+            "unit": "cm"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sachaufgaben, Tabellen & Daten",
+      "questions": [
+        {
+          "id": "k4-100",
+          "points": 100,
+          "question": "In einer Kiste liegen 12 rote und 7 blaue Bälle. Wie viele Bälle sind es zusammen?",
+          "answer": "19 Bälle.",
+          "explanation": "Gesucht ist die Gesamtzahl der Bälle. Addiere die roten und die blauen Bälle: 12 + 7 = 19.",
+          "teacherNote": "Kurze Sachaufgabe; passende Rechenart erkennen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "19"
+            ],
+            "unit": "Bälle"
+          }
+        },
+        {
+          "id": "k4-200",
+          "points": 200,
+          "question": "Die Klasse sammelt Altpapier. An welchem Tag sammelt sie am meisten?",
+          "answer": "Am Dienstag mit 11 kg.",
+          "explanation": "Vergleiche die drei Werte in der Tabelle. 11 kg ist der größte Wert und gehört zum Dienstag.",
+          "teacherNote": "Informationen vergleichen.",
+          "table": {
+            "headers": [
+              "Tag",
+              "Altpapier"
+            ],
+            "rows": [
+              [
+                "Montag",
+                "8 kg"
+              ],
+              [
+                "Dienstag",
+                "11 kg"
+              ],
+              [
+                "Mittwoch",
+                "6 kg"
+              ]
+            ]
+          },
+          "response": {
+            "type": "choice",
+            "options": [
+              "Montag",
+              "Dienstag",
+              "Mittwoch"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "k4-300",
+          "points": 300,
+          "question": "Buszeiten: 07:35 · 08:05 · 08:35 · 09:05. Du kommst um 08:10 Uhr zur Haltestelle. Welchen Bus kannst du als Nächstes nehmen?",
+          "answer": "Den Bus um 08:35 Uhr.",
+          "explanation": "Der Bus um 08:05 Uhr ist bereits abgefahren. Die erste aufgeführte Abfahrt nach 08:10 Uhr ist 08:35 Uhr.",
+          "teacherNote": "Einfache Fahrplaninformation entnehmen."
+        },
+        {
+          "id": "k4-400",
+          "points": 400,
+          "question": "28 Äpfel werden gleichmäßig auf 4 Kisten verteilt. Wie viele Äpfel liegen in jeder Kiste?",
+          "answer": "7 Äpfel.",
+          "explanation": "Die Äpfel sind gleichmäßig auf vier Kisten verteilt. Teile 28 durch 4; in jeder Kiste liegen sieben Äpfel.",
+          "teacherNote": "Sachkontext erkennen und Division auswählen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "7"
+            ],
+            "unit": "Äpfel"
+          }
+        },
+        {
+          "id": "k4-500",
+          "points": 500,
+          "question": "Eine Gruppe hat 36 € für einen Ausflug. 4 Fahrkarten kosten je 6 €. Wie viel Geld bleibt übrig?",
+          "answer": "12 €.",
+          "explanation": "Vier Fahrkarten kosten 4 × 6 € = 24 €. Ziehe diese Kosten von 36 € ab; es bleiben 12 €.",
+          "teacherNote": "Zwei Rechenschritte und Auswahl der passenden Operationen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "12"
+            ],
+            "unit": "€"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Knobeln, Muster & mathematisches Denken",
+      "questions": [
+        {
+          "id": "k5-100",
+          "points": 100,
+          "question": "Die Reihe wächst immer um 2. Setze fort: 2 – 4 – 6 – 8 – ?",
+          "answer": "10.",
+          "explanation": "Die Zahlen werden jedes Mal um zwei größer. Nach 8 folgt deshalb 10.",
+          "teacherNote": "Einfaches Zahlenmuster erkennen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "10"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k5-200",
+          "points": 200,
+          "question": "Ali sagt: 7 × 5 = 30. Hat er recht?",
+          "answer": "Nein. 7 × 5 = 35.",
+          "explanation": "Sieben Fünfer ergeben 35. Ali hat vermutlich nur sechs Fünfer gezählt: 6 × 5 = 30.",
+          "teacherNote": "Nicht nur Ergebnis nennen lassen: Wie wurde der Fehler erkannt?"
+        },
+        {
+          "id": "k5-300",
+          "points": 300,
+          "question": "Welche Zahl passt nicht in die Reihe? 10 – 20 – 30 – 35 – 40 – 50",
+          "answer": "35 passt nicht. Die anderen Zahlen sind Zehnerschritte.",
+          "explanation": "Alle anderen Zahlen sind Vielfache von zehn. 35 ist kein Vielfaches von zehn und passt nicht zu diesem Muster.",
+          "teacherNote": "Muster begründen lassen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "35"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "k5-400",
+          "points": 400,
+          "question": "Ich habe drei Münzen. Zusammen sind es 40 Cent. Welche drei Münzen könnten es sein?",
+          "answer": "Zum Beispiel 20 Cent + 10 Cent + 10 Cent.",
+          "explanation": "20 Cent und zweimal 10 Cent ergeben zusammen 40 Cent. Es sind genau drei Münzen.",
+          "teacherNote": "Eine mögliche Kombination genügt. Weitere richtige Lösungen dürfen besprochen werden."
+        },
+        {
+          "id": "k5-500",
+          "points": 500,
+          "question": "Drei Kinder teilen 24 Murmeln. Mia bekommt doppelt so viele wie Ben. Ben bekommt 6 Murmeln. Wie viele Murmeln bekommt das dritte Kind?",
+          "answer": "6 Murmeln.",
+          "explanation": "Ben erhält 6 und Mia doppelt so viele, also 12 Murmeln. Zusammen sind das 18; für das dritte Kind bleiben 24 − 18 = 6 Murmeln.",
+          "teacherNote": "Mehrere Informationen verbinden; Lösungsweg sichtbar machen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "6"
+            ],
+            "unit": "Murmeln"
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+<script>/* Jeopardy Engine 1.0 — pure rules, shared by browser and Node tests. */
+(function (root) {
+  'use strict';
+  const copy = x => JSON.parse(JSON.stringify(x));
+  function validate(d) {
+    const errors = [];
+    const str = (v, path, max) => { if (typeof v !== 'string' || !v.trim() || v.length > max) errors.push(path + ': Text erforderlich (max. ' + max + ' Zeichen).'); };
+    if (!d || typeof d !== 'object') throw new Error('Spieldaten fehlen.');
+    if (d.schemaVersion !== 1) errors.push('schemaVersion muss 1 sein.');
+    str(d.id, 'id', 80); str(d.title, 'title', 100);
+    if (typeof d.id === 'string' && !/^[a-z0-9-]+$/.test(d.id)) errors.push('id: nur a–z, 0–9 und Bindestriche.');
+    if (!Array.isArray(d.teams) || d.teams.length < 2 || d.teams.length > 6) errors.push('2 bis 6 Teams erforderlich.');
+    else d.teams.forEach((t, i) => str(t, 'teams[' + i + ']', 40));
+    if (!d.rules || d.rules.subtractOnWrong !== false || d.rules.takeover !== false) errors.push('rules.subtractOnWrong und rules.takeover müssen false sein: keine Minuspunkte, keine Übernahme.');
+    if (!Array.isArray(d.categories) || d.categories.length < 1 || d.categories.length > 5) errors.push('1 bis 5 Kategorien erforderlich.');
+    const ids = new Set();
+    (Array.isArray(d.categories) ? d.categories : []).forEach((c, ci) => {
+      if (!c || typeof c !== 'object') { errors.push('Ungültige Kategorie ' + ci); return; }
+      str(c.title, 'Kategorie ' + ci, 90);
+      if (!Array.isArray(c.questions) || c.questions.length !== 5) errors.push('Kategorie ' + ci + ': genau 5 Aufgaben erforderlich.');
+      (Array.isArray(c.questions) ? c.questions : []).forEach((q, qi) => {
+        if (!q || typeof q !== 'object') { errors.push('Ungültige Aufgabe'); return; }
+        const path = ci + '/' + qi;
+        str(q.id, path + '.id', 80);
+        if (typeof q.id !== 'string' || !/^[a-z0-9-]+$/.test(q.id) || Object.prototype.hasOwnProperty.call(Object.prototype, q.id) || ids.has(q.id)) errors.push(path + ': ID ungültig, reserviert oder doppelt.');
+        ids.add(q.id);
+        if (q.points !== (qi + 1) * 100) errors.push(path + ': Punkte müssen 100, 200, 300, 400, 500 sein.');
+        str(q.question, path + '.question', 1600); str(q.answer, path + '.answer', 1000);
+        str(q.explanation, path + '.explanation', 2000);
+        if (q.teacherNote !== undefined && (typeof q.teacherNote !== 'string' || q.teacherNote.length > 2000)) errors.push(path + ': teacherNote ungültig.');
+        if (q.response !== undefined) {
+          const r=q.response;
+          if (!r || !['manual','number','choice'].includes(r.type)) errors.push(path + ': response.type muss manual, number oder choice sein.');
+          else if (r.type==='number') {
+            if (!Array.isArray(r.accepted) || !r.accepted.length || r.accepted.length>20 || !r.accepted.every(v=>canonicalNumber(v)!==null)) errors.push(path+': accepted braucht gültige Dezimalzahlen als Strings.');
+            if(r.unit!==undefined && (typeof r.unit!=='string'||r.unit.length>30)) errors.push(path+': unit ungültig.');
+          } else if (r.type==='choice') {
+            if(!Array.isArray(r.options)||r.options.length<2||r.options.length>6||!r.options.every(v=>typeof v==='string'&&v.trim()&&v.length<=300)||new Set(r.options).size!==r.options.length) errors.push(path+': 2 bis 6 unterschiedliche Antwortoptionen erforderlich.');
+            if(!Array.isArray(r.correct)||!r.correct.length||!r.correct.every(i=>Number.isInteger(i)&&i>=0&&Array.isArray(r.options)&&i<r.options.length)||new Set(r.correct).size!==r.correct.length) errors.push(path+': correct braucht eindeutige gültige Optionsindizes.');
+          }
+        }
+        if (q.table !== undefined) {
+          const t = q.table;
+          if (!t || !Array.isArray(t.headers) || t.headers.length < 1 || t.headers.length > 6 || !t.headers.every(v => typeof v === 'string') || !Array.isArray(t.rows) || t.rows.length < 1 || t.rows.length > 12 || !t.rows.every(r => Array.isArray(r) && r.length === t.headers.length && r.every(v => typeof v === 'string'))) errors.push(path + ': Tabelle ungültig.');
+        }
+      });
+    });
+    if (errors.length) throw new Error(errors.join('\n'));
+    return d;
+  }
+  function questions(d) { return d.categories.reduce((a, c) => a.concat(c.questions), []); }
+  function canonicalNumber(value) {
+    if(typeof value!=='string'||value.length>40) return null;
+    const v=value.trim().replace(',','.');
+    if(!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(v)) return null;
+    const negative=v[0]==='-', parts=v.replace(/^[+-]/,'').split('.');
+    const integer=(parts[0]||'0').replace(/^0+(?=\d)/,'');
+    const fraction=(parts[1]||'').replace(/0+$/,'');
+    return (negative&&(integer!=='0'||fraction)?'-':'')+integer+(fraction?'.'+fraction:'');
+  }
+  function evaluateAnswer(q, value) {
+    const r=q.response;
+    if(!r||r.type==='manual') return null;
+    if(r.type==='number') { const n=canonicalNumber(value);return n===null?null:r.accepted.some(v=>canonicalNumber(v)===n); }
+    if(!Array.isArray(value)||!value.length||!value.every(i=>Number.isInteger(i)&&i>=0&&i<r.options.length)||new Set(value).size!==value.length) return null;
+    return value.length===r.correct.length&&r.correct.every(i=>value.includes(i));
+  }
+  function fresh(d, names) { return { version: 2, names: (names || d.teams).slice(), history: [] }; }
+  function turn(s) { return s.history.length % s.names.length; }
+  function scores(d, s) {
+    const result = s.names.map(() => 0);
+    s.history.forEach(e => {
+      const q = questions(d).find(q => q.id === e.id);
+      if (e.correct) result[e.team] += q.points;
+    });
+    return result;
+  }
+  function rate(d, s, id, team, correct) {
+    if (!questions(d).some(q => q.id === id) || s.history.some(e => e.id === id) || !Number.isInteger(team) || team < 0 || team >= s.names.length || typeof correct !== 'boolean') return false;
+    if (team !== turn(s)) return false;
+    s.history.push({ id, team, correct });
+    return true;
+  }
+  // Rebuild untrusted saved data through the rules; never trust saved totals.
+  function restore(d, raw) {
+    if (!raw || raw.version !== 2 || !Array.isArray(raw.names) || raw.names.length<2 || raw.names.length>6 || !raw.names.every(n => typeof n === 'string' && n.trim() && n.length <= 40) || !Array.isArray(raw.history) || raw.history.length > questions(d).length) throw new Error('Ungültiger Spielstand.');
+    const s = fresh(d, raw.names);
+    raw.history.forEach(e => {
+      if (!e || !rate(d, s, e.id, e.team, e.correct)) throw new Error('Doppelte oder ungültige Bewertung.');
+    });
+    return copy(s);
+  }
+  const api = { validate, questions, canonicalNumber, evaluateAnswer, fresh, turn, scores, rate, restore };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.JeopardyEngine = api;
+})(typeof globalThis !== 'undefined' ? globalThis : window);
+</script>
+<script>(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const E = window.JeopardyEngine;
+  let data;
+  try { data = E.validate(JSON.parse($('game-data').textContent)); }
+  catch (e) { $('fatal').hidden = false; $('fatal').textContent = 'Die Spieldaten sind ungültig. ' + e.message; return; }
+  document.title = data.title; $('title').textContent = data.title;
+  const all = E.questions(data);
+  // Exact content identity prevents stale state when a question or rule changes.
+  const signature = JSON.stringify(data);
+  const storageKey = 'jeopardy-v2-' + data.id;
+  let state = E.fresh(data), savedOK = true, notice = '';
+  try {
+    const raw = localStorage.getItem(storageKey);
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (saved.signature === signature) { state = E.restore(data, saved.state); notice = 'Gespeicherter Spielstand geladen.'; }
+      else notice = 'Geänderte Aufgaben: neues Spiel gestartet.';
+    }
+  } catch (_) { notice = 'Kein nutzbarer Spielstand verfügbar. Neues Spiel gestartet.'; }
+  let view = null, current = null, revealed = false, selected = 0, returnFocus = null, lastTurn = '', inputValue='', choices=[], inputLocked=false, teacherTools=false;
+  function say(text, result) { $('status').textContent = text; if(result)$('status').dataset.result=result;else delete $('status').dataset.result; }
+  function save() {
+    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state })); savedOK = true; }
+    catch (_) { savedOK = false; say('Speichern nicht verfügbar. Dieses Spiel läuft bis zum Schließen weiter.'); }
+  }
+  function node(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
+  function button(text, action, cls) { const b = node('button', text, cls); b.type = 'button'; b.addEventListener('click', action); return b; }
+  const colors = ['#2ec4b6', '#ff9b78', '#bda0ee', '#7ae582', '#ffd166'];
+  $('board').style.setProperty('--category-count', data.categories.length);
+  const tiles = {};
+  data.categories.forEach((c, i) => { const h = node('div', c.title, 'category'); h.style.setProperty('--category', colors[i]); $('board').appendChild(h); });
+  for (let row = 0; row < 5; row++) data.categories.forEach((c, ci) => {
+    const q = c.questions[row];
+    const b = button(String(q.points), () => openQuestion(q), 'tile');
+    b.style.setProperty('--category', colors[ci]); b.dataset.question = q.id;
+    b.setAttribute('aria-label', c.title + ', ' + q.points + ' Punkte');
+    $('board').appendChild(b); tiles[q.id] = b;
+  });
+  function render() {
+    const totals = E.scores(data, state);
+    $('teams').textContent = ''; $('teams').style.setProperty('--team-count', state.names.length);
+    state.names.forEach((name, i) => { const t = node('div', undefined, 'team'); t.appendChild(node('span', name, 'team-name')); t.appendChild(node('span', totals[i] + ' P', 'score')); $('teams').appendChild(t); });
+    all.forEach(q => {
+      const used = state.history.some(e => e.id === q.id);
+      const b = tiles[q.id]; b.disabled = used || inputLocked; b.classList.toggle('used', used); b.textContent = used ? '✓' : String(q.points);
+      if (used) b.appendChild(node('small', 'Gespielt'));
+    });
+    $('progress').textContent = state.history.length + ' / ' + all.length + ' gespielt' + (state.history.length < all.length ? ' · Am Zug: ' + state.names[E.turn(state)] : '');
+    $('undo').disabled = !state.history.length;
+    Array.from($('teams').children).forEach((t, i) => { t.classList.toggle('active', state.history.length < all.length && i === E.turn(state)); });
+    const turnText = state.history.length === all.length ? 'Alle Karten gespielt!' : state.names[E.turn(state)] + ' ist dran';
+    $('turn-banner').textContent = turnText;
+    if (lastTurn !== turnText) {
+      $('turn-banner').classList.remove('turn-change');
+      void $('turn-banner').offsetWidth;
+      $('turn-banner').classList.add('turn-change'); lastTurn = turnText;
+    }
+    $('winner').hidden = state.history.length !== all.length;
+    if (!$('winner').hidden) {
+      const best = Math.max.apply(null, totals), winners = state.names.filter((_, i) => totals[i] === best);
+      $('winner').textContent = (winners.length > 1 ? 'Unentschieden: ' + winners.join(' & ') : winners[0] + ' gewinnt!') + ' · ' + state.names.map((n, i) => n + ': ' + totals[i] + ' Punkte').join(' · ');
+    }
+  }
+  function show(kind, title, focusId) {
+    if (!view) returnFocus = document.activeElement;
+    view = kind;
+    ['question', 'menu', 'reset'].forEach(v => $(v + '-view').hidden = v !== kind);
+    $('dialog-title').textContent = title;
+    $('overlay').hidden = false; $('app').setAttribute('aria-hidden', 'true');
+    if ('inert' in $('app')) $('app').inert = true;
+    document.body.classList.add('modal-open');
+    (focusId ? $(focusId) : $('dialog')).focus();
+    $('dialog').scrollTop = 0;
+  }
+  function close() {
+    view = null; current = null; revealed = false;
+    $('overlay').hidden = true; $('app').removeAttribute('aria-hidden');
+    if ('inert' in $('app')) $('app').inert = false;
+    document.body.classList.remove('modal-open');
+    const focus = returnFocus && returnFocus.isConnected && !returnFocus.disabled ? returnFocus : Object.values(tiles).find(b => !b.disabled) || $('settings');
+    focus.focus();
+  }
+  function openQuestion(q) {
+    if (view || inputLocked || state.history.some(e => e.id === q.id)) return;
+    current = q; revealed = false; inputValue=''; choices=[];
+    selected = E.turn(state);
+    $('meta').textContent = state.names[selected]+' ist dran · '+data.categories.find(c => c.questions.includes(q)).title + ' · ' + q.points + ' Punkte';
+    $('answer').textContent = q.answer; $('explanation').textContent = q.explanation; $('teacher-note').textContent = q.teacherNote || '';
+    $('notes').hidden = true; $('notes-toggle').setAttribute('aria-expanded', 'false');
+    $('question-table').textContent = '';
+    if (q.table) {
+      const table = node('table'), head = node('thead'), row = node('tr'), body = node('tbody');
+      table.appendChild(node('caption', 'Angaben zur Aufgabe'));
+      q.table.headers.forEach(h => { const th = node('th', h); th.scope = 'col'; row.appendChild(th); });
+      head.appendChild(row); table.appendChild(head);
+      q.table.rows.forEach(r => { const tr = node('tr'); r.forEach(v => tr.appendChild(node('td', v))); body.appendChild(tr); });
+      table.appendChild(body); $('question-table').appendChild(table);
+    }
+    renderQuestion(); show('question', q.question, q.response&&q.response.type==='number'?'number-input':undefined);
+  }
+  function renderQuestion() {
+    $('answer').hidden = !revealed; $('reveal').textContent = revealed ? 'Antwort ausblenden' : 'Antwort anzeigen';
+    $('correct').disabled = $('wrong').disabled = !revealed;
+    const type=current.response?current.response.type:'manual';
+    $('notes-toggle').hidden=!teacherTools;
+    $('reveal').hidden=type!=='manual'&&!teacherTools;
+    $('teacher-tools').hidden=type!=='manual'&&!teacherTools;
+    $('player-response').hidden=type==='manual'||revealed;
+    $('number-response').hidden=type!=='number'; $('choice-response').hidden=type!=='choice';
+    $('grading').hidden=type!=='manual'&&!revealed;
+    if(type==='number') { $('number-input').value=inputValue; $('number-unit').textContent=current.response.unit?'('+current.response.unit+')':''; }
+    if(type==='choice') {
+      $('choice-help').textContent=current.response.correct.length===1?'Wählt eine Antwort.':'Wählt alle passenden Antworten.';
+      $('choices').textContent='';
+      current.response.options.forEach((text,i)=>{const b=button(text,()=>{choices=current.response.correct.length===1?[i]:choices.includes(i)?choices.filter(x=>x!==i):choices.concat(i);renderQuestion();$('choices').children[i].focus();});b.setAttribute('aria-pressed',String(choices.includes(i)));$('choices').appendChild(b);});
+    }
+    $('submit-response').disabled=type==='number'?E.canonicalNumber(inputValue)===null:!choices.length;
+    $('correct').textContent = state.names[selected] + ' · Richtig';
+    $('wrong').textContent = state.names[selected] + ' · Falsch';
+    $('grade-label').textContent = type!=='manual'&&!revealed?state.names[selected]+' · Eure Antwort wird beim Abgeben automatisch gewertet.':'Bewertung für ' + state.names[selected] + (revealed ? '' : ' · Zuerst Antwort anzeigen');
+    $('pick-team').textContent = '';
+    state.names.forEach((name, i) => {
+      const b = node('span', name + (i === selected ? ' · am Zug' : ''), 'team-indicator');
+      b.classList.toggle('active', i === selected); $('pick-team').appendChild(b);
+    });
+  }
+  function reveal() { if (view !== 'question'||(current.response&&current.response.type!=='manual'&&!teacherTools)) return; revealed = !revealed; renderQuestion(); }
+  function notes() { if (view !== 'question'||!teacherTools) return; $('notes').hidden = !$('notes').hidden; $('notes-toggle').setAttribute('aria-expanded', String(!$('notes').hidden)); }
+  function grade(correct) {
+    if (view !== 'question' || !revealed || !current) return;
+    finish(correct);
+  }
+  function finish(correct) {
+    if(view!=='question'||!current) return;
+    const id = current.id;
+    if (!E.rate(data, state, id, selected, correct)) return;
+    inputLocked=true;save(); render();
+    close(); if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig. Keine Minuspunkte.',correct?'correct':'wrong');
+    if(state.history.length===all.length){$('winner').tabIndex=-1;$('winner').focus();}
+    // Consume the rest of a double tap before enabling the underlying board.
+    setTimeout(()=>{inputLocked=false;render();},450);
+  }
+  function numberKey(key) {
+    if(view!=='question'||revealed||!current.response||current.response.type!=='number')return;
+    if(key==='⌫')inputValue=inputValue.slice(0,-1);
+    else if(key==='Löschen')inputValue='';
+    else if(key==='±')inputValue=inputValue.startsWith('-')?inputValue.slice(1):'-'+inputValue;
+    else if(inputValue.length<24 && (/^\d$/.test(key)||((key===','||key==='.')&&!/[,.]/.test(inputValue))))inputValue+=key;
+    renderQuestion();
+  }
+  function submitResponse(){if(view!=='question'||revealed||!current)return;const result=E.evaluateAnswer(current,current.response.type==='number'?inputValue:choices);if(result!==null)finish(result);}
+  ['7','8','9','4','5','6','1','2','3',',','0','⌫','±','Löschen'].forEach(k=>{const b=button(k,()=>numberKey(k));if(k==='⌫')b.setAttribute('aria-label','Letzte Ziffer löschen');if(k==='±')b.setAttribute('aria-label','Vorzeichen wechseln');$('numpad').appendChild(b);});
+  $('submit-response').addEventListener('click',submitResponse);
+  function menu() {
+    $('meta').textContent = 'SPIELEINSTELLUNGEN'; $('names').textContent = '';
+    state.names.forEach((name, i) => {
+      const label = node('label', 'Team ' + (i + 1)), input = node('input'); input.value = name; input.maxLength = 40;
+      input.addEventListener('change', () => { state.names[i] = input.value.trim() || data.teams[i] || 'Team '+(i+1); input.value = state.names[i]; save(); render(); });
+      label.appendChild(input); $('names').appendChild(label);
+    });
+    $('add-team').disabled=state.history.length>0||state.names.length>=6;
+    $('remove-team').disabled=state.history.length>0||state.names.length<=2;
+    $('team-count-help').textContent=state.history.length?'Die Teamzahl bleibt im laufenden Spiel fest. Für eine andere Teamzahl zuerst zurücksetzen.':'2 bis 6 Teams · Teamzahl vor der ersten Bewertung frei ändern.';
+    $('teacher-tools-enabled').checked=teacherTools;
+    $('rules').textContent = 'Richtig: Kartenpunkte dazu. Falsch: keine Minuspunkte. Der Punktestand bleibt unverändert.';
+    $('storage-info').textContent = savedOK ? 'Der Spielstand wird nach Möglichkeit in diesem Browser gespeichert. Auf gemeinsam genutzten Geräten vor der nächsten Klasse zurücksetzen.' : 'Dieser Browser erlaubt das Speichern nicht. Beim Schließen oder Neuladen kann der Spielstand verloren gehen.';
+    show('menu', 'Menü');
+  }
+  $('close').addEventListener('click', close);
+  $('settings').addEventListener('click', menu);
+  $('teacher-tools-enabled').addEventListener('change',()=>{teacherTools=$('teacher-tools-enabled').checked;});
+  $('add-team').addEventListener('click',()=>{if(state.history.length||state.names.length>=6)return;state.names.push('Team '+(state.names.length+1));save();render();menu();$('add-team').focus();});
+  $('remove-team').addEventListener('click',()=>{if(state.history.length||state.names.length<=2)return;state.names.pop();save();render();menu();$('remove-team').focus();});
+  $('reveal').addEventListener('click', reveal); $('notes-toggle').addEventListener('click', notes);
+  $('correct').addEventListener('click', () => grade(true)); $('wrong').addEventListener('click', () => grade(false));
+  $('undo').addEventListener('click', () => { if (view || !state.history.length) return; state.history.pop(); save(); render(); if (savedOK) say('Letzte abgeschlossene Karte zurückgenommen.'); });
+  $('reset-open').addEventListener('click', () => { $('meta').textContent = 'NEUES SPIEL'; show('reset', 'Spiel zurücksetzen?', 'reset-cancel'); });
+  $('reset-cancel').addEventListener('click', menu);
+  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
+  // No backdrop close: accidental touches on large classroom screens are common.
+  document.addEventListener('keydown', e => {
+    if (!view) return;
+    if (e.key === 'Tab') {
+      const list = Array.from($('dialog').querySelectorAll('button:not(:disabled), input, [tabindex="0"]')).filter(el => el.getClientRects().length);
+      const first = list[0], last = list[list.length - 1];
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === $('dialog'))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && (document.activeElement === last || document.activeElement === $('dialog'))) { e.preventDefault(); first.focus(); }
+      return;
+    }
+    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+    if(view==='question'&&!revealed&&current.response&&current.response.type==='number'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.repeat){
+      if(/^[0-9,.]$/.test(e.key)){e.preventDefault();numberKey(e.key);return;}
+      if(e.key==='Backspace'||e.key==='Delete'||e.key==='-'){e.preventDefault();numberKey(e.key==='Backspace'?'⌫':e.key==='Delete'?'Löschen':'±');return;}
+      if(e.key==='Enter'&&e.target===$('number-input')){e.preventDefault();submitResponse();return;}
+    }
+    if (e.repeat || e.ctrlKey || e.metaKey || e.altKey || (/INPUT|TEXTAREA|SELECT/.test(e.target.tagName) && e.target!==$('number-input')) || e.target.isContentEditable || view !== 'question') return;
+    const key = e.key.toLowerCase();
+    if (['a', 'r', 'f', 'h'].includes(key)) e.preventDefault();
+    if (key === 'a') reveal(); else if (key === 'r') grade(true); else if (key === 'f') grade(false); else if (key === 'h') notes();
+  });
+  document.addEventListener('focusin', e => { if (view && !$('dialog').contains(e.target)) $('dialog').focus(); });
+  if (document.fullscreenEnabled && document.documentElement.requestFullscreen) {
+    $('fullscreen').hidden = false;
+    $('fullscreen').addEventListener('click', () => {
+      try { const action = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); if (action && action.catch) action.catch(() => say('Vollbild nicht verfügbar. Das Spiel bleibt im Browser bedienbar.')); }
+      catch (_) { say('Vollbild nicht verfügbar.'); }
+    });
+    document.addEventListener('fullscreenchange', () => { $('fullscreen').textContent = document.fullscreenElement ? 'Vollbild beenden' : 'Vollbild'; });
+  }
+  render(); say(notice); save();
+})();
+</script>
+</body>
+</html>
