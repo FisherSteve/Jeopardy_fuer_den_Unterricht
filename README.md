@@ -138,13 +138,13 @@ Verwende für GitHub Pages den Branch mit diesen Dateien und dessen Hauptordner 
 
 ## Neues Quiz: Mathematik Klasse 8 NRW
 
-[Quiz starten](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/) · [Aufgabensatz](content/mathematik-klasse-8-nrw.json) · [Lehrplanbezug](LEHRPLAN-KLASSE-8.md)
+[Quiz starten](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/) · [Aufgabensatz](content/mathematik-klasse-8-nrw.json)
 
 Fünf Rubriken mit jeweils fünf Kopfrechen- und Verständnisfragen für die Realschule. Standardmäßig ohne Punktabzug.
 
 ## Meme-Mix für Jugendliche ab etwa 14
 
-[Direkt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/meme-mix-ab-14/) · [Aufgabensatz](content/meme-mix-ab-14.json) · [Quellen und Einordnung](QUELLEN-MEME-MIX.md)
+[Direkt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/meme-mix-ab-14/) · [Aufgabensatz](content/meme-mix-ab-14.json)
 
 25 Fragen in fünf Rubriken: Memes & Netzsprache, Gaming trifft Wissen, Tiere, Weltraum und Kopfrätsel. Zahlenfeld und Antwortauswahl übernehmen die Bewertung. Die Netzbezüge sind in Deutschland belegt; Recherchestand September 2026. Auch ohne Meme-Vorwissen gibt es viele Punkte zu holen.
 
