@@ -13,6 +13,7 @@ Du brauchst einen Browser. Für neue Aufgaben brauchst du zusätzlich Zugang zu 
 1. Öffne die [Startseite auf GitHub Pages](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Dort sind alle Spiele verlinkt.
 2. Alternativ: [Lade den Projektordner als ZIP herunter](https://github.com/FisherSteve/Jeopardy_fuer_den_Unterricht/archive/refs/heads/main.zip), entpacke ihn und öffne die **index.html im Hauptordner**. Ihre Links funktionieren auch lokal.
 3. Direkt im Browser spielen:
+   - [Klasse 10: Startklar – Memes & Wissen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/klasse-10-start-meme-wissen/)
    - [Meme-Mix ab ca. 14: Wissen, Gaming & kuriose Fakten](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/meme-mix-ab-14/)
    - [Mathematik, Klasse 8 NRW](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/)
    - [Mathematik, Klasse 5](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-5/)
@@ -146,6 +147,12 @@ Fünf Rubriken mit jeweils fünf Kopfrechen- und Verständnisfragen für die Rea
 [Direkt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/meme-mix-ab-14/) · [Aufgabensatz](content/meme-mix-ab-14.json) · [Quellen und Einordnung](QUELLEN-MEME-MIX.md)
 
 25 Fragen in fünf Rubriken: Memes & Netzsprache, Gaming trifft Wissen, Tiere, Weltraum und Kopfrätsel. Zahlenfeld und Antwortauswahl übernehmen die Bewertung. Die Netzbezüge sind in Deutschland belegt; Recherchestand September 2026. Auch ohne Meme-Vorwissen gibt es viele Punkte zu holen.
+
+## Klasse 10: Startklar – Memes & Wissen
+
+[Direkt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/klasse-10-start-meme-wissen/) · [Aufgabensatz](content/klasse-10-start-meme-wissen.json) · [Quellen und Lernstand](QUELLEN-KLASSE-10-START.md)
+
+Für den Anfang der zehnten Klasse: 25 neue Fragen zu Netzsprache, Medienkompetenz, Kopfrechnen, Naturwissenschaften und Weltwissen. Grundlagen aus den Vorjahren und Allgemeinwissen; kein neu erarbeiteter Stoff der Klasse 10 nötig. Alle Antworten werden automatisch gewertet.
 
 ## Optional: Ein Spiel mit Netlify online stellen
 

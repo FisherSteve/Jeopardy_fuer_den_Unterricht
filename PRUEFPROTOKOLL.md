@@ -77,3 +77,12 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 - tests/pages.cjs: Startseite, fünf Spiele und Verzeichnis-Links unter Repository-Unterpfad in allen drei Engines bestanden.
 - Screenshots für schmale Ansicht sowie längste Frage, Antwort und Erklärung visuell geprüft. Lange Inhalte bleiben im Dialog scrollbar.
 - Physische Promethean-Displays, echte Android-/Apple-Geräte und Linux wurden nicht direkt getestet.
+
+## Ergänzung vom 13.09.2026: Klasse 10 – Startklar
+
+- Neues Einstiegsquiz: fünf Rubriken, 25 Fragen (18 Auswahlfragen, sieben Zahleneingaben). Grundlagen aus früheren Jahrgängen und Allgemeinwissen; kein neu behandelter Klasse-10-Stoff vorausgesetzt. Quellen und didaktische Einordnung in QUELLEN-KLASSE-10-START.md.
+- Build erfolgreich; alle 14 Engine-Tests bestanden. Engine und Oberfläche unverändert.
+- tests/klasse10-start.cjs in Chromium 131, Firefox 153 und WebKit 26.5 bestanden: alle 25 Antworten gegen unabhängig festgelegte Erwartungen geprüft, Teamfolge und Spielende korrekt. Reset und falsche Antwort mit Lösung/Erklärung ebenfalls geprüft.
+- Längste Frage, längste Antwortoption und längste Erklärung auf schmalem Bildschirm dargestellt und Screenshots visuell kontrolliert; lange Inhalte im Dialog scrollbar.
+- tests/pages.cjs: Startseite und sechs Spiele einschließlich Verzeichnis-URLs unter Repository-Unterpfad in allen drei Engines bestanden.
+- Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft.

@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "id": "klasse-10-start-meme-wissen",
+  "title": "Klasse 10: Startklar · Memes & Wissen",
+  "teams": [
+    "Team 1",
+    "Team 2"
+  ],
+  "rules": {
+    "subtractOnWrong": false,
+    "allowNegativeScores": false,
+    "takeover": false
+  },
+  "categories": [
+    {
+      "title": "Netzsprache",
+      "questions": [
+        {
+          "question": "Wenn etwas „cringe“ ist: Welche Bedeutung passt?",
+          "answer": "Peinlich oder zum Fremdschämen",
+          "explanation": "„Cringe“ beschreibt ein unangenehmes Gefühl beim Beobachten einer peinlichen Situation. Es war Jugendwort 2021.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Besonders teuer",
+              "Peinlich oder zum Fremdschämen",
+              "Technisch perfekt"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k1-100",
+          "points": 100
+        },
+        {
+          "question": "Was bedeutet „lost“ in der deutschen Jugendsprache häufig?",
+          "answer": "Ratlos oder ohne Durchblick",
+          "explanation": "Der Ausdruck kann Verwirrung oder Orientierungslosigkeit beschreiben. Es muss dabei niemand tatsächlich den Weg verloren haben.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Ratlos oder ohne Durchblick",
+              "Besonders entspannt",
+              "Schon am Ziel"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k1-200",
+          "points": 200
+        },
+        {
+          "question": "„Goofy“ kann eine Verhaltensweise beschreiben. Welche passt?",
+          "answer": "Albern oder tollpatschig",
+          "explanation": "Das Wort wurde 2023 zum Jugendwort gewählt. Es beschreibt häufig eine komische oder unbeholfene Art.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Streng und sachlich",
+              "Vorsichtig und unauffällig",
+              "Albern oder tollpatschig"
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k1-300",
+          "points": 300
+        },
+        {
+          "question": "Ein Finale wird im Netz als „Peak“ bezeichnet. Was ist damit als Lob gemeint?",
+          "answer": "Es ist ein Höhepunkt, kaum zu toppen.",
+          "explanation": "Das englische Wort steht ursprünglich für einen Gipfel. Als Lob meint es ein besonders starkes Erlebnis oder Ergebnis.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Es hat gerade erst begonnen.",
+              "Es ist ein Höhepunkt, kaum zu toppen.",
+              "Es hat zu lange gedauert."
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k1-400",
+          "points": 400
+        },
+        {
+          "question": "Jemand bezeichnet eine heftige Überreaktion als „Crashout“. Welche Deutung passt am besten?",
+          "answer": "Die Person verliert die Fassung.",
+          "explanation": "Der Ausdruck kann starkes Ausrasten oder emotionales Überreagieren meinen. Je nach Zusammenhang wird er auch ironisch benutzt; es geht nicht zwingend um einen Computerabsturz.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Die Person verliert die Fassung.",
+              "Das Gerät installiert ein Update.",
+              "Die Person beendet ruhig ein Gespräch."
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k1-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Feed oder Fake?",
+      "questions": [
+        {
+          "question": "Welche Aussage ist vor allem eine persönliche Bewertung?",
+          "answer": "Das ist der beste Clip aller Zeiten.",
+          "explanation": "„Der beste“ hängt hier vom persönlichen Geschmack ab. Dauer und Veröffentlichungsdatum lassen sich dagegen grundsätzlich überprüfen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Der Clip dauert 30 Sekunden.",
+              "Der Clip wurde am Montag veröffentlicht.",
+              "Das ist der beste Clip aller Zeiten."
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k2-100",
+          "points": 100
+        },
+        {
+          "question": "Was kann ein Deepfake vortäuschen?",
+          "answer": "Dass eine Person etwas sagt oder tut, was so nie aufgenommen wurde",
+          "explanation": "KI kann unter anderem Gesichter oder Stimmen nachbilden und Aufnahmen verändern. Ein überzeugender Eindruck allein beweist deshalb nicht die Echtheit.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Nur eine andere Schriftfarbe",
+              "Dass eine Person etwas sagt oder tut, was so nie aufgenommen wurde",
+              "Nur eine langsamere Wiedergabe"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k2-200",
+          "points": 200
+        },
+        {
+          "question": "Ein dramatischer Screenshot behauptet: „Gerade passiert!“ Was prüfst du zuerst?",
+          "answer": "Originalquelle, Datum und Zusammenhang",
+          "explanation": "Ein echter alter Beitrag kann in einem neuen Zusammenhang irreführen. Die ursprüngliche Veröffentlichung hilft, Zeitpunkt und Inhalt einzuordnen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Originalquelle, Datum und Zusammenhang",
+              "Ob die Schrift besonders groß ist",
+              "Wie viele Emojis darunterstehen"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k2-300",
+          "points": 300
+        },
+        {
+          "question": "Fünf Accounts verbreiten denselben Screenshot. Alle nennen denselben unbekannten Account als Quelle. Sind das fünf unabhängige Bestätigungen?",
+          "answer": "Nein, alle können dieselbe ungeprüfte Behauptung kopieren.",
+          "explanation": "Mehrere Kopien machen aus einer einzigen Behauptung keine unabhängigen Belege. Entscheidend ist, ob getrennte verlässliche Quellen eigene Nachweise liefern.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Ja, fünf Posts sind fünf Beweise.",
+              "Ja, wenn die Accounts verschiedene Namen haben.",
+              "Nein, alle können dieselbe ungeprüfte Behauptung kopieren."
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k2-400",
+          "points": 400
+        },
+        {
+          "question": "In einer freiwilligen Umfrage auf einem Gaming-Kanal stimmen 90 % für mehr Gaming-Unterricht. Was folgt daraus sicher?",
+          "answer": "90 % der Teilnehmenden dieser Umfrage haben dafür gestimmt.",
+          "explanation": "Befragt wurden die Personen, die auf diesem Kanal freiwillig mitgemacht haben. Ihre Interessen können sich von denen anderer Jugendlicher unterscheiden; das Ergebnis gilt nicht automatisch für alle.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "90 % aller Jugendlichen wollen das.",
+              "90 % der Teilnehmenden dieser Umfrage haben dafür gestimmt.",
+              "Die ganze Schule muss dafür sein."
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k2-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Mathe ohne Ladezeit",
+      "questions": [
+        {
+          "question": "15 % von 80: Welche Zahl kommt heraus?",
+          "answer": "12",
+          "explanation": "10 % von 80 sind 8. Weitere 5 % sind 4. Zusammen ergibt das 12.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "12"
+            ]
+          },
+          "id": "k3-100",
+          "points": 100
+        },
+        {
+          "question": "Löse: 3x − 7 = 14. Wie groß ist x?",
+          "answer": "x = 7",
+          "explanation": "Addiere auf beiden Seiten 7: 3x = 21. Teile durch 3 und du erhältst x = 7.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "7"
+            ]
+          },
+          "id": "k3-200",
+          "points": 200
+        },
+        {
+          "question": "Die fünf Werte lauten 3, 7, 8, 12 und 100. Wie groß ist der Median?",
+          "answer": "8",
+          "explanation": "Die Werte sind bereits sortiert. Der Median ist der mittlere, also der dritte Wert. Die große 100 verändert diese mittlere Position nicht.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ]
+          },
+          "id": "k3-300",
+          "points": 300
+        },
+        {
+          "question": "Bei gleichbleibend 60 km/h: Wie viele Kilometer werden in 15 Minuten zurückgelegt?",
+          "answer": "15 km",
+          "explanation": "15 Minuten sind eine Viertelstunde. Ein Viertel von 60 km sind 15 km.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "15"
+            ],
+            "unit": "km"
+          },
+          "id": "k3-400",
+          "points": 400
+        },
+        {
+          "question": "Ein Preis von 50 € wird erst um 20 % reduziert. Danach gibt es nochmals 10 % auf den bereits reduzierten Preis. Was kostet der Artikel am Ende?",
+          "answer": "36 €",
+          "explanation": "Nach 20 % Rabatt bleiben 40 €. Der zweite Rabatt beträgt 10 % von 40 €, also 4 €. Der Endpreis ist 36 €; die Rabatte beziehen sich auf verschiedene Ausgangspreise.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "36"
+            ],
+            "unit": "€"
+          },
+          "id": "k3-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Realität ohne Filter",
+      "questions": [
+        {
+          "question": "Ein Kilogramm Federn und ein Kilogramm Eisen: Wie unterscheiden sich ihre Massen?",
+          "answer": "Sie haben dieselbe Masse.",
+          "explanation": "Ein Kilogramm bleibt ein Kilogramm. Die Stoffe unterscheiden sich hier im benötigten Volumen, nicht in der angegebenen Masse.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Die Federn haben mehr Masse.",
+              "Sie haben dieselbe Masse.",
+              "Das Eisen hat mehr Masse."
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k4-100",
+          "points": 100
+        },
+        {
+          "question": "Welches Gas nehmen grüne Pflanzen für die Fotosynthese auf?",
+          "answer": "Kohlenstoffdioxid",
+          "explanation": "Bei der Fotosynthese entstehen mit Lichtenergie aus Kohlenstoffdioxid und Wasser energiereiche Stoffe. Dabei wird Sauerstoff freigesetzt; Pflanzen betreiben zusätzlich auch Zellatmung.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Kohlenstoffdioxid",
+              "Helium",
+              "Stickstoff als Hauptrohstoff"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k4-200",
+          "points": 200
+        },
+        {
+          "question": "Warum sieht man einen entfernten Blitz meistens vor dem zugehörigen Donner?",
+          "answer": "Licht gelangt viel schneller zu uns als Schall.",
+          "explanation": "Licht breitet sich in Luft viel schneller aus als Schall. Deshalb erreicht uns der Lichtblitz früher als das Geräusch desselben Ereignisses.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Der Donner wird erst Minuten später erzeugt.",
+              "Die Augen reagieren immer schneller als die Ohren.",
+              "Licht gelangt viel schneller zu uns als Schall."
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k4-300",
+          "points": 300
+        },
+        {
+          "question": "Warum schwimmt ein gewöhnlicher Eiswürfel in flüssigem Wasser?",
+          "answer": "Eis hat eine geringere Dichte als flüssiges Wasser.",
+          "explanation": "Beim Gefrieren entsteht eine offenere Struktur. Dieselbe Wassermasse nimmt dadurch mehr Platz ein und hat als Eis eine geringere Dichte.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Eis hat eine geringere Dichte als flüssiges Wasser.",
+              "Alles Kalte schwimmt.",
+              "Eis hat keine Masse."
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k4-400",
+          "points": 400
+        },
+        {
+          "question": "Ein Teilchen hat 8 Protonen und 10 Elektronen. Protonen sind positiv, Elektronen gleich stark negativ geladen. Wie ist das Teilchen insgesamt geladen?",
+          "answer": "Negativ",
+          "explanation": "Acht positive Ladungen gleichen acht negative aus. Zwei negative bleiben übrig. Deshalb ist das Teilchen ein negativ geladenes Ion.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Positiv",
+              "Negativ",
+              "Neutral"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k4-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Welt & Wörter",
+      "questions": [
+        {
+          "question": "Englisch ohne Autokorrektur: Wie lautet die Simple-Past-Form von „go“?",
+          "answer": "went",
+          "explanation": "„Go“ ist unregelmäßig: Die einfache Vergangenheitsform lautet „went“. „Gone“ ist das Partizip, etwa in „has gone“.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "goed",
+              "gone",
+              "went"
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k5-100",
+          "points": 100
+        },
+        {
+          "question": "Welche Stadt ist die Hauptstadt Australiens?",
+          "answer": "Canberra",
+          "explanation": "Canberra ist die Hauptstadt Australiens. Bekanntheit oder Größe einer Stadt machen sie nicht automatisch zur Hauptstadt.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Sydney",
+              "Canberra",
+              "Melbourne"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k5-200",
+          "points": 200
+        },
+        {
+          "question": "In welchem Jahr wurden am 9. November die Grenzübergänge an der Berliner Mauer geöffnet?",
+          "answer": "1989",
+          "explanation": "Die Öffnung der Grenzübergänge am 9. November 1989 wird als Mauerfall bezeichnet. Die deutsche Wiedervereinigung folgte 1990.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1989"
+            ]
+          },
+          "id": "k5-300",
+          "points": 300
+        },
+        {
+          "question": "Was soll eine geheime Wahl vor allem schützen?",
+          "answer": "Dass man unbeobachtet und ohne Offenlegung der eigenen Wahlentscheidung abstimmen kann",
+          "explanation": "Geheim ist die persönliche Stimmabgabe. Das Wahlergebnis wird veröffentlicht; eine Wahlkabine hilft, die individuelle Entscheidung zu schützen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Dass man unbeobachtet und ohne Offenlegung der eigenen Wahlentscheidung abstimmen kann",
+              "Dass niemand die Wahlregeln kennt",
+              "Dass das Ergebnis niemals veröffentlicht wird"
+            ],
+            "correct": [
+              0
+            ]
+          },
+          "id": "k5-400",
+          "points": 400
+        },
+        {
+          "question": "Mit wie vielen Staaten hat Deutschland eine gemeinsame Landgrenze?",
+          "answer": "9 Staaten",
+          "explanation": "Es sind Dänemark, Polen, Tschechien, Österreich, Schweiz, Frankreich, Luxemburg, Belgien und die Niederlande. Zähle im Uhrzeigersinn, damit kein Nachbar doppelt vorkommt.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "9"
+            ]
+          },
+          "id": "k5-500",
+          "points": 500
+        }
+      ]
+    }
+  ]
+}
