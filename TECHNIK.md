@@ -9,7 +9,7 @@ Die Spiele werden aus einer gemeinsamen Engine und separaten Aufgabensätzen geb
 
 Die jeweilige `index.html` aus einem Spielordner auf das Gerät kopieren und in einem Browser öffnen, der lokale HTML-Dateien mit JavaScript ausführt. Sie enthält alle benötigten Bestandteile und benötigt keine Internetverbindung, Installation oder Node.js zum Spielen. Die ursprünglichen veralteten HTML-Dateien wurden entfernt.
 
-**Bedienung:** Das hervorgehobene Team wählt eine Punktekarte. Antwort geben lassen, „Antwort anzeigen“, dann „Richtig“ oder „Falsch“. Beide Bewertungen schließen die Karte sofort ab; es gibt keine Übernahme. Richtig gibt den Kartenwert, falsch keine Punkte und keinen Abzug. Danach zeigt ein Ergebnis-Dialog die Wertung und das nächste Team. Bei falsch erscheinen Antwort und Erklärung bis zum bewussten Fortsetzen. Die Bewertungsbuttons nennen das aktive Team. Zwei Teams sind voreingestellt; im Menü lassen sich vor der ersten Bewertung zwei bis sechs Teams anlegen, entfernen und benennen. Im laufenden Spiel bleiben Anzahl und Reihenfolge fest. Reset erhält die Teams und gibt das Ändern der Anzahl wieder frei.
+**Bedienung:** Das hervorgehobene Team wählt eine Punktekarte. Antwort geben lassen, „Antwort anzeigen“, dann „Richtig“ oder „Falsch“. Beide Bewertungen schließen die Karte sofort ab; es gibt keine Übernahme. Standardmäßig gibt richtig den Kartenwert und falsch 0 Punkte. Danach zeigt ein Ergebnis-Dialog die Wertung und das nächste Team. Bei falsch erscheinen Antwort und Erklärung bis zum bewussten Fortsetzen. Die Bewertungsbuttons nennen das aktive Team. Zwei Teams sind voreingestellt; im Menü lassen sich vor der ersten Bewertung zwei bis sechs Teams anlegen, entfernen und benennen. Im laufenden Spiel bleiben Anzahl und Reihenfolge fest. Reset erhält die Teams und gibt das Ändern der Anzahl wieder frei.
 
 **Umfang:** Ein bis fünf Themen mit jeweils fünf Punktekarten. Das Brett hat entsprechend ein bis fünf Spalten und das Spiel endet nach 5 bis 25 Fragen. Es werden keine fehlenden Themen ergänzt.
 
@@ -96,8 +96,14 @@ node tests/browser.cjs
 node tests/visual.cjs
 node tests/pages.cjs
 node tests/feedback.cjs
+node tests/scoring.cjs
+node tests/klasse8.cjs
 ```
 
 Optional setzen: `PLAYWRIGHT_MODULE` = Pfad zur vorhandenen Playwright-Installation, `CHROMIUM_EXECUTABLE` = Chrome-Programmdatei, `PLAYWRIGHT_BROWSERS_PATH` = Browsercache und `BROWSER_ENGINES` = kommaseparierte Auswahl. Diese Werkzeuge sind nur für Tests nötig, nicht zum Bauen oder Spielen.
 
 WebKit-Automation ersetzt keinen Test auf einem echten iPad. Vor Einsatz im Unterricht am tatsächlichen Display einmal Kartenwahl, Bewertung, Teamwechsel, Scrollen, Zoom und den lokalen Öffnungsweg prüfen.
+
+## Optionale Punktewertung
+
+`rules.subtractOnWrong` ist standardmäßig false. Optional zieht falsch den Kartenwert ab. `rules.allowNegativeScores` (optional, Standard false) erlaubt negative Punktestände; andernfalls wird nach jedem Abzug auf 0 begrenzt. Das Menü speichert diese Einstellungen unter `state.scoring` und sperrt Änderungen nach der ersten Bewertung. Reset erhält die Auswahl. Alte Version-2-Spielstände ohne scoring werden mit beiden Optionen false geladen. Rückgängig und Wiederherstellung berechnen die Wertung chronologisch neu; das Ergebnis-Popup zeigt die tatsächlich verbuchte Differenz, auch bei Begrenzung auf 0.

@@ -2,16 +2,21 @@
 
 Ein Lernspiel für Touchdisplays, Tablets und Computer. Eigene Aufgaben kannst du mit **ChatGPT, Claude, Gemini oder einer anderen KI** erstellen. Programmieren musst du dafür nicht.
 
+**[Jetzt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/) · [Eigenes Spiel erstellen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/Spiel-Erstellen.html)**
+
+Das Repository ist öffentlich und die Spieleseite ist über GitHub Pages erreichbar. Zum Spielen ist kein GitHub-Konto nötig.
+
 Du brauchst einen Browser. Für neue Aufgaben brauchst du zusätzlich Zugang zu einer KI. Die fertigen Spiele kommen ohne Internet aus, wenn das Gerät lokale HTML-Dateien im Browser ausführen kann.
 
 ## Ich möchte erst einmal spielen
 
-1. Öffne die [Startseite auf GitHub Pages](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/), sobald Pages für dieses Repository veröffentlicht ist. Dort sind alle Spiele verlinkt.
-2. Alternativ: Lade den Projektordner als ZIP herunter, entpacke ihn und öffne die **index.html im Hauptordner**. Ihre Links funktionieren auch lokal.
-3. Du kannst ein Spiel auch direkt über seine `index.html` öffnen:
-   - [Mathematik, Klasse 5](spiele/mathematik-klasse-5/index.html)
-   - [Fächermix, Klasse 6](spiele/faechermix-klasse-6/index.html)
-   - [Elektronikerausbildung, Abschlusswiederholung](spiele/elektronikerausbildung-abschluss-wiederholung/index.html)
+1. Öffne die [Startseite auf GitHub Pages](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Dort sind alle Spiele verlinkt.
+2. Alternativ: [Lade den Projektordner als ZIP herunter](https://github.com/FisherSteve/Jeopardy_fuer_den_Unterricht/archive/refs/heads/main.zip), entpacke ihn und öffne die **index.html im Hauptordner**. Ihre Links funktionieren auch lokal.
+3. Direkt im Browser spielen:
+   - [Mathematik, Klasse 8 NRW](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/)
+   - [Mathematik, Klasse 5](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-5/)
+   - [Fächermix, Klasse 6](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/faechermix-klasse-6/)
+   - [Elektronikerausbildung, Abschlusswiederholung](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/elektronikerausbildung-abschluss-wiederholung/)
 4. Öffne im Spiel **Menü**. Dort kannst du die Teamnamen ändern und vor der ersten Bewertung weitere Teams hinzufügen. Zwei Teams sind voreingestellt; bis zu sechs sind möglich.
 5. Jetzt kann das hervorgehobene Team eine Punktekarte wählen.
 
@@ -24,7 +29,7 @@ Falls GitHub beim Anklicken einer HTML-Datei nur Quelltext zeigt: Die Datei heru
 - **Mündliche Aufgabe:** Die Lehrkraft drückt „Antwort anzeigen“ und bewertet mit „Richtig“ oder „Falsch“.
 - **Zahlenaufgabe:** Das Team tippt seine Antwort auf dem Ziffernfeld ein und drückt „Antwort abgeben“.
 - **Auswahlaufgabe:** Das Team markiert die passende Antwort und drückt „Antwort abgeben“. Falls mehrere Antworten möglich sind, steht dies dabei.
-- **Richtig gibt Punkte. Falsch gibt keine Minuspunkte.** In beiden Fällen ist die Karte anschließend erledigt. Es gibt keine Übernahme durch ein anderes Team.
+- **Standardwertung: Richtig gibt den Kartenwert, falsch 0 Punkte.** In beiden Fällen ist die Karte anschließend erledigt. Es gibt keine Übernahme durch ein anderes Team.
 - Nach jeder Bewertung erscheint ein großes Ergebnis-Popup: **„Richtig!“** mit kurzem visuellen Jubel und Punkteanzeige oder **„Nicht richtig“** mit der richtigen Antwort und einer kurzen Erklärung.
 - Im selben Popup steht deutlich, welches Team als Nächstes dran ist. Mit **„Weiter mit Team …“** gelangt ihr zum Spielfeld. Lösung und Erklärung bleiben ohne Zeitlimit stehen, damit ihr sie gemeinsam besprechen könnt. Nach der letzten Frage führt der Button zum Spielergebnis.
 
@@ -58,7 +63,7 @@ Kopiere den gesamten JSON-Text. Viele Chatoberflächen bieten dafür einen Kopie
 
 ### Schritt 3: Das Spiel bauen lassen
 
-1. Öffne die heruntergeladene Datei **[Spiel-Erstellen.html](Spiel-Erstellen.html)** im Browser.
+1. Öffne den **[Spiel-Ersteller online](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/Spiel-Erstellen.html)**. Alternativ kannst du die heruntergeladene Datei `Spiel-Erstellen.html` im Browser öffnen.
 2. Füge den kopierten Text in das große Feld ein. Alternativ wählst du die JSON-Datei aus.
 3. Drücke **„Prüfen und Spiel erstellen“**.
 4. Drücke anschließend **„Spiel herunterladen“**.
@@ -80,10 +85,12 @@ Hebe auch den JSON-Aufgabensatz auf. Wenn du später Fragen ändern möchtest, g
 | Wunsch | So geht es |
 | --- | --- |
 | Mehr Teams | Menü → „Team hinzufügen“, vor der ersten Bewertung |
+| Punktabzug einschalten | Menü → „Punktabzug bei falscher Antwort“, vor der ersten Bewertung; standardmäßig aus |
+| Untergrenze wählen | Bei aktiviertem Punktabzug: „Negative Punktestände erlauben“ einschalten oder ausgeschaltet lassen, damit der Stand bei 0 stoppt |
 | Teamnamen ändern | Menü → Namen bearbeiten |
 | Lehrkräftehinweise nutzen | Menü → „Lehrkräftehinweise freigeben“ einschalten |
 | Falschen Klick korrigieren | „Rückgängig“ nimmt die letzte Karte, ihre Wertung und den Teamwechsel zurück |
-| Neu anfangen | Menü → „Spiel zurücksetzen“; Teamnamen und Teamzahl bleiben erhalten |
+| Neu anfangen | Menü → „Spiel zurücksetzen“; Teamnamen, Teamzahl und Wertungseinstellungen bleiben erhalten |
 | Größere Bildschirmfläche | „Vollbild“, sofern der Browser diese Funktion anbietet |
 
 **Lehrkräftehinweise sind zunächst vollständig ausgeblendet**, auch ihr Button. Nach der Freigabe im Menü lassen sie sich in einer Frage gezielt einblenden. Bei Zahlen- und Auswahlaufgaben erlaubt diese Freigabe auch das manuelle Aufdecken und Bewerten. Nach dem Neuladen ist die Freigabe wieder aus. Die Menüeinstellung ist keine Passwortsperre; die Lehrkraft bedient das Menü.
@@ -119,8 +126,16 @@ Die gemeinsame Spieltechnik steht in `framework/`, die wiederverwendbaren Inhalt
 
 Für neue Spiele bitte die **Framework-Prompt** und den **Spiel-Ersteller** verwenden. Veraltete Originalspiele und die alte allgemeine Prompt wurden entfernt; generierte Testausgaben gehören nicht ins Repository.
 
-## Auf GitHub Pages bereitstellen
+## Eigene Kopie auf GitHub Pages bereitstellen
 
-Die veröffentlichbare Startseite ist `index.html` im Hauptordner. Jedes Spiel hat einen eigenen Ordner: `spiele/<spielname>/index.html`. Dadurch funktionieren auch Adressen wie `spiele/mathematik-klasse-5/`.
+Dieses öffentliche Repository ist bereits [online spielbar](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Die folgenden Hinweise brauchst du nur, wenn du eine eigene Kopie veröffentlichen möchtest.
+
+Die Startseite ist `index.html` im Hauptordner. Jedes Spiel hat einen eigenen Ordner: `spiele/<spielname>/index.html`. Dadurch funktionieren auch Adressen wie `spiele/mathematik-klasse-5/`.
 
 Verwende für GitHub Pages den Branch mit diesen Dateien und dessen Hauptordner (`/`). `node build.js` aktualisiert alle Spiele, den Spiel-Ersteller und die Startseite. Die Veröffentlichung der bereits erzeugten HTML-Dateien benötigt keinen Build auf GitHub. Die Datei `.nojekyll` kennzeichnet die Website als direkt auslieferbare statische Dateien.
+
+## Neues Quiz: Mathematik Klasse 8 NRW
+
+[Quiz starten](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/) · [Aufgabensatz](content/mathematik-klasse-8-nrw.json) · [Lehrplanbezug](LEHRPLAN-KLASSE-8.md)
+
+Fünf Rubriken mit jeweils fünf Kopfrechen- und Verständnisfragen für die Realschule. Standardmäßig ohne Punktabzug.

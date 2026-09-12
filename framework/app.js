@@ -152,7 +152,7 @@
     if (!E.rate(data, state, id, selected, correct)) return;
     pendingFeedback=id; inputLocked=true; save(); render();
     showFeedback();
-    if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig. Keine Minuspunkte.',correct?'correct':'wrong');
+    if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig.',correct?'correct':'wrong');
     // A second tap must not dismiss the new feedback or reach the board.
     setTimeout(()=>{inputLocked=false;$('feedback-continue').disabled=false;render();},450);
   }
@@ -165,7 +165,9 @@
     $('meta').textContent = 'Antwort von ' + team;
     $('dialog').dataset.outcome = result.correct ? 'correct' : 'wrong';
     $('feedback-symbol').textContent = result.correct ? '✓' : '×';
-    $('feedback-score').textContent = result.correct ? '+' + q.points + ' Punkte für ' + team : '0 Punkte · Kein Punktabzug';
+    const before = E.scores(data, Object.assign({}, state, {history:state.history.slice(0,-1)}))[result.team];
+    const delta = E.scores(data,state)[result.team] - before;
+    $('feedback-score').textContent = (delta > 0 ? '+' : delta < 0 ? '−' : '') + Math.abs(delta) + ' Punkte für ' + team;
     $('feedback-review').hidden = result.correct;
     $('feedback-answer').textContent = result.correct ? '' : q.answer;
     $('feedback-explanation').textContent = result.correct ? '' : q.explanation;
@@ -198,10 +200,24 @@
     $('remove-team').disabled=state.history.length>0||state.names.length<=2;
     $('team-count-help').textContent=state.history.length?'Die Teamzahl bleibt im laufenden Spiel fest. Für eine andere Teamzahl zuerst zurücksetzen.':'2 bis 6 Teams · Teamzahl vor der ersten Bewertung frei ändern.';
     $('teacher-tools-enabled').checked=teacherTools;
-    $('rules').textContent = 'Richtig: Kartenpunkte dazu. Falsch: keine Minuspunkte. Der Punktestand bleibt unverändert.';
+    renderScoring();
+    $('rules').textContent = 'Richtige Antworten geben den Kartenwert. Die gewählte Wertung gilt für alle Teams.';
     $('storage-info').textContent = savedOK ? 'Der Spielstand wird nach Möglichkeit in diesem Browser gespeichert. Auf gemeinsam genutzten Geräten vor der nächsten Klasse zurücksetzen.' : 'Dieser Browser erlaubt das Speichern nicht. Beim Schließen oder Neuladen kann der Spielstand verloren gehen.';
     show('menu', 'Menü');
   }
+  function renderScoring() {
+    $('subtract-on-wrong').checked=state.scoring.subtractOnWrong;
+    $('allow-negative-scores').checked=state.scoring.allowNegativeScores;
+    $('subtract-on-wrong').disabled=state.history.length>0;
+    $('allow-negative-scores').disabled=state.history.length>0||!state.scoring.subtractOnWrong;
+    $('scoring-help').textContent=state.history.length?'Die Wertung bleibt im laufenden Spiel fest. Für Änderungen zuerst zurücksetzen.':'Optional: Bei falschen Antworten den Kartenwert abziehen. Ohne Freigabe negativer Werte stoppt der Punktestand bei 0.';
+  }
+  ['subtract-on-wrong','allow-negative-scores'].forEach(id=>$(id).addEventListener('change',()=>{
+    if(state.history.length) {renderScoring();return;}
+    state.scoring.subtractOnWrong=$('subtract-on-wrong').checked;
+    state.scoring.allowNegativeScores=$('allow-negative-scores').checked;
+    renderScoring();save();render();
+  }));
   $('close').addEventListener('click', close);
   $('settings').addEventListener('click', menu);
   $('teacher-tools-enabled').addEventListener('change',()=>{teacherTools=$('teacher-tools-enabled').checked;});
@@ -212,13 +228,13 @@
   $('undo').addEventListener('click', () => { if (view || !state.history.length) return; state.history.pop(); save(); render(); if (savedOK) say('Letzte abgeschlossene Karte zurückgenommen.'); });
   $('reset-open').addEventListener('click', () => { $('meta').textContent = 'NEUES SPIEL'; show('reset', 'Spiel zurücksetzen?', 'reset-cancel'); });
   $('reset-cancel').addEventListener('click', menu);
-  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
+  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names, state.scoring); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
   // No backdrop close: accidental touches on large classroom screens are common.
   document.addEventListener('keydown', e => {
     if (e.repeat && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); return; }
     if (!view) return;
     if (e.key === 'Tab') {
-      const list = Array.from($('dialog').querySelectorAll('button:not(:disabled), input, [tabindex="0"]')).filter(el => el.getClientRects().length);
+      const list = Array.from($('dialog').querySelectorAll('button:not(:disabled), input:not(:disabled), [tabindex="0"]')).filter(el => el.getClientRects().length);
       const first = list[0], last = list[list.length - 1];
       if (e.shiftKey && (document.activeElement === first || document.activeElement === $('dialog'))) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && (document.activeElement === last || document.activeElement === $('dialog'))) { e.preventDefault(); first.focus(); }

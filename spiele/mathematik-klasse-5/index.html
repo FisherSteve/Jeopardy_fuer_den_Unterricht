@@ -115,6 +115,10 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     <div id="menu-view" hidden>
       <h3>Teams</h3><div id="names" class="names"></div>
       <div class="question-tools team-tools"><button id="add-team">Team hinzufügen</button><button id="remove-team">Letztes Team entfernen</button></div><p id="team-count-help" class="muted"></p>
+      <h3>Punktewertung</h3>
+      <label class="toggle-label"><input id="subtract-on-wrong" type="checkbox"> Punktabzug bei falscher Antwort</label>
+      <label class="toggle-label"><input id="allow-negative-scores" type="checkbox" disabled> Negative Punktestände erlauben</label>
+      <p id="scoring-help" class="muted"></p>
       <h3>Lehrkräftehilfen</h3><label class="toggle-label"><input id="teacher-tools-enabled" type="checkbox"> Lehrkräftehinweise freigeben</label><p>Blendet den Hinweisebutton in Fragen ein. Bei Zahlen- und Auswahlaufgaben wird zusätzlich das manuelle Aufdecken und Bewerten freigegeben. Standardmäßig aus; nach dem Neuladen wieder aus.</p>
       <h3>So wird gespielt</h3><p>Team 1 beginnt und wählt eine Karte. Die Frage beantworten lassen, dann die Antwort aufdecken und bewerten. Sowohl „Richtig“ als auch „Falsch“ schließen die Karte sofort ab. Es gibt keine Übernahme. Danach wählt das nächste Team eine neue Karte: Team 1, Team 2, …, Team 1.</p>
       <p>Bei Aufgaben mit Ziffernfeld oder Antwortauswahl kann das Team seine Antwort selbst eingeben und „Antwort abgeben“ drücken. Das Spiel wertet automatisch. Die Auswahl darf bis zur Abgabe verändert werden. „Antwort anzeigen“ ermöglicht alternativ eine manuelle Bewertung durch die Lehrkraft.</p>
@@ -124,7 +128,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
       <p>Lehrkräftehinweise sind beim Öffnen einer Frage immer ausgeblendet. Eingeblendete Hinweise sehen alle Personen am Bildschirm.</p>
       <p id="storage-info"></p><button id="reset-open" class="danger">Spiel zurücksetzen</button>
     </div>
-    <div id="reset-view" hidden><p>Alle Bewertungen und Punkte werden gelöscht. Teamnamen bleiben erhalten.</p><div class="question-tools"><button id="reset-cancel">Abbrechen</button><button id="reset-confirm" class="danger">Spiel zurücksetzen</button></div></div>
+    <div id="reset-view" hidden><p>Alle Bewertungen und Punkte werden gelöscht. Teamnamen und Wertungseinstellungen bleiben erhalten.</p><div class="question-tools"><button id="reset-cancel">Abbrechen</button><button id="reset-confirm" class="danger">Spiel zurücksetzen</button></div></div>
   </section>
 </div>
 <noscript>Bitte JavaScript im Browser aktivieren, um das Spiel zu starten.</noscript>
@@ -546,7 +550,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     if (typeof d.id === 'string' && !/^[a-z0-9-]+$/.test(d.id)) errors.push('id: nur a–z, 0–9 und Bindestriche.');
     if (!Array.isArray(d.teams) || d.teams.length < 2 || d.teams.length > 6) errors.push('2 bis 6 Teams erforderlich.');
     else d.teams.forEach((t, i) => str(t, 'teams[' + i + ']', 40));
-    if (!d.rules || d.rules.subtractOnWrong !== false || d.rules.takeover !== false) errors.push('rules.subtractOnWrong und rules.takeover müssen false sein: keine Minuspunkte, keine Übernahme.');
+    if (!d.rules || typeof d.rules.subtractOnWrong !== 'boolean' || d.rules.takeover !== false || (d.rules.allowNegativeScores !== undefined && typeof d.rules.allowNegativeScores !== 'boolean')) errors.push('Wertungsregeln müssen boolesch sein; rules.takeover muss false sein.');
     if (!Array.isArray(d.categories) || d.categories.length < 1 || d.categories.length > 5) errors.push('1 bis 5 Kategorien erforderlich.');
     const ids = new Set();
     (Array.isArray(d.categories) ? d.categories : []).forEach((c, ci) => {
@@ -600,13 +604,14 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     if(!Array.isArray(value)||!value.length||!value.every(i=>Number.isInteger(i)&&i>=0&&i<r.options.length)||new Set(value).size!==value.length) return null;
     return value.length===r.correct.length&&r.correct.every(i=>value.includes(i));
   }
-  function fresh(d, names) { return { version: 2, names: (names || d.teams).slice(), history: [] }; }
+  function fresh(d, names, scoring) { return { version: 2, names: (names || d.teams).slice(), scoring: scoring ? copy(scoring) : {subtractOnWrong:d.rules.subtractOnWrong,allowNegativeScores:d.rules.allowNegativeScores === true}, history: [] }; }
   function turn(s) { return s.history.length % s.names.length; }
   function scores(d, s) {
     const result = s.names.map(() => 0);
     s.history.forEach(e => {
       const q = questions(d).find(q => q.id === e.id);
       if (e.correct) result[e.team] += q.points;
+      else if (s.scoring && s.scoring.subtractOnWrong) result[e.team] = s.scoring.allowNegativeScores ? result[e.team] - q.points : Math.max(0, result[e.team] - q.points);
     });
     return result;
   }
@@ -619,7 +624,9 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   // Rebuild untrusted saved data through the rules; never trust saved totals.
   function restore(d, raw) {
     if (!raw || raw.version !== 2 || !Array.isArray(raw.names) || raw.names.length<2 || raw.names.length>6 || !raw.names.every(n => typeof n === 'string' && n.trim() && n.length <= 40) || !Array.isArray(raw.history) || raw.history.length > questions(d).length) throw new Error('Ungültiger Spielstand.');
-    const s = fresh(d, raw.names);
+    if (raw.scoring !== undefined && (!raw.scoring || typeof raw.scoring.subtractOnWrong !== 'boolean' || typeof raw.scoring.allowNegativeScores !== 'boolean')) throw new Error('Ungültige Wertungseinstellungen.');
+    // Older saves always used scoring without deductions.
+    const s = fresh(d, raw.names, raw.scoring || {subtractOnWrong:false,allowNegativeScores:false});
     raw.history.forEach(e => {
       if (!e || !rate(d, s, e.id, e.team, e.correct)) throw new Error('Doppelte oder ungültige Bewertung.');
     });
@@ -784,7 +791,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     if (!E.rate(data, state, id, selected, correct)) return;
     pendingFeedback=id; inputLocked=true; save(); render();
     showFeedback();
-    if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig. Keine Minuspunkte.',correct?'correct':'wrong');
+    if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig.',correct?'correct':'wrong');
     // A second tap must not dismiss the new feedback or reach the board.
     setTimeout(()=>{inputLocked=false;$('feedback-continue').disabled=false;render();},450);
   }
@@ -797,7 +804,9 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     $('meta').textContent = 'Antwort von ' + team;
     $('dialog').dataset.outcome = result.correct ? 'correct' : 'wrong';
     $('feedback-symbol').textContent = result.correct ? '✓' : '×';
-    $('feedback-score').textContent = result.correct ? '+' + q.points + ' Punkte für ' + team : '0 Punkte · Kein Punktabzug';
+    const before = E.scores(data, Object.assign({}, state, {history:state.history.slice(0,-1)}))[result.team];
+    const delta = E.scores(data,state)[result.team] - before;
+    $('feedback-score').textContent = (delta > 0 ? '+' : delta < 0 ? '−' : '') + Math.abs(delta) + ' Punkte für ' + team;
     $('feedback-review').hidden = result.correct;
     $('feedback-answer').textContent = result.correct ? '' : q.answer;
     $('feedback-explanation').textContent = result.correct ? '' : q.explanation;
@@ -830,10 +839,24 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     $('remove-team').disabled=state.history.length>0||state.names.length<=2;
     $('team-count-help').textContent=state.history.length?'Die Teamzahl bleibt im laufenden Spiel fest. Für eine andere Teamzahl zuerst zurücksetzen.':'2 bis 6 Teams · Teamzahl vor der ersten Bewertung frei ändern.';
     $('teacher-tools-enabled').checked=teacherTools;
-    $('rules').textContent = 'Richtig: Kartenpunkte dazu. Falsch: keine Minuspunkte. Der Punktestand bleibt unverändert.';
+    renderScoring();
+    $('rules').textContent = 'Richtige Antworten geben den Kartenwert. Die gewählte Wertung gilt für alle Teams.';
     $('storage-info').textContent = savedOK ? 'Der Spielstand wird nach Möglichkeit in diesem Browser gespeichert. Auf gemeinsam genutzten Geräten vor der nächsten Klasse zurücksetzen.' : 'Dieser Browser erlaubt das Speichern nicht. Beim Schließen oder Neuladen kann der Spielstand verloren gehen.';
     show('menu', 'Menü');
   }
+  function renderScoring() {
+    $('subtract-on-wrong').checked=state.scoring.subtractOnWrong;
+    $('allow-negative-scores').checked=state.scoring.allowNegativeScores;
+    $('subtract-on-wrong').disabled=state.history.length>0;
+    $('allow-negative-scores').disabled=state.history.length>0||!state.scoring.subtractOnWrong;
+    $('scoring-help').textContent=state.history.length?'Die Wertung bleibt im laufenden Spiel fest. Für Änderungen zuerst zurücksetzen.':'Optional: Bei falschen Antworten den Kartenwert abziehen. Ohne Freigabe negativer Werte stoppt der Punktestand bei 0.';
+  }
+  ['subtract-on-wrong','allow-negative-scores'].forEach(id=>$(id).addEventListener('change',()=>{
+    if(state.history.length) {renderScoring();return;}
+    state.scoring.subtractOnWrong=$('subtract-on-wrong').checked;
+    state.scoring.allowNegativeScores=$('allow-negative-scores').checked;
+    renderScoring();save();render();
+  }));
   $('close').addEventListener('click', close);
   $('settings').addEventListener('click', menu);
   $('teacher-tools-enabled').addEventListener('change',()=>{teacherTools=$('teacher-tools-enabled').checked;});
@@ -844,13 +867,13 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   $('undo').addEventListener('click', () => { if (view || !state.history.length) return; state.history.pop(); save(); render(); if (savedOK) say('Letzte abgeschlossene Karte zurückgenommen.'); });
   $('reset-open').addEventListener('click', () => { $('meta').textContent = 'NEUES SPIEL'; show('reset', 'Spiel zurücksetzen?', 'reset-cancel'); });
   $('reset-cancel').addEventListener('click', menu);
-  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
+  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names, state.scoring); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
   // No backdrop close: accidental touches on large classroom screens are common.
   document.addEventListener('keydown', e => {
     if (e.repeat && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); return; }
     if (!view) return;
     if (e.key === 'Tab') {
-      const list = Array.from($('dialog').querySelectorAll('button:not(:disabled), input, [tabindex="0"]')).filter(el => el.getClientRects().length);
+      const list = Array.from($('dialog').querySelectorAll('button:not(:disabled), input:not(:disabled), [tabindex="0"]')).filter(el => el.getClientRects().length);
       const first = list[0], last = list[list.length - 1];
       if (e.shiftKey && (document.activeElement === first || document.activeElement === $('dialog'))) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && (document.activeElement === last || document.activeElement === $('dialog'))) { e.preventDefault(); first.focus(); }

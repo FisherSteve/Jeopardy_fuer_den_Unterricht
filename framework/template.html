@@ -55,6 +55,10 @@
     <div id="menu-view" hidden>
       <h3>Teams</h3><div id="names" class="names"></div>
       <div class="question-tools team-tools"><button id="add-team">Team hinzufügen</button><button id="remove-team">Letztes Team entfernen</button></div><p id="team-count-help" class="muted"></p>
+      <h3>Punktewertung</h3>
+      <label class="toggle-label"><input id="subtract-on-wrong" type="checkbox"> Punktabzug bei falscher Antwort</label>
+      <label class="toggle-label"><input id="allow-negative-scores" type="checkbox" disabled> Negative Punktestände erlauben</label>
+      <p id="scoring-help" class="muted"></p>
       <h3>Lehrkräftehilfen</h3><label class="toggle-label"><input id="teacher-tools-enabled" type="checkbox"> Lehrkräftehinweise freigeben</label><p>Blendet den Hinweisebutton in Fragen ein. Bei Zahlen- und Auswahlaufgaben wird zusätzlich das manuelle Aufdecken und Bewerten freigegeben. Standardmäßig aus; nach dem Neuladen wieder aus.</p>
       <h3>So wird gespielt</h3><p>Team 1 beginnt und wählt eine Karte. Die Frage beantworten lassen, dann die Antwort aufdecken und bewerten. Sowohl „Richtig“ als auch „Falsch“ schließen die Karte sofort ab. Es gibt keine Übernahme. Danach wählt das nächste Team eine neue Karte: Team 1, Team 2, …, Team 1.</p>
       <p>Bei Aufgaben mit Ziffernfeld oder Antwortauswahl kann das Team seine Antwort selbst eingeben und „Antwort abgeben“ drücken. Das Spiel wertet automatisch. Die Auswahl darf bis zur Abgabe verändert werden. „Antwort anzeigen“ ermöglicht alternativ eine manuelle Bewertung durch die Lehrkraft.</p>
@@ -64,7 +68,7 @@
       <p>Lehrkräftehinweise sind beim Öffnen einer Frage immer ausgeblendet. Eingeblendete Hinweise sehen alle Personen am Bildschirm.</p>
       <p id="storage-info"></p><button id="reset-open" class="danger">Spiel zurücksetzen</button>
     </div>
-    <div id="reset-view" hidden><p>Alle Bewertungen und Punkte werden gelöscht. Teamnamen bleiben erhalten.</p><div class="question-tools"><button id="reset-cancel">Abbrechen</button><button id="reset-confirm" class="danger">Spiel zurücksetzen</button></div></div>
+    <div id="reset-view" hidden><p>Alle Bewertungen und Punkte werden gelöscht. Teamnamen und Wertungseinstellungen bleiben erhalten.</p><div class="question-tools"><button id="reset-cancel">Abbrechen</button><button id="reset-confirm" class="danger">Spiel zurücksetzen</button></div></div>
   </section>
 </div>
 <noscript>Bitte JavaScript im Browser aktivieren, um das Spiel zu starten.</noscript>

@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "id": "mathematik-klasse-8-nrw",
+  "title": "Mathematik · Klasse 8 · NRW",
+  "teams": [
+    "Team 1",
+    "Team 2"
+  ],
+  "rules": {
+    "subtractOnWrong": false,
+    "allowNegativeScores": false,
+    "takeover": false
+  },
+  "categories": [
+    {
+      "title": "Zahlen & Terme",
+      "questions": [
+        {
+          "question": "Berechne: −7 + 12.",
+          "answer": "5",
+          "explanation": "Von −7 bis 0 sind es 7 Schritte. Von den 12 Schritten bleiben noch 5 übrig.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "5"
+            ]
+          },
+          "id": "k1-100",
+          "points": 100
+        },
+        {
+          "question": "Berechne: (−3) · (−4).",
+          "answer": "12",
+          "explanation": "Zwei negative Faktoren ergeben ein positives Produkt. 3 · 4 = 12.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "12"
+            ]
+          },
+          "id": "k1-200",
+          "points": 200
+        },
+        {
+          "question": "Berechne: 3/4 : 1/2. Gib das Ergebnis als Dezimalzahl ein.",
+          "answer": "1,5",
+          "explanation": "Beim Teilen durch 1/2 verdoppelst du die Zahl: 3/4 · 2 = 6/4. Das sind 1,5.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1.5"
+            ]
+          },
+          "id": "k1-300",
+          "points": 300
+        },
+        {
+          "question": "Löse die Gleichung: 3x + 4 = 19. Wie groß ist x?",
+          "answer": "x = 5",
+          "explanation": "Ziehe auf beiden Seiten 4 ab: 3x = 15. Teile anschließend durch 3: x = 5.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "5"
+            ]
+          },
+          "id": "k1-400",
+          "points": 400
+        },
+        {
+          "question": "Welcher Term ist für jedes x gleich (x + 3)²?",
+          "answer": "x² + 6x + 9",
+          "explanation": "(x + 3)² bedeutet (x + 3) · (x + 3). Ausmultiplizieren ergibt x² + 3x + 3x + 9, also x² + 6x + 9.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x² + 9",
+              "x² + 6x + 9",
+              "x² + 3x + 9"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "id": "k1-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Zuordnungen",
+      "questions": [
+        {
+          "question": "Ein Heft kostet 2 €. Wie viel kosten 3 Hefte zum gleichen Stückpreis?",
+          "answer": "6 €",
+          "explanation": "Jedes Heft kostet 2 €. Für drei Hefte rechnest du 3 · 2 € = 6 €.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "6"
+            ],
+            "unit": "€"
+          },
+          "id": "k2-100",
+          "points": 100
+        },
+        {
+          "question": "Es gilt y = 2x + 1. Welchen Wert hat y für x = 4?",
+          "answer": "y = 9",
+          "explanation": "Setze für x die Zahl 4 ein. Dann gilt y = 2 · 4 + 1 = 9.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "9"
+            ]
+          },
+          "id": "k2-200",
+          "points": 200
+        },
+        {
+          "question": "Vier gleich schnell arbeitende Pumpen leeren ein Becken in 6 Stunden. Wie viele Stunden brauchen zwei solcher Pumpen unter gleichen Bedingungen?",
+          "answer": "12 Stunden",
+          "explanation": "Halb so viele Pumpen brauchen doppelt so lange. 2 · 6 Stunden = 12 Stunden. Die Zuordnung ist antiproportional.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "12"
+            ],
+            "unit": "Stunden"
+          },
+          "id": "k2-300",
+          "points": 300
+        },
+        {
+          "question": "Ein Fahrradverleih verlangt 3 € Grundgebühr und 2 € je Stunde. Wie viel kosten 4 Stunden?",
+          "answer": "11 €",
+          "explanation": "Vier Stunden kosten 4 · 2 € = 8 €. Dazu kommen einmalig 3 € Grundgebühr: insgesamt 11 €.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "11"
+            ],
+            "unit": "€"
+          },
+          "id": "k2-400",
+          "points": 400
+        },
+        {
+          "question": "Bei einer linearen Zuordnung wächst y bei jedem Schritt x → x + 1 um denselben Wert. Für x = 0 gilt y = 2, für x = 2 gilt y = 8. Welches y gehört zu x = 3?",
+          "answer": "y = 11",
+          "explanation": "In zwei Schritten steigt y von 2 auf 8, also um 6. Pro Schritt sind das 3. Nach einem weiteren Schritt ist y = 8 + 3 = 11.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "11"
+            ]
+          },
+          "id": "k2-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Prozent & Zinsen",
+      "questions": [
+        {
+          "question": "Wie viel sind 10 % von 80 €?",
+          "answer": "8 €",
+          "explanation": "10 % sind ein Zehntel. 80 € : 10 = 8 €.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ],
+            "unit": "€"
+          },
+          "id": "k3-100",
+          "points": 100
+        },
+        {
+          "question": "Ein T-Shirt kostet 40 €. Es gibt 25 % Rabatt. Wie viel bezahlst du?",
+          "answer": "30 €",
+          "explanation": "25 % sind ein Viertel. Der Rabatt beträgt 40 € : 4 = 10 €. Du bezahlst 40 € − 10 € = 30 €.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "30"
+            ],
+            "unit": "€"
+          },
+          "id": "k3-200",
+          "points": 200
+        },
+        {
+          "question": "6 von 20 Jugendlichen fahren mit dem Fahrrad zur Schule. Wie viel Prozent sind das?",
+          "answer": "30 %",
+          "explanation": "1 von 20 entspricht 5 %. Deshalb entsprechen 6 von 20 genau 6 · 5 % = 30 %.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "30"
+            ],
+            "unit": "%"
+          },
+          "id": "k3-300",
+          "points": 300
+        },
+        {
+          "question": "200 € werden für genau ein Jahr mit 3 % pro Jahr verzinst. Wie viele Euro Zinsen kommen hinzu? Es fallen keine Gebühren an.",
+          "answer": "6 € Zinsen",
+          "explanation": "1 % von 200 € sind 2 €. Für 3 % rechnest du 3 · 2 € = 6 €.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "6"
+            ],
+            "unit": "€"
+          },
+          "id": "k3-400",
+          "points": 400
+        },
+        {
+          "question": "Ein Preis von 100 € steigt zuerst um 10 %. Danach sinkt der neue Preis um 10 %. Wie hoch ist der Preis am Ende?",
+          "answer": "99 €",
+          "explanation": "Nach der Erhöhung kostet der Artikel 110 €. Der anschließende Rabatt beträgt 10 % von 110 €, also 11 €. Es bleiben 99 €.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "99"
+            ],
+            "unit": "€"
+          },
+          "id": "k3-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Winkel & Flächen",
+      "questions": [
+        {
+          "question": "Ein Dreieck hat zwei Winkel von 50° und 60°. Wie groß ist der dritte Winkel?",
+          "answer": "70°",
+          "explanation": "Die drei Innenwinkel eines Dreiecks ergeben zusammen 180°. 180° − 50° − 60° = 70°.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "70"
+            ],
+            "unit": "Grad"
+          },
+          "id": "k4-100",
+          "points": 100
+        },
+        {
+          "question": "Ein Parallelogramm hat eine Grundseite von 6 cm und eine zugehörige senkrechte Höhe von 3 cm. Wie groß ist sein Flächeninhalt?",
+          "answer": "18 cm²",
+          "explanation": "Beim Parallelogramm gilt: Fläche = Grundseite · zugehörige Höhe. 6 · 3 = 18. Die schräge Seitenlänge brauchst du dafür nicht.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "18"
+            ],
+            "unit": "cm²"
+          },
+          "id": "k4-200",
+          "points": 200
+        },
+        {
+          "question": "Ein Dreieck hat eine Grundseite von 8 cm und eine zugehörige senkrechte Höhe von 5 cm. Wie groß ist sein Flächeninhalt?",
+          "answer": "20 cm²",
+          "explanation": "Die Fläche ist die Hälfte von Grundseite mal Höhe. 8 · 5 : 2 = 20.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "20"
+            ],
+            "unit": "cm²"
+          },
+          "id": "k4-300",
+          "points": 300
+        },
+        {
+          "question": "Ein gerades Prisma hat eine dreieckige Grundfläche von 6 cm². Der Abstand zwischen Grundfläche und Deckfläche beträgt 5 cm. Wie groß ist das Volumen?",
+          "answer": "30 cm³",
+          "explanation": "Für ein Prisma gilt: Volumen = Grundfläche · Körperhöhe. Hier sind das 6 cm² · 5 cm = 30 cm³.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "30"
+            ],
+            "unit": "cm³"
+          },
+          "id": "k4-400",
+          "points": 400
+        },
+        {
+          "question": "Ein Trapez hat parallele Seiten von 4 cm und 8 cm. Ihr senkrechter Abstand beträgt 3 cm. Wie groß ist der Flächeninhalt?",
+          "answer": "18 cm²",
+          "explanation": "Bilde den Mittelwert der parallelen Seiten: (4 + 8) : 2 = 6 cm. Multipliziere ihn mit der Höhe: 6 · 3 = 18 cm².",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "18"
+            ],
+            "unit": "cm²"
+          },
+          "id": "k4-500",
+          "points": 500
+        }
+      ]
+    },
+    {
+      "title": "Daten & Zufall",
+      "questions": [
+        {
+          "question": "Eine faire Münze wird einmal geworfen. Wie groß ist die Wahrscheinlichkeit für Kopf in Prozent?",
+          "answer": "50 %",
+          "explanation": "Kopf und Zahl sind gleich wahrscheinlich. Ein günstiges von zwei möglichen Ergebnissen entspricht 1/2 = 50 %.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "50"
+            ],
+            "unit": "%"
+          },
+          "id": "k5-100",
+          "points": 100
+        },
+        {
+          "question": "Ein fairer Würfel mit den Zahlen 1 bis 6 wird einmal geworfen. Wie groß ist die Wahrscheinlichkeit für eine gerade Zahl in Prozent?",
+          "answer": "50 %",
+          "explanation": "Die geraden Zahlen sind 2, 4 und 6. Drei von sechs gleich wahrscheinlichen Ergebnissen sind günstig: 3/6 = 50 %.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "50"
+            ],
+            "unit": "%"
+          },
+          "id": "k5-200",
+          "points": 200
+        },
+        {
+          "question": "In einem Beutel liegen 3 rote und 7 blaue gleichartige Kugeln. Eine Kugel wird blind gezogen; jede Kugel ist gleich wahrscheinlich. Wie groß ist die Wahrscheinlichkeit für Rot in Prozent?",
+          "answer": "30 %",
+          "explanation": "Insgesamt sind es 10 Kugeln. Drei davon sind rot. 3/10 entspricht 30 %.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "30"
+            ],
+            "unit": "%"
+          },
+          "id": "k5-300",
+          "points": 300
+        },
+        {
+          "question": "Die Fünf-Punkte-Zusammenfassung eines Boxplots lautet: Minimum 2, unteres Quartil 4, Median 6, oberes Quartil 9, Maximum 12. Wie breit ist die Box auf der Zahlenskala?",
+          "answer": "5",
+          "explanation": "Die Box reicht vom unteren bis zum oberen Quartil. Ihre Breite beträgt deshalb 9 − 4 = 5. Minimum und Maximum begrenzen die gesamte Spannweite.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "5"
+            ]
+          },
+          "id": "k5-400",
+          "points": 400
+        },
+        {
+          "question": "Eine faire Münze zeigte viermal hintereinander Kopf. Welche Aussage über den nächsten unabhängigen Wurf stimmt?",
+          "answer": "Kopf und Zahl bleiben gleich wahrscheinlich.",
+          "explanation": "Frühere Würfe verändern den nächsten unabhängigen Wurf nicht. Kopf und Zahl haben weiterhin jeweils eine Wahrscheinlichkeit von 50 %. Eine kurze Serie muss sich nicht sofort ausgleichen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Zahl ist jetzt wahrscheinlicher.",
+              "Kopf ist jetzt wahrscheinlicher.",
+              "Kopf und Zahl bleiben gleich wahrscheinlich."
+            ],
+            "correct": [
+              2
+            ]
+          },
+          "id": "k5-500",
+          "points": 500
+        }
+      ]
+    }
+  ]
+}

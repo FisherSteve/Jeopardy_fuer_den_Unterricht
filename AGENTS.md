@@ -2,7 +2,7 @@
 
 - Zuerst README.md und Framework-Prompt.md lesen.
 - Neue Unterrichtsthemen ausschließlich als content/*.json anlegen und mit node build.js bauen. Engine und Oberfläche nicht pro Klasse duplizieren oder neu erzeugen.
-- Verbindliche Nutzerentscheidungen: keine Minuspunkte; automatische zyklische Teamreihenfolge; klar sichtbares aktives Team mit kurzer optionaler Animation; Lehrkräftehinweise standardmäßig verborgen; Touch zuerst, Tastatur weiter unterstützen.
+- Verbindliche Nutzerentscheidungen: standardmäßig kein Punktabzug, optionaler Punktabzug mit wählbarer Untergrenze 0 oder negativen Punkteständen; automatische zyklische Teamreihenfolge; klar sichtbares aktives Team mit kurzer optionaler Animation; Lehrkräftehinweise standardmäßig verborgen; Touch zuerst, Tastatur weiter unterstützen.
 - Keine Übernahme: richtig und falsch schließen die Karte sofort. Danach ist das nächste Team dran.
 - Ein bis fünf Themen mit je fünf Punktekarten; mehr als fünf Themen werden abgelehnt. Brett und Spielende richten sich nach der tatsächlichen Themenzahl.
 - Pro Aufgabe sind manuelle Bewertung, Zahleneingabe mit Touch-Ziffernfeld oder Auswahl möglich. Auswahl nur nach Wunsch oder didaktischer Eignung. Zahl/Auswahl werden bei Abgabe automatisch geprüft; Lösungen und Prüfkriterien müssen übereinstimmen.

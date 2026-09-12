@@ -32,7 +32,7 @@ test('Ein bis fünf Themen mit jeweils fünf Fragen sind gültig', () => {
     E.questions(d).forEach(item=>E.rate(d,s,item.id,E.turn(s),false));assert.equal(s.history.length,n*5);assert.deepEqual(E.scores(d,s),[0,0]);assert.deepEqual(E.restore(d,clone(s)),s);}
 });
 test('Ungültige, doppelte und unvollständige Inhalte werden abgelehnt', () => {
-  for(const change of [d=>d.categories=[],d=>d.categories.push(clone(d.categories[0])),d=>d.categories[0].questions.pop(),d=>d.categories[0].questions[0].answer='',d=>d.categories[0].questions[1].id=d.categories[0].questions[0].id,d=>d.categories[0].questions[0].points=-100,d=>d.rules.subtractOnWrong=true,d=>d.rules.takeover=true,d=>d.categories[0].questions[0].table={headers:['x'],rows:[['a','b']]}]){const d=clone(data);change(d);assert.throws(()=>E.validate(d));}
+  for(const change of [d=>d.categories=[],d=>d.categories.push(clone(d.categories[0])),d=>d.categories[0].questions.pop(),d=>d.categories[0].questions[0].answer='',d=>d.categories[0].questions[1].id=d.categories[0].questions[0].id,d=>d.categories[0].questions[0].points=-100,d=>d.rules.subtractOnWrong="true",d=>d.rules.takeover=true,d=>d.categories[0].questions[0].table={headers:['x'],rows:[['a','b']]}]){const d=clone(data);change(d);assert.throws(()=>E.validate(d));}
 });
 test('Manipulierte und veraltete Speicherstände werden verworfen', () => {
   const s=E.fresh(data);E.rate(data,s,q[0].id,0,true);
@@ -54,4 +54,20 @@ test('Auswahl prüft die exakte Antwortmenge unabhängig von der Reihenfolge',()
 });
 test('Fehlerhafte Eingabeformate scheitern beim Build',()=>{
   for(const response of [{type:'other'},{type:'number',accepted:['1/2']},{type:'choice',options:['A','A'],correct:[0]},{type:'choice',options:['A','B'],correct:[2]}]){const d=clone(data);d.categories[0].questions[0].response=response;assert.throws(()=>E.validate(d));}
+});
+
+test('Optionale Wertung: Untergrenze je Ereignis, negative Werte, Undo und Speicherung',()=>{
+  for(const allowNegativeScores of [false,true]) {
+    const d=clone(data);d.rules={subtractOnWrong:true,allowNegativeScores,takeover:false};E.validate(d);
+    const s=E.fresh(d);E.rate(d,s,q[0].id,0,true);E.rate(d,s,q[1].id,1,false);E.rate(d,s,q[2].id,0,false);
+    assert.deepEqual(E.scores(d,s),allowNegativeScores?[-200,-200]:[0,0]);
+    assert.deepEqual(E.restore(d,clone(s)),s);
+    E.rate(d,s,q[3].id,1,true);assert.deepEqual(E.scores(d,s),allowNegativeScores?[-200,200]:[0,400]);
+    s.history.pop();s.history.pop();assert.deepEqual(E.scores(d,s),allowNegativeScores?[100,-200]:[100,0]);
+    const reset=E.fresh(d,s.names,s.scoring);assert.deepEqual(reset.scoring,s.scoring);assert.deepEqual(E.scores(d,reset),[0,0]);
+  }
+  const s=E.fresh(data);s.scoring.allowNegativeScores=true;E.rate(data,s,q[0].id,0,false);assert.deepEqual(E.scores(data,s),[0,0]);
+  delete s.scoring;assert.deepEqual(E.restore(data,s).scoring,{subtractOnWrong:false,allowNegativeScores:false});
+  for(const scoring of [null,{}, {subtractOnWrong:'true',allowNegativeScores:false}])assert.throws(()=>E.restore(data,Object.assign({},s,{scoring})));
+  const d=clone(data);d.rules.allowNegativeScores='yes';assert.throws(()=>E.validate(d));
 });

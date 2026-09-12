@@ -11,7 +11,7 @@
     if (typeof d.id === 'string' && !/^[a-z0-9-]+$/.test(d.id)) errors.push('id: nur a–z, 0–9 und Bindestriche.');
     if (!Array.isArray(d.teams) || d.teams.length < 2 || d.teams.length > 6) errors.push('2 bis 6 Teams erforderlich.');
     else d.teams.forEach((t, i) => str(t, 'teams[' + i + ']', 40));
-    if (!d.rules || d.rules.subtractOnWrong !== false || d.rules.takeover !== false) errors.push('rules.subtractOnWrong und rules.takeover müssen false sein: keine Minuspunkte, keine Übernahme.');
+    if (!d.rules || typeof d.rules.subtractOnWrong !== 'boolean' || d.rules.takeover !== false || (d.rules.allowNegativeScores !== undefined && typeof d.rules.allowNegativeScores !== 'boolean')) errors.push('Wertungsregeln müssen boolesch sein; rules.takeover muss false sein.');
     if (!Array.isArray(d.categories) || d.categories.length < 1 || d.categories.length > 5) errors.push('1 bis 5 Kategorien erforderlich.');
     const ids = new Set();
     (Array.isArray(d.categories) ? d.categories : []).forEach((c, ci) => {
@@ -65,13 +65,14 @@
     if(!Array.isArray(value)||!value.length||!value.every(i=>Number.isInteger(i)&&i>=0&&i<r.options.length)||new Set(value).size!==value.length) return null;
     return value.length===r.correct.length&&r.correct.every(i=>value.includes(i));
   }
-  function fresh(d, names) { return { version: 2, names: (names || d.teams).slice(), history: [] }; }
+  function fresh(d, names, scoring) { return { version: 2, names: (names || d.teams).slice(), scoring: scoring ? copy(scoring) : {subtractOnWrong:d.rules.subtractOnWrong,allowNegativeScores:d.rules.allowNegativeScores === true}, history: [] }; }
   function turn(s) { return s.history.length % s.names.length; }
   function scores(d, s) {
     const result = s.names.map(() => 0);
     s.history.forEach(e => {
       const q = questions(d).find(q => q.id === e.id);
       if (e.correct) result[e.team] += q.points;
+      else if (s.scoring && s.scoring.subtractOnWrong) result[e.team] = s.scoring.allowNegativeScores ? result[e.team] - q.points : Math.max(0, result[e.team] - q.points);
     });
     return result;
   }
@@ -84,7 +85,9 @@
   // Rebuild untrusted saved data through the rules; never trust saved totals.
   function restore(d, raw) {
     if (!raw || raw.version !== 2 || !Array.isArray(raw.names) || raw.names.length<2 || raw.names.length>6 || !raw.names.every(n => typeof n === 'string' && n.trim() && n.length <= 40) || !Array.isArray(raw.history) || raw.history.length > questions(d).length) throw new Error('Ungültiger Spielstand.');
-    const s = fresh(d, raw.names);
+    if (raw.scoring !== undefined && (!raw.scoring || typeof raw.scoring.subtractOnWrong !== 'boolean' || typeof raw.scoring.allowNegativeScores !== 'boolean')) throw new Error('Ungültige Wertungseinstellungen.');
+    // Older saves always used scoring without deductions.
+    const s = fresh(d, raw.names, raw.scoring || {subtractOnWrong:false,allowNegativeScores:false});
     raw.history.forEach(e => {
       if (!e || !rate(d, s, e.id, e.team, e.correct)) throw new Error('Doppelte oder ungültige Bewertung.');
     });

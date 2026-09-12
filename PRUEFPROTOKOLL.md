@@ -59,3 +59,12 @@ Die Prüfungen verwenden Browser-Automation auf Windows. **Nicht direkt geprüft
 Vor Unterrichtseinsatz einmal auf dem tatsächlichen Gerät prüfen: Datei öffnen, Touch-Eingabe, Teamwechsel, Bildschirmrotation, Browserzoom und gegebenenfalls Vollbild. Insbesondere bei iOS/iPadOS kann eine HTML-Datei in einer Dateivorschau statt in einem JavaScript-fähigen Browser landen. Der geeignete Verteilungs- und Öffnungsweg gehört deshalb zur Geräteprüfung.
 
 Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwortformate ergänzt. Die technische Prüfung ersetzt weder eine vollständige curriculare Prüfung noch die Kontrolle durch die unterrichtende Lehrkraft.
+
+## Ergänzung vom 12.09.2026: optionale Wertung und Klasse 8
+
+- Alle Spiele und der Spiel-Ersteller neu gebaut; 14 Engine-Tests bestanden.
+- Chromium 131, Firefox 153 und WebKit 26.5: scoring.cjs, feedback.cjs, browser.cjs und visual.cjs bestanden. Standard ohne Abzug, Untergrenze 0, negative Werte, tatsächliche Punktedifferenz im Popup, Reset, Rückgängig und Speicherung geprüft. Menü-Screenshot kontrolliert.
+- klasse8.cjs: alle 25 Aufgaben des neuen Mathematikquiz mit unabhängig festgelegten erwarteten Antworten in allen drei Engines korrekt gewertet; Teamfolge und Endstände 3900/3600 geprüft. Spielfeld-Screenshot kontrolliert.
+- pages.cjs: Startseite und vier Spiele unter einem Repository-Unterpfad einschließlich Verzeichnis-URLs in allen drei Engines geprüft.
+- Öffentliche Startseite per HTTP mit Status 200 erreichbar. README enthält direkte Pages-Links und den Online-Spiel-Ersteller.
+- Physische Touchdisplays, Android, Linux und echtes Safari auf Apple-Geräten wurden weiterhin nicht direkt getestet.
