@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "id": "elektronikerausbildung-abschluss-wiederholung",
+  "title": "Jeopardy · Elektronikerausbildung · 3. Lehrjahr",
+  "teams": [
+    "Team 1",
+    "Team 2"
+  ],
+  "rules": {
+    "subtractOnWrong": false,
+    "takeover": false
+  },
+  "categories": [
+    {
+      "title": "Sicherheit & Schutz",
+      "questions": [
+        {
+          "id": "sicherheit-100",
+          "points": 100,
+          "question": "Welche Leiterfarbe gehört zum Schutzleiter PE?",
+          "answer": "Grün-Gelb.",
+          "explanation": "Der Schutzleiter PE wird grün-gelb gekennzeichnet. Er dient dem Schutz gegen gefährliche Berührungsspannungen.",
+          "teacherNote": "Grundwissen zur Leiterkennzeichnung prüfen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Blau",
+              "Grün-Gelb",
+              "Braun",
+              "Schwarz"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "sicherheit-200",
+          "points": 200,
+          "question": "Welche der fünf Sicherheitsregeln kommt zuerst?",
+          "answer": "Freischalten.",
+          "explanation": "Vor Arbeiten an elektrischen Anlagen wird zuerst freigeschaltet. Danach folgen unter anderem das Sichern gegen Wiedereinschalten und das Feststellen der Spannungsfreiheit.",
+          "teacherNote": "Die Reihenfolge der Sicherheitsmaßnahmen soll sicher beherrscht werden.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Spannungsfreiheit feststellen",
+              "Freischalten",
+              "Gegen Wiedereinschalten sichern",
+              "Benachbarte Teile abdecken"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "sicherheit-300",
+          "points": 300,
+          "question": "Warum reicht es vor einer Arbeit nicht aus, nur den Schalter auf AUS zu stellen?",
+          "answer": "Die Stellung AUS beweist nicht, dass die Anlage spannungsfrei ist. Die Spannungsfreiheit muss geprüft werden.",
+          "explanation": "Ein Schalter kann falsch verdrahtet oder defekt sein. Außerdem können noch andere Einspeisungen vorhanden sein. Deshalb muss die Spannungsfreiheit mit einem geeigneten Prüfgerät festgestellt werden.",
+          "teacherNote": "Mündlich bewerten: Entscheidend sind die Begriffe Spannungsfreiheit und tatsächliche Prüfung.",
+          "response": {
+            "type": "manual"
+          }
+        },
+        {
+          "id": "sicherheit-400",
+          "points": 400,
+          "question": "Ein Teil des Stroms fließt wegen eines Fehlers über Erde zurück. Worauf reagiert ein RCD?",
+          "answer": "Auf die Differenz zwischen hin- und zurückfließendem Strom.",
+          "explanation": "Im fehlerfreien Stromkreis sind hin- und zurückfließender Strom gleich groß. Fließt ein Teil über Erde ab, entsteht eine Differenz. Darauf kann der RCD reagieren und abschalten.",
+          "teacherNote": "Nicht nur die Bezeichnung RCD abfragen, sondern das Grundprinzip des Differenzstroms.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Nur auf eine hohe Netzspannung",
+              "Auf die Differenz zwischen hin- und zurückfließendem Strom",
+              "Nur auf einen zu kleinen Leiterquerschnitt",
+              "Auf die Netzfrequenz"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "sicherheit-500",
+          "points": 500,
+          "question": "Begründe, warum der Schutzleiter PE nicht durch einen normalen Schalter unterbrochen werden darf.",
+          "answer": "Der Schutzleiter muss dauerhaft wirksam bleiben. Eine Unterbrechung kann die Schutzmaßnahme außer Funktion setzen.",
+          "explanation": "Bei einem Isolationsfehler soll der Schutzleiter einen sicheren Fehlerstrompfad bereitstellen. Wird der PE unterbrochen, können berührbare leitfähige Teile gefährlich werden, ohne dass die vorgesehene Schutzmaßnahme sicher wirkt.",
+          "teacherNote": "Mündlich bewerten: Erwartet werden Schutzfunktion, dauerhafte Verbindung und Gefahr bei einer Unterbrechung.",
+          "response": {
+            "type": "manual"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Ohmsches Gesetz & Leistung",
+      "questions": [
+        {
+          "id": "ohm-leistung-100",
+          "points": 100,
+          "question": "An einem Widerstand von 6 Ω liegen 12 V an. Wie groß ist der Strom?",
+          "answer": "2 A.",
+          "explanation": "Nach dem Ohmschen Gesetz gilt I = U / R. 12 V / 6 Ω = 2 A.",
+          "teacherNote": "Direkte Anwendung des Ohmschen Gesetzes.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "2"
+            ],
+            "unit": "A"
+          }
+        },
+        {
+          "id": "ohm-leistung-200",
+          "points": 200,
+          "question": "Ein Gerät wird mit 230 V betrieben und nimmt 2 A auf. Wie groß ist seine Wirkleistung bei vereinfachter Betrachtung mit P = U · I?",
+          "answer": "460 W.",
+          "explanation": "P = U · I. 230 V · 2 A = 460 W.",
+          "teacherNote": "Die Aufgabe verwendet bewusst die vereinfachte Leistungsformel ohne Leistungsfaktor.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "460"
+            ],
+            "unit": "W"
+          }
+        },
+        {
+          "id": "ohm-leistung-300",
+          "points": 300,
+          "question": "Ein Heizgerät hat 2300 W Leistung an 230 V. Wie groß ist der Strom?",
+          "answer": "10 A.",
+          "explanation": "Aus P = U · I folgt I = P / U. 2300 W / 230 V = 10 A.",
+          "teacherNote": "Umstellen der Leistungsformel prüfen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "10"
+            ],
+            "unit": "A"
+          }
+        },
+        {
+          "id": "ohm-leistung-400",
+          "points": 400,
+          "question": "Ein Heizgerät mit 2 kW läuft 3 Stunden. Wie viel elektrische Energie verbraucht es?",
+          "answer": "6 kWh.",
+          "explanation": "E = P · t. 2 kW · 3 h = 6 kWh.",
+          "teacherNote": "Auf die Unterscheidung zwischen Leistung in kW und Energie in kWh achten.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "6"
+            ],
+            "unit": "kWh"
+          }
+        },
+        {
+          "id": "ohm-leistung-500",
+          "points": 500,
+          "question": "Zwei Heizwiderstände liegen jeweils an derselben Spannung. R1 = 46 Ω und R2 = 92 Ω. Welche Aussage zur Leistung stimmt?",
+          "answer": "R1 hat die doppelte Leistung von R2.",
+          "explanation": "Bei gleicher Spannung gilt P = U² / R. Der halb so große Widerstand nimmt deshalb die doppelte Leistung auf. 46 Ω ist halb so groß wie 92 Ω.",
+          "teacherNote": "Vergleichsaufgabe: Zusammenhang zwischen Widerstand und Leistung bei konstanter Spannung prüfen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "R1 hat die doppelte Leistung von R2",
+              "R2 hat die doppelte Leistung von R1",
+              "Beide haben dieselbe Leistung",
+              "R1 hat nur ein Viertel der Leistung von R2"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reihen- & Parallelschaltung",
+      "questions": [
+        {
+          "id": "schaltungen-100",
+          "points": 100,
+          "question": "Zwei Widerstände mit 100 Ω und 220 Ω liegen in Reihe. Wie groß ist der Gesamtwiderstand?",
+          "answer": "320 Ω.",
+          "explanation": "Bei einer Reihenschaltung werden die Widerstände addiert. 100 Ω + 220 Ω = 320 Ω.",
+          "teacherNote": "Grundregel der Reihenschaltung.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "320"
+            ],
+            "unit": "Ω"
+          }
+        },
+        {
+          "id": "schaltungen-200",
+          "points": 200,
+          "question": "Zwei Widerstände mit jeweils 100 Ω liegen parallel. Wie groß ist der Gesamtwiderstand?",
+          "answer": "50 Ω.",
+          "explanation": "Bei zwei gleichen parallel geschalteten Widerständen halbiert sich der Widerstand. 100 Ω / 2 = 50 Ω.",
+          "teacherNote": "Einfache Parallelschaltung gleicher Widerstände.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "50"
+            ],
+            "unit": "Ω"
+          }
+        },
+        {
+          "id": "schaltungen-300",
+          "points": 300,
+          "question": "100 Ω und 200 Ω liegen in Reihe an 12 V. Wie groß ist die Spannung am 200-Ω-Widerstand?",
+          "answer": "8 V.",
+          "explanation": "Der Gesamtwiderstand beträgt 300 Ω. Der 200-Ω-Widerstand erhält zwei Drittel der Gesamtspannung. Zwei Drittel von 12 V sind 8 V.",
+          "teacherNote": "Spannungsteilung und Verhältnis der Widerstände prüfen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ],
+            "unit": "V"
+          }
+        },
+        {
+          "id": "schaltungen-400",
+          "points": 400,
+          "question": "Wie verhält sich der Gesamtwiderstand einer Parallelschaltung im Vergleich zum kleinsten Einzelwiderstand?",
+          "answer": "Er ist kleiner als der kleinste Einzelwiderstand.",
+          "explanation": "Durch jeden zusätzlichen parallelen Stromweg steigt die Leitfähigkeit der Gesamtschaltung. Deshalb ist der Gesamtwiderstand kleiner als jeder einzelne Parallelwiderstand.",
+          "teacherNote": "Konzeptverständnis statt bloßer Formelanwendung prüfen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Er ist immer größer",
+              "Er ist genauso groß",
+              "Er ist kleiner",
+              "Er ist immer doppelt so groß"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "schaltungen-500",
+          "points": 500,
+          "question": "Ein 60-Ω- und ein 30-Ω-Widerstand liegen parallel an 12 V. Wie groß ist der Gesamtstrom?",
+          "answer": "0,6 A.",
+          "explanation": "Durch 60 Ω fließen 12 V / 60 Ω = 0,2 A. Durch 30 Ω fließen 12 V / 30 Ω = 0,4 A. Zusammen sind das 0,6 A.",
+          "teacherNote": "Mehrschrittige Aufgabe: Teilströme berechnen und anschließend addieren.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "0.6"
+            ],
+            "unit": "A"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Installation & Messen",
+      "questions": [
+        {
+          "id": "installation-100",
+          "points": 100,
+          "question": "Wie wird ein Strommessgerät zur Strommessung in einen Stromkreis geschaltet?",
+          "answer": "In Reihe.",
+          "explanation": "Der zu messende Strom muss durch das Messgerät fließen. Deshalb wird das Strommessgerät in Reihe in den Stromkreis eingefügt.",
+          "teacherNote": "Grundlegende sichere Anwendung von Messgeräten.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "In Reihe",
+              "Parallel",
+              "Nur an PE",
+              "Ohne Verbindung zum Stromkreis"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "installation-200",
+          "points": 200,
+          "question": "Wie wird ein Spannungsmessgerät zur Messung an einem Verbraucher angeschlossen?",
+          "answer": "Parallel zum Verbraucher.",
+          "explanation": "Spannung ist die Potentialdifferenz zwischen zwei Punkten. Deshalb wird das Spannungsmessgerät parallel zu den beiden Messpunkten angeschlossen.",
+          "teacherNote": "Strom- und Spannungsmessung voneinander unterscheiden.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "In Reihe zum Verbraucher",
+              "Parallel zum Verbraucher",
+              "Nur zwischen N und PE",
+              "An nur einen Leiter"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "installation-300",
+          "points": 300,
+          "question": "Hin- und Rückleiter haben zusammen einen Widerstand von 0,8 Ω. Es fließen 10 A. Wie groß ist der Spannungsfall?",
+          "answer": "8 V.",
+          "explanation": "Für den Spannungsfall gilt U = R · I. 0,8 Ω · 10 A = 8 V.",
+          "teacherNote": "Die Angabe enthält bereits den gemeinsamen Widerstand von Hin- und Rückleiter.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ],
+            "unit": "V"
+          }
+        },
+        {
+          "id": "installation-400",
+          "points": 400,
+          "question": "Mit welcher Prüfung lässt sich feststellen, ob der Schutzleiter elektrisch durchgängig verbunden ist?",
+          "answer": "Mit einer Durchgängigkeits- beziehungsweise Niederohmprüfung des Schutzleiters.",
+          "explanation": "Die elektrische Verbindung des Schutzleiters wird über eine geeignete Durchgängigkeits- oder Niederohmprüfung kontrolliert. Eine reine Spannungsmessung ersetzt diese Prüfung nicht.",
+          "teacherNote": "Messverfahren passend zur gesuchten Fehlerart auswählen lassen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Durchgängigkeits- beziehungsweise Niederohmprüfung",
+              "Nur Spannungsmessung zwischen L und N",
+              "Frequenzmessung",
+              "Leistungsmessung am Verbraucher"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "installation-500",
+          "points": 500,
+          "question": "Drei Verbraucher mit 500 W, 800 W und 1000 W laufen gleichzeitig an 230 V. Wie groß ist der Gesamtstrom bei vereinfachter Betrachtung?",
+          "answer": "10 A.",
+          "explanation": "Die Leistungen werden zuerst addiert: 500 W + 800 W + 1000 W = 2300 W. Danach gilt I = P / U. 2300 W / 230 V = 10 A.",
+          "teacherNote": "Mehrschrittiges Vorgehen aus Gesamtleistung und Stromberechnung prüfen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "10"
+            ],
+            "unit": "A"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Steuerungs- & Schaltungstechnik",
+      "questions": [
+        {
+          "id": "steuerung-100",
+          "points": 100,
+          "question": "Welchen Zustand hat ein Schließerkontakt im nicht betätigten Zustand?",
+          "answer": "Er ist offen.",
+          "explanation": "Ein Schließer ist in Ruhestellung offen. Erst durch Betätigung wird der Kontakt geschlossen.",
+          "teacherNote": "Grundbegriffe Schließer und Öffner unterscheiden.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Offen",
+              "Geschlossen",
+              "Kurzgeschlossen",
+              "Geerdet"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "steuerung-200",
+          "points": 200,
+          "question": "Was geschieht mit einem Schließerkontakt eines Relais, wenn das Relais bestimmungsgemäß anzieht?",
+          "answer": "Der Schließerkontakt schließt.",
+          "explanation": "Beim Anziehen des Relais ändern die zugehörigen Kontakte ihren Schaltzustand. Ein Schließer wechselt dabei von offen auf geschlossen.",
+          "teacherNote": "Zusammenhang zwischen Spule und Kontaktzustand prüfen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Der Schließerkontakt schließt",
+              "Der Schließerkontakt bleibt immer offen",
+              "Die Versorgungsspannung wird verdoppelt",
+              "Der Schutzleiter wird abgeschaltet"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "steuerung-300",
+          "points": 300,
+          "question": "Eine Relaisspule hat 120 Ω und wird mit 24 V betrieben. Wie groß ist der Spulenstrom?",
+          "answer": "0,2 A.",
+          "explanation": "Nach dem Ohmschen Gesetz gilt I = U / R. 24 V / 120 Ω = 0,2 A.",
+          "teacherNote": "Ohmsches Gesetz in einem steuerungstechnischen Zusammenhang anwenden.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "0.2"
+            ],
+            "unit": "A"
+          }
+        },
+        {
+          "id": "steuerung-400",
+          "points": 400,
+          "question": "Zwei Schließertaster liegen in Reihe vor einer Relaisspule. Wann kann die Spule Strom bekommen?",
+          "answer": "Nur wenn beide Schließertaster geschlossen sind.",
+          "explanation": "Bei einer Reihenschaltung muss der Stromweg an jeder Stelle geschlossen sein. Öffnet einer der beiden Kontakte, ist der Stromkreis unterbrochen.",
+          "teacherNote": "Verknüpfung einer Reihenschaltung mit der UND-Funktion herstellen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Wenn mindestens ein Taster geschlossen ist",
+              "Nur wenn beide Taster geschlossen sind",
+              "Nur wenn beide Taster offen sind",
+              "Unabhängig von den Tastern"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "steuerung-500",
+          "points": 500,
+          "question": "Bei einer Selbsthalteschaltung liegt ein Hilfsschließer parallel zum Starttaster. Erkläre seine Aufgabe.",
+          "answer": "Der Hilfsschließer hält den Stromweg nach dem Loslassen des Starttasters geschlossen, solange die Selbsthaltung nicht unterbrochen wird.",
+          "explanation": "Beim Drücken des Starttasters zieht das Relais oder Schütz an. Dadurch schließt der Hilfskontakt und überbrückt den Starttaster. Nach dem Loslassen bleibt die Spule dadurch weiter versorgt, bis der Stromkreis zum Beispiel über den Stopptaster unterbrochen wird.",
+          "teacherNote": "Mündlich bewerten: Erwartet werden Startvorgang, Hilfskontakt und Aufrechterhaltung des Spulenstroms nach dem Loslassen.",
+          "response": {
+            "type": "manual"
+          }
+        }
+      ]
+    }
+  ]
+}

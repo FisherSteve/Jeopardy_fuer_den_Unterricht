@@ -1,6 +1,6 @@
 # Inhaltsauftrag: Jeopardy Mathematik Klasse 5
 
-Verwende diesen Inhaltsauftrag zusammen mit `Framework-Prompt.md` und dem vorhandenen Framework. Erstelle oder aktualisiere den Aufgabensatz `content/mathematik-klasse-5.json` und baue daraus `spiele/mathematik-klasse-5.html`. Keine neue Spielengine erstellen. Die technischen Regeln und das Datenformat stehen in der Framework-Prompt.
+Verwende diesen Inhaltsauftrag zusammen mit `Framework-Prompt.md` und dem vorhandenen Framework. Erstelle oder aktualisiere den Aufgabensatz `content/mathematik-klasse-5.json` und baue daraus `spiele/mathematik-klasse-5/index.html`. Keine neue Spielengine erstellen. Die technischen Regeln und das Datenformat stehen in der Framework-Prompt.
 
 Verbindlich: keine Minuspunkte, keine Übernahme, automatische Teamreihenfolge ab Team 1, deutlich angezeigtes aktives Team und standardmäßig ausgeblendete Lehrkräftehinweise. Richtig und falsch schließen die Karte sofort; danach folgt das nächste Team. Kurze Antwort, vorlesbare Erklärung und diagnostischen Hinweis getrennt speichern. Dieser konkrete Auftrag verwendet alle fünf Themen; das Framework unterstützt auch kürzere Spiele mit ein bis vier Themen.
 

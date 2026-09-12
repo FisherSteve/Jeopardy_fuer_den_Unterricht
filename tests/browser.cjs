@@ -7,8 +7,8 @@ const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const output = path.join(__dirname, '../tests/screenshots');
 fs.mkdirSync(output, {recursive:true});
-const url = pathToFileURL(path.join(__dirname, '../spiele/mathematik-klasse-5.html')).href;
-const file6 = pathToFileURL(path.join(__dirname, '../spiele/faechermix-klasse-6.html')).href;
+const url = pathToFileURL(path.join(__dirname, '../spiele/mathematik-klasse-5/index.html')).href;
+const file6 = pathToFileURL(path.join(__dirname, '../spiele/faechermix-klasse-6/index.html')).href;
 const engines = process.env.BROWSER_ENGINES ? process.env.BROWSER_ENGINES.split(',') : ['chromium','firefox','webkit'];
 async function teacher(page){await page.locator('#settings').click();await page.locator('#teacher-tools-enabled').check();await page.locator('#close').click();}
 (async () => {
@@ -86,7 +86,7 @@ async function teacher(page){await page.locator('#settings').click();await page.
    await self.locator('[data-question="k1-200"]').tap();await self.keyboard.type('999');await self.locator('#submit-response').tap();assert.match(await self.locator('#turn-banner').innerText(),/Team 1/);assert.deepEqual(await self.locator('.score').allTextContents(),['100 P','400 P','0 P']);
    await self.locator('#settings').click();assert.equal(await self.locator('#add-team').isDisabled(),true);await self.locator('#reset-open').click();await self.locator('#reset-confirm').click();assert.equal(await self.locator('.team').count(),3);assert.deepEqual(await self.locator('.score').allTextContents(),['0 P','0 P','0 P']);
    await selfContext.close();
-   const html=fs.readFileSync(path.join(__dirname,'../spiele/mathematik-klasse-5.html'),'utf8');
+   const html=fs.readFileSync(path.join(__dirname,'../spiele/mathematik-klasse-5/index.html'),'utf8');
    for(let n=1;n<=5;n++) {
     const d=JSON.parse(fs.readFileSync(path.join(__dirname,'../content/mathematik-klasse-5.json'),'utf8')); d.categories=d.categories.slice(0,n); d.id='test-'+n;d.categories.forEach(c=>c.questions.forEach(q=>delete q.response));
     const themed=html.replace(/(<script id="game-data" type="application\/json">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(d)+b);

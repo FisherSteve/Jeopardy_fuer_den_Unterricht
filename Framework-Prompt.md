@@ -129,7 +129,7 @@ Formuliere sinnvolle, plausible Ablenkantworten ohne Tricks. Auswahlaufgaben nur
 
 1. `README.md`, diesen Auftrag und einen vorhandenen Aufgabensatz lesen.
 2. Nur den neuen Aufgabensatz als `content/<kennung>.json` erstellen. Bestehende Spielinhalte nicht ohne Auftrag überschreiben. Die gemeinsame Engine, Darstellung und Bedienlogik wiederverwenden.
-3. Mit `node build.js content/<kennung>.json` eine eigenständige Datei unter `spiele/` bauen. `node build.js` baut alle Aufgabensätze. Kein `npm install` für den Build nötig.
+3. Mit `node build.js content/<kennung>.json` die eigenständige Datei `spiele/<kennung>/index.html` bauen. `node build.js` baut alle Aufgabensätze. Die Root-Startseite wird aus allen vorhandenen Spielordnern aktualisiert. Kein `npm install` für den Build nötig. Neue Spiele nicht mehr als flache Dateien unter `spiele/` ablegen.
 4. Mit `npm test` die Spielregeln prüfen. Datenvalidierung ist bereits Teil des Builds. Aufgaben zusätzlich fachlich überprüfen; die technische Validierung erkennt keine falsche Rechnung.
 5. Bei Änderungen am Framework zusätzlich `tests/browser.cjs` ausführen. Neue Regeln brauchen passende Verhaltenstests. Eine reine Inhaltsänderung verlangt mindestens eine Sichtprüfung der längsten Frage, Antwort und Tabelle.
 6. Eine lokal nutzbare HTML-Datei liefern, dazu den wiederverwendbaren JSON-Aufgabensatz. Testergebnisse wahrheitsgemäß nennen: ausgeführt, nicht ausgeführt und verbleibende Geräteprüfung unterscheiden.

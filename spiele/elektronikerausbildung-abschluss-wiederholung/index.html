@@ -42,7 +42,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
 @media(max-width:700px){header{align-items:flex-start;flex-direction:column}nav{justify-content:flex-start}.eyebrow{font-size:11px}.teams{grid-template-columns:repeat(2,minmax(0,1fr))}.team{padding:10px;gap:6px;flex-wrap:wrap}.names{grid-template-columns:1fr}.grading{gap:8px}footer{flex-direction:column}#status{max-width:100%;text-align:left}}
 @media(min-width:700px){#number-response{max-width:900px;display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:auto auto 1fr;column-gap:28px;align-items:start}#numpad{grid-column:2;grid-row:1 / span 3}#number-help{grid-column:1}}
 @keyframes turn-in{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:no-preference){button{transition:background-color .12s}.turn-change,.team.active,.team-indicator.active{animation:turn-in .45s ease-out}}
+@media(prefers-reduced-motion:no-preference){button{transition:background-color .12s}.turn-change{animation:turn-in .45s ease-out}}
 </style>
 </head>
 <body>
@@ -98,8 +98,8 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
 <!-- Nur diesen JSON-Inhalt durch einen validierten Aufgabensatz ersetzen. -->
 <script id="game-data" type="application/json">{
   "schemaVersion": 1,
-  "id": "creator-chromium",
-  "title": "Jeopardy · Mathematik · Klasse 5",
+  "id": "elektronikerausbildung-abschluss-wiederholung",
+  "title": "Jeopardy · Elektronikerausbildung · 3. Lehrjahr",
   "teams": [
     "Team 1",
     "Team 2"
@@ -110,65 +110,22 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   },
   "categories": [
     {
-      "title": "Zahlen & Rechnen",
+      "title": "Sicherheit & Schutz",
       "questions": [
         {
-          "id": "k1-100",
+          "id": "sicherheit-100",
           "points": 100,
-          "question": "Text bleibt Text: \u003c/script>\u003cimg src=x onerror=alert(1)>",
-          "answer": "480 ist größer.",
-          "explanation": "Vergleiche zuerst die Hunderter: Beide Zahlen haben vier Hunderter. 480 hat acht Zehner, 408 hat keinen Zehner; deshalb ist 480 größer.",
-          "teacherNote": "Prüft Zahlvergleich und Stellenwertverständnis.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "480"
-            ],
-            "unit": ""
-          }
-        },
-        {
-          "id": "k1-200",
-          "points": 200,
-          "question": "Rechne: 347 + 125",
-          "answer": "472",
-          "explanation": "Rechne zunächst 347 + 100 = 447. Addiere dann 25: 447 + 25 = 472.",
-          "teacherNote": "Grundlegende Addition mit Übertrag.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "472"
-            ],
-            "unit": ""
-          }
-        },
-        {
-          "id": "k1-300",
-          "points": 300,
-          "question": "Welche Zahl fehlt? 900 − ___ = 275",
-          "answer": "625",
-          "explanation": "Die gesuchte Zahl ist die Differenz zwischen 900 und 275. 900 − 275 = 625; die Probe lautet 900 − 625 = 275.",
-          "teacherNote": "Umkehraufgabe; Zusammenhang zwischen Subtraktion und Ergänzen.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "625"
-            ],
-            "unit": ""
-          }
-        },
-        {
-          "id": "k1-400",
-          "points": 400,
-          "question": "Ohne genau auszurechnen: Liegt 398 + 207 näher bei 500 oder bei 600?",
-          "answer": "Näher bei 600.",
-          "explanation": "Runde 398 auf 400 und 207 auf 200. Der Überschlag ergibt 600; die tatsächliche Summe liegt daher näher bei 600 als bei 500.",
-          "teacherNote": "Hier zählt die Begründung mit einem sinnvollen Überschlag.",
+          "question": "Welche Leiterfarbe gehört zum Schutzleiter PE?",
+          "answer": "Grün-Gelb.",
+          "explanation": "Der Schutzleiter PE wird grün-gelb gekennzeichnet. Er dient dem Schutz gegen gefährliche Berührungsspannungen.",
+          "teacherNote": "Grundwissen zur Leiterkennzeichnung prüfen.",
           "response": {
             "type": "choice",
             "options": [
-              "Näher bei 500",
-              "Näher bei 600"
+              "Blau",
+              "Grün-Gelb",
+              "Braun",
+              "Schwarz"
             ],
             "correct": [
               1
@@ -176,38 +133,256 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
           }
         },
         {
-          "id": "k1-500",
-          "points": 500,
-          "question": "Ich denke mir eine Zahl. Ich verdopple sie und addiere 6. Das Ergebnis ist 30. Welche Zahl war es?",
-          "answer": "12",
-          "explanation": "Gehe rückwärts: 30 − 6 = 24. Vor dem Verdoppeln war die Zahl 24 : 2 = 12.",
-          "teacherNote": "Mehrschrittiges Rückwärtsdenken mit Grundrechenarten.",
+          "id": "sicherheit-200",
+          "points": 200,
+          "question": "Welche der fünf Sicherheitsregeln kommt zuerst?",
+          "answer": "Freischalten.",
+          "explanation": "Vor Arbeiten an elektrischen Anlagen wird zuerst freigeschaltet. Danach folgen unter anderem das Sichern gegen Wiedereinschalten und das Feststellen der Spannungsfreiheit.",
+          "teacherNote": "Die Reihenfolge der Sicherheitsmaßnahmen soll sicher beherrscht werden.",
           "response": {
-            "type": "number",
-            "accepted": [
-              "12"
+            "type": "choice",
+            "options": [
+              "Spannungsfreiheit feststellen",
+              "Freischalten",
+              "Gegen Wiedereinschalten sichern",
+              "Benachbarte Teile abdecken"
             ],
-            "unit": ""
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "sicherheit-300",
+          "points": 300,
+          "question": "Warum reicht es vor einer Arbeit nicht aus, nur den Schalter auf AUS zu stellen?",
+          "answer": "Die Stellung AUS beweist nicht, dass die Anlage spannungsfrei ist. Die Spannungsfreiheit muss geprüft werden.",
+          "explanation": "Ein Schalter kann falsch verdrahtet oder defekt sein. Außerdem können noch andere Einspeisungen vorhanden sein. Deshalb muss die Spannungsfreiheit mit einem geeigneten Prüfgerät festgestellt werden.",
+          "teacherNote": "Mündlich bewerten: Entscheidend sind die Begriffe Spannungsfreiheit und tatsächliche Prüfung.",
+          "response": {
+            "type": "manual"
+          }
+        },
+        {
+          "id": "sicherheit-400",
+          "points": 400,
+          "question": "Ein Teil des Stroms fließt wegen eines Fehlers über Erde zurück. Worauf reagiert ein RCD?",
+          "answer": "Auf die Differenz zwischen hin- und zurückfließendem Strom.",
+          "explanation": "Im fehlerfreien Stromkreis sind hin- und zurückfließender Strom gleich groß. Fließt ein Teil über Erde ab, entsteht eine Differenz. Darauf kann der RCD reagieren und abschalten.",
+          "teacherNote": "Nicht nur die Bezeichnung RCD abfragen, sondern das Grundprinzip des Differenzstroms.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Nur auf eine hohe Netzspannung",
+              "Auf die Differenz zwischen hin- und zurückfließendem Strom",
+              "Nur auf einen zu kleinen Leiterquerschnitt",
+              "Auf die Netzfrequenz"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "sicherheit-500",
+          "points": 500,
+          "question": "Begründe, warum der Schutzleiter PE nicht durch einen normalen Schalter unterbrochen werden darf.",
+          "answer": "Der Schutzleiter muss dauerhaft wirksam bleiben. Eine Unterbrechung kann die Schutzmaßnahme außer Funktion setzen.",
+          "explanation": "Bei einem Isolationsfehler soll der Schutzleiter einen sicheren Fehlerstrompfad bereitstellen. Wird der PE unterbrochen, können berührbare leitfähige Teile gefährlich werden, ohne dass die vorgesehene Schutzmaßnahme sicher wirkt.",
+          "teacherNote": "Mündlich bewerten: Erwartet werden Schutzfunktion, dauerhafte Verbindung und Gefahr bei einer Unterbrechung.",
+          "response": {
+            "type": "manual"
           }
         }
       ]
     },
     {
-      "title": "Größen, Geld & Zeit",
+      "title": "Ohmsches Gesetz & Leistung",
       "questions": [
         {
-          "id": "k2-100",
+          "id": "ohm-leistung-100",
           "points": 100,
-          "question": "Was ist mehr: 2 € oder 180 Cent?",
-          "answer": "2 €, denn 2 € = 200 Cent.",
-          "explanation": "Ein Euro sind 100 Cent. Zwei Euro sind 200 Cent und damit 20 Cent mehr als 180 Cent.",
-          "teacherNote": "Euro-Cent-Grundverständnis.",
+          "question": "An einem Widerstand von 6 Ω liegen 12 V an. Wie groß ist der Strom?",
+          "answer": "2 A.",
+          "explanation": "Nach dem Ohmschen Gesetz gilt I = U / R. 12 V / 6 Ω = 2 A.",
+          "teacherNote": "Direkte Anwendung des Ohmschen Gesetzes.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "2"
+            ],
+            "unit": "A"
+          }
+        },
+        {
+          "id": "ohm-leistung-200",
+          "points": 200,
+          "question": "Ein Gerät wird mit 230 V betrieben und nimmt 2 A auf. Wie groß ist seine Wirkleistung bei vereinfachter Betrachtung mit P = U · I?",
+          "answer": "460 W.",
+          "explanation": "P = U · I. 230 V · 2 A = 460 W.",
+          "teacherNote": "Die Aufgabe verwendet bewusst die vereinfachte Leistungsformel ohne Leistungsfaktor.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "460"
+            ],
+            "unit": "W"
+          }
+        },
+        {
+          "id": "ohm-leistung-300",
+          "points": 300,
+          "question": "Ein Heizgerät hat 2300 W Leistung an 230 V. Wie groß ist der Strom?",
+          "answer": "10 A.",
+          "explanation": "Aus P = U · I folgt I = P / U. 2300 W / 230 V = 10 A.",
+          "teacherNote": "Umstellen der Leistungsformel prüfen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "10"
+            ],
+            "unit": "A"
+          }
+        },
+        {
+          "id": "ohm-leistung-400",
+          "points": 400,
+          "question": "Ein Heizgerät mit 2 kW läuft 3 Stunden. Wie viel elektrische Energie verbraucht es?",
+          "answer": "6 kWh.",
+          "explanation": "E = P · t. 2 kW · 3 h = 6 kWh.",
+          "teacherNote": "Auf die Unterscheidung zwischen Leistung in kW und Energie in kWh achten.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "6"
+            ],
+            "unit": "kWh"
+          }
+        },
+        {
+          "id": "ohm-leistung-500",
+          "points": 500,
+          "question": "Zwei Heizwiderstände liegen jeweils an derselben Spannung. R1 = 46 Ω und R2 = 92 Ω. Welche Aussage zur Leistung stimmt?",
+          "answer": "R1 hat die doppelte Leistung von R2.",
+          "explanation": "Bei gleicher Spannung gilt P = U² / R. Der halb so große Widerstand nimmt deshalb die doppelte Leistung auf. 46 Ω ist halb so groß wie 92 Ω.",
+          "teacherNote": "Vergleichsaufgabe: Zusammenhang zwischen Widerstand und Leistung bei konstanter Spannung prüfen.",
           "response": {
             "type": "choice",
             "options": [
-              "2 €",
-              "180 Cent",
-              "Beides ist gleich viel"
+              "R1 hat die doppelte Leistung von R2",
+              "R2 hat die doppelte Leistung von R1",
+              "Beide haben dieselbe Leistung",
+              "R1 hat nur ein Viertel der Leistung von R2"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reihen- & Parallelschaltung",
+      "questions": [
+        {
+          "id": "schaltungen-100",
+          "points": 100,
+          "question": "Zwei Widerstände mit 100 Ω und 220 Ω liegen in Reihe. Wie groß ist der Gesamtwiderstand?",
+          "answer": "320 Ω.",
+          "explanation": "Bei einer Reihenschaltung werden die Widerstände addiert. 100 Ω + 220 Ω = 320 Ω.",
+          "teacherNote": "Grundregel der Reihenschaltung.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "320"
+            ],
+            "unit": "Ω"
+          }
+        },
+        {
+          "id": "schaltungen-200",
+          "points": 200,
+          "question": "Zwei Widerstände mit jeweils 100 Ω liegen parallel. Wie groß ist der Gesamtwiderstand?",
+          "answer": "50 Ω.",
+          "explanation": "Bei zwei gleichen parallel geschalteten Widerständen halbiert sich der Widerstand. 100 Ω / 2 = 50 Ω.",
+          "teacherNote": "Einfache Parallelschaltung gleicher Widerstände.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "50"
+            ],
+            "unit": "Ω"
+          }
+        },
+        {
+          "id": "schaltungen-300",
+          "points": 300,
+          "question": "100 Ω und 200 Ω liegen in Reihe an 12 V. Wie groß ist die Spannung am 200-Ω-Widerstand?",
+          "answer": "8 V.",
+          "explanation": "Der Gesamtwiderstand beträgt 300 Ω. Der 200-Ω-Widerstand erhält zwei Drittel der Gesamtspannung. Zwei Drittel von 12 V sind 8 V.",
+          "teacherNote": "Spannungsteilung und Verhältnis der Widerstände prüfen.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ],
+            "unit": "V"
+          }
+        },
+        {
+          "id": "schaltungen-400",
+          "points": 400,
+          "question": "Wie verhält sich der Gesamtwiderstand einer Parallelschaltung im Vergleich zum kleinsten Einzelwiderstand?",
+          "answer": "Er ist kleiner als der kleinste Einzelwiderstand.",
+          "explanation": "Durch jeden zusätzlichen parallelen Stromweg steigt die Leitfähigkeit der Gesamtschaltung. Deshalb ist der Gesamtwiderstand kleiner als jeder einzelne Parallelwiderstand.",
+          "teacherNote": "Konzeptverständnis statt bloßer Formelanwendung prüfen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Er ist immer größer",
+              "Er ist genauso groß",
+              "Er ist kleiner",
+              "Er ist immer doppelt so groß"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "schaltungen-500",
+          "points": 500,
+          "question": "Ein 60-Ω- und ein 30-Ω-Widerstand liegen parallel an 12 V. Wie groß ist der Gesamtstrom?",
+          "answer": "0,6 A.",
+          "explanation": "Durch 60 Ω fließen 12 V / 60 Ω = 0,2 A. Durch 30 Ω fließen 12 V / 30 Ω = 0,4 A. Zusammen sind das 0,6 A.",
+          "teacherNote": "Mehrschrittige Aufgabe: Teilströme berechnen und anschließend addieren.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "0.6"
+            ],
+            "unit": "A"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Installation & Messen",
+      "questions": [
+        {
+          "id": "installation-100",
+          "points": 100,
+          "question": "Wie wird ein Strommessgerät zur Strommessung in einen Stromkreis geschaltet?",
+          "answer": "In Reihe.",
+          "explanation": "Der zu messende Strom muss durch das Messgerät fließen. Deshalb wird das Strommessgerät in Reihe in den Stromkreis eingefügt.",
+          "teacherNote": "Grundlegende sichere Anwendung von Messgeräten.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "In Reihe",
+              "Parallel",
+              "Nur an PE",
+              "Ohne Verbindung zum Stromkreis"
             ],
             "correct": [
               0
@@ -215,177 +390,19 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
           }
         },
         {
-          "id": "k2-200",
+          "id": "installation-200",
           "points": 200,
-          "question": "Ein Heft kostet 2,40 €. Du bezahlst mit 5 €. Wie viel Geld bekommst du zurück?",
-          "answer": "2,60 €.",
-          "explanation": "Ergänze von 2,40 € bis 5 €. Erst 0,60 € bis 3 €, dann 2 € bis 5 €: zusammen 2,60 €.",
-          "teacherNote": "Alltagsnahes Rückgeldrechnen.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "2.60"
-            ],
-            "unit": "€"
-          }
-        },
-        {
-          "id": "k2-300",
-          "points": 300,
-          "question": "Der Unterricht beginnt um 8:00 Uhr. Eine Stunde und 35 Minuten später ist Pause. Wann beginnt die Pause?",
-          "answer": "9:35 Uhr.",
-          "explanation": "Eine Stunde nach 8:00 Uhr ist es 9:00 Uhr. Weitere 35 Minuten ergeben 9:35 Uhr.",
-          "teacherNote": "Zeitspanne zu einer Uhrzeit addieren."
-        },
-        {
-          "id": "k2-400",
-          "points": 400,
-          "question": "Ein Schulweg ist 1 km und 250 m lang. Wie viele Meter sind das?",
-          "answer": "1 250 m.",
-          "explanation": "Ein Kilometer entspricht 1000 Metern. Mit den weiteren 250 Metern sind das 1250 Meter.",
-          "teacherNote": "Verbindet Kilometer und Meter.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "1250"
-            ],
-            "unit": "m"
-          }
-        },
-        {
-          "id": "k2-500",
-          "points": 500,
-          "question": "Du hast 10 €. Du kaufst ein Getränk für 1,80 € und ein Brötchen für 2,70 €. Reicht das Geld noch für ein Heft für 5,90 €?",
-          "answer": "Nein.",
-          "explanation": "Getränk und Brötchen kosten zusammen 4,50 €. Von 10 € bleiben 5,50 €; für das Heft fehlen noch 0,40 €.",
-          "teacherNote": "Mehrere Geldbeträge verbinden und Ergebnis sinnvoll beurteilen."
-        }
-      ]
-    },
-    {
-      "title": "Formen, Raum & Messen",
-      "questions": [
-        {
-          "id": "k3-100",
-          "points": 100,
-          "question": "Ich habe vier gleich lange Seiten und vier rechte Winkel. Welche Form bin ich?",
-          "answer": "Ein Quadrat.",
-          "explanation": "Ein Quadrat hat vier gleich lange Seiten und vier rechte Winkel. Ohne die Angabe der rechten Winkel könnte auch eine andere Raute gemeint sein.",
-          "teacherNote": "Grundlegende geometrische Begriffe."
-        },
-        {
-          "id": "k3-200",
-          "points": 200,
-          "question": "Wie viele Ecken hat ein Würfel?",
-          "answer": "Ein Würfel hat 8 Ecken.",
-          "explanation": "An jeder Ecke treffen drei Kanten zusammen. Oben sind vier Ecken und unten vier, also insgesamt acht.",
-          "teacherNote": "Räumliche Grundvorstellung.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "8"
-            ],
-            "unit": "Ecken"
-          }
-        },
-        {
-          "id": "k3-300",
-          "points": 300,
-          "question": "Ein Rechteck ist 6 cm lang und 3 cm breit. Wie lang ist sein Umfang?",
-          "answer": "18 cm.",
-          "explanation": "Der Umfang ist die Länge des gesamten Randes. Addiere alle vier Seiten: 6 + 3 + 6 + 3 = 18 cm.",
-          "teacherNote": "Umfang als Länge des Randes.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "18"
-            ],
-            "unit": "cm"
-          }
-        },
-        {
-          "id": "k3-400",
-          "points": 400,
-          "question": "Ein Band ist 1 m lang. Du schneidest 35 cm ab. Wie viele Zentimeter bleiben übrig?",
-          "answer": "65 cm.",
-          "explanation": "Rechne zuerst den Meter in 100 Zentimeter um. Nach dem Abschneiden bleiben 100 − 35 = 65 cm.",
-          "teacherNote": "Verbindet Messen, Umrechnen und Subtrahieren.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "65"
-            ],
-            "unit": "cm"
-          }
-        },
-        {
-          "id": "k3-500",
-          "points": 500,
-          "question": "Ein Rechteck hat einen Umfang von 20 cm. Eine lange Seite ist 7 cm lang. Wie lang ist eine kurze Seite?",
-          "answer": "3 cm.",
-          "explanation": "Die beiden langen Seiten sind zusammen 14 cm lang. Von 20 cm bleiben 6 cm für zwei gleich lange kurze Seiten; jede ist 3 cm lang.",
-          "teacherNote": "Mehrschrittiges geometrisches Denken mit Umfang.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "3"
-            ],
-            "unit": "cm"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Sachaufgaben, Tabellen & Daten",
-      "questions": [
-        {
-          "id": "k4-100",
-          "points": 100,
-          "question": "In einer Kiste liegen 12 rote und 7 blaue Bälle. Wie viele Bälle sind es zusammen?",
-          "answer": "19 Bälle.",
-          "explanation": "Gesucht ist die Gesamtzahl der Bälle. Addiere die roten und die blauen Bälle: 12 + 7 = 19.",
-          "teacherNote": "Kurze Sachaufgabe; passende Rechenart erkennen.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "19"
-            ],
-            "unit": "Bälle"
-          }
-        },
-        {
-          "id": "k4-200",
-          "points": 200,
-          "question": "Die Klasse sammelt Altpapier. An welchem Tag sammelt sie am meisten?",
-          "answer": "Am Dienstag mit 11 kg.",
-          "explanation": "Vergleiche die drei Werte in der Tabelle. 11 kg ist der größte Wert und gehört zum Dienstag.",
-          "teacherNote": "Informationen vergleichen.",
-          "table": {
-            "headers": [
-              "Tag",
-              "Altpapier"
-            ],
-            "rows": [
-              [
-                "Montag",
-                "8 kg"
-              ],
-              [
-                "Dienstag",
-                "11 kg"
-              ],
-              [
-                "Mittwoch",
-                "6 kg"
-              ]
-            ]
-          },
+          "question": "Wie wird ein Spannungsmessgerät zur Messung an einem Verbraucher angeschlossen?",
+          "answer": "Parallel zum Verbraucher.",
+          "explanation": "Spannung ist die Potentialdifferenz zwischen zwei Punkten. Deshalb wird das Spannungsmessgerät parallel zu den beiden Messpunkten angeschlossen.",
+          "teacherNote": "Strom- und Spannungsmessung voneinander unterscheiden.",
           "response": {
             "type": "choice",
             "options": [
-              "Montag",
-              "Dienstag",
-              "Mittwoch"
+              "In Reihe zum Verbraucher",
+              "Parallel zum Verbraucher",
+              "Nur zwischen N und PE",
+              "An nur einen Leiter"
             ],
             "correct": [
               1
@@ -393,107 +410,144 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
           }
         },
         {
-          "id": "k4-300",
+          "id": "installation-300",
           "points": 300,
-          "question": "Buszeiten: 07:35 · 08:05 · 08:35 · 09:05. Du kommst um 08:10 Uhr zur Haltestelle. Welchen Bus kannst du als Nächstes nehmen?",
-          "answer": "Den Bus um 08:35 Uhr.",
-          "explanation": "Der Bus um 08:05 Uhr ist bereits abgefahren. Die erste aufgeführte Abfahrt nach 08:10 Uhr ist 08:35 Uhr.",
-          "teacherNote": "Einfache Fahrplaninformation entnehmen."
+          "question": "Hin- und Rückleiter haben zusammen einen Widerstand von 0,8 Ω. Es fließen 10 A. Wie groß ist der Spannungsfall?",
+          "answer": "8 V.",
+          "explanation": "Für den Spannungsfall gilt U = R · I. 0,8 Ω · 10 A = 8 V.",
+          "teacherNote": "Die Angabe enthält bereits den gemeinsamen Widerstand von Hin- und Rückleiter.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "8"
+            ],
+            "unit": "V"
+          }
         },
         {
-          "id": "k4-400",
+          "id": "installation-400",
           "points": 400,
-          "question": "28 Äpfel werden gleichmäßig auf 4 Kisten verteilt. Wie viele Äpfel liegen in jeder Kiste?",
-          "answer": "7 Äpfel.",
-          "explanation": "Die Äpfel sind gleichmäßig auf vier Kisten verteilt. Teile 28 durch 4; in jeder Kiste liegen sieben Äpfel.",
-          "teacherNote": "Sachkontext erkennen und Division auswählen.",
+          "question": "Mit welcher Prüfung lässt sich feststellen, ob der Schutzleiter elektrisch durchgängig verbunden ist?",
+          "answer": "Mit einer Durchgängigkeits- beziehungsweise Niederohmprüfung des Schutzleiters.",
+          "explanation": "Die elektrische Verbindung des Schutzleiters wird über eine geeignete Durchgängigkeits- oder Niederohmprüfung kontrolliert. Eine reine Spannungsmessung ersetzt diese Prüfung nicht.",
+          "teacherNote": "Messverfahren passend zur gesuchten Fehlerart auswählen lassen.",
           "response": {
-            "type": "number",
-            "accepted": [
-              "7"
+            "type": "choice",
+            "options": [
+              "Durchgängigkeits- beziehungsweise Niederohmprüfung",
+              "Nur Spannungsmessung zwischen L und N",
+              "Frequenzmessung",
+              "Leistungsmessung am Verbraucher"
             ],
-            "unit": "Äpfel"
+            "correct": [
+              0
+            ]
           }
         },
         {
-          "id": "k4-500",
+          "id": "installation-500",
           "points": 500,
-          "question": "Eine Gruppe hat 36 € für einen Ausflug. 4 Fahrkarten kosten je 6 €. Wie viel Geld bleibt übrig?",
-          "answer": "12 €.",
-          "explanation": "Vier Fahrkarten kosten 4 × 6 € = 24 €. Ziehe diese Kosten von 36 € ab; es bleiben 12 €.",
-          "teacherNote": "Zwei Rechenschritte und Auswahl der passenden Operationen.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "12"
-            ],
-            "unit": "€"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Knobeln, Muster & mathematisches Denken",
-      "questions": [
-        {
-          "id": "k5-100",
-          "points": 100,
-          "question": "Die Reihe wächst immer um 2. Setze fort: 2 – 4 – 6 – 8 – ?",
-          "answer": "10.",
-          "explanation": "Die Zahlen werden jedes Mal um zwei größer. Nach 8 folgt deshalb 10.",
-          "teacherNote": "Einfaches Zahlenmuster erkennen.",
+          "question": "Drei Verbraucher mit 500 W, 800 W und 1000 W laufen gleichzeitig an 230 V. Wie groß ist der Gesamtstrom bei vereinfachter Betrachtung?",
+          "answer": "10 A.",
+          "explanation": "Die Leistungen werden zuerst addiert: 500 W + 800 W + 1000 W = 2300 W. Danach gilt I = P / U. 2300 W / 230 V = 10 A.",
+          "teacherNote": "Mehrschrittiges Vorgehen aus Gesamtleistung und Stromberechnung prüfen.",
           "response": {
             "type": "number",
             "accepted": [
               "10"
             ],
-            "unit": ""
+            "unit": "A"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Steuerungs- & Schaltungstechnik",
+      "questions": [
+        {
+          "id": "steuerung-100",
+          "points": 100,
+          "question": "Welchen Zustand hat ein Schließerkontakt im nicht betätigten Zustand?",
+          "answer": "Er ist offen.",
+          "explanation": "Ein Schließer ist in Ruhestellung offen. Erst durch Betätigung wird der Kontakt geschlossen.",
+          "teacherNote": "Grundbegriffe Schließer und Öffner unterscheiden.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Offen",
+              "Geschlossen",
+              "Kurzgeschlossen",
+              "Geerdet"
+            ],
+            "correct": [
+              0
+            ]
           }
         },
         {
-          "id": "k5-200",
+          "id": "steuerung-200",
           "points": 200,
-          "question": "Ali sagt: 7 × 5 = 30. Hat er recht?",
-          "answer": "Nein. 7 × 5 = 35.",
-          "explanation": "Sieben Fünfer ergeben 35. Ali hat vermutlich nur sechs Fünfer gezählt: 6 × 5 = 30.",
-          "teacherNote": "Nicht nur Ergebnis nennen lassen: Wie wurde der Fehler erkannt?"
-        },
-        {
-          "id": "k5-300",
-          "points": 300,
-          "question": "Welche Zahl passt nicht in die Reihe? 10 – 20 – 30 – 35 – 40 – 50",
-          "answer": "35 passt nicht. Die anderen Zahlen sind Zehnerschritte.",
-          "explanation": "Alle anderen Zahlen sind Vielfache von zehn. 35 ist kein Vielfaches von zehn und passt nicht zu diesem Muster.",
-          "teacherNote": "Muster begründen lassen.",
+          "question": "Was geschieht mit einem Schließerkontakt eines Relais, wenn das Relais bestimmungsgemäß anzieht?",
+          "answer": "Der Schließerkontakt schließt.",
+          "explanation": "Beim Anziehen des Relais ändern die zugehörigen Kontakte ihren Schaltzustand. Ein Schließer wechselt dabei von offen auf geschlossen.",
+          "teacherNote": "Zusammenhang zwischen Spule und Kontaktzustand prüfen.",
           "response": {
-            "type": "number",
-            "accepted": [
-              "35"
+            "type": "choice",
+            "options": [
+              "Der Schließerkontakt schließt",
+              "Der Schließerkontakt bleibt immer offen",
+              "Die Versorgungsspannung wird verdoppelt",
+              "Der Schutzleiter wird abgeschaltet"
             ],
-            "unit": ""
+            "correct": [
+              0
+            ]
           }
         },
         {
-          "id": "k5-400",
-          "points": 400,
-          "question": "Ich habe drei Münzen. Zusammen sind es 40 Cent. Welche drei Münzen könnten es sein?",
-          "answer": "Zum Beispiel 20 Cent + 10 Cent + 10 Cent.",
-          "explanation": "20 Cent und zweimal 10 Cent ergeben zusammen 40 Cent. Es sind genau drei Münzen.",
-          "teacherNote": "Eine mögliche Kombination genügt. Weitere richtige Lösungen dürfen besprochen werden."
-        },
-        {
-          "id": "k5-500",
-          "points": 500,
-          "question": "Drei Kinder teilen 24 Murmeln. Mia bekommt doppelt so viele wie Ben. Ben bekommt 6 Murmeln. Wie viele Murmeln bekommt das dritte Kind?",
-          "answer": "6 Murmeln.",
-          "explanation": "Ben erhält 6 und Mia doppelt so viele, also 12 Murmeln. Zusammen sind das 18; für das dritte Kind bleiben 24 − 18 = 6 Murmeln.",
-          "teacherNote": "Mehrere Informationen verbinden; Lösungsweg sichtbar machen.",
+          "id": "steuerung-300",
+          "points": 300,
+          "question": "Eine Relaisspule hat 120 Ω und wird mit 24 V betrieben. Wie groß ist der Spulenstrom?",
+          "answer": "0,2 A.",
+          "explanation": "Nach dem Ohmschen Gesetz gilt I = U / R. 24 V / 120 Ω = 0,2 A.",
+          "teacherNote": "Ohmsches Gesetz in einem steuerungstechnischen Zusammenhang anwenden.",
           "response": {
             "type": "number",
             "accepted": [
-              "6"
+              "0.2"
             ],
-            "unit": "Murmeln"
+            "unit": "A"
+          }
+        },
+        {
+          "id": "steuerung-400",
+          "points": 400,
+          "question": "Zwei Schließertaster liegen in Reihe vor einer Relaisspule. Wann kann die Spule Strom bekommen?",
+          "answer": "Nur wenn beide Schließertaster geschlossen sind.",
+          "explanation": "Bei einer Reihenschaltung muss der Stromweg an jeder Stelle geschlossen sein. Öffnet einer der beiden Kontakte, ist der Stromkreis unterbrochen.",
+          "teacherNote": "Verknüpfung einer Reihenschaltung mit der UND-Funktion herstellen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Wenn mindestens ein Taster geschlossen ist",
+              "Nur wenn beide Taster geschlossen sind",
+              "Nur wenn beide Taster offen sind",
+              "Unabhängig von den Tastern"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "steuerung-500",
+          "points": 500,
+          "question": "Bei einer Selbsthalteschaltung liegt ein Hilfsschließer parallel zum Starttaster. Erkläre seine Aufgabe.",
+          "answer": "Der Hilfsschließer hält den Stromweg nach dem Loslassen des Starttasters geschlossen, solange die Selbsthaltung nicht unterbrochen wird.",
+          "explanation": "Beim Drücken des Starttasters zieht das Relais oder Schütz an. Dadurch schließt der Hilfskontakt und überbrückt den Starttaster. Nach dem Loslassen bleibt die Spule dadurch weiter versorgt, bis der Stromkreis zum Beispiel über den Stopptaster unterbrochen wird.",
+          "teacherNote": "Mündlich bewerten: Erwartet werden Startvorgang, Hilfskontakt und Aufrechterhaltung des Spulenstroms nach dem Loslassen.",
+          "response": {
+            "type": "manual"
           }
         }
       ]
@@ -737,6 +791,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     if (!E.rate(data, state, id, selected, correct)) return;
     inputLocked=true;save(); render();
     close(); if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig. Keine Minuspunkte.',correct?'correct':'wrong');
+    if(state.history.length===all.length){$('winner').tabIndex=-1;$('winner').focus();}
     // Consume the rest of a double tap before enabling the underlying board.
     setTimeout(()=>{inputLocked=false;render();},450);
   }

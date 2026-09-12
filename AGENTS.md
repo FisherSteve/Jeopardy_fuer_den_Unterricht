@@ -10,4 +10,5 @@
 - README.md ist die Anleitung ohne Programmierkenntnisse. Spiel-Erstellen.html muss denselben Stand der Engine und Spielvorlage enthalten; node build.js baut ihn mit. Technische Details stehen in TECHNIK.md.
 - Bei Framework-Änderungen alle Spiele neu bauen, npm test und die verfügbaren Browserprüfungen ausführen. Nicht ausgeführte Geräte-/Browserprüfungen offen dokumentieren.
 - Inhalte als Text behandeln. Keine externen Abhängigkeiten in fertigen Spielen. Browserzoom, Fokusführung und reduzierte Bewegung erhalten.
-- Die ursprünglichen HTML-Dateien und allgemeine_prompt.txt sind historische Eingaben. Die verbindliche neue Prompt ist Framework-Prompt.md; die fertigen neuen Spiele liegen in spiele/.
+- Historische Original-HTML-Dateien und allgemeine_prompt.txt wurden entfernt. Die verbindliche Prompt ist Framework-Prompt.md; die aktuelle Beispielbefüllung bleibt als Inhaltsauftrag erhalten.
+- Fertige Spiele liegen unter spiele/<kennung>/index.html. node build.js aktualisiert auch die Root-Startseite aus allen Spielordnern. Links relativ halten, damit GitHub Pages unter dem Repository-Unterpfad und lokale Dateien funktionieren.

@@ -15,7 +15,7 @@ for (const file of inputs) {
     APP: fs.readFileSync(path.join(root, 'framework/app.js'), 'utf8')
   };
   const html = fs.readFileSync(path.join(root, 'framework/template.html'), 'utf8').replace(/\/\*__(STYLE|DATA|ENGINE|APP)__\*\//g, (_, key) => parts[key]);
-  const out = process.argv[3] ? path.resolve(process.argv[3]) : path.join(root, 'spiele', data.id + '.html');
+  const out = process.argv[3] ? path.resolve(process.argv[3]) : path.join(root, 'spiele', data.id, 'index.html');
   fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, html, 'utf8');
   console.log('Erstellt: ' + out);
 }
@@ -27,3 +27,23 @@ if (!input) {
   fs.writeFileSync(path.join(root,'Spiel-Erstellen.html'),creator,'utf8');
   console.log('Erstellt: Spiel-Erstellen.html');
 }
+// Include every published game, including standalone games without a JSON source.
+const escapeHTML = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const gameRoot = path.join(root, 'spiele');
+const games = fs.readdirSync(gameRoot, {withFileTypes:true})
+  .filter(entry => entry.isDirectory() && fs.existsSync(path.join(gameRoot, entry.name, 'index.html')))
+  .map(entry => {
+    const html = fs.readFileSync(path.join(gameRoot, entry.name, 'index.html'), 'utf8');
+    const match = html.match(/<script\s+id="game-data"\s+type="application\/json">([\s\S]*?)<\/script>/);
+    let title = entry.name.replace(/-/g, ' '), detail = 'Lernspiel öffnen';
+    if (match) {
+      const data = JSON.parse(match[1]);
+      title = data.title || title;
+      if (Array.isArray(data.categories)) detail = data.categories.length + ' Themen · ' + data.categories.reduce((sum, c) => sum + (c.questions || []).length, 0) + ' Fragen';
+    }
+    return {slug:entry.name, title, detail};
+  }).sort((a,b) => a.title.localeCompare(b.title, 'de'));
+const links = games.map(game => '<li><a class="game" href="./spiele/' + encodeURIComponent(game.slug) + '/index.html"><span>' + escapeHTML(game.title) + '</span><small>' + escapeHTML(game.detail) + '</small></a></li>').join('\n');
+const home = fs.readFileSync(path.join(root, 'framework/home.html'), 'utf8').replace('<!--__GAMES__-->', () => links);
+fs.writeFileSync(path.join(root, 'index.html'), home, 'utf8');
+console.log('Erstellt: index.html (' + games.length + ' Spiele)');

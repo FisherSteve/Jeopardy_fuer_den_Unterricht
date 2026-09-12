@@ -4,10 +4,10 @@ Die Spiele werden aus einer gemeinsamen Engine und separaten Aufgabensätzen geb
 
 ## Direkt spielen
 
-- **Klasse 5:** `spiele/mathematik-klasse-5.html`
-- **Klasse 6:** `spiele/faechermix-klasse-6.html`
+- **Klasse 5:** `spiele/mathematik-klasse-5/index.html`
+- **Klasse 6:** `spiele/faechermix-klasse-6/index.html`
 
-Die jeweilige HTML-Datei auf das Gerät kopieren und in einem Browser öffnen, der lokale HTML-Dateien mit JavaScript ausführt. Sie enthält alle benötigten Bestandteile und benötigt keine Internetverbindung, Installation oder Node.js zum Spielen. Die bisherigen Original-HTML-Dateien bleiben als Vergleich erhalten; die überarbeiteten Spiele liegen in `spiele/`.
+Die jeweilige `index.html` aus einem Spielordner auf das Gerät kopieren und in einem Browser öffnen, der lokale HTML-Dateien mit JavaScript ausführt. Sie enthält alle benötigten Bestandteile und benötigt keine Internetverbindung, Installation oder Node.js zum Spielen. Die ursprünglichen veralteten HTML-Dateien wurden entfernt.
 
 **Bedienung:** Das hervorgehobene Team wählt eine Punktekarte. Antwort geben lassen, „Antwort anzeigen“, dann „Richtig“ oder „Falsch“. Beide Bewertungen schließen die Karte sofort ab; es gibt keine Übernahme. Richtig gibt den Kartenwert, falsch keine Punkte und keinen Abzug. Anschließend ist automatisch das nächste Team an der Reihe. Die Bewertungsbuttons nennen das aktive Team. Zwei Teams sind voreingestellt; im Menü lassen sich vor der ersten Bewertung zwei bis sechs Teams anlegen, entfernen und benennen. Im laufenden Spiel bleiben Anzahl und Reihenfolge fest. Reset erhält die Teams und gibt das Ändern der Anzahl wieder frei.
 
@@ -35,7 +35,7 @@ Ohne Entwicklungswerkzeuge: `Spiel-Erstellen.html` öffnen, JSON einfügen oder 
 node build.js content/mathematik-klasse-5.json
 ```
 
-Alle Spiele bauen: `node build.js`. Eigenes Ausgabeziel: `node build.js content/mathematik-klasse-5.json spiele/mein-spiel.html`.
+Alle Spiele bauen: `node build.js`. Eigenes Ausgabeziel: `node build.js content/mathematik-klasse-5.json spiele/mein-spiel/index.html`.
 
 Es gibt keine Build-Abhängigkeiten. `npm install` ist dafür nicht nötig. Ohne Werkzeuge liefert das LLM JSON, das anschließend gebaut wird. Eine fertig gebaute HTML ist zugleich eine vollständig eingebettete Vorlage: Ihr `game-data`-Block kann gemäß Framework-Prompt ersetzt werden.
 
@@ -50,10 +50,13 @@ Es gibt keine Build-Abhängigkeiten. `npm install` ist dafür nicht nötig. Ohne
 | `framework/template.html`, `style.css` | Gemeinsame Oberfläche |
 | `build.js` | Baut die eigenständigen HTML-Dateien |
 | `framework/creator.html` | Vorlage des lokalen Spiel-Erstellers |
+| `framework/home.html`, `index.html` | Vorlage und erzeugte Startseite mit Links zu allen Spielordnern |
 | `Spiel-Erstellen.html` | Eigenständiger Ersteller mit eingebetteter Engine und Spielvorlage |
-| `spiele/*.html` | Fertige Spiele zum Weitergeben |
+| `spiele/*/index.html` | Fertige Spiele zum Weitergeben |
 | `tests/` | Regeln, Browser-Verhalten und Screenshots |
 | `PRUEFPROTOKOLL.md` | Tatsächliche Prüfung und verbleibende Grenzen |
+
+Für GitHub Pages liegt jedes Spiel unter `spiele/<kennung>/index.html`. Auch ein einzelner Build aktualisiert die Root-Startseite aus allen vorhandenen Spielordnern; neue Spiele erscheinen dadurch automatisch. Explizite relative `index.html`-Links funktionieren sowohl unter dem Repository-Unterpfad auf GitHub Pages als auch bei lokaler Nutzung. Die Spiel-Dateien selbst benötigen keine relativen Assets. `.nojekyll` verhindert einen zusätzlichen Jekyll-Verarbeitungsschritt.
 
 Neue Inhalte nicht durch Kopieren und Umschreiben einer Engine erstellen. Änderungen an der gemeinsamen Bedienung in `framework/` durchführen und alle Spiele neu bauen. Der Build prüft ein bis fünf Kategorien mit je fünf Aufgaben und eindeutige IDs. Inhalt wird als Text gerendert; HTML aus Aufgabensätzen wird nicht ausgeführt.
 
@@ -89,6 +92,7 @@ npm install --no-save playwright
 npx playwright install chromium firefox webkit
 node tests/browser.cjs
 node tests/visual.cjs
+node tests/pages.cjs
 ```
 
 Optional setzen: `PLAYWRIGHT_MODULE` = Pfad zur vorhandenen Playwright-Installation, `CHROMIUM_EXECUTABLE` = Chrome-Programmdatei, `PLAYWRIGHT_BROWSERS_PATH` = Browsercache und `BROWSER_ENGINES` = kommaseparierte Auswahl. Diese Werkzeuge sind nur für Tests nötig, nicht zum Bauen oder Spielen.

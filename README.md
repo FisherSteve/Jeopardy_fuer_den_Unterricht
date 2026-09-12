@@ -6,11 +6,12 @@ Du brauchst einen Browser. Für neue Aufgaben brauchst du zusätzlich Zugang zu 
 
 ## Ich möchte erst einmal spielen
 
-1. Lade den gesamten Projektordner herunter, zum Beispiel als ZIP von GitHub, und entpacke ihn.
-2. Öffne den Ordner **spiele**.
-3. Öffne eines der Beispiele im Browser:
-   - [Mathematik, Klasse 5](spiele/mathematik-klasse-5.html)
-   - [Fächermix, Klasse 6](spiele/faechermix-klasse-6.html)
+1. Öffne die [Startseite auf GitHub Pages](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/), sobald Pages für dieses Repository veröffentlicht ist. Dort sind alle Spiele verlinkt.
+2. Alternativ: Lade den Projektordner als ZIP herunter, entpacke ihn und öffne die **index.html im Hauptordner**. Ihre Links funktionieren auch lokal.
+3. Du kannst ein Spiel auch direkt über seine `index.html` öffnen:
+   - [Mathematik, Klasse 5](spiele/mathematik-klasse-5/index.html)
+   - [Fächermix, Klasse 6](spiele/faechermix-klasse-6/index.html)
+   - [Elektronikerausbildung, Abschlusswiederholung](spiele/elektronikerausbildung-abschluss-wiederholung/index.html)
 4. Öffne im Spiel **Menü**. Dort kannst du die Teamnamen ändern und vor der ersten Bewertung weitere Teams hinzufügen. Zwei Teams sind voreingestellt; bis zu sechs sind möglich.
 5. Jetzt kann das hervorgehobene Team eine Punktekarte wählen.
 
@@ -113,4 +114,10 @@ Der Spiel-Ersteller verarbeitet eingefügte Aufgaben lokal. Er lädt keine Inhal
 
 Die gemeinsame Spieltechnik steht in `framework/`, die wiederverwendbaren Inhalte in `content/`. [TECHNIK.md](TECHNIK.md) beschreibt Aufbau, Build und Tests. [PRUEFPROTOKOLL.md](PRUEFPROTOKOLL.md) dokumentiert die ausgeführten Prüfungen und die noch offenen Gerätetests.
 
-Die ursprünglichen Dateien im Hauptordner sind als Vergleich erhalten. Für neue Spiele bitte die **Framework-Prompt** und den **Spiel-Ersteller** verwenden.
+Für neue Spiele bitte die **Framework-Prompt** und den **Spiel-Ersteller** verwenden. Veraltete Originalspiele und die alte allgemeine Prompt wurden entfernt; generierte Testausgaben gehören nicht ins Repository.
+
+## Auf GitHub Pages bereitstellen
+
+Die veröffentlichbare Startseite ist `index.html` im Hauptordner. Jedes Spiel hat einen eigenen Ordner: `spiele/<spielname>/index.html`. Dadurch funktionieren auch Adressen wie `spiele/mathematik-klasse-5/`.
+
+Verwende für GitHub Pages den Branch mit diesen Dateien und dessen Hauptordner (`/`). `node build.js` aktualisiert alle Spiele, den Spiel-Ersteller und die Startseite. Die Veröffentlichung der bereits erzeugten HTML-Dateien benötigt keinen Build auf GitHub. Die Datei `.nojekyll` kennzeichnet die Website als direkt auslieferbare statische Dateien.

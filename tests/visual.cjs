@@ -7,12 +7,12 @@ const {pathToFileURL}=require('node:url');
   const browser=await p[name].launch({headless:true,timeout:20000,...(name==='chromium'&&process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true});const page=await context.newPage();
-   await page.goto(pathToFileURL(path.join(__dirname,'../spiele/mathematik-klasse-5.html')).href);
+   await page.goto(pathToFileURL(path.join(__dirname,'../spiele/mathematik-klasse-5/index.html')).href);
    await page.locator('.tile').first().tap();assert.equal(await page.locator('#notes-toggle').isVisible(),false);assert.equal(await page.locator('#reveal').isVisible(),false);
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    await page.screenshot({path:path.join(__dirname,'screenshots',name+'-numpad-phone.png'),fullPage:true,animations:'disabled'});
    const data=JSON.parse(fs.readFileSync(path.join(__dirname,'../content/mathematik-klasse-5.json'),'utf8'));data.categories=data.categories.slice(0,1);data.categories[0].questions.forEach(q=>delete q.response);
-   const html=fs.readFileSync(path.join(__dirname,'../spiele/mathematik-klasse-5.html'),'utf8').replace(/(<script id="game-data" type="application\/json">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(data)+b);
+   const html=fs.readFileSync(path.join(__dirname,'../spiele/mathematik-klasse-5/index.html'),'utf8').replace(/(<script id="game-data" type="application\/json">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(data)+b);
    const game=await context.newPage();await game.setContent(html);
    for(let i=0;i<5;i++){await game.locator('.tile:not(:disabled)').first().click();await game.locator('#reveal').click();await game.locator('#wrong').click();}
    assert.equal(await game.evaluate(()=>document.activeElement.id),'winner');

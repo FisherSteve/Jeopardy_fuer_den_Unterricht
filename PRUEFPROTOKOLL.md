@@ -2,6 +2,18 @@
 
 Stand: 12. September 2026. Ausgeführt auf Windows. Die fertigen Beispiele und der lokale Spiel-Ersteller wurden mit `node build.js` aus derselben Framework-Version gebaut.
 
+## GitHub-Pages-Struktur
+
+Alle drei vorhandenen Spiele liegen jetzt unter `spiele/<kennung>/index.html`. Die Startseite wird aus den vorhandenen Spielordnern erzeugt. Das zusätzlich lokal vorhandene Spiel zur Elektronikerausbildung wurde einschließlich seines JSON-Aufgabensatzes übernommen.
+
+- `tests/pages.cjs`: Startseite, alle drei Spiele und lokale Startseitenlinks unter dem simulierten Repository-Unterpfad `/Jeopardy_fuer_den_Unterricht/` in Chromium, Firefox und WebKit erfolgreich geprüft. Sowohl explizite `index.html`-Links als auch Verzeichnis-URLs liefern die Spielseite; Fragen lassen sich öffnen und schließen.
+- Mobile Startseite bei 390 × 844 ohne horizontalen Überlauf geprüft und visuell kontrolliert.
+- `npm test`: alle 13 Engine-Tests bestanden. `tests/browser.cjs` mit den neuen Spielpfaden in allen drei Engines bestanden.
+- Acht lokale Markdown-Linkziele sowie `git diff --check` und `git diff --cached --check` geprüft.
+- Historische Originalspiele und die alte allgemeine Prompt entfernt. Bereits getrackte Screenshots und generierte Test-HTML-Dateien aus dem Git-Index entfernt; lokale Testausgaben bleiben per `.gitignore` ausgeschlossen.
+
+Dies ist eine lokale Prüfung der Pages-Struktur. Die Änderungen wurden dabei nicht auf GitHub gepusht oder als Live-Website veröffentlicht.
+
 ## Ausgeführte Prüfungen
 
 | Prüfung | Ergebnis |
