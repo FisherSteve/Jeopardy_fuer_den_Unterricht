@@ -53,6 +53,8 @@ Die kurze Antwort soll auf den gemeinsamen Bildschirm passen. `explanation` umfa
 
 Wenn zum Lösen eine Tabelle erforderlich ist, liefere sie tatsächlich als `table`. Eine Aufgabe darf nicht auf eine nicht vorhandene Karte, Skizze, Datei oder Internetquelle verweisen. Das bestehende Format unterstützt Text und Tabellen. Neue Darstellungsarten nur bei ausdrücklichem Bedarf als separate Framework-Erweiterung implementieren, validieren und testen; kein beliebiges HTML in Inhaltsfeldern.
 
+**Keine Lösungsverräter:** Eine Frage darf die richtige Antwort weder unmittelbar nennen noch mittelbar durch ihre Formulierung, Beispiele, Überschrift, Tabelle oder andere vor der Abgabe sichtbare Inhalte verraten. Auch andere Karten dürfen eine Lösung nicht unbeabsichtigt vorwegnehmen. Bei Sortieraufgaben die Elemente in gemischter Reihenfolge angeben. Bei Auswahlaufgaben keine verräterischen Unterschiede in Länge, Grammatik, Detailgrad oder Hervorhebung; die Position der richtigen Option über das Spiel variieren. Notwendige Angaben zum eigenständigen Lösen und reguläre Antwortoptionen sind zulässig, dürfen aber die richtige Lösung nicht schon als solche kennzeichnen. Vor der Ausgabe jede Aufgabe aus Spielersicht auf direkte und indirekte Lösungshinweise prüfen und solche Hinweise entfernen.
+
 Prüfe jede Rechnung, Einheit, Lösung und alternative Deutung. Beispiel: „Vier gleich lange Seiten und vier Ecken“ beschreibt nicht eindeutig ein Quadrat; ergänze „vier rechte Winkel“. Prüfe bei Sachaufgaben Voraussetzungen wie eine gleichmäßige Verteilung ausdrücklich. Zeitabhängige Fakten bei Bedarf mit verlässlichen Quellen überprüfen und Quellen außerhalb der Spieloberfläche dokumentieren.
 
 ## Datenvertrag
@@ -149,6 +151,8 @@ Touch hat Vorrang: echte Buttons mit mindestens 52 CSS-Pixeln, kein Hover-Zwang,
 Vollbild und lokales Speichern sind optionale Browserfähigkeiten mit Fehlerbehandlung. Bei nicht verfügbarem Speicher muss das Spiel weiterlaufen. Eine lokale HTML-Vorschau einer Dateien-App ist kein zugesicherter JavaScript-Browser; den tatsächlichen Öffnungsweg auf den Schulgeräten prüfen. Keine ungetestete pauschale Gerätefreigabe behaupten.
 
 ## Abnahme
+
+- Keine unmittelbaren oder mittelbaren Lösungsverräter in den vor der Abgabe sichtbaren Inhalten; Sortierlisten gemischt und Antwortoptionen ohne auffällige Lösungssignale.
 
 - Ein bis fünf Themen mit je fünf Aufgaben vorhanden; Spaltenzahl und Spielende passen zur tatsächlichen Anzahl. Lösung beim Öffnen verborgen.
 - Kein Lehrkräftehinweis ohne bewusstes Einblenden.

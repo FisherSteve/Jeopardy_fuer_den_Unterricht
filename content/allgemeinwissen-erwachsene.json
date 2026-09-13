@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "id": "allgemeinwissen-erwachsene",
+  "title": "Erwachsene · Welt, Geschichte, Wissenschaft, Kultur & Alltag",
+  "teams": [
+    "Team 1",
+    "Team 2"
+  ],
+  "rules": {
+    "subtractOnWrong": false,
+    "allowNegativeScores": false,
+    "takeover": false
+  },
+  "categories": [
+    {
+      "title": "Welt & Geografie",
+      "questions": [
+        {
+          "id": "welt-100",
+          "points": 100,
+          "question": "Welches Land hat auf einer Weltkarte die charakteristische Form eines Stiefels?",
+          "answer": "Italien.",
+          "explanation": "Italien ragt als lange Halbinsel in das Mittelmeer. Seine Umrisse werden häufig mit einem Stiefel verglichen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Portugal",
+              "Italien",
+              "Griechenland",
+              "Kroatien"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "welt-200",
+          "points": 200,
+          "question": "Welche Hauptstadt liegt an der Donau und entstand historisch aus den Städten Buda und Pest?",
+          "answer": "Budapest.",
+          "explanation": "Budapest ist die Hauptstadt Ungarns. Buda und Pest liegen auf gegenüberliegenden Seiten der Donau und wurden 1873 mit Óbuda zur heutigen Stadt vereinigt."
+        },
+        {
+          "id": "welt-300",
+          "points": 300,
+          "question": "Welches dieser Länder besitzt keine Küste am Mittelmeer?",
+          "answer": "Portugal.",
+          "explanation": "Portugal liegt am Atlantik und besitzt keine Mittelmeerküste. Spanien, Frankreich und Italien grenzen dagegen an das Mittelmeer.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Spanien",
+              "Frankreich",
+              "Portugal",
+              "Italien"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "welt-400",
+          "points": 400,
+          "question": "Der Äquator verläuft durch Südamerika. Nenne eines der drei südamerikanischen Länder, die vom Äquator durchquert werden.",
+          "answer": "Ecuador, Kolumbien oder Brasilien.",
+          "explanation": "In Südamerika verläuft der Äquator durch Ecuador, Kolumbien und Brasilien. Jede dieser drei Antworten ist richtig."
+        },
+        {
+          "id": "welt-500",
+          "points": 500,
+          "question": "Ein Schiff fährt vom Schwarzen Meer ins Mittelmeer. Durch welche zwei türkischen Meerengen muss es nacheinander fahren?",
+          "answer": "Durch den Bosporus und die Dardanellen.",
+          "explanation": "Vom Schwarzen Meer führt der Bosporus ins Marmarameer. Von dort führen die Dardanellen weiter in die Ägäis und damit ins Mittelmeer."
+        }
+      ]
+    },
+    {
+      "title": "Geschichte & Gesellschaft",
+      "questions": [
+        {
+          "id": "geschichte-100",
+          "points": 100,
+          "question": "In welchem Jahr fiel die Berliner Mauer?",
+          "answer": "1989.",
+          "explanation": "Am 9. November 1989 wurden die Grenzübergänge der DDR nach politischen Umwälzungen geöffnet. Der Fall der Mauer wurde zum Symbol für das Ende der deutschen Teilung.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1989"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "geschichte-200",
+          "points": 200,
+          "question": "Welche antike Stadt wurde im Jahr 79 beim Ausbruch des Vesuvs verschüttet und später wieder ausgegraben?",
+          "answer": "Pompeji.",
+          "explanation": "Pompeji lag nahe dem Vesuv am Golf von Neapel. Vulkanisches Material konservierte große Teile der römischen Stadt über viele Jahrhunderte."
+        },
+        {
+          "id": "geschichte-300",
+          "points": 300,
+          "question": "Welches Ereignis gilt als unmittelbarer Auslöser des Ersten Weltkriegs?",
+          "answer": "Das Attentat von Sarajevo auf Erzherzog Franz Ferdinand.",
+          "explanation": "Am 28. Juni 1914 wurden der österreichisch-ungarische Thronfolger Franz Ferdinand und seine Frau Sophie in Sarajevo ermordet. Das Attentat löste die Julikrise aus, die in den Ersten Weltkrieg führte."
+        },
+        {
+          "id": "geschichte-400",
+          "points": 400,
+          "question": "Welche dieser Errungenschaften entstand historisch zuerst?",
+          "answer": "Der Buchdruck mit beweglichen Metalllettern in Europa.",
+          "explanation": "Johannes Gutenbergs Drucktechnik verbreitete sich ab der Mitte des 15. Jahrhunderts. Dampfmaschine, Telefon und elektrisches Licht kamen erst Jahrhunderte später.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Das Telefon",
+              "Die Dampfmaschine",
+              "Der Buchdruck mit beweglichen Metalllettern in Europa",
+              "Die elektrische Glühlampe"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "geschichte-500",
+          "points": 500,
+          "question": "Ordne diese Ereignisse vom ältesten zum jüngsten: Mondlandung von Apollo 11, Erfindung des World Wide Web, Französische Revolution.",
+          "answer": "Französische Revolution, Mondlandung von Apollo 11, Erfindung des World Wide Web.",
+          "explanation": "Die Französische Revolution begann 1789. Apollo 11 landete 1969 auf dem Mond. Tim Berners-Lee entwickelte das World Wide Web ab 1989."
+        }
+      ]
+    },
+    {
+      "title": "Wissenschaft & Technik",
+      "questions": [
+        {
+          "id": "wissenschaft-100",
+          "points": 100,
+          "question": "Welcher Planet ist der Sonne am nächsten?",
+          "answer": "Merkur.",
+          "explanation": "Merkur ist der innerste Planet unseres Sonnensystems. Danach folgen Venus, Erde und Mars.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Venus",
+              "Merkur",
+              "Mars",
+              "Erde"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "wissenschaft-200",
+          "points": 200,
+          "question": "Wie viele Chromosomen besitzt eine typische menschliche Körperzelle?",
+          "answer": "46.",
+          "explanation": "Eine typische menschliche Körperzelle besitzt 23 Chromosomenpaare und damit insgesamt 46 Chromosomen. Keimzellen besitzen dagegen normalerweise 23.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "46"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "wissenschaft-300",
+          "points": 300,
+          "question": "Warum schwimmt Eis normalerweise auf flüssigem Wasser?",
+          "answer": "Weil Eis eine geringere Dichte als flüssiges Wasser hat.",
+          "explanation": "Beim Gefrieren bildet Wasser eine offenere Kristallstruktur. Dadurch nimmt sein Volumen zu und seine Dichte ab, sodass Eis auf flüssigem Wasser schwimmt."
+        },
+        {
+          "id": "wissenschaft-400",
+          "points": 400,
+          "question": "Welche Aussage beschreibt den Unterschied zwischen Masse und Gewichtskraft korrekt?",
+          "answer": "Die Masse bleibt gleich, während die Gewichtskraft von der örtlichen Gravitation abhängt.",
+          "explanation": "Die Masse gibt die Menge an Materie beziehungsweise die Trägheit eines Körpers an. Die Gewichtskraft entsteht durch Gravitation und ist deshalb zum Beispiel auf dem Mond geringer als auf der Erde.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Masse und Gewichtskraft sind immer identisch.",
+              "Die Masse hängt von der Gravitation ab, die Gewichtskraft nicht.",
+              "Die Masse bleibt gleich, die Gewichtskraft hängt von der Gravitation ab.",
+              "Auf dem Mond verschwinden Masse und Gewichtskraft vollständig."
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "wissenschaft-500",
+          "points": 500,
+          "question": "Ein Funksignal bewegt sich näherungsweise mit Lichtgeschwindigkeit. Licht benötigt vom Mond zur Erde ungefähr 1,3 Sekunden. Wie lange dauert es ungefähr, bis ein von der Erde gesendetes Signal dort ankommt und eine unmittelbare Antwort wieder auf der Erde eintrifft?",
+          "answer": "Etwa 2,6 Sekunden.",
+          "explanation": "Für die Strecke Erde–Mond benötigt das Signal ungefähr 1,3 Sekunden. Für Hin- und Rückweg verdoppelt sich die Laufzeit auf etwa 2,6 Sekunden.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "2.6"
+            ],
+            "unit": "s"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Kultur & Medien",
+      "questions": [
+        {
+          "id": "kultur-100",
+          "points": 100,
+          "question": "Wer malte die Mona Lisa?",
+          "answer": "Leonardo da Vinci.",
+          "explanation": "Leonardo da Vinci schuf das berühmte Porträt während der Renaissance. Das Gemälde befindet sich heute im Louvre in Paris."
+        },
+        {
+          "id": "kultur-200",
+          "points": 200,
+          "question": "Welche Figur stammt aus einem Roman von Miguel de Cervantes?",
+          "answer": "Don Quijote.",
+          "explanation": "Don Quijote ist die Hauptfigur des Romans von Miguel de Cervantes. Seine Abenteuer mit Sancho Panza gehören zu den bekanntesten Werken der Weltliteratur.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Sherlock Holmes",
+              "Don Quijote",
+              "Faust",
+              "Dorian Gray"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "kultur-300",
+          "points": 300,
+          "question": "Welche drei Grundfarben werden beim additiven Farbmodell von Bildschirmen verwendet?",
+          "answer": "Rot, Grün und Blau.",
+          "explanation": "Bildschirme erzeugen Farben durch die additive Mischung von rotem, grünem und blauem Licht. Werden alle drei mit voller Stärke kombiniert, entsteht weißes Licht."
+        },
+        {
+          "id": "kultur-400",
+          "points": 400,
+          "question": "Welcher Komponist schrieb die Opern Die Zauberflöte und Don Giovanni?",
+          "answer": "Wolfgang Amadeus Mozart.",
+          "explanation": "Beide Opern stammen von Wolfgang Amadeus Mozart. Don Giovanni wurde 1787 uraufgeführt, Die Zauberflöte 1791."
+        },
+        {
+          "id": "kultur-500",
+          "points": 500,
+          "question": "Ein Roman wird als Dystopie bezeichnet. Was kennzeichnet dieses Genre typischerweise?",
+          "answer": "Die Darstellung einer problematischen oder bedrückenden zukünftigen Gesellschaft.",
+          "explanation": "Eine Dystopie beschreibt meist eine Gesellschaft, in der politische, technische oder soziale Entwicklungen negative Folgen angenommen haben. Sie dient häufig als Warnung oder Kritik an Entwicklungen der Gegenwart."
+        }
+      ]
+    },
+    {
+      "title": "Alltag & Kurioses",
+      "questions": [
+        {
+          "id": "alltag-100",
+          "points": 100,
+          "question": "Wie viele Minuten hat ein vollständiger Tag?",
+          "answer": "1440 Minuten.",
+          "explanation": "Ein Tag hat 24 Stunden und jede Stunde 60 Minuten. 24 mal 60 ergibt 1440.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1440"
+            ],
+            "unit": "min"
+          }
+        },
+        {
+          "id": "alltag-200",
+          "points": 200,
+          "question": "Welche Zutat sorgt beim klassischen Hefeteig hauptsächlich dafür, dass der Teig aufgeht?",
+          "answer": "Hefe.",
+          "explanation": "Hefepilze vergären Zucker und produzieren dabei unter anderem Kohlendioxid. Das Gas bildet Bläschen im Teig und lässt ihn aufgehen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Salz",
+              "Hefe",
+              "Öl",
+              "Mehl"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "alltag-300",
+          "points": 300,
+          "question": "Ein Produkt kostet 80 Euro und wird um 25 Prozent reduziert. Wie hoch ist der neue Preis?",
+          "answer": "60 Euro.",
+          "explanation": "25 Prozent von 80 Euro sind 20 Euro. Nach dem Rabatt bleiben 60 Euro.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "60"
+            ],
+            "unit": "€"
+          }
+        },
+        {
+          "id": "alltag-400",
+          "points": 400,
+          "question": "Warum fühlen sich Metallgegenstände bei gleicher Raumtemperatur häufig kälter an als Gegenstände aus Holz?",
+          "answer": "Metall leitet Wärme schneller von der Haut weg als Holz.",
+          "explanation": "Entscheidend ist nicht unbedingt eine niedrigere Temperatur des Metalls. Wegen seiner höheren Wärmeleitfähigkeit entzieht es der warmen Haut schneller Energie und fühlt sich deshalb kälter an."
+        },
+        {
+          "id": "alltag-500",
+          "points": 500,
+          "question": "Drei Personen teilen eine Restaurantrechnung von 84 Euro. Person A übernimmt 50 Prozent der Rechnung. Den Rest teilen B und C zu gleichen Teilen. Wie viel Euro zahlt Person C?",
+          "answer": "21 Euro.",
+          "explanation": "50 Prozent von 84 Euro sind 42 Euro. Es bleiben weitere 42 Euro, die B und C gleichmäßig teilen. Daher zahlt Person C 21 Euro.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "21"
+            ],
+            "unit": "€"
+          }
+        }
+      ]
+    }
+  ]
+}

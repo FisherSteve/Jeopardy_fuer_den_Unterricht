@@ -13,12 +13,13 @@ Du brauchst einen Browser. Für neue Aufgaben brauchst du zusätzlich Zugang zu 
 1. Öffne die [Startseite auf GitHub Pages](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Dort sind alle Spiele verlinkt.
 2. Alternativ: [Lade den Projektordner als ZIP herunter](https://github.com/FisherSteve/Jeopardy_fuer_den_Unterricht/archive/refs/heads/main.zip), entpacke ihn und öffne die **index.html im Hauptordner**. Ihre Links funktionieren auch lokal.
 3. Direkt im Browser spielen:
-   - [Klasse 10: Startklar – Memes & Wissen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/klasse-10-start-meme-wissen/)
-   - [Meme-Mix ab ca. 14: Wissen, Gaming & kuriose Fakten](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/meme-mix-ab-14/)
-   - [Mathematik, Klasse 8 NRW](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/)
-   - [Mathematik, Klasse 5](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-5/)
-   - [Fächermix, Klasse 6](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/faechermix-klasse-6/)
-   - [Elektronikerausbildung, Abschlusswiederholung](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/elektronikerausbildung-abschluss-wiederholung/)
+   - [Erwachsene · Welt, Geschichte, Wissenschaft, Kultur & Alltag](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/allgemeinwissen-erwachsene/)
+   - [Start Klasse 10 · Memes, Mediencheck, Mathe, Natur & Weltwissen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/klasse-10-start-meme-wissen/)
+   - [Ab 14 · Memes, Gaming, Tiere, Weltraum & Kopfrätsel](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/meme-mix-ab-14/)
+   - [Mathe Klasse 8 NRW · Terme, Zuordnungen, Prozent, Geometrie & Zufall](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/)
+   - [Mathe Klasse 5 · Zahlen, Größen, Geometrie, Daten & Knobeln](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-5/)
+   - [Klasse 6 · Deutschland, Englisch, Brüche, Ägypten & Pubertät](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/faechermix-klasse-6/)
+   - [Elektronik, 3. Lehrjahr · Sicherheit, Schaltungen & Messtechnik](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/elektronikerausbildung-abschluss-wiederholung/)
 4. Öffne im Spiel **Menü**. Dort kannst du die Teamnamen ändern und vor der ersten Bewertung weitere Teams hinzufügen. Zwei Teams sind voreingestellt; bis zu sechs sind möglich.
 5. Jetzt kann das hervorgehobene Team eine Punktekarte wählen.
 

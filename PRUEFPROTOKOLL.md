@@ -86,3 +86,12 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 - Längste Frage, längste Antwortoption und längste Erklärung auf schmalem Bildschirm dargestellt und Screenshots visuell kontrolliert; lange Inhalte im Dialog scrollbar.
 - tests/pages.cjs: Startseite und sechs Spiele einschließlich Verzeichnis-URLs unter Repository-Unterpfad in allen drei Engines bestanden.
 - Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft.
+
+## Ergänzung vom 13.09.2026: Erwachsenenquiz und aussagekräftige Spielnamen
+
+- Erwachsenenquiz als Inhaltsdatei übernommen und mit dem gemeinsamen Framework gebaut; alle sieben Spiele mit kurzen Themenangaben im Titel versehen. Bestehende URLs bleiben erhalten; Startseite und README aktualisiert.
+- Build erfolgreich; alle 14 Engine-Tests bestanden. Engine und Oberfläche unverändert.
+- Erwachsenenquiz in Chromium 131, Firefox 153 und WebKit 26.5 vollständig durchgespielt: 25 Karten, automatische Wertungen, Teamfolge und Endstände geprüft. Startseite und alle sieben Spiele unter Repository-Unterpfad in allen drei Engines geprüft.
+- Schmale Startseite sowie lange Frage und Ergebnisanzeige visuell kontrolliert.
+- Regel gegen direkte und indirekte Lösungsverräter in Framework-Prompt und Agentenanleitung ergänzt. Anschließend die bereits sortierte Ereignisliste einer Frage gemischt; erneuter Build und gezielte Inhaltsprüfung bestanden.
+- Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft.

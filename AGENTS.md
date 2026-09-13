@@ -15,3 +15,5 @@
 - Fertige Spiele liegen unter spiele/<kennung>/index.html. node build.js aktualisiert auch die Root-Startseite aus allen Spielordnern. Links relativ halten, damit GitHub Pages unter dem Repository-Unterpfad und lokale Dateien funktionieren.
 
 - Keine separaten Quellen-, Lehrplan- oder Recherchedateien für einzelne Spiele ins Repository aufnehmen. Quellen bei Bedarf in der Chat-Antwort nennen; die Recherche weiterhin durchführen.
+
+- Keine direkten oder indirekten Lösungsverräter in Fragen oder anderen vor der Abgabe sichtbaren Inhalten. Sortierlisten mischen; Antwortoptionen ohne verräterische Formulierung, Hervorhebung oder feste Lösungsposition. Notwendige Angaben zum selbstständigen Lösen bleiben erlaubt.

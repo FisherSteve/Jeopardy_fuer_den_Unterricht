@@ -135,8 +135,8 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
 <!-- Nur diesen JSON-Inhalt durch einen validierten Aufgabensatz ersetzen. -->
 <script id="game-data" type="application/json">{
   "schemaVersion": 1,
-  "id": "mathematik-klasse-8-nrw",
-  "title": "Mathe Klasse 8 NRW · Terme, Zuordnungen, Prozent, Geometrie & Zufall",
+  "id": "allgemeinwissen-erwachsene",
+  "title": "Erwachsene · Welt, Geschichte, Wissenschaft, Kultur & Alltag",
   "teams": [
     "Team 1",
     "Team 2"
@@ -148,378 +148,328 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   },
   "categories": [
     {
-      "title": "Zahlen & Terme",
+      "title": "Welt & Geografie",
       "questions": [
         {
-          "question": "Berechne: −7 + 12.",
-          "answer": "5",
-          "explanation": "Von −7 bis 0 sind es 7 Schritte. Von den 12 Schritten bleiben noch 5 übrig.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "5"
-            ]
-          },
-          "id": "k1-100",
-          "points": 100
-        },
-        {
-          "question": "Berechne: (−3) · (−4).",
-          "answer": "12",
-          "explanation": "Zwei negative Faktoren ergeben ein positives Produkt. 3 · 4 = 12.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "12"
-            ]
-          },
-          "id": "k1-200",
-          "points": 200
-        },
-        {
-          "question": "Berechne: 3/4 : 1/2. Gib das Ergebnis als Dezimalzahl ein.",
-          "answer": "1,5",
-          "explanation": "Beim Teilen durch 1/2 verdoppelst du die Zahl: 3/4 · 2 = 6/4. Das sind 1,5.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "1.5"
-            ]
-          },
-          "id": "k1-300",
-          "points": 300
-        },
-        {
-          "question": "Löse die Gleichung: 3x + 4 = 19. Wie groß ist x?",
-          "answer": "x = 5",
-          "explanation": "Ziehe auf beiden Seiten 4 ab: 3x = 15. Teile anschließend durch 3: x = 5.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "5"
-            ]
-          },
-          "id": "k1-400",
-          "points": 400
-        },
-        {
-          "question": "Welcher Term ist für jedes x gleich (x + 3)²?",
-          "answer": "x² + 6x + 9",
-          "explanation": "(x + 3)² bedeutet (x + 3) · (x + 3). Ausmultiplizieren ergibt x² + 3x + 3x + 9, also x² + 6x + 9.",
+          "id": "welt-100",
+          "points": 100,
+          "question": "Welches Land hat auf einer Weltkarte die charakteristische Form eines Stiefels?",
+          "answer": "Italien.",
+          "explanation": "Italien ragt als lange Halbinsel in das Mittelmeer. Seine Umrisse werden häufig mit einem Stiefel verglichen.",
           "response": {
             "type": "choice",
             "options": [
-              "x² + 9",
-              "x² + 6x + 9",
-              "x² + 3x + 9"
+              "Portugal",
+              "Italien",
+              "Griechenland",
+              "Kroatien"
             ],
             "correct": [
               1
             ]
-          },
-          "id": "k1-500",
-          "points": 500
-        }
-      ]
-    },
-    {
-      "title": "Zuordnungen",
-      "questions": [
-        {
-          "question": "Ein Heft kostet 2 €. Wie viel kosten 3 Hefte zum gleichen Stückpreis?",
-          "answer": "6 €",
-          "explanation": "Jedes Heft kostet 2 €. Für drei Hefte rechnest du 3 · 2 € = 6 €.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "6"
-            ],
-            "unit": "€"
-          },
-          "id": "k2-100",
-          "points": 100
+          }
         },
         {
-          "question": "Es gilt y = 2x + 1. Welchen Wert hat y für x = 4?",
-          "answer": "y = 9",
-          "explanation": "Setze für x die Zahl 4 ein. Dann gilt y = 2 · 4 + 1 = 9.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "9"
-            ]
-          },
-          "id": "k2-200",
-          "points": 200
+          "id": "welt-200",
+          "points": 200,
+          "question": "Welche Hauptstadt liegt an der Donau und entstand historisch aus den Städten Buda und Pest?",
+          "answer": "Budapest.",
+          "explanation": "Budapest ist die Hauptstadt Ungarns. Buda und Pest liegen auf gegenüberliegenden Seiten der Donau und wurden 1873 mit Óbuda zur heutigen Stadt vereinigt."
         },
         {
-          "question": "Vier gleich schnell arbeitende Pumpen leeren ein Becken in 6 Stunden. Wie viele Stunden brauchen zwei solcher Pumpen unter gleichen Bedingungen?",
-          "answer": "12 Stunden",
-          "explanation": "Halb so viele Pumpen brauchen doppelt so lange. 2 · 6 Stunden = 12 Stunden. Die Zuordnung ist antiproportional.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "12"
-            ],
-            "unit": "Stunden"
-          },
-          "id": "k2-300",
-          "points": 300
-        },
-        {
-          "question": "Ein Fahrradverleih verlangt 3 € Grundgebühr und 2 € je Stunde. Wie viel kosten 4 Stunden?",
-          "answer": "11 €",
-          "explanation": "Vier Stunden kosten 4 · 2 € = 8 €. Dazu kommen einmalig 3 € Grundgebühr: insgesamt 11 €.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "11"
-            ],
-            "unit": "€"
-          },
-          "id": "k2-400",
-          "points": 400
-        },
-        {
-          "question": "Bei einer linearen Zuordnung wächst y bei jedem Schritt x → x + 1 um denselben Wert. Für x = 0 gilt y = 2, für x = 2 gilt y = 8. Welches y gehört zu x = 3?",
-          "answer": "y = 11",
-          "explanation": "In zwei Schritten steigt y von 2 auf 8, also um 6. Pro Schritt sind das 3. Nach einem weiteren Schritt ist y = 8 + 3 = 11.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "11"
-            ]
-          },
-          "id": "k2-500",
-          "points": 500
-        }
-      ]
-    },
-    {
-      "title": "Prozent & Zinsen",
-      "questions": [
-        {
-          "question": "Wie viel sind 10 % von 80 €?",
-          "answer": "8 €",
-          "explanation": "10 % sind ein Zehntel. 80 € : 10 = 8 €.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "8"
-            ],
-            "unit": "€"
-          },
-          "id": "k3-100",
-          "points": 100
-        },
-        {
-          "question": "Ein T-Shirt kostet 40 €. Es gibt 25 % Rabatt. Wie viel bezahlst du?",
-          "answer": "30 €",
-          "explanation": "25 % sind ein Viertel. Der Rabatt beträgt 40 € : 4 = 10 €. Du bezahlst 40 € − 10 € = 30 €.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "30"
-            ],
-            "unit": "€"
-          },
-          "id": "k3-200",
-          "points": 200
-        },
-        {
-          "question": "6 von 20 Jugendlichen fahren mit dem Fahrrad zur Schule. Wie viel Prozent sind das?",
-          "answer": "30 %",
-          "explanation": "1 von 20 entspricht 5 %. Deshalb entsprechen 6 von 20 genau 6 · 5 % = 30 %.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "30"
-            ],
-            "unit": "%"
-          },
-          "id": "k3-300",
-          "points": 300
-        },
-        {
-          "question": "200 € werden für genau ein Jahr mit 3 % pro Jahr verzinst. Wie viele Euro Zinsen kommen hinzu? Es fallen keine Gebühren an.",
-          "answer": "6 € Zinsen",
-          "explanation": "1 % von 200 € sind 2 €. Für 3 % rechnest du 3 · 2 € = 6 €.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "6"
-            ],
-            "unit": "€"
-          },
-          "id": "k3-400",
-          "points": 400
-        },
-        {
-          "question": "Ein Preis von 100 € steigt zuerst um 10 %. Danach sinkt der neue Preis um 10 %. Wie hoch ist der Preis am Ende?",
-          "answer": "99 €",
-          "explanation": "Nach der Erhöhung kostet der Artikel 110 €. Der anschließende Rabatt beträgt 10 % von 110 €, also 11 €. Es bleiben 99 €.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "99"
-            ],
-            "unit": "€"
-          },
-          "id": "k3-500",
-          "points": 500
-        }
-      ]
-    },
-    {
-      "title": "Winkel & Flächen",
-      "questions": [
-        {
-          "question": "Ein Dreieck hat zwei Winkel von 50° und 60°. Wie groß ist der dritte Winkel?",
-          "answer": "70°",
-          "explanation": "Die drei Innenwinkel eines Dreiecks ergeben zusammen 180°. 180° − 50° − 60° = 70°.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "70"
-            ],
-            "unit": "Grad"
-          },
-          "id": "k4-100",
-          "points": 100
-        },
-        {
-          "question": "Ein Parallelogramm hat eine Grundseite von 6 cm und eine zugehörige senkrechte Höhe von 3 cm. Wie groß ist sein Flächeninhalt?",
-          "answer": "18 cm²",
-          "explanation": "Beim Parallelogramm gilt: Fläche = Grundseite · zugehörige Höhe. 6 · 3 = 18. Die schräge Seitenlänge brauchst du dafür nicht.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "18"
-            ],
-            "unit": "cm²"
-          },
-          "id": "k4-200",
-          "points": 200
-        },
-        {
-          "question": "Ein Dreieck hat eine Grundseite von 8 cm und eine zugehörige senkrechte Höhe von 5 cm. Wie groß ist sein Flächeninhalt?",
-          "answer": "20 cm²",
-          "explanation": "Die Fläche ist die Hälfte von Grundseite mal Höhe. 8 · 5 : 2 = 20.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "20"
-            ],
-            "unit": "cm²"
-          },
-          "id": "k4-300",
-          "points": 300
-        },
-        {
-          "question": "Ein gerades Prisma hat eine dreieckige Grundfläche von 6 cm². Der Abstand zwischen Grundfläche und Deckfläche beträgt 5 cm. Wie groß ist das Volumen?",
-          "answer": "30 cm³",
-          "explanation": "Für ein Prisma gilt: Volumen = Grundfläche · Körperhöhe. Hier sind das 6 cm² · 5 cm = 30 cm³.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "30"
-            ],
-            "unit": "cm³"
-          },
-          "id": "k4-400",
-          "points": 400
-        },
-        {
-          "question": "Ein Trapez hat parallele Seiten von 4 cm und 8 cm. Ihr senkrechter Abstand beträgt 3 cm. Wie groß ist der Flächeninhalt?",
-          "answer": "18 cm²",
-          "explanation": "Bilde den Mittelwert der parallelen Seiten: (4 + 8) : 2 = 6 cm. Multipliziere ihn mit der Höhe: 6 · 3 = 18 cm².",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "18"
-            ],
-            "unit": "cm²"
-          },
-          "id": "k4-500",
-          "points": 500
-        }
-      ]
-    },
-    {
-      "title": "Daten & Zufall",
-      "questions": [
-        {
-          "question": "Eine faire Münze wird einmal geworfen. Wie groß ist die Wahrscheinlichkeit für Kopf in Prozent?",
-          "answer": "50 %",
-          "explanation": "Kopf und Zahl sind gleich wahrscheinlich. Ein günstiges von zwei möglichen Ergebnissen entspricht 1/2 = 50 %.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "50"
-            ],
-            "unit": "%"
-          },
-          "id": "k5-100",
-          "points": 100
-        },
-        {
-          "question": "Ein fairer Würfel mit den Zahlen 1 bis 6 wird einmal geworfen. Wie groß ist die Wahrscheinlichkeit für eine gerade Zahl in Prozent?",
-          "answer": "50 %",
-          "explanation": "Die geraden Zahlen sind 2, 4 und 6. Drei von sechs gleich wahrscheinlichen Ergebnissen sind günstig: 3/6 = 50 %.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "50"
-            ],
-            "unit": "%"
-          },
-          "id": "k5-200",
-          "points": 200
-        },
-        {
-          "question": "In einem Beutel liegen 3 rote und 7 blaue gleichartige Kugeln. Eine Kugel wird blind gezogen; jede Kugel ist gleich wahrscheinlich. Wie groß ist die Wahrscheinlichkeit für Rot in Prozent?",
-          "answer": "30 %",
-          "explanation": "Insgesamt sind es 10 Kugeln. Drei davon sind rot. 3/10 entspricht 30 %.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "30"
-            ],
-            "unit": "%"
-          },
-          "id": "k5-300",
-          "points": 300
-        },
-        {
-          "question": "Die Fünf-Punkte-Zusammenfassung eines Boxplots lautet: Minimum 2, unteres Quartil 4, Median 6, oberes Quartil 9, Maximum 12. Wie breit ist die Box auf der Zahlenskala?",
-          "answer": "5",
-          "explanation": "Die Box reicht vom unteren bis zum oberen Quartil. Ihre Breite beträgt deshalb 9 − 4 = 5. Minimum und Maximum begrenzen die gesamte Spannweite.",
-          "response": {
-            "type": "number",
-            "accepted": [
-              "5"
-            ]
-          },
-          "id": "k5-400",
-          "points": 400
-        },
-        {
-          "question": "Eine faire Münze zeigte viermal hintereinander Kopf. Welche Aussage über den nächsten unabhängigen Wurf stimmt?",
-          "answer": "Kopf und Zahl bleiben gleich wahrscheinlich.",
-          "explanation": "Frühere Würfe verändern den nächsten unabhängigen Wurf nicht. Kopf und Zahl haben weiterhin jeweils eine Wahrscheinlichkeit von 50 %. Eine kurze Serie muss sich nicht sofort ausgleichen.",
+          "id": "welt-300",
+          "points": 300,
+          "question": "Welches dieser Länder besitzt keine Küste am Mittelmeer?",
+          "answer": "Portugal.",
+          "explanation": "Portugal liegt am Atlantik und besitzt keine Mittelmeerküste. Spanien, Frankreich und Italien grenzen dagegen an das Mittelmeer.",
           "response": {
             "type": "choice",
             "options": [
-              "Zahl ist jetzt wahrscheinlicher.",
-              "Kopf ist jetzt wahrscheinlicher.",
-              "Kopf und Zahl bleiben gleich wahrscheinlich."
+              "Spanien",
+              "Frankreich",
+              "Portugal",
+              "Italien"
             ],
             "correct": [
               2
             ]
-          },
-          "id": "k5-500",
-          "points": 500
+          }
+        },
+        {
+          "id": "welt-400",
+          "points": 400,
+          "question": "Der Äquator verläuft durch Südamerika. Nenne eines der drei südamerikanischen Länder, die vom Äquator durchquert werden.",
+          "answer": "Ecuador, Kolumbien oder Brasilien.",
+          "explanation": "In Südamerika verläuft der Äquator durch Ecuador, Kolumbien und Brasilien. Jede dieser drei Antworten ist richtig."
+        },
+        {
+          "id": "welt-500",
+          "points": 500,
+          "question": "Ein Schiff fährt vom Schwarzen Meer ins Mittelmeer. Durch welche zwei türkischen Meerengen muss es nacheinander fahren?",
+          "answer": "Durch den Bosporus und die Dardanellen.",
+          "explanation": "Vom Schwarzen Meer führt der Bosporus ins Marmarameer. Von dort führen die Dardanellen weiter in die Ägäis und damit ins Mittelmeer."
+        }
+      ]
+    },
+    {
+      "title": "Geschichte & Gesellschaft",
+      "questions": [
+        {
+          "id": "geschichte-100",
+          "points": 100,
+          "question": "In welchem Jahr fiel die Berliner Mauer?",
+          "answer": "1989.",
+          "explanation": "Am 9. November 1989 wurden die Grenzübergänge der DDR nach politischen Umwälzungen geöffnet. Der Fall der Mauer wurde zum Symbol für das Ende der deutschen Teilung.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1989"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "geschichte-200",
+          "points": 200,
+          "question": "Welche antike Stadt wurde im Jahr 79 beim Ausbruch des Vesuvs verschüttet und später wieder ausgegraben?",
+          "answer": "Pompeji.",
+          "explanation": "Pompeji lag nahe dem Vesuv am Golf von Neapel. Vulkanisches Material konservierte große Teile der römischen Stadt über viele Jahrhunderte."
+        },
+        {
+          "id": "geschichte-300",
+          "points": 300,
+          "question": "Welches Ereignis gilt als unmittelbarer Auslöser des Ersten Weltkriegs?",
+          "answer": "Das Attentat von Sarajevo auf Erzherzog Franz Ferdinand.",
+          "explanation": "Am 28. Juni 1914 wurden der österreichisch-ungarische Thronfolger Franz Ferdinand und seine Frau Sophie in Sarajevo ermordet. Das Attentat löste die Julikrise aus, die in den Ersten Weltkrieg führte."
+        },
+        {
+          "id": "geschichte-400",
+          "points": 400,
+          "question": "Welche dieser Errungenschaften entstand historisch zuerst?",
+          "answer": "Der Buchdruck mit beweglichen Metalllettern in Europa.",
+          "explanation": "Johannes Gutenbergs Drucktechnik verbreitete sich ab der Mitte des 15. Jahrhunderts. Dampfmaschine, Telefon und elektrisches Licht kamen erst Jahrhunderte später.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Das Telefon",
+              "Die Dampfmaschine",
+              "Der Buchdruck mit beweglichen Metalllettern in Europa",
+              "Die elektrische Glühlampe"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "geschichte-500",
+          "points": 500,
+          "question": "Ordne diese Ereignisse vom ältesten zum jüngsten: Mondlandung von Apollo 11, Erfindung des World Wide Web, Französische Revolution.",
+          "answer": "Französische Revolution, Mondlandung von Apollo 11, Erfindung des World Wide Web.",
+          "explanation": "Die Französische Revolution begann 1789. Apollo 11 landete 1969 auf dem Mond. Tim Berners-Lee entwickelte das World Wide Web ab 1989."
+        }
+      ]
+    },
+    {
+      "title": "Wissenschaft & Technik",
+      "questions": [
+        {
+          "id": "wissenschaft-100",
+          "points": 100,
+          "question": "Welcher Planet ist der Sonne am nächsten?",
+          "answer": "Merkur.",
+          "explanation": "Merkur ist der innerste Planet unseres Sonnensystems. Danach folgen Venus, Erde und Mars.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Venus",
+              "Merkur",
+              "Mars",
+              "Erde"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "wissenschaft-200",
+          "points": 200,
+          "question": "Wie viele Chromosomen besitzt eine typische menschliche Körperzelle?",
+          "answer": "46.",
+          "explanation": "Eine typische menschliche Körperzelle besitzt 23 Chromosomenpaare und damit insgesamt 46 Chromosomen. Keimzellen besitzen dagegen normalerweise 23.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "46"
+            ],
+            "unit": ""
+          }
+        },
+        {
+          "id": "wissenschaft-300",
+          "points": 300,
+          "question": "Warum schwimmt Eis normalerweise auf flüssigem Wasser?",
+          "answer": "Weil Eis eine geringere Dichte als flüssiges Wasser hat.",
+          "explanation": "Beim Gefrieren bildet Wasser eine offenere Kristallstruktur. Dadurch nimmt sein Volumen zu und seine Dichte ab, sodass Eis auf flüssigem Wasser schwimmt."
+        },
+        {
+          "id": "wissenschaft-400",
+          "points": 400,
+          "question": "Welche Aussage beschreibt den Unterschied zwischen Masse und Gewichtskraft korrekt?",
+          "answer": "Die Masse bleibt gleich, während die Gewichtskraft von der örtlichen Gravitation abhängt.",
+          "explanation": "Die Masse gibt die Menge an Materie beziehungsweise die Trägheit eines Körpers an. Die Gewichtskraft entsteht durch Gravitation und ist deshalb zum Beispiel auf dem Mond geringer als auf der Erde.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Masse und Gewichtskraft sind immer identisch.",
+              "Die Masse hängt von der Gravitation ab, die Gewichtskraft nicht.",
+              "Die Masse bleibt gleich, die Gewichtskraft hängt von der Gravitation ab.",
+              "Auf dem Mond verschwinden Masse und Gewichtskraft vollständig."
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "wissenschaft-500",
+          "points": 500,
+          "question": "Ein Funksignal bewegt sich näherungsweise mit Lichtgeschwindigkeit. Licht benötigt vom Mond zur Erde ungefähr 1,3 Sekunden. Wie lange dauert es ungefähr, bis ein von der Erde gesendetes Signal dort ankommt und eine unmittelbare Antwort wieder auf der Erde eintrifft?",
+          "answer": "Etwa 2,6 Sekunden.",
+          "explanation": "Für die Strecke Erde–Mond benötigt das Signal ungefähr 1,3 Sekunden. Für Hin- und Rückweg verdoppelt sich die Laufzeit auf etwa 2,6 Sekunden.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "2.6"
+            ],
+            "unit": "s"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Kultur & Medien",
+      "questions": [
+        {
+          "id": "kultur-100",
+          "points": 100,
+          "question": "Wer malte die Mona Lisa?",
+          "answer": "Leonardo da Vinci.",
+          "explanation": "Leonardo da Vinci schuf das berühmte Porträt während der Renaissance. Das Gemälde befindet sich heute im Louvre in Paris."
+        },
+        {
+          "id": "kultur-200",
+          "points": 200,
+          "question": "Welche Figur stammt aus einem Roman von Miguel de Cervantes?",
+          "answer": "Don Quijote.",
+          "explanation": "Don Quijote ist die Hauptfigur des Romans von Miguel de Cervantes. Seine Abenteuer mit Sancho Panza gehören zu den bekanntesten Werken der Weltliteratur.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Sherlock Holmes",
+              "Don Quijote",
+              "Faust",
+              "Dorian Gray"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "kultur-300",
+          "points": 300,
+          "question": "Welche drei Grundfarben werden beim additiven Farbmodell von Bildschirmen verwendet?",
+          "answer": "Rot, Grün und Blau.",
+          "explanation": "Bildschirme erzeugen Farben durch die additive Mischung von rotem, grünem und blauem Licht. Werden alle drei mit voller Stärke kombiniert, entsteht weißes Licht."
+        },
+        {
+          "id": "kultur-400",
+          "points": 400,
+          "question": "Welcher Komponist schrieb die Opern Die Zauberflöte und Don Giovanni?",
+          "answer": "Wolfgang Amadeus Mozart.",
+          "explanation": "Beide Opern stammen von Wolfgang Amadeus Mozart. Don Giovanni wurde 1787 uraufgeführt, Die Zauberflöte 1791."
+        },
+        {
+          "id": "kultur-500",
+          "points": 500,
+          "question": "Ein Roman wird als Dystopie bezeichnet. Was kennzeichnet dieses Genre typischerweise?",
+          "answer": "Die Darstellung einer problematischen oder bedrückenden zukünftigen Gesellschaft.",
+          "explanation": "Eine Dystopie beschreibt meist eine Gesellschaft, in der politische, technische oder soziale Entwicklungen negative Folgen angenommen haben. Sie dient häufig als Warnung oder Kritik an Entwicklungen der Gegenwart."
+        }
+      ]
+    },
+    {
+      "title": "Alltag & Kurioses",
+      "questions": [
+        {
+          "id": "alltag-100",
+          "points": 100,
+          "question": "Wie viele Minuten hat ein vollständiger Tag?",
+          "answer": "1440 Minuten.",
+          "explanation": "Ein Tag hat 24 Stunden und jede Stunde 60 Minuten. 24 mal 60 ergibt 1440.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "1440"
+            ],
+            "unit": "min"
+          }
+        },
+        {
+          "id": "alltag-200",
+          "points": 200,
+          "question": "Welche Zutat sorgt beim klassischen Hefeteig hauptsächlich dafür, dass der Teig aufgeht?",
+          "answer": "Hefe.",
+          "explanation": "Hefepilze vergären Zucker und produzieren dabei unter anderem Kohlendioxid. Das Gas bildet Bläschen im Teig und lässt ihn aufgehen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Salz",
+              "Hefe",
+              "Öl",
+              "Mehl"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "alltag-300",
+          "points": 300,
+          "question": "Ein Produkt kostet 80 Euro und wird um 25 Prozent reduziert. Wie hoch ist der neue Preis?",
+          "answer": "60 Euro.",
+          "explanation": "25 Prozent von 80 Euro sind 20 Euro. Nach dem Rabatt bleiben 60 Euro.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "60"
+            ],
+            "unit": "€"
+          }
+        },
+        {
+          "id": "alltag-400",
+          "points": 400,
+          "question": "Warum fühlen sich Metallgegenstände bei gleicher Raumtemperatur häufig kälter an als Gegenstände aus Holz?",
+          "answer": "Metall leitet Wärme schneller von der Haut weg als Holz.",
+          "explanation": "Entscheidend ist nicht unbedingt eine niedrigere Temperatur des Metalls. Wegen seiner höheren Wärmeleitfähigkeit entzieht es der warmen Haut schneller Energie und fühlt sich deshalb kälter an."
+        },
+        {
+          "id": "alltag-500",
+          "points": 500,
+          "question": "Drei Personen teilen eine Restaurantrechnung von 84 Euro. Person A übernimmt 50 Prozent der Rechnung. Den Rest teilen B und C zu gleichen Teilen. Wie viel Euro zahlt Person C?",
+          "answer": "21 Euro.",
+          "explanation": "50 Prozent von 84 Euro sind 42 Euro. Es bleiben weitere 42 Euro, die B und C gleichmäßig teilen. Daher zahlt Person C 21 Euro.",
+          "response": {
+            "type": "number",
+            "accepted": [
+              "21"
+            ],
+            "unit": "€"
+          }
         }
       ]
     }
