@@ -144,7 +144,7 @@ Wenn ausdrücklich eine fertige HTML-Datei verlangt wird und eine bereits gebaut
 
 ## Technische Leitplanken
 
-Eine fertige Spiel-HTML enthält alles: CSS, klassische JavaScript-Skripte und JSON. Keine externen Fonts, Bibliotheken, Bilder, APIs, Module oder Netzabrufe. Zum Spielen ist kein Node.js erforderlich. Safari/WebKit, Firefox und Chromium sind die Zielbrowser unter iOS/iPadOS, Android, Windows und Linux.
+Eine fertige Spiel-HTML enthält alles: CSS, klassische JavaScript-Skripte und JSON. Keine externen Fonts, Bibliotheken, Bilder, APIs oder Module. Einzige optionale Mediendatei: Jeopardy-theme-song.mp3. GitHub-Pages-Spiele nutzen die gemeinsame MP3 im Repository-Hauptordner; lokal und im Spiel-Ersteller erzeugte Spiele verwenden sie optional neben der HTML. Keine Einbettung und kein automatischer Download im Spiel-Ersteller. Musik standardmäßig aus, nur nach bewusster Menübedienung laden und abspielen; fehlende Datei oder abgelehnte Wiedergabe dürfen das Spiel nicht beeinträchtigen. Beim Verlassen des Tabs stoppen. Ansonsten keine Netzabrufe. Zum Spielen ist kein Node.js erforderlich. Safari/WebKit, Firefox und Chromium sind die Zielbrowser unter iOS/iPadOS, Android, Windows und Linux.
 
 Touch hat Vorrang: echte Buttons mit mindestens 52 CSS-Pixeln, kein Hover-Zwang, kein Drag-and-drop, kein Doppeltipp als Voraussetzung. Auf großen Displays große Schrift und eindeutige Textlabels; auf schmalen Displays darf nur das Brett horizontal scrollen. Browserzoom bleibt erlaubt. Modale Dialoge benötigen Fokusbegrenzung, Esc und Fokusrückgabe. Tastenkürzel A/R/F/H dürfen weder Eingaben in Textfeldern noch native Enter-/Leertastenbedienung stören. Wiederholte Tastendrücke und Mehrfachklicks dürfen keine doppelten Punkte auslösen.
 
@@ -166,4 +166,4 @@ Vollbild und lokales Speichern sind optionale Browserfähigkeiten mit Fehlerbeha
 - Alle falsch, Gewinner und Gleichstand korrekt.
 - Reset abbrechbar; Teamnamen bleiben erhalten.
 - Touch, Tastatur, kleine Ansicht und lange Inhalte geprüft.
-- Keine externen Requests oder unbehandelten Browserfehler.
+- Ohne aktivierte Musik keine externen Requests; Musik lädt nur die optionale MP3. Fehlende Datei und blockierte Wiedergabe ohne unbehandelte Fehler abfangen.

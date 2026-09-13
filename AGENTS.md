@@ -17,3 +17,5 @@
 - Keine separaten Quellen-, Lehrplan- oder Recherchedateien für einzelne Spiele ins Repository aufnehmen. Quellen bei Bedarf in der Chat-Antwort nennen; die Recherche weiterhin durchführen.
 
 - Keine direkten oder indirekten Lösungsverräter in Fragen oder anderen vor der Abgabe sichtbaren Inhalten. Sortierlisten mischen; Antwortoptionen ohne verräterische Formulierung, Hervorhebung oder feste Lösungsposition. Notwendige Angaben zum selbstständigen Lösen bleiben erlaubt.
+
+- Optionale Musik: GitHub-Pages-Spiele laden die gemeinsame Jeopardy-theme-song.mp3 aus dem Hauptordner. Lokale und im Spiel-Ersteller erzeugte Spiele suchen sie neben ihrer HTML. Nicht einbetten oder automatisch mit herunterladen; erst nach Einschalten im Menü laden. Fehlende Datei ist erlaubt; beim Tabwechsel stoppen.

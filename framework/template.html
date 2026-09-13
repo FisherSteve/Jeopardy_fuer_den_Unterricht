@@ -53,6 +53,7 @@
       <button id="feedback-continue" class="primary">Weiter</button>
     </div>
     <div id="menu-view" hidden>
+      <h3>Musik</h3><label class="toggle-label"><input id="music-enabled" type="checkbox" aria-describedby="music-status"> Hintergrundmusik abspielen</label><p id="music-status" class="muted" role="status">Optional und zunächst aus. Die Musik läuft bis zum Ausschalten in einer Schleife.</p>
       <h3>Teams</h3><div id="names" class="names"></div>
       <div class="question-tools team-tools"><button id="add-team">Team hinzufügen</button><button id="remove-team">Letztes Team entfernen</button></div><p id="team-count-help" class="muted"></p>
       <h3>Punktewertung</h3>
@@ -72,6 +73,7 @@
   </section>
 </div>
 <noscript>Bitte JavaScript im Browser aktivieren, um das Spiel zu starten.</noscript>
+<audio id="music" preload="none" loop data-src="/*__MUSIC__*/"></audio>
 <!-- Nur diesen JSON-Inhalt durch einen validierten Aufgabensatz ersetzen. -->
 <script id="game-data" type="application/json">/*__DATA__*/</script>
 <script>/*__ENGINE__*/</script>

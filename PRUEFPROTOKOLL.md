@@ -95,3 +95,11 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 - Schmale Startseite sowie lange Frage und Ergebnisanzeige visuell kontrolliert.
 - Regel gegen direkte und indirekte Lösungsverräter in Framework-Prompt und Agentenanleitung ergänzt. Anschließend die bereits sortierte Ereignisliste einer Frage gemischt; erneuter Build und gezielte Inhaltsprüfung bestanden.
 - Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft.
+
+## Ergänzung vom 13.09.2026: optionale Hintergrundmusik
+
+- Gemeinsame MP3 für die GitHub-Pages-Spiele; lokale und vom Spiel-Ersteller erzeugte HTML-Dateien verwenden optional Jeopardy-theme-song.mp3 im selben Ordner. Kein Einbetten, Autostart oder Laden vor Betätigung des Menüschalters.
+- Alle sieben Spiele und der Spiel-Ersteller neu gebaut. Alle 14 Engine-Tests bestanden.
+- tests/music.cjs: echte MP3-Wiedergabe über HTTP und lokale Dateien in Chromium, Firefox und WebKit bestanden. Quellenpfad unter Repository-Unterpfad, kein Abruf vor Freigabe, Ausschalten, Tabwechsel, Neuladen, fehlende Datei, blockierte Wiedergabe und Ersteller-Download geprüft. WebKit-Medienabrufe serverseitig geprüft, da sie im Playwright-Seitenprotokoll nicht vollständig erscheinen.
+- browser.cjs, pages.cjs, scoring.cjs, feedback.cjs, visual.cjs, klasse8.cjs, meme-mix.cjs und klasse10-start.cjs in allen drei Engines bestanden. Neues Menü bei 390 Pixel Breite visuell kontrolliert.
+- Physische Promethean-Displays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft. Audioausgabe über die tatsächlichen Schuldisplay-Lautsprecher bleibt vor Ort zu prüfen.

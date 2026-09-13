@@ -87,6 +87,7 @@ Hebe auch den JSON-Aufgabensatz auf. Wenn du später Fragen ändern möchtest, g
 
 | Wunsch | So geht es |
 | --- | --- |
+| Musik abspielen | Menü → „Hintergrundmusik abspielen“; standardmäßig aus |
 | Mehr Teams | Menü → „Team hinzufügen“, vor der ersten Bewertung |
 | Punktabzug einschalten | Menü → „Punktabzug bei falscher Antwort“, vor der ersten Bewertung; standardmäßig aus |
 | Untergrenze wählen | Bei aktiviertem Punktabzug: „Negative Punktestände erlauben“ einschalten oder ausgeschaltet lassen, damit der Stand bei 0 stoppt |
@@ -101,6 +102,12 @@ Hebe auch den JSON-Aufgabensatz auf. Wenn du später Fragen ändern möchtest, g
 Die Erklärung nach einer falschen Antwort ist für die ganze Klasse gedacht und wird immer gezeigt. Interne Lehrkräftehinweise bleiben dabei verborgen. Das Ergebnis-Popup lässt sich auch mit **Enter, Leertaste oder Esc** fortsetzen. Animationen entfallen bei der Systemeinstellung für reduzierte Bewegung; die Rückmeldung bleibt sichtbar.
 
 Das Spiel merkt sich den Spielstand nach Möglichkeit im verwendeten Browser. Wenn Speichern nicht möglich ist, zeigt es einen Hinweis und bleibt spielbar. Für eine neue Lerngruppe das Spiel zurücksetzen. Auf gemeinsam genutzten Geräten am besten neutrale Teamnamen verwenden.
+
+## Optionale Hintergrundmusik
+
+Die Spiele auf GitHub Pages verwenden eine gemeinsame Musikdatei. Unter **Menü → Hintergrundmusik abspielen** kannst du sie ein- und ausschalten. Sie startet nur nach deiner Eingabe, läuft in einer Schleife und stoppt beim Verlassen des Tabs. Nach dem Neuladen ist sie wieder aus. Die Lautstärke regelst du am Gerät.
+
+Für ein selbst erstelltes oder einzeln heruntergeladenes Spiel ist Musik freiwillig: Lege eine MP3 mit dem genauen Namen **Jeopardy-theme-song.mp3** in denselben Ordner wie die HTML-Datei. Die Musik wird nicht in die HTML eingebettet oder vom Spiel-Ersteller mit heruntergeladen. Ohne MP3 funktioniert das ganze Spiel weiterhin; nur beim Einschalten erscheint gegebenenfalls ein Hinweis im Menü. Wenn du dein eigenes Spiel mit Musik online stellst, lade beide Dateien gemeinsam in denselben Ordner hoch.
 
 ## Mit Tastatur spielen
 

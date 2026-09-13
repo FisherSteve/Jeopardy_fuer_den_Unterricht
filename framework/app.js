@@ -6,6 +6,45 @@
   try { data = E.validate(JSON.parse($('game-data').textContent)); }
   catch (e) { $('fatal').hidden = false; $('fatal').textContent = 'Die Spieldaten sind ungültig. ' + e.message; return; }
   document.title = data.title; $('title').textContent = data.title;
+  const music = $('music'), musicToggle = $('music-enabled');
+  let musicAttempt = 0, musicTimer;
+  function stopMusic(message) {
+    musicAttempt++;
+    clearTimeout(musicTimer);
+    musicToggle.checked = false;
+    music.pause();
+    $('music-status').textContent = message || 'Musik ausgeschaltet.';
+  }
+  function musicUnavailable() {
+    stopMusic('Musik nicht verfügbar. Das Spiel funktioniert auch ohne Musik. Optional Jeopardy-theme-song.mp3 neben die HTML-Datei legen und erneut einschalten.');
+    music.removeAttribute('src');
+    music.load();
+  }
+  music.addEventListener('error', musicUnavailable);
+  musicToggle.addEventListener('change', async () => {
+    if (!musicToggle.checked) { stopMusic(); return; }
+    const attempt = ++musicAttempt;
+    clearTimeout(musicTimer);
+    musicTimer = setTimeout(() => { if (attempt === musicAttempt) musicUnavailable(); }, 12000);
+    $('music-status').textContent = 'Musik wird geladen …';
+    if (!music.hasAttribute('src')) {
+      // Repository games share one track online; downloaded games use an optional sibling file.
+      music.src = location.protocol === 'file:' ? 'Jeopardy-theme-song.mp3' : music.dataset.src;
+    }
+    try {
+      await music.play();
+      if (attempt === musicAttempt) {
+        clearTimeout(musicTimer);
+        $('music-status').textContent = 'Musik läuft. Hier jederzeit ausschalten.';
+      }
+    } catch (error) {
+      if (attempt !== musicAttempt) return;
+      if (error.name === 'NotAllowedError') stopMusic('Der Browser hat die Wiedergabe blockiert. Zum Starten erneut einschalten.');
+      else musicUnavailable();
+    }
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopMusic('Musik pausiert. Im Menü wieder einschalten.'); });
+  window.addEventListener('pagehide', () => stopMusic());
   const all = E.questions(data);
   // Exact content identity prevents stale state when a question or rule changes.
   const signature = JSON.stringify(data);

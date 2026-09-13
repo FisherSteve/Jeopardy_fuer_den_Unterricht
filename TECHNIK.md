@@ -56,7 +56,7 @@ Es gibt keine Build-Abhängigkeiten. `npm install` ist dafür nicht nötig. Ohne
 | `tests/` | Regeln, Browser-Verhalten und Screenshots |
 | `PRUEFPROTOKOLL.md` | Tatsächliche Prüfung und verbleibende Grenzen |
 
-Für GitHub Pages liegt jedes Spiel unter `spiele/<kennung>/index.html`. Auch ein einzelner Build aktualisiert die Root-Startseite aus allen vorhandenen Spielordnern; neue Spiele erscheinen dadurch automatisch. Explizite relative `index.html`-Links funktionieren sowohl unter dem Repository-Unterpfad auf GitHub Pages als auch bei lokaler Nutzung. Die Spiel-Dateien selbst benötigen keine relativen Assets. `.nojekyll` verhindert einen zusätzlichen Jekyll-Verarbeitungsschritt.
+Für GitHub Pages liegt jedes Spiel unter `spiele/<kennung>/index.html`. Auch ein einzelner Build aktualisiert die Root-Startseite aus allen vorhandenen Spielordnern; neue Spiele erscheinen dadurch automatisch. Explizite relative `index.html`-Links funktionieren sowohl unter dem Repository-Unterpfad auf GitHub Pages als auch bei lokaler Nutzung. Die Spiel-Dateien benötigen keine zusätzlichen Assets zum Spielen; nur die freiwillig aktivierbare Musik verwendet einen relativen MP3-Pfad. `.nojekyll` verhindert einen zusätzlichen Jekyll-Verarbeitungsschritt.
 
 Neue Inhalte nicht durch Kopieren und Umschreiben einer Engine erstellen. Änderungen an der gemeinsamen Bedienung in `framework/` durchführen und alle Spiele neu bauen. Der Build prüft ein bis fünf Kategorien mit je fünf Aufgaben und eindeutige IDs. Inhalt wird als Text gerendert; HTML aus Aufgabensätzen wird nicht ausgeführt.
 
@@ -109,3 +109,11 @@ WebKit-Automation ersetzt keinen Test auf einem echten iPad. Vor Einsatz im Unte
 ## Optionale Punktewertung
 
 `rules.subtractOnWrong` ist standardmäßig false. Optional zieht falsch den Kartenwert ab. `rules.allowNegativeScores` (optional, Standard false) erlaubt negative Punktestände; andernfalls wird nach jedem Abzug auf 0 begrenzt. Das Menü speichert diese Einstellungen unter `state.scoring` und sperrt Änderungen nach der ersten Bewertung. Reset erhält die Auswahl. Alte Version-2-Spielstände ohne scoring werden mit beiden Optionen false geladen. Rückgängig und Wiederherstellung berechnen die Wertung chronologisch neu; das Ergebnis-Popup zeigt die tatsächlich verbuchte Differenz, auch bei Begrenzung auf 0.
+
+## Optionale Musik
+
+Das Template enthält ein Audioelement ohne src und mit preload="none". Erst der Menüschalter setzt die Quelle und ruft play() auf; Fehler werden im Menü abgefangen. Kein Speichern der Musikfreigabe, kein Autostart. Tabwechsel und pagehide stoppen die Wiedergabe. Die Lautstärke bleibt über das Gerät regelbar.
+
+Der Build setzt für Repository-Spiele ../../Jeopardy-theme-song.mp3, für freie Ausgabeziele und die Spiel-Ersteller-Vorlage Jeopardy-theme-song.mp3. Unter file: wird immer die Datei neben der HTML verwendet. Es gibt keine Abhängigkeit von einer festen Domain und keine Base64-Einbettung. Die MP3 im Hauptordner wird separat von GitHub Pages ausgeliefert.
+
+Musikprüfung: `node tests/music.cjs` prüft echte MP3-Wiedergabe über HTTP mit Byte-Ranges und als lokale Datei, verzögertes Laden bis zum Einschalten, Ausschalten, Tabwechsel, Neuladen, fehlende Datei, abgelehnte Wiedergabe und die Ausgabe des Spiel-Erstellers in Chromium, Firefox und WebKit. Hängende Ladeversuche werden nach zwölf Sekunden abgebrochen.
