@@ -112,7 +112,7 @@ WebKit-Automation ersetzt keinen Test auf einem echten iPad. Vor Einsatz im Unte
 
 ## Optionale Musik
 
-Das Template enthält ein Audioelement ohne src und mit preload="none". Erst der Menüschalter setzt die Quelle und ruft play() auf; Fehler werden im Menü abgefangen. Kein Speichern der Musikfreigabe, kein Autostart. Tabwechsel und pagehide stoppen die Wiedergabe. Die Lautstärke bleibt über das Gerät regelbar.
+Das Template enthält ein Audioelement ohne src und mit preload="none". Der Menüschalter gibt Musik frei. Erst das Öffnen einer Frage setzt die Quelle und ruft play() auf; Aufdecken, Abgeben und Schließen stoppen und setzen die Wiedergabe zurück. Die nächste Frage startet erneut; Fehler werden im Menü abgefangen. Kein Speichern der Musikfreigabe, kein Autostart. Tabwechsel und pagehide stoppen die Wiedergabe. Die Lautstärke bleibt über das Gerät regelbar.
 
 Der Build setzt für Repository-Spiele ../../Jeopardy-theme-song.mp3, für freie Ausgabeziele und die Spiel-Ersteller-Vorlage Jeopardy-theme-song.mp3. Unter file: wird immer die Datei neben der HTML verwendet. Es gibt keine Abhängigkeit von einer festen Domain und keine Base64-Einbettung. Die MP3 im Hauptordner wird separat von GitHub Pages ausgeliefert.
 

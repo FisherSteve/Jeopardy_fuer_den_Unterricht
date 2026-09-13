@@ -103,3 +103,11 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 - tests/music.cjs: echte MP3-Wiedergabe über HTTP und lokale Dateien in Chromium, Firefox und WebKit bestanden. Quellenpfad unter Repository-Unterpfad, kein Abruf vor Freigabe, Ausschalten, Tabwechsel, Neuladen, fehlende Datei, blockierte Wiedergabe und Ersteller-Download geprüft. WebKit-Medienabrufe serverseitig geprüft, da sie im Playwright-Seitenprotokoll nicht vollständig erscheinen.
 - browser.cjs, pages.cjs, scoring.cjs, feedback.cjs, visual.cjs, klasse8.cjs, meme-mix.cjs und klasse10-start.cjs in allen drei Engines bestanden. Neues Menü bei 390 Pixel Breite visuell kontrolliert.
 - Physische Promethean-Displays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft. Audioausgabe über die tatsächlichen Schuldisplay-Lautsprecher bleibt vor Ort zu prüfen.
+
+## Ergänzung vom 13.09.2026: Musik nur während einer Frage
+
+- Menüschalter in „Musik während der Fragen“ umbenannt. Freigabe lädt und spielt noch keine Musik; erst das Öffnen einer Frage startet sie von vorne. Aufdecken, Zahl-/Auswahlabgabe, Schließen und Lehrkräftehinweise stoppen die Wiedergabe. Zwischen Fragen und während der Ergebnisbesprechung bleibt es still; die nächste Frage startet mit erhaltener Freigabe erneut.
+- Alle sieben Spiele und der Spiel-Ersteller neu gebaut; 14 Engine-Tests bestanden.
+- music.cjs in Chromium, Firefox und WebKit bestanden: tatsächliche Wiedergabe, Tastatur-Aufdecken, Hinweise, Zahlen-/Auswahlabgabe, Schließen, erneuter Start, Tabwechsel ohne automatisches Fortsetzen, Ausschalten, Neuladen, fehlende MP3, blockierte Wiedergabe sowie lokale Ausgabe des Spiel-Erstellers.
+- Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft.
+- Auch browser.cjs, pages.cjs, scoring.cjs, feedback.cjs, visual.cjs, klasse8.cjs, meme-mix.cjs und klasse10-start.cjs in allen drei Browser-Engines bestanden.

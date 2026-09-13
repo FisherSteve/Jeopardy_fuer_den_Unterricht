@@ -11,18 +11,22 @@
   function stopMusic(message) {
     musicAttempt++;
     clearTimeout(musicTimer);
-    musicToggle.checked = false;
     music.pause();
-    $('music-status').textContent = message || 'Musik ausgeschaltet.';
+    try { music.currentTime = 0; } catch (_) { /* Media may not be loaded yet. */ }
+    if (message || musicToggle.checked) $('music-status').textContent = message || 'Musik bereit für die nächste Frage.';
   }
   function musicUnavailable() {
+    musicToggle.checked = false;
     stopMusic('Musik nicht verfügbar. Das Spiel funktioniert auch ohne Musik. Optional Jeopardy-theme-song.mp3 neben die HTML-Datei legen und erneut einschalten.');
     music.removeAttribute('src');
     music.load();
   }
   music.addEventListener('error', musicUnavailable);
-  musicToggle.addEventListener('change', async () => {
-    if (!musicToggle.checked) { stopMusic(); return; }
+  musicToggle.addEventListener('change', () => {
+    stopMusic(musicToggle.checked ? 'Musik startet beim Öffnen einer Frage und stoppt beim Aufdecken, Abgeben oder Schließen.' : 'Musik ausgeschaltet.');
+  });
+  async function startQuestionMusic() {
+    if (!musicToggle.checked || document.hidden) return;
     const attempt = ++musicAttempt;
     clearTimeout(musicTimer);
     musicTimer = setTimeout(() => { if (attempt === musicAttempt) musicUnavailable(); }, 12000);
@@ -35,15 +39,15 @@
       await music.play();
       if (attempt === musicAttempt) {
         clearTimeout(musicTimer);
-        $('music-status').textContent = 'Musik läuft. Hier jederzeit ausschalten.';
+        $('music-status').textContent = 'Musik läuft während der Frage.';
       }
     } catch (error) {
       if (attempt !== musicAttempt) return;
-      if (error.name === 'NotAllowedError') stopMusic('Der Browser hat die Wiedergabe blockiert. Zum Starten erneut einschalten.');
+      if (error.name === 'NotAllowedError') { musicToggle.checked = false; stopMusic('Der Browser hat die Wiedergabe blockiert. Im Menü erneut einschalten und eine Frage öffnen.'); }
       else musicUnavailable();
     }
-  });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stopMusic('Musik pausiert. Im Menü wieder einschalten.'); });
+  }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopMusic(); });
   window.addEventListener('pagehide', () => stopMusic());
   const all = E.questions(data);
   // Exact content identity prevents stale state when a question or rule changes.
@@ -107,6 +111,7 @@
     }
   }
   function show(kind, title, focusId) {
+    if (kind !== 'question') stopMusic();
     if (!view) returnFocus = document.activeElement;
     view = kind;
     ['question', 'menu', 'reset', 'feedback'].forEach(v => $(v + '-view').hidden = v !== kind);
@@ -127,6 +132,7 @@
       if (inputLocked) return;
       pendingFeedback = null; save();
     }
+    stopMusic();
     view = null; current = null; revealed = false;
     $('overlay').hidden = true; $('app').removeAttribute('aria-hidden');
     if ('inert' in $('app')) $('app').inert = false;
@@ -152,6 +158,7 @@
       table.appendChild(body); $('question-table').appendChild(table);
     }
     renderQuestion(); show('question', q.question, q.response&&q.response.type==='number'?'number-input':undefined);
+    startQuestionMusic();
   }
   function renderQuestion() {
     $('answer').hidden = !revealed; $('reveal').textContent = revealed ? 'Antwort ausblenden' : 'Antwort anzeigen';
@@ -179,8 +186,8 @@
       b.classList.toggle('active', i === selected); $('pick-team').appendChild(b);
     });
   }
-  function reveal() { if (view !== 'question'||(current.response&&current.response.type!=='manual'&&!teacherTools)) return; revealed = !revealed; renderQuestion(); }
-  function notes() { if (view !== 'question'||!teacherTools) return; $('notes').hidden = !$('notes').hidden; $('notes-toggle').setAttribute('aria-expanded', String(!$('notes').hidden)); }
+  function reveal() { if (view !== 'question'||(current.response&&current.response.type!=='manual'&&!teacherTools)) return; stopMusic(); revealed = !revealed; renderQuestion(); }
+  function notes() { if (view !== 'question'||!teacherTools) return; stopMusic(); $('notes').hidden = !$('notes').hidden; $('notes-toggle').setAttribute('aria-expanded', String(!$('notes').hidden)); }
   function grade(correct) {
     if (view !== 'question' || !revealed || !current) return;
     finish(correct);
@@ -189,6 +196,7 @@
     if(view!=='question'||!current) return;
     const id = current.id;
     if (!E.rate(data, state, id, selected, correct)) return;
+    stopMusic();
     pendingFeedback=id; inputLocked=true; save(); render();
     showFeedback();
     if (savedOK) say(correct ? 'Richtig! Punkte gutgeschrieben.' : 'Nicht richtig.',correct?'correct':'wrong');

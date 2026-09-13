@@ -87,7 +87,7 @@ Hebe auch den JSON-Aufgabensatz auf. Wenn du später Fragen ändern möchtest, g
 
 | Wunsch | So geht es |
 | --- | --- |
-| Musik abspielen | Menü → „Hintergrundmusik abspielen“; standardmäßig aus |
+| Musik abspielen | Menü → „Musik während der Fragen“; standardmäßig aus |
 | Mehr Teams | Menü → „Team hinzufügen“, vor der ersten Bewertung |
 | Punktabzug einschalten | Menü → „Punktabzug bei falscher Antwort“, vor der ersten Bewertung; standardmäßig aus |
 | Untergrenze wählen | Bei aktiviertem Punktabzug: „Negative Punktestände erlauben“ einschalten oder ausgeschaltet lassen, damit der Stand bei 0 stoppt |
@@ -105,9 +105,9 @@ Das Spiel merkt sich den Spielstand nach Möglichkeit im verwendeten Browser. We
 
 ## Optionale Hintergrundmusik
 
-Die Spiele auf GitHub Pages verwenden eine gemeinsame Musikdatei. Unter **Menü → Hintergrundmusik abspielen** kannst du sie ein- und ausschalten. Sie startet nur nach deiner Eingabe, läuft in einer Schleife und stoppt beim Verlassen des Tabs. Nach dem Neuladen ist sie wieder aus. Die Lautstärke regelst du am Gerät.
+Die Spiele auf GitHub Pages verwenden eine gemeinsame Musikdatei. Unter **Menü → Musik während der Fragen** kannst du sie ein- und ausschalten. Nach der Freigabe startet sie bei jeder geöffneten Frage von vorne und läuft während der Bedenkzeit in einer Schleife. Beim Aufdecken, Abgeben oder Schließen stoppt sie sofort. Auf dem Spielfeld und während der Erklärung bleibt es still; bei der nächsten Frage startet sie wieder. Auch beim Verlassen des Tabs stoppt sie und startet erst beim nächsten Öffnen einer Frage erneut. Nach dem Neuladen ist sie wieder aus. Die Lautstärke regelst du am Gerät.
 
-Für ein selbst erstelltes oder einzeln heruntergeladenes Spiel ist Musik freiwillig: Lege eine MP3 mit dem genauen Namen **Jeopardy-theme-song.mp3** in denselben Ordner wie die HTML-Datei. Die Musik wird nicht in die HTML eingebettet oder vom Spiel-Ersteller mit heruntergeladen. Ohne MP3 funktioniert das ganze Spiel weiterhin; nur beim Einschalten erscheint gegebenenfalls ein Hinweis im Menü. Wenn du dein eigenes Spiel mit Musik online stellst, lade beide Dateien gemeinsam in denselben Ordner hoch.
+Für ein selbst erstelltes oder einzeln heruntergeladenes Spiel ist Musik freiwillig: Lege eine MP3 mit dem genauen Namen **Jeopardy-theme-song.mp3** in denselben Ordner wie die HTML-Datei. Die Musik wird nicht in die HTML eingebettet oder vom Spiel-Ersteller mit heruntergeladen. Ohne MP3 funktioniert das ganze Spiel weiterhin; nur beim Öffnen einer Frage mit freigegebener Musik erscheint gegebenenfalls ein Hinweis im Menü. Wenn du dein eigenes Spiel mit Musik online stellst, lade beide Dateien gemeinsam in denselben Ordner hoch.
 
 ## Mit Tastatur spielen
 

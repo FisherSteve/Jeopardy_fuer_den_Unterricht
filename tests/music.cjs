@@ -31,34 +31,52 @@ const server=http.createServer((req,res)=>{
   assert.equal(await page.locator('#music-enabled').isChecked(),false);
   assert.equal(await page.locator('#music').getAttribute('src'),null);
   assert.equal(serverRequests.filter(u=>u.endsWith('.mp3')).length,0);
-  await page.locator('#music-enabled').click();
-  await page.waitForFunction(()=>document.getElementById('music').currentTime>0);
+
+  async function playing(p){await p.waitForFunction(()=>!document.getElementById('music').paused && document.getElementById('music').currentTime>0);}
+  async function silent(p){assert.equal(await p.locator('#music').evaluate(a=>a.paused),true);}
+  async function openFirst(p){await p.locator('.tile[data-question^="k1-"]:not(:disabled)').first().click();}
+  await page.locator('#music-enabled').check();
+  await silent(page);assert.equal(await page.locator('#music').getAttribute('src'),null);
+  await page.locator('#teacher-tools-enabled').check();await page.locator('#close').click();
+  await openFirst(page);await playing(page);
   assert.ok(serverRequests.includes('/Jeopardy_fuer_den_Unterricht/Jeopardy-theme-song.mp3'));
-  assert.equal(await page.locator('#music').evaluate(a=>a.src),base+'/Jeopardy_fuer_den_Unterricht/Jeopardy-theme-song.mp3');
   assert.equal(await page.locator('#music').evaluate(a=>a.loop),true);
-  await page.locator('#music-enabled').uncheck();
-  assert.equal(await page.locator('#music').evaluate(a=>a.paused),true);
-  await page.locator('#music-enabled').click();
-  await page.waitForFunction(()=>!document.getElementById('music').paused);
+  await page.keyboard.press('a');await silent(page);
+  await page.keyboard.press('a');await silent(page); // Hiding a solution must not restart music.
+  await page.keyboard.press('Escape');await silent(page);
+  await openFirst(page);await playing(page);
+  await page.keyboard.press('h');await silent(page);await page.locator('#close').click();
+  await openFirst(page);await playing(page);
+  await page.keyboard.type('999');await page.locator('#submit-response').click();await silent(page);
+  assert.equal(await page.locator('#feedback-review').isVisible(),true);
+  await page.locator('#feedback-continue').click();await silent(page);
+  await page.locator('[data-question="k1-400"]').click();await playing(page);
+  await page.locator('#choices').getByRole('button',{name:'Näher bei 600',exact:true}).click();
+  await page.locator('#submit-response').click();await silent(page);await page.locator('#feedback-continue').click();
+  await openFirst(page);await playing(page);await page.locator('#close').click();await silent(page);
+  assert.ok(await page.locator('#music').evaluate(a=>a.currentTime<0.1));
+  await openFirst(page);await playing(page);
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange'));});
-  assert.equal(await page.locator('#music').evaluate(a=>a.paused),true);
-  assert.equal(await page.locator('#music-enabled').isChecked(),false);
+  await silent(page);assert.equal(await page.locator('#music-enabled').isChecked(),true);
+  await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:false});document.dispatchEvent(new Event('visibilitychange'));});
+  await silent(page);await page.locator('#close').click();
+  await page.locator('#settings').click();await page.locator('#music-enabled').uncheck();await page.locator('#close').click();
+  await openFirst(page);await silent(page);await page.locator('#close').click();
   await page.reload();await page.locator('#settings').click();
-  assert.equal(await page.locator('#music').getAttribute('src'),null);
-  await page.locator('#music').evaluate(a=>a.dataset.src='../../missing.mp3');await page.locator('#music-enabled').click();
-  await page.waitForFunction(()=>document.getElementById('music-status').textContent.includes('nicht verfügbar')).catch(async e=>{console.log(await page.evaluate(()=>({status:document.getElementById('music-status').textContent,source:document.getElementById('music').src,error:document.getElementById('music').error?.message})),requests);throw e;});
   assert.equal(await page.locator('#music-enabled').isChecked(),false);
-  await page.locator('#close').click();await page.locator('.tile').first().click();
-  await page.keyboard.type('480');await page.locator('#submit-response').click();
-  assert.equal(await page.locator('.tile.used').count(),1);
+  assert.equal(await page.locator('#music').getAttribute('src'),null);
+  await page.locator('#music').evaluate(a=>a.dataset.src='../../missing.mp3');await page.locator('#music-enabled').check();
+  await page.locator('#close').click();await openFirst(page);
+  await page.waitForFunction(()=>document.getElementById('music-status').textContent.includes('nicht verfügbar'));
+  assert.equal(await page.locator('#music-enabled').isChecked(),false);await silent(page);
+  await page.keyboard.type('999');await page.locator('#submit-response').click();
   await page.locator('#feedback-continue').click();
-  // Permission rejection must reset the switch without affecting the game.
   await page.reload();await page.locator('#settings').click();
   await page.evaluate(()=>{document.getElementById('music').play=()=>Promise.reject(new DOMException('blocked','NotAllowedError'));});
-  await page.locator('#music-enabled').click();
+  await page.locator('#music-enabled').check();await page.locator('#close').click();await openFirst(page);
   await page.waitForFunction(()=>document.getElementById('music-status').textContent.includes('blockiert'));
   assert.equal(await page.locator('#music-enabled').isChecked(),false);
-  // Creator output uses a sibling MP3, also when downloaded from an online creator.
+  // Creator output uses a sibling MP3 and the same question lifecycle.
   const creator=await browser.newPage();await creator.goto(pathToFileURL(path.join(root,'Spiel-Erstellen.html')).href);
   await creator.locator('#json').fill(fs.readFileSync(path.join(root,'content/mathematik-klasse-5.json'),'utf8'));
   await creator.locator('#build').click();const event=creator.waitForEvent('download');await creator.locator('#download').click();
@@ -66,11 +84,11 @@ const server=http.createServer((req,res)=>{
   assert.match(fs.readFileSync(target,'utf8'),/data-src="Jeopardy-theme-song.mp3"/);
   fs.writeFileSync(path.join(out,'Jeopardy-theme-song.mp3'),mp3);
   const local=await browser.newPage();local.on('pageerror',e=>errors.push(e.message));
-  await local.goto(pathToFileURL(target).href);await local.locator('#settings').click();await local.locator('#music-enabled').click();
-  await local.waitForFunction(()=>document.getElementById('music').currentTime>0);
+  await local.goto(pathToFileURL(target).href);await local.locator('#settings').click();await local.locator('#music-enabled').check();
+  await silent(local);await local.locator('#close').click();await openFirst(local);await playing(local);
   assert.equal(await local.locator('#music').evaluate(a=>a.src),pathToFileURL(path.join(out,'Jeopardy-theme-song.mp3')).href);
-  await local.locator('#music-enabled').uncheck();
+  await local.locator('#close').click();await silent(local);
   assert.deepEqual(errors,[]);
-  console.log(name+': real MP3 playback online and local, lazy loading, stop, missing file, permission failure and creator output passed');
+  console.log(name+': question music start, reveal, notes, number/choice submission, close, restart, tab switch, missing file, blocked playback and creator passed');
  }finally{await browser.close();}
 }}finally{await new Promise(r=>server.close(r));}})().catch(e=>{console.error(e);process.exitCode=1;});
