@@ -10,7 +10,7 @@ Du brauchst einen Browser. Für neue Aufgaben brauchst du zusätzlich Zugang zu 
 
 ## Ich möchte erst einmal spielen
 
-1. Öffne die [Startseite auf GitHub Pages](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Dort sind alle Spiele verlinkt.
+1. Öffne die [Startseite auf GitHub Pages](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Dort sind alle Beispielspiele verlinkt.
 2. Alternativ: [Lade den Projektordner als ZIP herunter](https://github.com/FisherSteve/Jeopardy_fuer_den_Unterricht/archive/refs/heads/main.zip), entpacke ihn und öffne die **index.html im Hauptordner**. Ihre Links funktionieren auch lokal.
 3. Direkt im Browser spielen:
    - [Erwachsene · Welt, Geschichte, Wissenschaft, Kultur & Alltag](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/allgemeinwissen-erwachsene/)
