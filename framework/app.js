@@ -8,11 +8,11 @@
   document.title = data.title; $('title').textContent = data.title;
   const music = $('music'), musicToggle = $('music-enabled');
   let musicAttempt = 0, musicTimer;
-  function stopMusic(message) {
+  function stopMusic(message, rewind = true) {
     musicAttempt++;
     clearTimeout(musicTimer);
     music.pause();
-    try { music.currentTime = 0; } catch (_) { /* Media may not be loaded yet. */ }
+    try { if (rewind) music.currentTime = 0; } catch (_) { /* Media may not be loaded yet. */ }
     if (message || musicToggle.checked) $('music-status').textContent = message || 'Musik bereit für die nächste Frage.';
   }
   function musicUnavailable() {
@@ -26,7 +26,7 @@
     stopMusic(musicToggle.checked ? 'Musik startet beim Öffnen einer Frage und stoppt beim Aufdecken, Abgeben oder Schließen.' : 'Musik ausgeschaltet.');
   });
   async function startQuestionMusic() {
-    if (!musicToggle.checked || document.hidden) return;
+    if (!musicToggle.checked || document.hidden || view !== 'question' || questionResolved || revealed || !$('notes').hidden || countdown.expired) return;
     const attempt = ++musicAttempt;
     clearTimeout(musicTimer);
     musicTimer = setTimeout(() => { if (attempt === musicAttempt) musicUnavailable(); }, 12000);
@@ -53,11 +53,18 @@
   // Exact content identity prevents stale state when a question or rule changes.
   const signature = JSON.stringify(data);
   const storageKey = 'jeopardy-v2-' + data.id;
+  const timerDefaults = {100:30, 200:45, 300:60, 400:90, 500:120};
+  let timerSettings = {enabled:false, seconds:{...timerDefaults}};
+  let countdown = {remaining:0, deadline:0, interval:null, expired:false, stopped:true}, questionResolved = false;
   let state = E.fresh(data), savedOK = true, notice = '', pendingFeedback = null;
   try {
     const raw = localStorage.getItem(storageKey);
     if (raw) {
       const saved = JSON.parse(raw);
+      if (saved.timer && typeof saved.timer.enabled === 'boolean') {
+        timerSettings.enabled = saved.timer.enabled;
+        Object.keys(timerDefaults).forEach(p => { const v = saved.timer.seconds && saved.timer.seconds[p]; if (Number.isInteger(v) && v >= 5 && v <= 600) timerSettings.seconds[p] = v; });
+      }
       if (saved.signature === signature) {
         state = E.restore(data, saved.state); notice = 'Gespeicherter Spielstand geladen.';
         const last = state.history[state.history.length - 1];
@@ -69,9 +76,57 @@
   let view = null, current = null, revealed = false, selected = 0, returnFocus = null, lastTurn = '', inputValue='', choices=[], inputLocked=false, teacherTools=false;
   function say(text, result) { $('status').textContent = text; if(result)$('status').dataset.result=result;else delete $('status').dataset.result; }
   function save() {
-    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state, feedbackId: pendingFeedback })); savedOK = true; }
+    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state, feedbackId: pendingFeedback, timer: timerSettings })); savedOK = true; }
     catch (_) { savedOK = false; say('Speichern nicht verfügbar. Dieses Spiel läuft bis zum Schließen weiter.'); }
   }
+  function renderTimer() {
+    $('question-timer').hidden = !timerSettings.enabled;
+    const seconds = Math.ceil(countdown.remaining / 1000);
+    $('timer-value').textContent = countdown.expired ? 'Zeit abgelaufen' : seconds + ' s' + (countdown.stopped ? ' · gestoppt' : countdown.interval === null ? ' · pausiert' : '');
+    $('question-timer').classList.toggle('expired', countdown.expired);
+  }
+  function tickTimer() {
+    countdown.remaining = Math.max(0, countdown.deadline - performance.now());
+    if (countdown.remaining === 0) {
+      clearInterval(countdown.interval); countdown.interval = null; countdown.expired = true;
+      stopMusic(); $('timer-announcement').textContent = 'Zeit abgelaufen. Die Antwort kann weiterhin abgegeben oder bewertet werden.';
+    }
+    renderTimer();
+  }
+  function pauseTimer(stop = false) {
+    if (countdown.interval !== null) tickTimer();
+    clearInterval(countdown.interval); countdown.interval = null;
+    if (stop) countdown.stopped = true;
+    renderTimer();
+  }
+  function resumeTimer() {
+    if (!timerSettings.enabled || countdown.stopped || countdown.expired || countdown.interval !== null || document.hidden || revealed || !$('notes').hidden || view !== 'question') return;
+    countdown.deadline = performance.now() + countdown.remaining;
+    countdown.interval = setInterval(tickTimer, 100); renderTimer();
+  }
+  function beginTimer(points) {
+    clearInterval(countdown.interval);
+    countdown = {remaining:timerSettings.seconds[points]*1000, deadline:0, interval:null, expired:false, stopped:false};
+    $('timer-announcement').textContent = ''; resumeTimer(); renderTimer();
+  }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) pauseTimer(); else resumeTimer(); });
+  window.addEventListener('pagehide', () => pauseTimer());
+  $('timer-enabled').checked = timerSettings.enabled;
+  $('timer-enabled').addEventListener('change', () => { timerSettings.enabled = $('timer-enabled').checked; renderTimerSettings(); save(); });
+  function renderTimerSettings() {
+    Object.keys(timerDefaults).forEach(p => { $('timer-'+p).disabled = !timerSettings.enabled; });
+  }
+  Object.keys(timerDefaults).forEach(p => {
+    const input = $('timer-'+p); input.value = timerSettings.seconds[p];
+    input.addEventListener('change', () => {
+      const value = Number(input.value);
+      if (input.value.trim() && Number.isInteger(value) && value >= 5 && value <= 600) {
+        timerSettings.seconds[p] = value; $('timer-settings-status').textContent = ''; save();
+      } else $('timer-settings-status').textContent = 'Bitte ganze Sekunden von 5 bis 600 eingeben. Der bisherige Wert bleibt erhalten.';
+      input.value = timerSettings.seconds[p];
+    });
+  });
+  renderTimerSettings();
   function node(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
   function button(text, action, cls) { const b = node('button', text, cls); b.type = 'button'; b.addEventListener('click', action); return b; }
   const colors = ['#2ec4b6', '#ff9b78', '#bda0ee', '#7ae582', '#ffd166'];
@@ -111,7 +166,7 @@
     }
   }
   function show(kind, title, focusId) {
-    if (kind !== 'question') stopMusic();
+    if (kind !== 'question') { stopMusic(); pauseTimer(true); }
     if (!view) returnFocus = document.activeElement;
     view = kind;
     ['question', 'menu', 'reset', 'feedback'].forEach(v => $(v + '-view').hidden = v !== kind);
@@ -133,6 +188,7 @@
       pendingFeedback = null; save();
     }
     stopMusic();
+    pauseTimer(true);
     view = null; current = null; revealed = false;
     $('overlay').hidden = true; $('app').removeAttribute('aria-hidden');
     if ('inert' in $('app')) $('app').inert = false;
@@ -143,7 +199,7 @@
   }
   function openQuestion(q) {
     if (view || inputLocked || state.history.some(e => e.id === q.id)) return;
-    current = q; revealed = false; inputValue=''; choices=[];
+    current = q; revealed = false; questionResolved = false; inputValue=''; choices=[];
     selected = E.turn(state);
     $('meta').textContent = state.names[selected]+' ist dran · '+data.categories.find(c => c.questions.includes(q)).title + ' · ' + q.points + ' Punkte';
     $('answer').textContent = q.answer; $('explanation').textContent = q.explanation; $('teacher-note').textContent = q.teacherNote || '';
@@ -158,6 +214,7 @@
       table.appendChild(body); $('question-table').appendChild(table);
     }
     renderQuestion(); show('question', q.question, q.response&&q.response.type==='number'?'number-input':undefined);
+    beginTimer(q.points);
     startQuestionMusic();
   }
   function renderQuestion() {
@@ -186,8 +243,13 @@
       b.classList.toggle('active', i === selected); $('pick-team').appendChild(b);
     });
   }
-  function reveal() { if (view !== 'question'||(current.response&&current.response.type!=='manual'&&!teacherTools)) return; stopMusic(); revealed = !revealed; renderQuestion(); }
-  function notes() { if (view !== 'question'||!teacherTools) return; stopMusic(); $('notes').hidden = !$('notes').hidden; $('notes-toggle').setAttribute('aria-expanded', String(!$('notes').hidden)); }
+  function reveal() { if (view !== 'question'||(current.response&&current.response.type!=='manual'&&!teacherTools)) return; stopMusic(); pauseTimer(true); questionResolved = true; revealed = !revealed; renderQuestion(); }
+  function notes() {
+    if (view !== 'question'||!teacherTools) return;
+    $('notes').hidden = !$('notes').hidden; $('notes-toggle').setAttribute('aria-expanded', String(!$('notes').hidden));
+    if (!$('notes').hidden) { stopMusic(undefined, false); pauseTimer(); }
+    else { resumeTimer(); startQuestionMusic(); }
+  }
   function grade(correct) {
     if (view !== 'question' || !revealed || !current) return;
     finish(correct);

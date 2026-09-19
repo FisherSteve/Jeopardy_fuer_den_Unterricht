@@ -65,6 +65,8 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
 @keyframes rays{0%{opacity:0;transform:rotate(var(--angle)) translateY(-45px)}25%{opacity:1}100%{opacity:0;transform:rotate(var(--angle)) translateY(-100px)}}
 @media(prefers-reduced-motion:no-preference){.dialog[data-view=feedback]{animation:turn-in .3s ease-out}[data-outcome=correct] .feedback-celebration{animation:celebrate .65s ease-out}[data-outcome=correct] .celebration-rays i{animation:rays .85s ease-out}.feedback-next{animation:turn-in .45s .15s ease-out backwards}}
 @media(max-width:600px){.feedback-celebration{width:64px;height:64px;font-size:44px;margin:12px auto}.feedback-next{margin-top:16px}}
+
+.timer-settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.timer-settings label{display:flex;flex-direction:column;gap:8px}.timer-settings input{width:100%;min-width:0;min-height:52px;font:inherit;padding:10px;border:1px solid #65728a;border-radius:10px;background:#1b2435;color:#f5f7ff}.question-timer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;margin:12px 0;border:2px solid var(--gold);border-radius:12px}.question-timer strong{font-size:clamp(24px,3vw,38px);font-variant-numeric:tabular-nums}.question-timer.expired{background:#482b26;border-color:#ffb79f}#timer-announcement:empty{display:none}
 </style>
 </head>
 <body>
@@ -84,6 +86,8 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     <div class="dialog-top"><span id="meta" class="eyebrow"></span><button id="close" aria-label="Dialog schließen">Schließen <span aria-hidden="true">×</span></button></div>
     <h2 id="dialog-title"></h2>
     <div id="question-view" hidden>
+      <div id="question-timer" class="question-timer" hidden><span>Bedenkzeit</span><strong id="timer-value" role="timer" aria-live="off"></strong></div>
+      <p id="timer-announcement" role="status"></p>
       <div id="question-table"></div>
       <div id="player-response" class="player-response" hidden>
         <div id="number-response" hidden>
@@ -114,6 +118,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     </div>
     <div id="menu-view" hidden>
       <h3>Musik</h3><label class="toggle-label"><input id="music-enabled" type="checkbox" aria-describedby="music-status"> Musik während der Fragen</label><p id="music-status" class="muted" role="status">Optional und zunächst aus. Startet beim Öffnen einer Frage; stoppt beim Aufdecken, Abgeben oder Schließen.</p>
+      <h3>Fragentimer</h3><label class="toggle-label"><input id="timer-enabled" type="checkbox"> Timer einschalten</label><p>Je Punktewert 5–600 Sekunden. Startet mit der Frage, pausiert bei Hinweisen und stoppt beim Aufdecken. Bei Ablauf bleibt die Antwort bewertbar.</p><div class="timer-settings"><label for="timer-100">100 Punkte · Sekunden<input id="timer-100" type="number" inputmode="numeric" min="5" max="600" step="1" value="30" disabled></label><label for="timer-200">200 Punkte · Sekunden<input id="timer-200" type="number" inputmode="numeric" min="5" max="600" step="1" value="45" disabled></label><label for="timer-300">300 Punkte · Sekunden<input id="timer-300" type="number" inputmode="numeric" min="5" max="600" step="1" value="60" disabled></label><label for="timer-400">400 Punkte · Sekunden<input id="timer-400" type="number" inputmode="numeric" min="5" max="600" step="1" value="90" disabled></label><label for="timer-500">500 Punkte · Sekunden<input id="timer-500" type="number" inputmode="numeric" min="5" max="600" step="1" value="120" disabled></label></div><p id="timer-settings-status" role="status"></p>
       <h3>Teams</h3><div id="names" class="names"></div>
       <div class="question-tools team-tools"><button id="add-team">Team hinzufügen</button><button id="remove-team">Letztes Team entfernen</button></div><p id="team-count-help" class="muted"></p>
       <h3>Punktewertung</h3>
@@ -698,11 +703,11 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   document.title = data.title; $('title').textContent = data.title;
   const music = $('music'), musicToggle = $('music-enabled');
   let musicAttempt = 0, musicTimer;
-  function stopMusic(message) {
+  function stopMusic(message, rewind = true) {
     musicAttempt++;
     clearTimeout(musicTimer);
     music.pause();
-    try { music.currentTime = 0; } catch (_) { /* Media may not be loaded yet. */ }
+    try { if (rewind) music.currentTime = 0; } catch (_) { /* Media may not be loaded yet. */ }
     if (message || musicToggle.checked) $('music-status').textContent = message || 'Musik bereit für die nächste Frage.';
   }
   function musicUnavailable() {
@@ -716,7 +721,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     stopMusic(musicToggle.checked ? 'Musik startet beim Öffnen einer Frage und stoppt beim Aufdecken, Abgeben oder Schließen.' : 'Musik ausgeschaltet.');
   });
   async function startQuestionMusic() {
-    if (!musicToggle.checked || document.hidden) return;
+    if (!musicToggle.checked || document.hidden || view !== 'question' || questionResolved || revealed || !$('notes').hidden || countdown.expired) return;
     const attempt = ++musicAttempt;
     clearTimeout(musicTimer);
     musicTimer = setTimeout(() => { if (attempt === musicAttempt) musicUnavailable(); }, 12000);
@@ -743,11 +748,18 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   // Exact content identity prevents stale state when a question or rule changes.
   const signature = JSON.stringify(data);
   const storageKey = 'jeopardy-v2-' + data.id;
+  const timerDefaults = {100:30, 200:45, 300:60, 400:90, 500:120};
+  let timerSettings = {enabled:false, seconds:{...timerDefaults}};
+  let countdown = {remaining:0, deadline:0, interval:null, expired:false, stopped:true}, questionResolved = false;
   let state = E.fresh(data), savedOK = true, notice = '', pendingFeedback = null;
   try {
     const raw = localStorage.getItem(storageKey);
     if (raw) {
       const saved = JSON.parse(raw);
+      if (saved.timer && typeof saved.timer.enabled === 'boolean') {
+        timerSettings.enabled = saved.timer.enabled;
+        Object.keys(timerDefaults).forEach(p => { const v = saved.timer.seconds && saved.timer.seconds[p]; if (Number.isInteger(v) && v >= 5 && v <= 600) timerSettings.seconds[p] = v; });
+      }
       if (saved.signature === signature) {
         state = E.restore(data, saved.state); notice = 'Gespeicherter Spielstand geladen.';
         const last = state.history[state.history.length - 1];
@@ -759,9 +771,57 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   let view = null, current = null, revealed = false, selected = 0, returnFocus = null, lastTurn = '', inputValue='', choices=[], inputLocked=false, teacherTools=false;
   function say(text, result) { $('status').textContent = text; if(result)$('status').dataset.result=result;else delete $('status').dataset.result; }
   function save() {
-    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state, feedbackId: pendingFeedback })); savedOK = true; }
+    try { localStorage.setItem(storageKey, JSON.stringify({ signature, state, feedbackId: pendingFeedback, timer: timerSettings })); savedOK = true; }
     catch (_) { savedOK = false; say('Speichern nicht verfügbar. Dieses Spiel läuft bis zum Schließen weiter.'); }
   }
+  function renderTimer() {
+    $('question-timer').hidden = !timerSettings.enabled;
+    const seconds = Math.ceil(countdown.remaining / 1000);
+    $('timer-value').textContent = countdown.expired ? 'Zeit abgelaufen' : seconds + ' s' + (countdown.stopped ? ' · gestoppt' : countdown.interval === null ? ' · pausiert' : '');
+    $('question-timer').classList.toggle('expired', countdown.expired);
+  }
+  function tickTimer() {
+    countdown.remaining = Math.max(0, countdown.deadline - performance.now());
+    if (countdown.remaining === 0) {
+      clearInterval(countdown.interval); countdown.interval = null; countdown.expired = true;
+      stopMusic(); $('timer-announcement').textContent = 'Zeit abgelaufen. Die Antwort kann weiterhin abgegeben oder bewertet werden.';
+    }
+    renderTimer();
+  }
+  function pauseTimer(stop = false) {
+    if (countdown.interval !== null) tickTimer();
+    clearInterval(countdown.interval); countdown.interval = null;
+    if (stop) countdown.stopped = true;
+    renderTimer();
+  }
+  function resumeTimer() {
+    if (!timerSettings.enabled || countdown.stopped || countdown.expired || countdown.interval !== null || document.hidden || revealed || !$('notes').hidden || view !== 'question') return;
+    countdown.deadline = performance.now() + countdown.remaining;
+    countdown.interval = setInterval(tickTimer, 100); renderTimer();
+  }
+  function beginTimer(points) {
+    clearInterval(countdown.interval);
+    countdown = {remaining:timerSettings.seconds[points]*1000, deadline:0, interval:null, expired:false, stopped:false};
+    $('timer-announcement').textContent = ''; resumeTimer(); renderTimer();
+  }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) pauseTimer(); else resumeTimer(); });
+  window.addEventListener('pagehide', () => pauseTimer());
+  $('timer-enabled').checked = timerSettings.enabled;
+  $('timer-enabled').addEventListener('change', () => { timerSettings.enabled = $('timer-enabled').checked; renderTimerSettings(); save(); });
+  function renderTimerSettings() {
+    Object.keys(timerDefaults).forEach(p => { $('timer-'+p).disabled = !timerSettings.enabled; });
+  }
+  Object.keys(timerDefaults).forEach(p => {
+    const input = $('timer-'+p); input.value = timerSettings.seconds[p];
+    input.addEventListener('change', () => {
+      const value = Number(input.value);
+      if (input.value.trim() && Number.isInteger(value) && value >= 5 && value <= 600) {
+        timerSettings.seconds[p] = value; $('timer-settings-status').textContent = ''; save();
+      } else $('timer-settings-status').textContent = 'Bitte ganze Sekunden von 5 bis 600 eingeben. Der bisherige Wert bleibt erhalten.';
+      input.value = timerSettings.seconds[p];
+    });
+  });
+  renderTimerSettings();
   function node(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
   function button(text, action, cls) { const b = node('button', text, cls); b.type = 'button'; b.addEventListener('click', action); return b; }
   const colors = ['#2ec4b6', '#ff9b78', '#bda0ee', '#7ae582', '#ffd166'];
@@ -801,7 +861,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     }
   }
   function show(kind, title, focusId) {
-    if (kind !== 'question') stopMusic();
+    if (kind !== 'question') { stopMusic(); pauseTimer(true); }
     if (!view) returnFocus = document.activeElement;
     view = kind;
     ['question', 'menu', 'reset', 'feedback'].forEach(v => $(v + '-view').hidden = v !== kind);
@@ -823,6 +883,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
       pendingFeedback = null; save();
     }
     stopMusic();
+    pauseTimer(true);
     view = null; current = null; revealed = false;
     $('overlay').hidden = true; $('app').removeAttribute('aria-hidden');
     if ('inert' in $('app')) $('app').inert = false;
@@ -833,7 +894,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   }
   function openQuestion(q) {
     if (view || inputLocked || state.history.some(e => e.id === q.id)) return;
-    current = q; revealed = false; inputValue=''; choices=[];
+    current = q; revealed = false; questionResolved = false; inputValue=''; choices=[];
     selected = E.turn(state);
     $('meta').textContent = state.names[selected]+' ist dran · '+data.categories.find(c => c.questions.includes(q)).title + ' · ' + q.points + ' Punkte';
     $('answer').textContent = q.answer; $('explanation').textContent = q.explanation; $('teacher-note').textContent = q.teacherNote || '';
@@ -848,6 +909,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
       table.appendChild(body); $('question-table').appendChild(table);
     }
     renderQuestion(); show('question', q.question, q.response&&q.response.type==='number'?'number-input':undefined);
+    beginTimer(q.points);
     startQuestionMusic();
   }
   function renderQuestion() {
@@ -876,8 +938,13 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
       b.classList.toggle('active', i === selected); $('pick-team').appendChild(b);
     });
   }
-  function reveal() { if (view !== 'question'||(current.response&&current.response.type!=='manual'&&!teacherTools)) return; stopMusic(); revealed = !revealed; renderQuestion(); }
-  function notes() { if (view !== 'question'||!teacherTools) return; stopMusic(); $('notes').hidden = !$('notes').hidden; $('notes-toggle').setAttribute('aria-expanded', String(!$('notes').hidden)); }
+  function reveal() { if (view !== 'question'||(current.response&&current.response.type!=='manual'&&!teacherTools)) return; stopMusic(); pauseTimer(true); questionResolved = true; revealed = !revealed; renderQuestion(); }
+  function notes() {
+    if (view !== 'question'||!teacherTools) return;
+    $('notes').hidden = !$('notes').hidden; $('notes-toggle').setAttribute('aria-expanded', String(!$('notes').hidden));
+    if (!$('notes').hidden) { stopMusic(undefined, false); pauseTimer(); }
+    else { resumeTimer(); startQuestionMusic(); }
+  }
   function grade(correct) {
     if (view !== 'question' || !revealed || !current) return;
     finish(correct);

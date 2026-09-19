@@ -45,7 +45,11 @@ const server=http.createServer((req,res)=>{
   await page.keyboard.press('a');await silent(page); // Hiding a solution must not restart music.
   await page.keyboard.press('Escape');await silent(page);
   await openFirst(page);await playing(page);
-  await page.keyboard.press('h');await silent(page);await page.locator('#close').click();
+  await page.keyboard.press('h');await silent(page);
+  await page.keyboard.press('h');await playing(page);
+  await page.keyboard.press('a');await silent(page);
+  await page.keyboard.press('h');await page.keyboard.press('h');await silent(page);
+  await page.locator('#close').click();
   await openFirst(page);await playing(page);
   await page.keyboard.type('999');await page.locator('#submit-response').click();await silent(page);
   assert.equal(await page.locator('#feedback-review').isVisible(),true);
@@ -88,6 +92,16 @@ const server=http.createServer((req,res)=>{
   await silent(local);await local.locator('#close').click();await openFirst(local);await playing(local);
   assert.equal(await local.locator('#music').evaluate(a=>a.src),pathToFileURL(path.join(out,'Jeopardy-theme-song.mp3')).href);
   await local.locator('#close').click();await silent(local);
+  await local.locator('#settings').click();await local.locator('#timer-enabled').check();
+  await local.locator('#timer-100').fill('5');await local.locator('#timer-100').press('Tab');await local.locator('#teacher-tools-enabled').check();await local.locator('#close').click();
+  await openFirst(local);await playing(local);
+  await local.waitForFunction(()=>document.getElementById('music').currentTime>0.4);
+  await local.keyboard.press('h');await silent(local);
+  const musicPosition=await local.locator('#music').evaluate(a=>a.currentTime);
+  await local.keyboard.press('h');await playing(local);
+  assert.ok(await local.locator('#music').evaluate((a,pos)=>a.currentTime>=pos-0.05,musicPosition),'Hints resume at the same position');
+  await local.waitForFunction(()=>document.getElementById('timer-value').textContent==='Zeit abgelaufen');await silent(local);
+  await local.keyboard.press('h');await local.keyboard.press('h');await silent(local);
   assert.deepEqual(errors,[]);
   console.log(name+': question music start, reveal, notes, number/choice submission, close, restart, tab switch, missing file, blocked playback and creator passed');
  }finally{await browser.close();}

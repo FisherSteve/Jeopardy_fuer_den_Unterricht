@@ -117,3 +117,9 @@ Das Template enthält ein Audioelement ohne src und mit preload="none". Der Men�
 Der Build setzt für Repository-Spiele ../../Jeopardy-theme-song.mp3, für freie Ausgabeziele und die Spiel-Ersteller-Vorlage Jeopardy-theme-song.mp3. Unter file: wird immer die Datei neben der HTML verwendet. Es gibt keine Abhängigkeit von einer festen Domain und keine Base64-Einbettung. Die MP3 im Hauptordner wird separat von GitHub Pages ausgeliefert.
 
 Musikprüfung: `node tests/music.cjs` prüft echte MP3-Wiedergabe über HTTP mit Byte-Ranges und als lokale Datei, verzögertes Laden bis zum Einschalten, Ausschalten, Tabwechsel, Neuladen, fehlende Datei, abgelehnte Wiedergabe und die Ausgabe des Spiel-Erstellers in Chromium, Firefox und WebKit. Hängende Ladeversuche werden nach zwölf Sekunden abgebrochen.
+
+## Fragentimer und Hinweise
+
+Timer-Einstellungen werden außerhalb der Engine als validierter timer-Abschnitt des vorhandenen Spielstands gespeichert. Fehlende oder ungültige Werte fallen auf 30/45/60/90/120 Sekunden zurück, Timer standardmäßig aus. performance.now() und eine Deadline vermeiden aufsummierte Intervallfehler; ein 100-ms-Intervall aktualisiert ganze Sekunden. Hinweise und Hintergrund-Tab pausieren mit Restzeit. Ablauf stoppt Musik, wertet aber nicht. Das Countdown-Element hat role="timer" ohne sekündliche Live-Ansagen; nur der Ablauf wird angekündigt.
+
+Die Musik behält beim Einblenden der Hinweise ihre Position und setzt nach dem Ausblenden fort. Nach bereits aufgedeckter Lösung oder Zeitablauf verhindert eine Sperre den Neustart. tests/timer.cjs prüft Vorgaben, Pausen, Ablauf, Eingabegrenzen, Speicherung, Reset und schmale Ansicht; tests/music.cjs prüft zusätzlich die Hinweis-Fortsetzung und die Sperre nach Aufdecken.

@@ -87,6 +87,7 @@ Hebe auch den JSON-Aufgabensatz auf. Wenn du später Fragen ändern möchtest, g
 
 | Wunsch | So geht es |
 | --- | --- |
+| Bedenkzeit begrenzen | Menü → „Timer einschalten“; Sekunden je Punktewert anpassen |
 | Musik abspielen | Menü → „Musik während der Fragen“; standardmäßig aus |
 | Mehr Teams | Menü → „Team hinzufügen“, vor der ersten Bewertung |
 | Punktabzug einschalten | Menü → „Punktabzug bei falscher Antwort“, vor der ersten Bewertung; standardmäßig aus |
@@ -103,9 +104,15 @@ Die Erklärung nach einer falschen Antwort ist für die ganze Klasse gedacht und
 
 Das Spiel merkt sich den Spielstand nach Möglichkeit im verwendeten Browser. Wenn Speichern nicht möglich ist, zeigt es einen Hinweis und bleibt spielbar. Für eine neue Lerngruppe das Spiel zurücksetzen. Auf gemeinsam genutzten Geräten am besten neutrale Teamnamen verwenden.
 
+## Optionaler Fragentimer
+
+Im Menü kannst du den Timer einschalten und für jeden Punktewert eigene ganze Sekunden von 5 bis 600 einstellen. Voreingestellt sind **100 Punkte: 30 s, 200: 45 s, 300: 60 s, 400: 90 s und 500: 120 s**. Der Timer ist zunächst aus; Einstellungen werden nach Möglichkeit mit dem Spielstand gespeichert und bleiben beim Zurücksetzen erhalten. Änderungen gelten ab der nächsten geöffneten Frage.
+
+Der Countdown startet beim Öffnen einer Frage. Während Lehrkräftehinweise sichtbar sind oder der Tab im Hintergrund liegt, pausiert er; danach läuft die Restzeit weiter. Aufdecken, Abgeben und Schließen stoppen ihn. Bei **„Zeit abgelaufen“** stoppt auch die Musik; es gibt keine automatische Wertung. Antworten können weiterhin abgegeben oder durch die Lehrkraft bewertet werden. Schließen und erneutes Öffnen einer unbewerteten Karte startet deren volle Zeit erneut.
+
 ## Optionale Hintergrundmusik
 
-Die Spiele auf GitHub Pages verwenden eine gemeinsame Musikdatei. Unter **Menü → Musik während der Fragen** kannst du sie ein- und ausschalten. Nach der Freigabe startet sie bei jeder geöffneten Frage von vorne und läuft während der Bedenkzeit in einer Schleife. Beim Aufdecken, Abgeben oder Schließen stoppt sie sofort. Auf dem Spielfeld und während der Erklärung bleibt es still; bei der nächsten Frage startet sie wieder. Auch beim Verlassen des Tabs stoppt sie und startet erst beim nächsten Öffnen einer Frage erneut. Nach dem Neuladen ist sie wieder aus. Die Lautstärke regelst du am Gerät.
+Die Spiele auf GitHub Pages verwenden eine gemeinsame Musikdatei. Unter **Menü → Musik während der Fragen** kannst du sie ein- und ausschalten. Nach der Freigabe startet sie bei jeder geöffneten Frage von vorne und läuft während der Bedenkzeit in einer Schleife. Beim Aufdecken, Abgeben oder Schließen stoppt sie sofort. Auf dem Spielfeld und während der Erklärung bleibt es still; bei der nächsten Frage startet sie wieder. Auch beim Verlassen des Tabs stoppt sie und startet erst beim nächsten Öffnen einer Frage erneut. Bei Lehrkräftehinweisen pausiert die Musik und läuft nach deren Ausblenden an derselben Stelle weiter, sofern die Lösung noch nicht aufgedeckt wurde und die Zeit nicht abgelaufen ist. Nach dem Neuladen ist sie wieder aus. Die Lautstärke regelst du am Gerät.
 
 Für ein selbst erstelltes oder einzeln heruntergeladenes Spiel ist Musik freiwillig: Lege eine MP3 mit dem genauen Namen **Jeopardy-theme-song.mp3** in denselben Ordner wie die HTML-Datei. Die Musik wird nicht in die HTML eingebettet oder vom Spiel-Ersteller mit heruntergeladen. Ohne MP3 funktioniert das ganze Spiel weiterhin; nur beim Öffnen einer Frage mit freigegebener Musik erscheint gegebenenfalls ein Hinweis im Menü. Wenn du dein eigenes Spiel mit Musik online stellst, lade beide Dateien gemeinsam in denselben Ordner hoch.
 

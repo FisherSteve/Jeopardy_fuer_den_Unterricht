@@ -111,3 +111,13 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 - music.cjs in Chromium, Firefox und WebKit bestanden: tatsächliche Wiedergabe, Tastatur-Aufdecken, Hinweise, Zahlen-/Auswahlabgabe, Schließen, erneuter Start, Tabwechsel ohne automatisches Fortsetzen, Ausschalten, Neuladen, fehlende MP3, blockierte Wiedergabe sowie lokale Ausgabe des Spiel-Erstellers.
 - Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft.
 - Auch browser.cjs, pages.cjs, scoring.cjs, feedback.cjs, visual.cjs, klasse8.cjs, meme-mix.cjs und klasse10-start.cjs in allen drei Browser-Engines bestanden.
+
+## Ergänzung vom 20.09.2026: Fragentimer und Musikfortsetzung
+
+- Optionaler, standardmäßig ausgeschalteter Timer mit 30/45/60/90/120 Sekunden für 100–500 Punkte; je Punktewert ganze 5–600 Sekunden einstellbar und mit Spielstand gespeichert. Reset erhält Einstellungen. Hinweise und Hintergrund-Tab pausieren, Aufdecken/Abgabe/Schließen stoppen. Ablauf zeigt einen sichtbaren Hinweis ohne automatische Wertung und stoppt Musik.
+- Lehrkräftehinweise pausieren Musik an der aktuellen Position. Nach Ausblenden läuft sie weiter, solange die Lösung noch nicht aufgedeckt und die Zeit nicht abgelaufen ist.
+- Alle sieben Spiele und Spiel-Ersteller neu gebaut; 14 Engine-Tests bestanden. timer.cjs in Chromium 131, Firefox 153 und WebKit 26.5 bestanden: alle Punktewerte, Vorgaben, Pause/Fortsetzung, Aufdecken, Ablauf ohne Wertung, Eingabegrenzen, Speicherung, Reset und schmale Ansicht.
+- music.cjs in allen drei Engines bestanden, einschließlich echter Musikfortsetzung an derselben Position, Stopp bei Timerablauf und ausbleibendem Neustart nach Aufdecken/Ablauf. Menü und Ablaufanzeige bei 390 Pixeln visuell kontrolliert.
+- Die Browser-Vorabprüfung meldete fehlende Windows-Bibliotheken. Mit PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 ließen sich die vorhandenen Firefox- und WebKit-Browser starten und vollständig prüfen.
+- Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft.
+- Bestehende Prüfungen browser.cjs, pages.cjs, scoring.cjs, feedback.cjs, visual.cjs, klasse8.cjs, meme-mix.cjs und klasse10-start.cjs ebenfalls in allen drei Engines bestanden.
