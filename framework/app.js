@@ -54,7 +54,7 @@
   const signature = JSON.stringify(data);
   const storageKey = 'jeopardy-v2-' + data.id;
   const timerDefaults = {100:30, 200:45, 300:60, 400:90, 500:120};
-  let timerSettings = {enabled:false, seconds:{...timerDefaults}};
+  let timerSettings = {enabled:false, autoWrong:true, seconds:{...timerDefaults}};
   let countdown = {remaining:0, deadline:0, interval:null, expired:false, stopped:true}, questionResolved = false;
   let state = E.fresh(data), savedOK = true, notice = '', pendingFeedback = null;
   try {
@@ -63,6 +63,7 @@
       const saved = JSON.parse(raw);
       if (saved.timer && typeof saved.timer.enabled === 'boolean') {
         timerSettings.enabled = saved.timer.enabled;
+        if (typeof saved.timer.autoWrong === 'boolean') timerSettings.autoWrong = saved.timer.autoWrong;
         Object.keys(timerDefaults).forEach(p => { const v = saved.timer.seconds && saved.timer.seconds[p]; if (Number.isInteger(v) && v >= 5 && v <= 600) timerSettings.seconds[p] = v; });
       }
       if (saved.signature === signature) {
@@ -89,12 +90,14 @@
     countdown.remaining = Math.max(0, countdown.deadline - performance.now());
     if (countdown.remaining === 0) {
       clearInterval(countdown.interval); countdown.interval = null; countdown.expired = true;
-      stopMusic(); $('timer-announcement').textContent = 'Zeit abgelaufen. Die Antwort kann weiterhin abgegeben oder bewertet werden.';
+      stopMusic();
+      if (timerSettings.autoWrong && view === 'question' && !questionResolved) { finish(false); return; }
+      $('timer-announcement').textContent = 'Zeit abgelaufen. Die Antwort kann weiterhin abgegeben oder bewertet werden.';
     }
     renderTimer();
   }
   function pauseTimer(stop = false) {
-    if (countdown.interval !== null) tickTimer();
+    if (countdown.interval !== null) countdown.remaining = Math.max(0, countdown.deadline - performance.now());
     clearInterval(countdown.interval); countdown.interval = null;
     if (stop) countdown.stopped = true;
     renderTimer();
@@ -111,9 +114,12 @@
   }
   document.addEventListener('visibilitychange', () => { if (document.hidden) pauseTimer(); else resumeTimer(); });
   window.addEventListener('pagehide', () => pauseTimer());
+  $('timer-auto-wrong').checked = timerSettings.autoWrong;
+  $('timer-auto-wrong').addEventListener('change', () => { timerSettings.autoWrong = $('timer-auto-wrong').checked; save(); });
   $('timer-enabled').checked = timerSettings.enabled;
   $('timer-enabled').addEventListener('change', () => { timerSettings.enabled = $('timer-enabled').checked; renderTimerSettings(); save(); });
   function renderTimerSettings() {
+    $('timer-auto-wrong').disabled = !timerSettings.enabled;
     Object.keys(timerDefaults).forEach(p => { $('timer-'+p).disabled = !timerSettings.enabled; });
   }
   Object.keys(timerDefaults).forEach(p => {
@@ -256,6 +262,7 @@
   }
   function finish(correct) {
     if(view!=='question'||!current) return;
+    if (timerSettings.enabled && timerSettings.autoWrong && countdown.interval !== null && performance.now() >= countdown.deadline) correct = false;
     const id = current.id;
     if (!E.rate(data, state, id, selected, correct)) return;
     stopMusic();

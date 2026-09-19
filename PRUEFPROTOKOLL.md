@@ -121,3 +121,10 @@ Die übernommenen Unterrichtsinhalte wurden punktuell präzisiert und um Antwort
 - Die Browser-Vorabprüfung meldete fehlende Windows-Bibliotheken. Mit PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 ließen sich die vorhandenen Firefox- und WebKit-Browser starten und vollständig prüfen.
 - Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft.
 - Bestehende Prüfungen browser.cjs, pages.cjs, scoring.cjs, feedback.cjs, visual.cjs, klasse8.cjs, meme-mix.cjs und klasse10-start.cjs ebenfalls in allen drei Engines bestanden.
+
+## Ergänzung vom 20.09.2026: automatische Wertung bei Zeitablauf
+
+- Neue Timeroption „Nach Zeitablauf automatisch falsch werten“, standardmäßig aktiviert und bei ausgeschaltetem Timer nicht bedienbar. Einstellung wird gespeichert und bei Reset erhalten; ältere Spielstände ohne das neue Feld verwenden den aktivierten Standard.
+- Zeitablauf schließt die Karte einmalig über dieselbe falsche Wertung wie eine falsche Antwort ab. Standardmäßig 0 Punkte, optionaler Punktabzug folgt den bestehenden Einstellungen. Lösung, Erklärung und nächstes Team erscheinen im Ergebnisdialog. Abschalten der Option erhält den reinen Zeit-Hinweis.
+- Alle sieben Spiele und Spiel-Ersteller neu gebaut, 14 Engine-Tests bestanden. timer.cjs prüft in allen drei Engines zusätzlich automatische Wertung bei Zahlen-, Auswahl- und mündlichen Aufgaben, keine Doppelwertung, Teamwechsel, Rückgängig sowie Speicherung und Reset der Option.
+- Physische Schuldisplays, echte Android-/Apple-Geräte und Linux wurden nicht direkt geprüft. Browser-Vorabprüfung wie zuvor mit PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 übersprungen; die tatsächlichen Browserprüfungen wurden ausgeführt.

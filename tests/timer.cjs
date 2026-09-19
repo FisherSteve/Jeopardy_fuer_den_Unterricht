@@ -8,7 +8,7 @@ const pw=require(process.env.PLAYWRIGHT_MODULE||'playwright');
  await page.clock.install();await page.goto(pathToFileURL(path.resolve(__dirname,'../spiele/mathematik-klasse-5/index.html')).href);
  await page.locator('.tile').first().tap();assert.equal(await page.locator('#question-timer').isVisible(),false);await page.locator('#close').click();
  await page.locator('#settings').tap();assert.equal(await page.locator('#timer-enabled').isChecked(),false);
- await page.locator('#timer-enabled').check();await page.locator('#teacher-tools-enabled').check();
+ await page.locator('#timer-enabled').check();await page.locator('#timer-auto-wrong').uncheck();await page.locator('#teacher-tools-enabled').check();
  for(const [p,v] of [[100,30],[200,45],[300,60],[400,90],[500,120]])assert.equal(await page.locator('#timer-'+p).inputValue(),String(v));
  await page.locator('#close').click();
  for(const [p,v] of [[100,30],[200,45],[300,60],[400,90],[500,120]]){
@@ -29,6 +29,20 @@ const pw=require(process.env.PLAYWRIGHT_MODULE||'playwright');
  await page.locator('#settings').click();await page.locator('#reset-open').click();await page.locator('#reset-confirm').click();await page.locator('#settings').click();assert.equal(await page.locator('#timer-100').inputValue(),'5');
  await page.screenshot({path:path.join(__dirname,'screenshots',name+'-timer-menu.png')});
  await page.locator('#timer-enabled').uncheck();await page.locator('#close').click();await page.locator('.tile').first().click();assert.equal(await page.locator('#question-timer').isVisible(),false);assert.deepEqual(errors,[]);
+ const auto=await browser.newPage();await auto.clock.install();await auto.goto(pathToFileURL(path.resolve(__dirname,'../spiele/mathematik-klasse-5/index.html')).href);
+ await auto.locator('#settings').click();assert.equal(await auto.locator('#timer-auto-wrong').isChecked(),true);assert.equal(await auto.locator('#timer-auto-wrong').isDisabled(),true);
+ await auto.locator('#timer-enabled').check();for(const p of [100,200,300,400,500]){await auto.locator('#timer-'+p).fill('5');await auto.locator('#timer-'+p).press('Tab');}await auto.locator('#close').click();
+ const manual=await auto.evaluate(()=>JSON.parse(document.getElementById('game-data').textContent).categories.flatMap(c=>c.questions).find(q=>!q.response||q.response.type==='manual').id);
+ let count=0;for(const id of ['k1-100','k1-400',manual]){
+ await auto.locator('[data-question="'+id+'"]').click();await auto.clock.runFor(5100);count++;
+ assert.equal(await auto.locator('.tile.used').count(),count);assert.equal(await auto.locator('#dialog-title').innerText(),'Nicht richtig');assert.equal(await auto.locator('#feedback-review').isVisible(),true);assert.ok((await auto.locator('#feedback-explanation').innerText()).length>0);
+ assert.deepEqual(await auto.locator('.score').allTextContents(),['0 P','0 P']);await auto.clock.runFor(20000);assert.equal(await auto.locator('.tile.used').count(),count);
+ await auto.locator('#feedback-continue').click();assert.match(await auto.locator('#turn-banner').innerText(),new RegExp('Team '+(count%2+1)));
+ }
+ await auto.locator('#undo').click();assert.equal(await auto.locator('.tile.used').count(),2);
+ await auto.reload();await auto.locator('#settings').click();assert.equal(await auto.locator('#timer-auto-wrong').isChecked(),true);await auto.locator('#timer-auto-wrong').uncheck();await auto.locator('#close').click();await auto.reload();await auto.locator('#settings').click();assert.equal(await auto.locator('#timer-auto-wrong').isChecked(),false);
+ await auto.locator('#reset-open').click();await auto.locator('#reset-confirm').click();await auto.locator('#settings').click();assert.equal(await auto.locator('#timer-auto-wrong').isChecked(),false);
+ await auto.close();
  console.log(name+': timer defaults, all values, hints pause/resume, reveal stop, expiry without grading, validation, persistence, reset and mobile passed');
  }finally{await browser.close();}
 }})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -118,7 +118,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     </div>
     <div id="menu-view" hidden>
       <h3>Musik</h3><label class="toggle-label"><input id="music-enabled" type="checkbox" aria-describedby="music-status"> Musik während der Fragen</label><p id="music-status" class="muted" role="status">Optional und zunächst aus. Startet beim Öffnen einer Frage; stoppt beim Aufdecken, Abgeben oder Schließen.</p>
-      <h3>Fragentimer</h3><label class="toggle-label"><input id="timer-enabled" type="checkbox"> Timer einschalten</label><p>Je Punktewert 5–600 Sekunden. Startet mit der Frage, pausiert bei Hinweisen und stoppt beim Aufdecken. Bei Ablauf bleibt die Antwort bewertbar.</p><div class="timer-settings"><label for="timer-100">100 Punkte · Sekunden<input id="timer-100" type="number" inputmode="numeric" min="5" max="600" step="1" value="30" disabled></label><label for="timer-200">200 Punkte · Sekunden<input id="timer-200" type="number" inputmode="numeric" min="5" max="600" step="1" value="45" disabled></label><label for="timer-300">300 Punkte · Sekunden<input id="timer-300" type="number" inputmode="numeric" min="5" max="600" step="1" value="60" disabled></label><label for="timer-400">400 Punkte · Sekunden<input id="timer-400" type="number" inputmode="numeric" min="5" max="600" step="1" value="90" disabled></label><label for="timer-500">500 Punkte · Sekunden<input id="timer-500" type="number" inputmode="numeric" min="5" max="600" step="1" value="120" disabled></label></div><p id="timer-settings-status" role="status"></p>
+      <h3>Fragentimer</h3><label class="toggle-label"><input id="timer-enabled" type="checkbox"> Timer einschalten</label><p>Je Punktewert 5–600 Sekunden. Startet mit der Frage, pausiert bei Hinweisen und stoppt beim Aufdecken. Bei Ablauf wird die Karte standardmäßig als falsch gewertet. Ohne automatische Wertung bleibt sie offen.</p><label class="toggle-label"><input id="timer-auto-wrong" type="checkbox" checked disabled> Nach Zeitablauf automatisch falsch werten</label><div class="timer-settings"><label for="timer-100">100 Punkte · Sekunden<input id="timer-100" type="number" inputmode="numeric" min="5" max="600" step="1" value="30" disabled></label><label for="timer-200">200 Punkte · Sekunden<input id="timer-200" type="number" inputmode="numeric" min="5" max="600" step="1" value="45" disabled></label><label for="timer-300">300 Punkte · Sekunden<input id="timer-300" type="number" inputmode="numeric" min="5" max="600" step="1" value="60" disabled></label><label for="timer-400">400 Punkte · Sekunden<input id="timer-400" type="number" inputmode="numeric" min="5" max="600" step="1" value="90" disabled></label><label for="timer-500">500 Punkte · Sekunden<input id="timer-500" type="number" inputmode="numeric" min="5" max="600" step="1" value="120" disabled></label></div><p id="timer-settings-status" role="status"></p>
       <h3>Teams</h3><div id="names" class="names"></div>
       <div class="question-tools team-tools"><button id="add-team">Team hinzufügen</button><button id="remove-team">Letztes Team entfernen</button></div><p id="team-count-help" class="muted"></p>
       <h3>Punktewertung</h3>
@@ -688,7 +688,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   const signature = JSON.stringify(data);
   const storageKey = 'jeopardy-v2-' + data.id;
   const timerDefaults = {100:30, 200:45, 300:60, 400:90, 500:120};
-  let timerSettings = {enabled:false, seconds:{...timerDefaults}};
+  let timerSettings = {enabled:false, autoWrong:true, seconds:{...timerDefaults}};
   let countdown = {remaining:0, deadline:0, interval:null, expired:false, stopped:true}, questionResolved = false;
   let state = E.fresh(data), savedOK = true, notice = '', pendingFeedback = null;
   try {
@@ -697,6 +697,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
       const saved = JSON.parse(raw);
       if (saved.timer && typeof saved.timer.enabled === 'boolean') {
         timerSettings.enabled = saved.timer.enabled;
+        if (typeof saved.timer.autoWrong === 'boolean') timerSettings.autoWrong = saved.timer.autoWrong;
         Object.keys(timerDefaults).forEach(p => { const v = saved.timer.seconds && saved.timer.seconds[p]; if (Number.isInteger(v) && v >= 5 && v <= 600) timerSettings.seconds[p] = v; });
       }
       if (saved.signature === signature) {
@@ -723,12 +724,14 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     countdown.remaining = Math.max(0, countdown.deadline - performance.now());
     if (countdown.remaining === 0) {
       clearInterval(countdown.interval); countdown.interval = null; countdown.expired = true;
-      stopMusic(); $('timer-announcement').textContent = 'Zeit abgelaufen. Die Antwort kann weiterhin abgegeben oder bewertet werden.';
+      stopMusic();
+      if (timerSettings.autoWrong && view === 'question' && !questionResolved) { finish(false); return; }
+      $('timer-announcement').textContent = 'Zeit abgelaufen. Die Antwort kann weiterhin abgegeben oder bewertet werden.';
     }
     renderTimer();
   }
   function pauseTimer(stop = false) {
-    if (countdown.interval !== null) tickTimer();
+    if (countdown.interval !== null) countdown.remaining = Math.max(0, countdown.deadline - performance.now());
     clearInterval(countdown.interval); countdown.interval = null;
     if (stop) countdown.stopped = true;
     renderTimer();
@@ -745,9 +748,12 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   }
   document.addEventListener('visibilitychange', () => { if (document.hidden) pauseTimer(); else resumeTimer(); });
   window.addEventListener('pagehide', () => pauseTimer());
+  $('timer-auto-wrong').checked = timerSettings.autoWrong;
+  $('timer-auto-wrong').addEventListener('change', () => { timerSettings.autoWrong = $('timer-auto-wrong').checked; save(); });
   $('timer-enabled').checked = timerSettings.enabled;
   $('timer-enabled').addEventListener('change', () => { timerSettings.enabled = $('timer-enabled').checked; renderTimerSettings(); save(); });
   function renderTimerSettings() {
+    $('timer-auto-wrong').disabled = !timerSettings.enabled;
     Object.keys(timerDefaults).forEach(p => { $('timer-'+p).disabled = !timerSettings.enabled; });
   }
   Object.keys(timerDefaults).forEach(p => {
@@ -890,6 +896,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   }
   function finish(correct) {
     if(view!=='question'||!current) return;
+    if (timerSettings.enabled && timerSettings.autoWrong && countdown.interval !== null && performance.now() >= countdown.deadline) correct = false;
     const id = current.id;
     if (!E.rate(data, state, id, selected, correct)) return;
     stopMusic();

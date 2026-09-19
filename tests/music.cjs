@@ -92,7 +92,7 @@ const server=http.createServer((req,res)=>{
   await silent(local);await local.locator('#close').click();await openFirst(local);await playing(local);
   assert.equal(await local.locator('#music').evaluate(a=>a.src),pathToFileURL(path.join(out,'Jeopardy-theme-song.mp3')).href);
   await local.locator('#close').click();await silent(local);
-  await local.locator('#settings').click();await local.locator('#timer-enabled').check();
+  await local.locator('#settings').click();await local.locator('#timer-enabled').check();await local.locator('#timer-auto-wrong').uncheck();
   await local.locator('#timer-100').fill('5');await local.locator('#timer-100').press('Tab');await local.locator('#teacher-tools-enabled').check();await local.locator('#close').click();
   await openFirst(local);await playing(local);
   await local.waitForFunction(()=>document.getElementById('music').currentTime>0.4);

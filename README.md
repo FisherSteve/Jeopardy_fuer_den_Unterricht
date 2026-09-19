@@ -108,7 +108,7 @@ Das Spiel merkt sich den Spielstand nach Möglichkeit im verwendeten Browser. We
 
 Im Menü kannst du den Timer einschalten und für jeden Punktewert eigene ganze Sekunden von 5 bis 600 einstellen. Voreingestellt sind **100 Punkte: 30 s, 200: 45 s, 300: 60 s, 400: 90 s und 500: 120 s**. Der Timer ist zunächst aus; Einstellungen werden nach Möglichkeit mit dem Spielstand gespeichert und bleiben beim Zurücksetzen erhalten. Änderungen gelten ab der nächsten geöffneten Frage.
 
-Der Countdown startet beim Öffnen einer Frage. Während Lehrkräftehinweise sichtbar sind oder der Tab im Hintergrund liegt, pausiert er; danach läuft die Restzeit weiter. Aufdecken, Abgeben und Schließen stoppen ihn. Bei **„Zeit abgelaufen“** stoppt auch die Musik; es gibt keine automatische Wertung. Antworten können weiterhin abgegeben oder durch die Lehrkraft bewertet werden. Schließen und erneutes Öffnen einer unbewerteten Karte startet deren volle Zeit erneut.
+Der Countdown startet beim Öffnen einer Frage. Während Lehrkräftehinweise sichtbar sind oder der Tab im Hintergrund liegt, pausiert er; danach läuft die Restzeit weiter. Aufdecken, Abgeben und Schließen stoppen ihn. **„Nach Zeitablauf automatisch falsch werten“ ist voreingestellt.** Bei Ablauf stoppt die Musik und die Karte wird sofort als falsch abgeschlossen: normalerweise 0 Punkte, bei aktiviertem Punktabzug entsprechend der gewählten Wertung. Das Ergebnis-Popup zeigt Lösung, Erklärung und das nächste Team. Schaltest du diese Option aus, erscheint nur „Zeit abgelaufen“ und die Antwort bleibt abgebbar bzw. bewertbar. Schließen und erneutes Öffnen einer unbewerteten Karte startet deren volle Zeit erneut.
 
 ## Optionale Hintergrundmusik
 
