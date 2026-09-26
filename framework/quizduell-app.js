@@ -19,6 +19,8 @@ let toastTimer=null;
 let finalTimer=null;
 let finalTickStart=0;
 let finalSeconds=5;
+let olympMaskTimer=null;
+function stopOlympMask(){clearTimeout(olympMaskTimer);olympMaskTimer=null;}
 function readFinalSeconds(){const input=$('#finalSeconds');if(!input)return true;const n=Number(input.value);if(!Number.isInteger(n)||n<5||n>600){input.setCustomValidity('Bitte ganze Sekunden von 5 bis 600 eingeben.');input.reportValidity();return false;}finalSeconds=n;input.setCustomValidity('');return true;}
 function wireFinalSeconds(){const input=$('#finalSeconds');if(!input)return;input.value=finalSeconds;input.onchange=readFinalSeconds;input.oninput=()=>input.setCustomValidity('');}
 function timerSetting(){return '<div class="field"><label for="finalSeconds">Finale: Sekunden je Frage (5–600)</label><input id="finalSeconds" type="number" min="5" max="600" step="1" inputmode="numeric" value="'+finalSeconds+'"></div>';}
@@ -35,6 +37,7 @@ function resetState(){stopTimer();randomizeBank();state={view:'setup',teamName:d
 
 function render(){
  stopTimer();
+ stopOlympMask();
  clearTimeout(toastTimer);toastEl.classList.remove('show');
  if(state.view==='setup') renderSetup();
  else if(state.view==='category') renderCategory();
@@ -61,24 +64,42 @@ function renderCategory(){const chooser=state.round%2===0?'OLYMP':'TEAM';const w
 }
 function chooseCategory(idx){if(state.view!=='category'||!state.offers.includes(idx))return;tone(440,.07);state.category=idx;state.usedCategories.push(idx);state.qIndex=0;state.phase='olymp';state.olympAnswer=null;state.teamAnswer=null;state.roundTeamStart=state.teamScore;state.roundOlympStart=state.olympScore;state.view='question';render()}
 function currentQ(){return bank[state.category].questions[state.qIndex]}
-function renderQuestion(){const q=currentQ();const reveal=state.phase==='reveal';const phaseText=state.phase==='olymp'?'Olymp antwortet verdeckt':state.phase==='team'?'Team berät und antwortet':'Auflösung';
+function renderQuestion(){const q=currentQ();const reveal=state.phase==='reveal';const phaseText=state.phase==='olymp'?'Olymp antwortet verdeckt':state.phase==='mask'?'Olymp-Antwort eingeloggt':state.phase==='team'?'Team berät und antwortet':'Auflösung';
  if(reveal){screen.innerHTML=`${scoreHeader()}<section class="question-stage"><div class="category-pill">${esc(bank[state.category].name)} · Frage ${state.qIndex+1}/3</div>${revealMarkup(q)}${statusMarkup()}</section>`;wireQuestion();return;}
  screen.innerHTML=`${scoreHeader()}<section class="question-stage"><div class="qhead"><div class="category-pill"><i class="dot"></i>${esc(bank[state.category].name)}${q.level?' · '+esc(q.level):''} · Frage ${state.qIndex+1}/3</div><div class="phase-pill">${phaseText}</div></div><div class="question-card"><div><div class="question-text">${esc(q.q)}</div>${window.GameMath.markup(q.questionMath)}</div></div><div class="answers">${q.a.map((a,i)=>answerMarkup(a,i,q.correct,reveal)).join('')}</div>${statusMarkup(q)}${reveal?revealMarkup(q):''}</section>`;
  wireQuestion();
 }
-function answerMarkup(a,i,correct,reveal){let cls='answer';if(state.phase==='team'&&state.teamAnswer===i)cls+=' selected';if(reveal){if(i===correct)cls+=' correct';else if(i===state.olympAnswer||i===state.teamAnswer)cls+=' wrong';else cls+=' dim'}const disabled=state.phase==='olymp'||reveal?'disabled':'';return `<button class="${cls}" data-answer="${i}" aria-pressed="${state.phase==='team'&&state.teamAnswer===i}" ${disabled}><span class="letter">${letters[i]}</span><span class="txt">${esc(a)}</span></button>`}
+function answerMarkup(a,i,correct,reveal){let cls='answer';if(state.phase==='team'&&state.teamAnswer===i)cls+=' selected';if(reveal){if(i===correct)cls+=' correct';else if(i===state.olympAnswer||i===state.teamAnswer)cls+=' wrong';else cls+=' dim'}const disabled=state.phase!=='team'?'disabled':'';return `<button class="${cls}" data-answer="${i}" aria-pressed="${state.phase==='team'&&state.teamAnswer===i}" ${disabled}><span class="letter">${letters[i]}</span><span class="txt">${esc(a)}</span></button>`}
 function statusMarkup(){
+ if(state.phase==='mask')return `<div class="status-card" role="status"><div><div class="status-main">Olymp-Antwort ist eingeloggt.</div><div class="status-sub">Gleich ist ${esc(state.teamName)} dran.</div></div></div>`;
  if(state.phase==='olymp')return `<div class="status-card"><div><div class="status-main">${esc(state.olympName)}: Antwort verdeckt einloggen</div><div class="status-sub">Team bitte wegsehen. Taste 1–4 drücken oder Touch-Eingabe öffnen.</div></div><button class="btn primary" id="touchOlymp">Olymp: Touch-Eingabe</button></div>`;
  if(state.phase==='team')return `<div class="status-card"><div><div class="status-main">${esc(state.teamName)} ist dran</div><div class="status-sub">Antwort anklicken oder 1–4 wählen und mit Enter einloggen.</div></div><button class="btn primary" id="lockTeam" ${state.teamAnswer===null?'disabled':''}>Antwort einloggen</button></div>`;
  return `<div class="status-card"><div><div class="status-main">Antwort aufgelöst</div><div class="status-sub">Punkte wurden automatisch addiert.</div></div><button class="btn primary" id="nextQ">${state.qIndex<2?'Nächste Frage':'Runde auswerten'}</button></div>`
 }
 function revealMarkup(q){const oa=state.olympAnswer,ta=state.teamAnswer;const oOk=oa===q.correct,tOk=ta===q.correct;return `<div class="learning-feedback ${tOk ? 'is-correct' : ''}" role="status"><h2>${state.teamAnswer===q.correct?'Richtig!':'Nicht richtig'} · ${esc(state.teamName)} +${E.score(q.correct,state.teamAnswer)} · ${esc(state.olympName)} +${E.score(q.correct,state.olympAnswer)}</h2><p><strong>Richtige Antwort: ${esc(q.a[q.correct])}</strong></p>${window.GameMath.markup(q.answerMath)}<p>${esc(q.explanation)}</p><p>${state.qIndex<2?esc(state.olympName)+' antwortet als Nächstes.':'Weiter zur Rundenwertung.'}</p></div><div class="reveal-grid"><div class="reveal-card"><div class="reveal-label">${esc(state.teamName)}</div><div class="reveal-answer">${letters[ta]} · ${esc(q.a[ta])} ${tOk?'✓':'✕'}</div></div><div class="reveal-card righty"><div class="reveal-label">${esc(state.olympName)}</div><div class="reveal-answer">${letters[oa]} · ${esc(q.a[oa])} ${oOk?'✓':'✕'}</div></div></div>`}
 function wireQuestion(){
- if(state.phase==='olymp')$('#touchOlymp').addEventListener('click',()=>{const d=$('#secretDialog');d.showModal();d.querySelector('button').focus();});
+ if(state.phase==='olymp')$('#touchOlymp').addEventListener('click',()=>{const d=$('#secretDialog');d.classList.remove('pointer-input');d.showModal();$('#secretTitle').focus();});
  if(state.phase==='team'){document.querySelectorAll('.answer').forEach(b=>b.addEventListener('click',()=>selectTeam(+b.dataset.answer)));$('#lockTeam').addEventListener('click',lockTeam)}
  if(state.phase==='reveal')$('#nextQ').addEventListener('click',nextQuestion);
 }
-function olympSecret(i){if(state.view!=='question'||state.phase!=='olymp'||!Number.isInteger(i)||i<0||i>3)return;if($('#secretDialog').open)$('#secretDialog').close();state.olympAnswer=i;tone(330,.07);state.phase='team';render();toast('Olymp-Antwort ist eingeloggt.');}
+function olympSecret(i){
+ if(state.view!=='question'||state.phase!=='olymp'||!Number.isInteger(i)||i<0||i>3)return;
+ if($('#secretDialog').open)$('#secretDialog').close();
+ state.olympAnswer=i;tone(330,.07);
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){state.phase='team';render();toast('Olymp-Antwort ist eingeloggt.');return;}
+ // This permutation must never depend on the chosen or correct answer.
+ const order=shuffle([0,1,2,3]);
+ state.phase='mask';render();
+ let step=0;
+ function advance(){
+  if(state.view!=='question'||state.phase!=='mask')return;
+  document.querySelectorAll('.answer').forEach(b=>b.classList.remove('conceal-glow'));
+  if(step===order.length){state.phase='team';render();return;}
+  document.querySelectorAll('.answer')[order[step++]].classList.add('conceal-glow');
+  olympMaskTimer=setTimeout(advance,400);
+ }
+ advance();
+}
 function selectTeam(i){if(state.view!=='question'||state.phase!=='team'||!Number.isInteger(i)||i<0||i>3)return;state.teamAnswer=i;tone(430,.05);document.querySelectorAll('.answer').forEach((b,j)=>{b.classList.toggle('selected',j===i);b.setAttribute('aria-pressed',String(j===i));});$('#lockTeam').disabled=false;}
 function lockTeam(){if(state.phase!=='team'||state.teamAnswer===null)return;const q=currentQ();state.phase='reveal';state.teamScore+=E.score(q.correct,state.teamAnswer);state.olympScore+=E.score(q.correct,state.olympAnswer);state.history.push({round:state.round,category:bank[state.category].name,q:state.qIndex,team:state.teamAnswer,olymp:state.olympAnswer,correct:q.correct});chime(state.teamAnswer===q.correct);state.continueAfter=performance.now()+450;render()}
 function nextQuestion(){if(state.view!=='question'||state.phase!=='reveal'||performance.now()<state.continueAfter)return;if(state.qIndex<2){state.qIndex++;state.phase='olymp';state.olympAnswer=null;state.teamAnswer=null;render()}else{state.view='roundEnd';render()}}
@@ -124,6 +145,8 @@ function toggleFull(){const el=document.documentElement;if(!document.fullscreenE
 $('#fullBtn').addEventListener('click',toggleFull);$('#hintBtn').addEventListener('click',()=>$('#shortcuts').classList.toggle('hidden'));$('#soundBtn').addEventListener('click',()=>{soundOn=!soundOn;$('#soundBtn').textContent=soundOn?'♪':'×';toast(soundOn?'Ton an':'Ton aus')});
 
 $('#secretClose').onclick=()=>$('#secretDialog').close();
+$('#secretDialog').addEventListener('pointerdown',()=>$('#secretDialog').classList.add('pointer-input'));
+$('#secretDialog').addEventListener('keydown',()=>$('#secretDialog').classList.remove('pointer-input'));
 $('#secretDialog').querySelectorAll('[data-secret]').forEach(b=>b.onclick=()=>olympSecret(+b.dataset.secret));
 if(!document.documentElement.requestFullscreen)$('#fullBtn').hidden=true;
 makeFloaters();resetState();render();

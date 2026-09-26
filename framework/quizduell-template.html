@@ -28,7 +28,7 @@
 </div>
 
 
-<dialog id="secretDialog" aria-labelledby="secretTitle"><div class="dialog-body"><h2 id="secretTitle">Olymp-Eingabe · Team bitte wegsehen</h2><p>Die gewählte Antwort wird nach dem Antippen verborgen. Das Antippen selbst ist auf dem gemeinsamen Bildschirm sichtbar.</p><div class="judge"><button class="btn primary" data-secret="0">A</button><button class="btn primary" data-secret="1">B</button><button class="btn primary" data-secret="2">C</button><button class="btn primary" data-secret="3">D</button></div><button class="btn ghost" id="secretClose">Abbrechen</button></div></dialog>
+<dialog id="secretDialog" aria-labelledby="secretTitle"><div class="dialog-body"><h2 id="secretTitle" tabindex="-1" autofocus>Olymp-Eingabe · Team bitte wegsehen</h2><p>Antippen speichert die Antwort ohne Markierung. Danach leuchten A–D zufällig auf, unabhängig von deiner Wahl.</p><div class="judge"><button class="btn primary" data-secret="0">A</button><button class="btn primary" data-secret="1">B</button><button class="btn primary" data-secret="2">C</button><button class="btn primary" data-secret="3">D</button></div><button class="btn ghost" id="secretClose">Abbrechen</button></div></dialog>
 <p id="fatal" hidden role="alert"></p>
 <script id="game-data" type="application/json">/*__DATA__*/</script>
 <script>/*__ENGINE__*/</script>

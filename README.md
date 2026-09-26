@@ -120,7 +120,7 @@ Bei geöffneten Lehrkräftehinweisen und beim Wechsel in einen anderen Tab pausi
 
 1. **Seiten benennen:** Tragt auf dem Startbildschirm die Namen ein und legt die Finalzeit fest.
 2. **Kategorie wählen:** Olymp und Herausforderer wählen abwechselnd aus drei angebotenen Kategorien. Der Olymp beginnt.
-3. **Getrennt antworten:** Der Olymp gibt seine Antwort zuerst über die Tasten **1–4** oder „Olymp: Touch-Eingabe“ ein. Dabei schaut die andere Seite weg. Danach wählt das Team seine Antwort und loggt sie ein.
+3. **Getrennt antworten:** Der Olymp gibt seine Antwort zuerst über die Tasten **1–4** oder „Olymp: Touch-Eingabe“ ein. Der gedrückte Olymp-Button erhält keine Auswahlmarkierung. Anschließend leuchten A–D einmal in zufälliger Reihenfolge auf – unabhängig von der gewählten Antwort. Danach wählt das Team seine Antwort und loggt sie ein. Bei reduzierter Bewegung entfällt die Animation. Auf einem gemeinsamen Display schaut die andere Seite während des Antippens weiterhin weg.
 4. **Gemeinsam auflösen:** Jede richtige Antwort gibt einen Punkt. Lösung und Erklärung bleiben bis „Nächste Frage“ stehen.
 5. **Finale spielen:** Nach sechs Runden wird jeder gesammelte Punkt zu einer Finalfrage. Die Seite mit weniger Punkten beginnt; bei Gleichstand die Herausforderer.
 

@@ -129,6 +129,13 @@ dialog{width:min(980px,94vw);max-height:86vh;color:white;background:linear-gradi
 /* Classroom input, long text, native mathematics and keyboard focus. */
 button{min-width:52px;min-height:52px;touch-action:manipulation}
 button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:4px}
+#secretTitle:focus{outline:none}
+/* Touch must not mark the Olymp's actual choice, including Safari's tap highlight. */
+#secretDialog [data-secret]{-webkit-tap-highlight-color:transparent;transition:none;user-select:none;-webkit-user-select:none}
+#secretDialog [data-secret]:hover,#secretDialog [data-secret]:active{transform:none;filter:none}
+#secretDialog.pointer-input [data-secret]:focus{outline:none}
+.answer.conceal-glow .letter{background:#304d83;border-color:#c3d9ff;color:#fff;box-shadow:0 0 16px #a9ccff55}
+@media(prefers-reduced-motion:reduce){.answer.conceal-glow .letter{background:rgba(0,8,30,.38);border-color:rgba(188,218,255,.24);color:#a9ccff;box-shadow:none}}
 #screen:focus{outline:none}
 .iconbtn{width:52px;height:52px}
 .side,.side-badge,.panel,.question-stage,.field,.hero>div{min-width:0}
