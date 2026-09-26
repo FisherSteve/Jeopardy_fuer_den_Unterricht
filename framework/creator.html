@@ -5,7 +5,7 @@
 </style></head><body><main>
 <p class="muted">JEOPARDY & QUIZDUELL OLYMP · OHNE INSTALLATION</p><h1>Aus KI-Aufgaben wird euer Spiel.</h1>
 <p>Diese Seite baut die fertige HTML-Datei direkt auf deinem Gerät. Die Aufgaben werden nicht an einen Server geschickt.</p>
-<h2>1. Aufgaben von der KI erstellen lassen</h2><p>Öffne ChatGPT, Claude, Gemini oder eine andere KI. Gib ihr die Datei <strong>Framework-Prompt.md</strong>, ergänze Spielart, Fach, Klasse und Themen und bitte um den vollständigen JSON-Aufgabensatz für den Spiel-Ersteller. Jeopardy: 1–5 Themen mit je 5 Aufgaben. Quizduell: 8–20 Kategorien mit je 3 Fragen und mindestens 37 Finalfragen. Die Spielart wird aus dem JSON erkannt.</p>
+<h2>1. Aufgaben von der KI erstellen lassen</h2><p>Öffne ChatGPT, Claude, Gemini oder eine andere KI. Gib ihr nur die passende Datei: <strong>Prompt-Jeopardy.md</strong> für Jeopardy oder <strong>Prompt-Quizduell.md</strong> für Quizduell Olymp. Jede Vorlage enthält alle nötigen Vorgaben. Ergänze Fach, Klasse und Themen und bitte um den vollständigen JSON-Aufgabensatz für den Spiel-Ersteller. Jeopardy: 1–5 Themen mit je 5 Aufgaben. Quizduell: 8–20 Kategorien mit je 3 Fragen und mindestens 37 Finalfragen. Die Spielart wird aus dem JSON erkannt.</p>
 <h2>2. KI-Antwort hier einfügen</h2><label for="json">Den gesamten JSON-Aufgabensatz kopieren</label><textarea id="json" spellcheck="false" placeholder='{"schemaVersion": 1, "id": "mein-spiel", …}'></textarea>
 <label for="file">Oder eine gespeicherte JSON-Datei auswählen</label><input id="file" type="file" accept=".json,application/json">
 <p>Jeopardy bietet einen optionalen Fragentimer je Punktewert. Im Quizduell ist die Finalzeit einstellbar (Standard: fünf Sekunden).</p>

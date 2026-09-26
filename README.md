@@ -45,7 +45,12 @@ Du brauchst eine KI deiner Wahl, zum Beispiel ChatGPT, Claude oder Gemini, und u
 
 ### 1. Der KI die Vorlage und deinen Wunsch geben
 
-Lade die Datei **[Framework-Prompt.md](Framework-Prompt.md)** herunter und füge sie deinem KI-Chat als Anhang hinzu. Alternativ kannst du ihren gesamten Text in den Chat kopieren. Die Vorlage beschreibt, wie die Aufgaben aufgebaut sein müssen.
+Wähle **nur die Vorlage für deine Spielart**:
+
+- **[Prompt-Jeopardy.md](Prompt-Jeopardy.md)** für Jeopardy mit Punktekarten.
+- **[Prompt-Quizduell.md](Prompt-Quizduell.md)** für Quizduell Olymp mit Finale.
+
+Lade diese eine Datei herunter und füge sie deinem KI-Chat als Anhang hinzu. Alternativ kannst du ihren gesamten Text in den Chat kopieren. Jede Vorlage enthält alle nötigen Vorgaben; weitere Prompt-Dateien brauchst du nicht.
 
 Ergänze einen Auftrag wie diesen und passe Fach, Klasse und Themen an:
 
@@ -174,6 +179,6 @@ Bei **Quizduell** gibt der Olymp seine Auswahl mit **1–4** ein. Im Finale bewe
 
 Die [technische Anleitung](docs/TECHNIK.md) beschreibt den Aufbau, die Spielregeln im Detail, die Veröffentlichung und die Prüfungen. Die Spielinhalte liegen in `content/`, die gemeinsame Spieltechnik in `framework/`. Mit `node build.js` werden alle Spiele, der Spiel-Ersteller und die Startseite aktualisiert.
 
-Für beide Spielarten gilt: Neue Aufgaben werden als JSON erstellt. Die [Framework-Prompt](Framework-Prompt.md) enthält die Vorgaben, auch für zufällig verteilte richtige Antwortpositionen und die lesbare Darstellung von Matrizen und Integralen im Quizduell.
+Für beide Spielarten gilt: Neue Aufgaben werden als JSON erstellt. Die Vorlagen [für Jeopardy](Prompt-Jeopardy.md) und [für Quizduell](Prompt-Quizduell.md) enthalten jeweils die passenden Vorgaben, einschließlich zufälliger Antwortpositionen und Fragen ohne verräterische Lösungshinweise. Die Quizduell-Vorlage erklärt auch die Darstellung von Matrizen und Integralen.
 
 </details>

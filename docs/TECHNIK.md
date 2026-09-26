@@ -1,6 +1,6 @@
 # Unterrichtsspiele: technische Anleitung
 
-[Zur Spielanleitung](../README.md) · [Framework-Prompt](../Framework-Prompt.md)
+[Zur Spielanleitung](../README.md) · [Jeopardy-Prompt](../Prompt-Jeopardy.md) · [Quizduell-Prompt](../Prompt-Quizduell.md)
 
 Dateipfade und Befehle in dieser Anleitung beziehen sich auf den Hauptordner des Projekts.
 
@@ -12,7 +12,7 @@ Quizduell verlangt zwei Seiten, 8–20 Kategorien mit exakt drei Fragen und 37�
 
 `framework/choice-order.js` ist beiden Spieltypen gemeinsam: Fisher-Yates mischt Optionen und die Zuteilung ausgewogener richtiger Positionen pro Optionszahl. Bei Mehrfachauswahl werden alle Optionen ohne Änderung der korrekten Indexmenge permutiert. Jeopardy behält Originalindizes und unveränderte Daten für Inhaltsidentität, Bewertung, Rückgängig und gespeicherte Resultate; das DOM-Attribut `data-option-index` benennt den ursprünglichen Index. Der Antwortplatz wird beim Start/Reset bzw. Neuladen neu gemischt und bleibt innerhalb der Frage stabil. Quizduell ordnet die richtige Option beim Erzeugen des Partievorrats um. Kein kryptografischer Zufall notwendig; keine feste ABCD-Rotation.
 
-`framework/math.js` validiert und rendert optionale Quizduell-Felder `questionMath`/`answerMath`: kleine rechteckige Matrizen und bestimmte/unbestimmte Integrale. MathML wird aus streng definierten Strukturen und escapten Texten erzeugt. Keine Ausführung von HTML oder TeX, kein CDN. Formeln besitzen beschreibende `aria-label`s. Unbekannte Mathetypen und zusätzliche Quizduell-Felder werden abgelehnt. Die Anleitung mit JSON-Beispielen steht in `Framework-Prompt.md`.
+`framework/math.js` validiert und rendert optionale Quizduell-Felder `questionMath`/`answerMath`: kleine rechteckige Matrizen und bestimmte/unbestimmte Integrale. MathML wird aus streng definierten Strukturen und escapten Texten erzeugt. Keine Ausführung von HTML oder TeX, kein CDN. Formeln besitzen beschreibende `aria-label`s. Unbekannte Mathetypen und zusätzliche Quizduell-Felder werden abgelehnt. Die Anleitung mit JSON-Beispielen steht in `Prompt-Quizduell.md`.
 
 Zusätzliche Prüfungen: `npm test` umfasst beide Engines, Zufallszuordnung und Mathefelder; `node tests/quizduell.cjs` prüft echte Spielabläufe, Touch/Tastatur, Finale, Stichfrage, Mathedarstellung und beide Downloads. Die Browser-Skripte akzeptieren weiterhin `PLAYWRIGHT_MODULE`, `CHROMIUM_EXECUTABLE` und `BROWSER_ENGINES`.
 
@@ -31,7 +31,7 @@ Die jeweilige `index.html` aus einem Spielordner auf das Gerät kopieren und in 
 
 **Umfang:** Ein bis fünf Themen mit jeweils fünf Punktekarten. Das Brett hat entsprechend ein bis fünf Spalten und das Spiel endet nach 5 bis 25 Fragen. Es werden keine fehlenden Themen ergänzt.
 
-**Selbst antworten:** Passende Aufgaben bieten ein Touch-Ziffernfeld oder große Antwortoptionen. Das Team gibt eine Zahl ein oder markiert seine Auswahl und drückt „Antwort abgeben“. Das Spiel wertet, schließt die Karte und wechselt automatisch zum nächsten Team. Einzelauswahl und Mehrfachauswahl sind möglich. Die Beispiele enthalten Zahleneingaben und einzelne Auswahlaufgaben; Aufgaben mit Erklärungen bleiben mündlich. Die Lehrkraft legt das Format je Aufgabe im Aufgabensatz fest; die Beispiele und Kriterien stehen in `Framework-Prompt.md`.
+**Selbst antworten:** Passende Aufgaben bieten ein Touch-Ziffernfeld oder große Antwortoptionen. Das Team gibt eine Zahl ein oder markiert seine Auswahl und drückt „Antwort abgeben“. Das Spiel wertet, schließt die Karte und wechselt automatisch zum nächsten Team. Einzelauswahl und Mehrfachauswahl sind möglich. Die Beispiele enthalten Zahleneingaben und einzelne Auswahlaufgaben; Aufgaben mit Erklärungen bleiben mündlich. Die Lehrkraft legt das Format je Aufgabe im Aufgabensatz fest; die Beispiele und Kriterien stehen in `Prompt-Jeopardy.md`.
 
 Im Zahlenfeld sind auch physische Zifferntasten, Komma/Punkt, Rücktaste, Entf und Minus möglich. Enter gibt die Antwort ab, wenn das Zahlenfeld fokussiert ist. Das Ziffernfeld hat zusätzlich Löschen und Vorzeichenwechsel. Dezimalzahlen werden exakt verglichen, etwa 2,60 = 2.6; Einheiten werden separat angezeigt. Brüche und Uhrzeiten werden nicht als Zahlenfeld-Eingabe interpretiert. Bei automatischen Aufgaben ermöglicht „Antwort anzeigen“ nach Freigabe im Menü alternativ eine manuelle Bewertung.
 
@@ -45,7 +45,7 @@ Eine kurze Animation zeigt den Wechsel. Sie entfällt bei der Systemeinstellung 
 
 Ohne Entwicklungswerkzeuge: `Spiel-Erstellen.html` öffnen, JSON einfügen oder laden, prüfen und als fertige HTML herunterladen. Der Ersteller enthält dieselbe Engine und Spielvorlage; er verarbeitet alles lokal. Die Anleitung für Lehrkräfte steht in `README.md`.
 
-1. `Framework-Prompt.md` zusammen mit den Unterrichtsdaten an den Agenten geben. Für Klasse 5 enthält `docs/Beispielbefüllung – Jeopardy Mathematik Klasse 5.md` den konkreten Auftrag.
+1. Nur `Prompt-Jeopardy.md` oder `Prompt-Quizduell.md` passend zur gewünschten Spielart zusammen mit den Unterrichtsdaten an den Agenten geben. Beide Vorlagen sind eigenständig und benötigen keine zusätzliche gemeinsame Prompt. Für Klasse 5 enthält `docs/Beispielbefüllung – Jeopardy Mathematik Klasse 5.md` den konkreten Auftrag.
 2. Der Agent erstellt einen Aufgabensatz in `content/`.
 3. Mit installiertem Node.js im Ordner ausführen:
 
@@ -55,13 +55,13 @@ node build.js content/mathematik-klasse-5.json
 
 Alle Spiele bauen: `node build.js`. Eigenes Ausgabeziel: `node build.js content/mathematik-klasse-5.json spiele/mein-spiel/index.html`.
 
-Es gibt keine Build-Abhängigkeiten. `npm install` ist dafür nicht nötig. Ohne Werkzeuge liefert das LLM JSON, das anschließend gebaut wird. Eine fertig gebaute HTML ist zugleich eine vollständig eingebettete Vorlage: Ihr `game-data`-Block kann gemäß Framework-Prompt ersetzt werden.
+Es gibt keine Build-Abhängigkeiten. `npm install` ist dafür nicht nötig. Ohne Werkzeuge liefert das LLM JSON, das anschließend gebaut wird. Inhaltsänderungen erfolgen am JSON; anschließend das Spiel über Build oder Spiel-Ersteller erneut erzeugen.
 
 ## Aufbau und Regeln für Änderungen
 
 | Datei/Ordner | Zweck |
 | --- | --- |
-| `Framework-Prompt.md` | Vollständiger wiederverwendbarer Auftrag für Agenten und LLMs |
+| `Prompt-Jeopardy.md`, `Prompt-Quizduell.md` | Je Spielart eine vollständige, eigenständig nutzbare Vorlage für die Inhaltserstellung |
 | `content/*.json` | Themen, Fragen, Antworten, Erklärungen, Hinweise, Tabellen und optionale Eingabe-/Auswahlformate |
 | `framework/engine.js` | Datenvalidierung, Teamreihenfolge, Wertung, Wiederherstellung |
 | `framework/app.js` | Gemeinsame Browserbedienung und Speicherung |
