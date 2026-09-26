@@ -1,204 +1,179 @@
-# Jeopardy und Quizduell Olymp für den Unterricht
+# Jeopardy & Quizduell für den Unterricht
 
-Das Framework bietet jetzt **zwei Spielarten im selben Spiel-Ersteller**. Bestehende Jeopardy-Aufgabensätze funktionieren weiter.
+Gemeinsam rätseln, Wissen wiederholen und eigene Fragen mitbringen: Wähle ein fertiges Spiel oder erstelle mit einer KI ein Quiz für deine Klasse. Gespielt wird direkt im Browser – am Touchdisplay, mit Beamer oder am Computer.
 
-| Spielart | So wird gespielt | Aufgaben von der KI |
+**[▶ Spiele öffnen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/)** · **[Eigenes Spiel erstellen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/Spiel-Erstellen.html)**
+
+Zum Spielen brauchst du kein Konto und keine Installation.
+
+## In drei Schritten losspielen
+
+1. Öffne die **Spielübersicht** oben und wähle ein Spiel.
+2. Lege die Teams fest: bei **Jeopardy im Menü**, bei **Quizduell auf dem Startbildschirm**.
+3. Zeige das Spiel der Klasse und startet gemeinsam. Lösungen und Erklärungen erscheinen nach der Abgabe oder dem Aufdecken.
+
+| | Jeopardy | Quizduell Olymp |
 | --- | --- | --- |
-| Jeopardy | Teams wählen Punktekarten; ein Team antwortet pro Karte | 1–5 Themen mit je 5 Aufgaben |
-| Quizduell Olymp | Kurs gegen Olymp; 6 Runden à 3 Fragen und ein Fünf-Sekunden-Finale | 8–20 Kategorien mit je 3 Auswahlfragen sowie mindestens 37 kurze Finalfragen |
+| Wer spielt? | Zwei bis sechs Teams | Zwei Seiten: Klasse und Olymp, frei benennbar |
+| Wie läuft es ab? | Das aktive Team wählt eine Punktekarte. Danach wechselt der Zug automatisch. | Beide Seiten beantworten dieselben Auswahlfragen. Danach folgt ein mündliches Finale. |
+| Wie viele Fragen? | Ein bis fünf Themen mit je fünf Fragen | Sechs Runden mit je drei Fragen, anschließend Finalfragen |
+| Wie wird geantwortet? | Mündlich, über ein Zahlenfeld oder durch Auswahl | In den Runden durch Auswahl, im Finale mündlich |
+| Gibt es eine Zeitbegrenzung? | Auf Wunsch einschaltbar | Im Finale standardmäßig **5 Sekunden pro Frage**, einstellbar |
 
-**[Quizduell Mathematik Klasse 8–13 öffnen](spiele/quizduell-olymp-mathe-8-13/index.html)** · [JSON-Aufgabensatz](content/quizduell-olymp-mathe-8-13.json)
+## Fertige Spiele entdecken
 
-Zwei weitere Quizduelle für die **Realschule NRW**, jeweils mit 24 Auswahlfragen in acht Kategorien und 37 kurzen Finalfragen:
+Alle Spiele findest du in der [Spielübersicht](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Darunter sind:
 
-- **[Mathematik bis Ende Klasse 8](spiele/quizduell-mathematik-ende-klasse-8-nrw/index.html)** · [JSON](content/quizduell-mathematik-ende-klasse-8-nrw.json): rationale Zahlen, Brüche, Terme, lineare Gleichungen, Zuordnungen, Prozent/Zinsen, Flächen/Körper, Winkel sowie Daten/Zufall. Ohne Stoff aus Klasse 9/10 oder Oberstufe.
-- **[Englisch bis Ende Klasse 5](spiele/quizduell-englisch-ende-klasse-5-nrw/index.html)** · [JSON](content/quizduell-englisch-ende-klasse-5-nrw.json): Alltag, Schule, Familie, Freizeit, einfache Dialoge, Wortschatz und grundlegende Grammatik. Fragen mit kurzen englischen Texten und deutschen Arbeitsaufträgen; Erklärungen auf Deutsch. Die landesweiten Englischziele gelten gemeinsam für Klasse 5/6; dieser Satz wählt bewusst grundlegenden Stoff für Ende Klasse 5. Die genaue Abfolge hängt vom schulinternen Lehrplan ab.
-
-Für ein eigenes Quizduell gib der KI dieselbe [Framework-Prompt.md](Framework-Prompt.md) und ergänze zum Beispiel:
-
-> Erstelle einen vollständigen Quizduell-Aufgabensatz mit gameType „quizduell“ für den Spiel-Ersteller. Fach: Biologie, Klasse 8, bereits behandelte Inhalte: Zelle, Atmung, Ernährung und Ökosysteme. Acht passende Kategorien mit je drei Auswahlfragen sowie 37 kurze mündliche Finalfragen. Teams: „Klasse 8“ und „Olymp“. Randomisiere die Antwortpositionen gemäß Framework-Prompt. Gib ausschließlich die JSON-Datei aus.
-
-Danach wie bei Jeopardy: JSON in **Spiel-Erstellen.html** einfügen, prüfen und die fertige HTML herunterladen. Der Ersteller erkennt die Spielart automatisch. Matrizen und Integrale im Quizduell erhalten eigene Mathefelder, damit sie lesbar gesetzt werden. In **beiden Spielarten** werden Antwortoptionen zusätzlich zufällig angeordnet; richtige Positionen sind bei Einzelauswahl über den Aufgabenvorrat möglichst gleichmäßig verteilt. Eine neue Partie oder Neuladen mischt neu.
-
-### So funktioniert Quizduell Olymp
-
-Olymp und Herausforderer wählen abwechselnd eine von drei angebotenen Kategorien; der Olymp beginnt. Eine gespielte Kategorie entfällt. Der Olymp beantwortet jede Frage zuerst mit Taste 1–4 oder über „Olymp: Touch-Eingabe“. **Das Team schaut dabei weg:** Auf einem gemeinsamen Touchdisplay kann das Antippen sichtbar sein. Danach wählt das Team eine Antwort und loggt sie ein. Beide Antworten werden automatisch geprüft, richtig gibt je einen Punkt. Lösung und Erklärung bleiben bis „Nächste Frage“ sichtbar.
-
-Nach sechs Runden wird jeder Punkt zu einer Finalfrage. Die Seite mit weniger Punkten beginnt, bei Gleichstand der Kurs. Die Finalzeit ist beim Spielstart und vor dem Finale auf ganze 5–600 Sekunden einstellbar (Standard: 5). „Neue Partie“ behält diese Einstellung. „Frage starten“ zeigt die Frage für die gewählte Zeit; „Antwort gegeben · aufdecken“ beendet die Bedenkzeit früher. Beim Tabwechsel pausiert die Zeit. Nach Ablauf oder Aufdecken bewertet die Spielleitung die rechtzeitig gegebene mündliche Antwort. Ein uneinholbarer Vorsprung beendet das Finale. Bei Gleichstand folgt eine Stichfrage; ihre Lösung wird erst über „Antwort anzeigen“ sichtbar. Falls niemand korrekt antwortet, könnt ihr unentschieden abschließen.
-
-Quizduell startet mit ausgeschaltetem Ton; der Tonschalter aktiviert kurze erzeugte Signale ohne MP3. **Die laufende Quizduell-Partie wird nicht gespeichert.** Neuladen beginnt neu. „Neue Partie“ im Ergebnis übernimmt die Namen. Der Mathematik-Beispielsatz umfasst bewusst Klasse 8 bis 13 einschließlich Oberstufe und ist nicht als gemeinsamer Lernstand einer achten Klasse gedacht. Vor dem Einsatz passend zur Lerngruppe auswählen oder einen neuen Satz erstellen lassen.
-
-Die folgenden Runden-, Menü-, Musik- und Timerhinweise beschreiben **Jeopardy**. Quizduell verwendet den oben beschriebenen eigenen Ablauf.
-
-Ein Lernspiel für Touchdisplays, Tablets und Computer. Eigene Aufgaben kannst du mit **ChatGPT, Claude, Gemini oder einer anderen KI** erstellen. Programmieren musst du dafür nicht.
-
-**[Jetzt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/) · [Eigenes Spiel erstellen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/Spiel-Erstellen.html)**
-
-Das Repository ist öffentlich und die Spieleseite ist über GitHub Pages erreichbar. Zum Spielen ist kein GitHub-Konto nötig.
-
-Du brauchst einen Browser. Für neue Aufgaben brauchst du zusätzlich Zugang zu einer KI. Die fertigen Spiele kommen ohne Internet aus, wenn das Gerät lokale HTML-Dateien im Browser ausführen kann.
-
-## Ich möchte erst einmal spielen
-
-1. Öffne die [Startseite auf GitHub Pages](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Dort sind alle Beispielspiele verlinkt.
-2. Alternativ: [Lade den Projektordner als ZIP herunter](https://github.com/FisherSteve/Jeopardy_fuer_den_Unterricht/archive/refs/heads/main.zip), entpacke ihn und öffne die **index.html im Hauptordner**. Ihre Links funktionieren auch lokal.
-3. Direkt im Browser spielen:
-   - [Erwachsene · Welt, Geschichte, Wissenschaft, Kultur & Alltag](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/allgemeinwissen-erwachsene/)
-   - [Start Klasse 10 · Memes, Mediencheck, Mathe, Natur & Weltwissen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/klasse-10-start-meme-wissen/)
-   - [Ab 14 · Memes, Gaming, Tiere, Weltraum & Kopfrätsel](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/meme-mix-ab-14/)
-   - [Mathe Klasse 8 NRW · Terme, Zuordnungen, Prozent, Geometrie & Zufall](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/)
-   - [Mathe Klasse 5 · Zahlen, Größen, Geometrie, Daten & Knobeln](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-5/)
-   - [Klasse 6 · Deutschland, Englisch, Brüche, Ägypten & Pubertät](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/faechermix-klasse-6/)
-   - [Elektronik, 3. Lehrjahr · Sicherheit, Schaltungen & Messtechnik](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/elektronikerausbildung-abschluss-wiederholung/)
-4. Öffne im Spiel **Menü**. Dort kannst du die Teamnamen ändern und vor der ersten Bewertung weitere Teams hinzufügen. Zwei Teams sind voreingestellt; bis zu sechs sind möglich.
-5. Jetzt kann das hervorgehobene Team eine Punktekarte wählen.
-
-Falls GitHub beim Anklicken einer HTML-Datei nur Quelltext zeigt: Die Datei herunterladen und anschließend auf dem Gerät öffnen. Die Codeansicht auf GitHub ist noch nicht das Spiel.
-
-## So läuft eine Runde ab
-
-- **Team 1 beginnt.** Danach folgen Team 2, Team 3 usw. Die Reihenfolge läuft automatisch im Kreis.
-- Das aktive Team wählt eine Karte und beantwortet die Frage.
-- **Mündliche Aufgabe:** Die Lehrkraft drückt „Antwort anzeigen“ und bewertet mit „Richtig“ oder „Falsch“.
-- **Zahlenaufgabe:** Das Team tippt seine Antwort auf dem Ziffernfeld ein und drückt „Antwort abgeben“.
-- **Auswahlaufgabe:** Das Team markiert die passende Antwort und drückt „Antwort abgeben“. Falls mehrere Antworten möglich sind, steht dies dabei.
-- **Standardwertung: Richtig gibt den Kartenwert, falsch 0 Punkte.** In beiden Fällen ist die Karte anschließend erledigt. Es gibt keine Übernahme durch ein anderes Team.
-- Nach jeder Bewertung erscheint ein großes Ergebnis-Popup: **„Richtig!“** mit kurzem visuellen Jubel und Punkteanzeige oder **„Nicht richtig“** mit der richtigen Antwort und einer kurzen Erklärung.
-- Im selben Popup steht deutlich, welches Team als Nächstes dran ist. Mit **„Weiter mit Team …“** gelangt ihr zum Spielfeld. Lösung und Erklärung bleiben ohne Zeitlimit stehen, damit ihr sie gemeinsam besprechen könnt. Nach der letzten Frage führt der Button zum Spielergebnis.
-
-Ein Spiel hat **ein bis fünf Themen mit jeweils fünf Karten**, also 5 bis 25 Fragen. Sobald alle Karten erledigt sind, erscheint das Ergebnis.
-
-## Ich möchte mein eigenes Spiel erstellen
-
-### Schritt 1: Der KI den Auftrag geben
-
-Öffne ChatGPT, Claude, Gemini oder eine andere KI. Lade die Datei [Framework-Prompt.md](Framework-Prompt.md) in den Chat hoch. Falls Hochladen nicht möglich ist, öffne die Datei und kopiere ihren gesamten Text in den Chat.
-
-Schreibe darunter zum Beispiel:
-
-> Erstelle einen vollständigen JSON-Aufgabensatz für den mitgelieferten Jeopardy-Spiel-Ersteller. Gib nur den JSON-Aufgabensatz aus und programmiere kein neues Spiel.
->
-> Fach: Mathematik. Klasse: 5. Schulform: Förderschule, Schwerpunkt Lernen. Ziel: Wiederholung von Grundschulwissen. Kurze Sätze und gut verständliche Aufgaben.
->
-> Drei Themen: Zahlen und Rechnen; Geld; Formen. Je Thema fünf Aufgaben mit 100 bis 500 Punkten.
->
-> Zwei Teams zum Start. Eindeutige Rechenergebnisse mit Zahlenfeld, passende Vergleichsaufgaben mit Antwortauswahl. Begründungen mündlich bewerten. Keine Minuspunkte, keine Übernahme.
-
-Ersetze Fach, Klasse, Themen und Wünsche durch deine eigenen Angaben. Gib höchstens fünf Themen an. Du kannst auch ausdrücklich schreiben: **„Keine Auswahlaufgaben“** oder **„Nur mündliche Aufgaben“**.
-
-Für eine ausführlichere Mathematik-Vorlage gibt es den [Inhaltsauftrag für Klasse 5](Beispielbefüllung%20%E2%80%93%20Jeopardy%20Mathematik%20Klasse%205.md).
-
-### Schritt 2: Die KI-Antwort kopieren
-
-Die KI liefert einen längeren Text mit geschweiften Klammern, Fragen und Lösungen. Das ist der **JSON-Aufgabensatz**: Er enthält die Spielinhalte in einem festgelegten Format. Du musst dieses Format nicht selbst schreiben können.
-
-Kopiere den gesamten JSON-Text. Viele Chatoberflächen bieten dafür einen Kopierknopf am Codeblock. Wenn die KI eine `.json`-Datei bereitstellt, kannst du stattdessen diese herunterladen.
-
-### Schritt 3: Das Spiel bauen lassen
-
-1. Öffne den **[Spiel-Ersteller online](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/Spiel-Erstellen.html)**. Alternativ kannst du die heruntergeladene Datei `Spiel-Erstellen.html` im Browser öffnen.
-2. Füge den kopierten Text in das große Feld ein. Alternativ wählst du die JSON-Datei aus.
-3. Drücke **„Prüfen und Spiel erstellen“**.
-4. Drücke anschließend **„Spiel herunterladen“**.
-
-Du erhältst eine fertige `.html`-Datei. Sie enthält das Spiel und alle Aufgaben. Zum Spielen musst du keine weiteren Dateien mitgeben.
-
-**Es erscheint eine Fehlermeldung?** Kopiere die Meldung zurück in deinen KI-Chat und bitte um einen korrigierten, vollständigen Aufgabensatz. Ersetze danach den Text im Spiel-Ersteller und versuche es erneut.
-
-Die technische Prüfung erkennt beispielsweise fehlende Fragen oder ungültige Antwortoptionen. Ob eine Aufgabe fachlich richtig und für deine Klasse geeignet ist, musst du zusätzlich prüfen.
-
-### Schritt 4: Kurz ausprobieren und mitnehmen
-
-Öffne dein fertiges Spiel und prüfe vor dem Unterricht einige Fragen, die Lösungen und das Zahlenfeld. Kopiere dann **die fertige HTML-Datei** auf das Schulgerät, einen USB-Stick oder in eure übliche Dateiablage.
-
-Hebe auch den JSON-Aufgabensatz auf. Wenn du später Fragen ändern möchtest, gib ihn wieder an die KI und baue aus der neuen Fassung erneut ein Spiel. Du musst nicht von vorne anfangen.
-
-## Nützliche Einstellungen
-
-| Wunsch | So geht es |
+| Spiel | Inhalt |
 | --- | --- |
-| Bedenkzeit begrenzen | Menü → „Timer einschalten“; Sekunden je Punktewert anpassen |
-| Musik abspielen | Menü → „Musik während der Fragen“; standardmäßig aus |
-| Mehr Teams | Menü → „Team hinzufügen“, vor der ersten Bewertung |
-| Punktabzug einschalten | Menü → „Punktabzug bei falscher Antwort“, vor der ersten Bewertung; standardmäßig aus |
-| Untergrenze wählen | Bei aktiviertem Punktabzug: „Negative Punktestände erlauben“ einschalten oder ausgeschaltet lassen, damit der Stand bei 0 stoppt |
-| Teamnamen ändern | Menü → Namen bearbeiten |
-| Lehrkräftehinweise nutzen | Menü → „Lehrkräftehinweise freigeben“ einschalten |
-| Falschen Klick korrigieren | „Rückgängig“ nimmt die letzte Karte, ihre Wertung und den Teamwechsel zurück |
-| Neu anfangen | Menü → „Spiel zurücksetzen“; Teamnamen, Teamzahl und Wertungseinstellungen bleiben erhalten |
-| Größere Bildschirmfläche | „Vollbild“, sofern der Browser diese Funktion anbietet |
+| **Quizduell · Mathematik bis Ende Klasse 8** | Realschule NRW: Zahlen, Terme, Gleichungen, Zuordnungen, Prozentrechnung, Geometrie und Zufall |
+| **Quizduell · Englisch bis Ende Klasse 5** | Realschule NRW: Alltag, Schule, Familie, Freizeit, Wortschatz und grundlegende Grammatik |
+| **Quizduell · Mathematik Klasse 8–13** | Ein Fragenvorrat bis zur Oberstufe, einschließlich Matrizen und Integralen |
+| **Jeopardy · Mathematik Klasse 5** | Zahlen, Größen, Geometrie, Daten und Knobeln |
+| **Jeopardy · Fächermix Klasse 6** | Deutschland, Englisch, Brüche, Ägypten und Pubertät |
+| **Jeopardy · Mathematik Klasse 8 NRW** | Terme, Zuordnungen, Prozentrechnung, Geometrie und Zufall |
+| **Jeopardy · Start Klasse 10** | Memes, Mediencheck, Mathematik, Natur und Weltwissen |
+| **Jeopardy · Meme-Mix ab 14** | Memes, Gaming, Tiere, Weltraum und Kopfrätsel |
+| **Jeopardy · Allgemeinwissen für Erwachsene** | Welt, Geschichte, Wissenschaft, Kultur und Alltag |
+| **Jeopardy · Elektronik, 3. Lehrjahr** | Sicherheit, Schaltungen und Messtechnik |
 
-**Lehrkräftehinweise sind zunächst vollständig ausgeblendet**, auch ihr Button. Nach der Freigabe im Menü lassen sie sich in einer Frage gezielt einblenden. Bei Zahlen- und Auswahlaufgaben erlaubt diese Freigabe auch das manuelle Aufdecken und Bewerten. Nach dem Neuladen ist die Freigabe wieder aus. Die Menüeinstellung ist keine Passwortsperre; die Lehrkraft bedient das Menü.
+Wähle die Inhalte passend zum Lernstand deiner Klasse. Das Mathematik-Quizduell **8–13 enthält auch Oberstufenstoff**. Das Englisch-Quiz für Ende Klasse 5 wählt grundlegende Inhalte aus dem gemeinsamen Lernbereich Klasse 5/6; die Reihenfolge kann je nach Schule abweichen.
 
-Die Erklärung nach einer falschen Antwort ist für die ganze Klasse gedacht und wird immer gezeigt. Interne Lehrkräftehinweise bleiben dabei verborgen. Das Ergebnis-Popup lässt sich auch mit **Enter, Leertaste oder Esc** fortsetzen. Animationen entfallen bei der Systemeinstellung für reduzierte Bewegung; die Rückmeldung bleibt sichtbar.
+## Ein eigenes Spiel erstellen
 
-Das Spiel merkt sich den Spielstand nach Möglichkeit im verwendeten Browser. Wenn Speichern nicht möglich ist, zeigt es einen Hinweis und bleibt spielbar. Für eine neue Lerngruppe das Spiel zurücksetzen. Auf gemeinsam genutzten Geräten am besten neutrale Teamnamen verwenden.
+Du brauchst eine KI deiner Wahl, zum Beispiel ChatGPT, Claude oder Gemini, und unseren Spiel-Ersteller. Der Ablauf ist für beide Spielarten gleich.
 
-## Optionaler Fragentimer
+### 1. Der KI die Vorlage und deinen Wunsch geben
 
-Im Menü kannst du den Timer einschalten und für jeden Punktewert eigene ganze Sekunden von 5 bis 600 einstellen. Voreingestellt sind **100 Punkte: 30 s, 200: 45 s, 300: 60 s, 400: 90 s und 500: 120 s**. Der Timer ist zunächst aus; Einstellungen werden nach Möglichkeit mit dem Spielstand gespeichert und bleiben beim Zurücksetzen erhalten. Änderungen gelten ab der nächsten geöffneten Frage.
+Lade die Datei **[Framework-Prompt.md](Framework-Prompt.md)** herunter und füge sie deinem KI-Chat als Anhang hinzu. Alternativ kannst du ihren gesamten Text in den Chat kopieren. Die Vorlage beschreibt, wie die Aufgaben aufgebaut sein müssen.
 
-Der Countdown startet beim Öffnen einer Frage. Während Lehrkräftehinweise sichtbar sind oder der Tab im Hintergrund liegt, pausiert er; danach läuft die Restzeit weiter. Aufdecken, Abgeben und Schließen stoppen ihn. **„Nach Zeitablauf automatisch falsch werten“ ist voreingestellt.** Bei Ablauf stoppt die Musik und die Karte wird sofort als falsch abgeschlossen: normalerweise 0 Punkte, bei aktiviertem Punktabzug entsprechend der gewählten Wertung. Das Ergebnis-Popup zeigt Lösung, Erklärung und das nächste Team. Schaltest du diese Option aus, erscheint nur „Zeit abgelaufen“ und die Antwort bleibt abgebbar bzw. bewertbar. Schließen und erneutes Öffnen einer unbewerteten Karte startet deren volle Zeit erneut.
+Ergänze einen Auftrag wie diesen und passe Fach, Klasse und Themen an:
 
-## Optionale Hintergrundmusik
+**Beispiel für Jeopardy**
 
-Die Spiele auf GitHub Pages verwenden eine gemeinsame Musikdatei. Unter **Menü → Musik während der Fragen** kannst du sie ein- und ausschalten. Nach der Freigabe startet sie bei jeder geöffneten Frage von vorne und läuft während der Bedenkzeit in einer Schleife. Beim Aufdecken, Abgeben oder Schließen stoppt sie sofort. Auf dem Spielfeld und während der Erklärung bleibt es still; bei der nächsten Frage startet sie wieder. Auch beim Verlassen des Tabs stoppt sie und startet erst beim nächsten Öffnen einer Frage erneut. Bei Lehrkräftehinweisen pausiert die Musik und läuft nach deren Ausblenden an derselben Stelle weiter, sofern die Lösung noch nicht aufgedeckt wurde und die Zeit nicht abgelaufen ist. Nach dem Neuladen ist sie wieder aus. Die Lautstärke regelst du am Gerät.
+> Erstelle mit der beigefügten Vorlage ein Jeopardy für Mathematik, Ende Klasse 8, Realschule NRW. Drei Themen: lineare Gleichungen, Prozentrechnung und Flächen. Je Thema fünf Aufgaben mit steigender Schwierigkeit. Verwende kurze Arbeitsaufträge, Zahlenfelder für eindeutige Rechenergebnisse und mündliche Aufgaben für Begründungen. Gib den vollständigen JSON-Aufgabensatz aus.
 
-Für ein selbst erstelltes oder einzeln heruntergeladenes Spiel ist Musik freiwillig: Lege eine MP3 mit dem genauen Namen **Jeopardy-theme-song.mp3** in denselben Ordner wie die HTML-Datei. Die Musik wird nicht in die HTML eingebettet oder vom Spiel-Ersteller mit heruntergeladen. Ohne MP3 funktioniert das ganze Spiel weiterhin; nur beim Öffnen einer Frage mit freigegebener Musik erscheint gegebenenfalls ein Hinweis im Menü. Wenn du dein eigenes Spiel mit Musik online stellst, lade beide Dateien gemeinsam in denselben Ordner hoch.
+**Beispiel für Quizduell**
 
-## Mit Tastatur spielen
+> Erstelle mit der beigefügten Vorlage ein Quizduell Olymp für Englisch, Ende Klasse 5, Realschule NRW. Nutze acht Kategorien mit je drei Auswahlfragen und 37 kurze mündliche Finalfragen. Inhalte: Schule, Familie, Freizeit, Alltag, Zahlen, einfache Dialoge und grundlegende Grammatik. Finalfragen sollen in fünf Sekunden beantwortbar sein. Teams: „Klasse“ und „Olymp“. Gib den vollständigen JSON-Aufgabensatz aus.
 
-- **Tab** wechselt zum nächsten Bedienelement; **Enter oder Leertaste** betätigen einen gewählten Button.
-- **A** zeigt die Antwort oder blendet sie aus, sofern manuelle Bewertung freigegeben ist.
-- **R** bewertet richtig, **F** falsch — nach dem Aufdecken der Antwort.
-- **H** öffnet oder schließt freigegebene Lehrkräftehinweise.
-- **Esc** schließt eine Frage ohne Bewertung.
-- Im Zahlenfeld funktionieren auch **Ziffern, Komma, Punkt und Rücktaste**. Wenn das Zahlenfeld fokussiert ist, gibt **Enter** die Antwort ab.
+Nenne möglichst konkret, was ihr bereits behandelt habt und was noch nicht vorkommen soll. Bei Jeopardy sind ein bis fünf Themen möglich. Eine [ausführlichere Beispielvorlage für Mathematik Klasse 5](docs/Beispielbefüllung%20%E2%80%93%20Jeopardy%20Mathematik%20Klasse%205.md) hilft bei weiteren Wünschen.
 
-Alle Spielaktionen sind auch per Touch möglich.
+### 2. Den Aufgabensatz übernehmen
 
-## Auf welchen Geräten geht das?
+Die KI liefert die Fragen und Lösungen als **JSON**. Das ist eine Textdatei mit deinen Spielinhalten. Kopiere den vollständigen Text über den Kopierknopf am Antwortblock oder lade die angebotene `.json`-Datei herunter.
 
-Die Oberfläche ist für **Promethean-Displays und andere Touchscreens** sowie Safari/WebKit-, Firefox- und Chromium-Browser ausgelegt. Dazu gehören beispielsweise Chrome und Edge. Querformat bietet den besten Überblick. Auf einem schmalen Bildschirm lässt sich das Brett seitlich verschieben.
+### 3. Das fertige Spiel herunterladen
 
-Auf Windows- und Linux-Computern kannst du die fertige HTML-Datei in einem Browser öffnen. Auch auf Android hängt der Öffnungsweg von der verwendeten Datei-App und dem Browser ab.
+1. Öffne den **[Spiel-Ersteller](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/Spiel-Erstellen.html)**.
+2. Füge den kopierten Text ein oder wähle deine JSON-Datei aus.
+3. Klicke auf **„Prüfen und Spiel erstellen“**.
+4. Klicke auf **„Spiel herunterladen“**.
 
-**Bei iPad und iPhone:** Die Dateien-App zeigt HTML manchmal nur als Vorschau. In einer Vorschau laufen die Spielknöpfe möglicherweise nicht. Dann braucht ihr einen geeigneten Browser-Öffnungsweg oder stellt dieselbe HTML-Datei über eine schulische Webadresse bereit. Beim Laden über eine Webadresse wird eine Verbindung benötigt. Teste diesen Schritt einmal auf eurem tatsächlichen Gerät.
+Du erhältst eine **HTML-Datei**, die das komplette Spiel enthält. Öffne sie im Browser und probiere einige Fragen aus. Prüfe dabei auch die Lösungen: Der Spiel-Ersteller kontrolliert das Dateiformat; die fachliche Prüfung bleibt bei dir.
 
-Der Spiel-Ersteller verarbeitet eingefügte Aufgaben lokal. Er lädt keine Inhalte zu einem Server hoch. Für die Erstellung neuer Aufgaben mit einer KI gelten die Bedingungen des jeweiligen KI-Dienstes.
+### 4. Aufbewahren und im Unterricht einsetzen
 
-## Für Menschen, die das Framework weiterentwickeln möchten
+Kopiere die fertige HTML-Datei auf das Unterrichtsgerät, einen USB-Stick oder in eure Dateiablage. Hebe auch die JSON-Datei auf: Zum Ändern einzelner Fragen gibst du sie später wieder an die KI und erstellst aus der überarbeiteten Fassung ein neues Spiel.
 
-Die gemeinsame Spieltechnik steht in `framework/`, die wiederverwendbaren Inhalte in `content/`. [TECHNIK.md](TECHNIK.md) beschreibt Aufbau, Build und Tests. [PRUEFPROTOKOLL.md](PRUEFPROTOKOLL.md) dokumentiert die ausgeführten Prüfungen und die noch offenen Gerätetests.
+Der Spiel-Ersteller verarbeitet die eingefügten Inhalte auf deinem Gerät und lädt sie nicht auf einen Server hoch.
 
-Für neue Spiele bitte die **Framework-Prompt** und den **Spiel-Ersteller** verwenden. Veraltete Originalspiele und die alte allgemeine Prompt wurden entfernt; generierte Testausgaben gehören nicht ins Repository.
+## Jeopardy spielen
 
-## Eigene Kopie auf GitHub Pages bereitstellen
+Das hervorgehobene Team wählt eine Punktekarte. Bei **mündlichen Aufgaben** deckt die Spielleitung die Antwort auf und bewertet mit „Richtig“ oder „Falsch“. **Zahlen- und Auswahlaufgaben** prüft das Spiel beim Abgeben automatisch.
 
-Dieses öffentliche Repository ist bereits [online spielbar](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Die folgenden Hinweise brauchst du nur, wenn du eine eigene Kopie veröffentlichen möchtest.
+Eine richtige Antwort bringt den Kartenwert, eine falsche standardmäßig **0 Punkte**. Die Karte ist danach erledigt; das nächste Team ist dran. Es gibt keine Übernahme durch andere Teams. Im Ergebnisfenster seht ihr die Wertung und das nächste Team. Bei falschen Antworten bleiben Lösung und Erklärung sichtbar, bis ihr weiterklickt.
 
-Die Startseite ist `index.html` im Hauptordner. Jedes Spiel hat einen eigenen Ordner: `spiele/<spielname>/index.html`. Dadurch funktionieren auch Adressen wie `spiele/mathematik-klasse-5/`.
+Die Teams wechseln automatisch der Reihe nach. Wenn alle Karten gespielt sind, erscheint das Endergebnis.
 
-Verwende für GitHub Pages den Branch mit diesen Dateien und dessen Hauptordner (`/`). `node build.js` aktualisiert alle Spiele, den Spiel-Ersteller und die Startseite. Die Veröffentlichung der bereits erzeugten HTML-Dateien benötigt keinen Build auf GitHub. Die Datei `.nojekyll` kennzeichnet die Website als direkt auslieferbare statische Dateien.
+### Praktische Einstellungen im Menü
 
-## Neues Quiz: Mathematik Klasse 8 NRW
+| Du möchtest … | So geht es |
+| --- | --- |
+| Teamnamen oder die Teamzahl ändern | Namen bearbeiten; vor der ersten Bewertung bis zu sechs Teams anlegen |
+| Die Bedenkzeit begrenzen | „Timer einschalten“ und Zeiten je Punktewert anpassen |
+| Bei falschen Antworten Punkte abziehen | „Punktabzug bei falscher Antwort“ vor der ersten Bewertung aktivieren; wahlweise bei 0 stoppen oder negative Punktestände erlauben |
+| Lehrkräftehinweise sehen | „Lehrkräftehinweise freigeben“ aktivieren; danach bei Bedarf in der Frage öffnen |
+| Eine versehentliche Wertung korrigieren | „Rückgängig“ nimmt die letzte Karte samt Punkten und Teamwechsel zurück |
+| Eine neue Runde beginnen | „Spiel zurücksetzen“; Teamnamen und Einstellungen bleiben erhalten |
+| Musik während der Fragen hören | „Musik während der Fragen“ aktivieren; Hinweise zur Musik stehen weiter unten |
 
-[Quiz starten](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/mathematik-klasse-8-nrw/) · [Aufgabensatz](content/mathematik-klasse-8-nrw.json)
+Lehrkräftehinweise sind zunächst verborgen. Sie sind von den Erklärungen für die Klasse getrennt. Die Freigabe erlaubt bei Zahlen- und Auswahlaufgaben auch manuelles Aufdecken und Bewerten. Nach dem Neuladen ist sie wieder ausgeschaltet.
 
-Fünf Rubriken mit jeweils fünf Kopfrechen- und Verständnisfragen für die Realschule. Standardmäßig ohne Punktabzug.
+<details>
+<summary>Mehr zum Jeopardy-Timer</summary>
 
-## Meme-Mix für Jugendliche ab etwa 14
+Der Timer ist zunächst aus. Voreingestellt sind **30 / 45 / 60 / 90 / 120 Sekunden** für Karten mit 100 / 200 / 300 / 400 / 500 Punkten. Du kannst jede Zeit auf ganze **5–600 Sekunden** ändern; Änderungen gelten ab der nächsten Frage.
 
-[Direkt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/meme-mix-ab-14/) · [Aufgabensatz](content/meme-mix-ab-14.json)
+Standardmäßig wird eine Frage nach Zeitablauf automatisch als falsch gewertet. Lösung, Erklärung und das nächste Team erscheinen dann im Ergebnisfenster. Wenn du „Nach Zeitablauf automatisch falsch werten“ ausschaltest, erscheint nur „Zeit abgelaufen“ und ihr könnt noch abgeben oder bewerten.
 
-25 Fragen in fünf Rubriken: Memes & Netzsprache, Gaming trifft Wissen, Tiere, Weltraum und Kopfrätsel. Zahlenfeld und Antwortauswahl übernehmen die Bewertung. Die Netzbezüge sind in Deutschland belegt; Recherchestand September 2026. Auch ohne Meme-Vorwissen gibt es viele Punkte zu holen.
+Bei geöffneten Lehrkräftehinweisen und beim Wechsel in einen anderen Tab pausiert der Timer. Aufdecken, Abgeben oder Schließen beendet ihn. Beim erneuten Öffnen einer unbewerteten Karte startet die volle Zeit.
 
-## Klasse 10: Startklar – Memes & Wissen
+</details>
 
-[Direkt spielen](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/spiele/klasse-10-start-meme-wissen/) · [Aufgabensatz](content/klasse-10-start-meme-wissen.json)
+## Quizduell Olymp spielen
 
-Für den Anfang der zehnten Klasse: 25 neue Fragen zu Netzsprache, Medienkompetenz, Kopfrechnen, Naturwissenschaften und Weltwissen. Grundlagen aus den Vorjahren und Allgemeinwissen; kein neu erarbeiteter Stoff der Klasse 10 nötig. Alle Antworten werden automatisch gewertet.
+1. **Seiten benennen:** Tragt auf dem Startbildschirm die Namen ein und legt die Finalzeit fest.
+2. **Kategorie wählen:** Olymp und Herausforderer wählen abwechselnd aus drei angebotenen Kategorien. Der Olymp beginnt.
+3. **Getrennt antworten:** Der Olymp gibt seine Antwort zuerst über die Tasten **1–4** oder „Olymp: Touch-Eingabe“ ein. Dabei schaut die andere Seite weg. Danach wählt das Team seine Antwort und loggt sie ein.
+4. **Gemeinsam auflösen:** Jede richtige Antwort gibt einen Punkt. Lösung und Erklärung bleiben bis „Nächste Frage“ stehen.
+5. **Finale spielen:** Nach sechs Runden wird jeder gesammelte Punkt zu einer Finalfrage. Die Seite mit weniger Punkten beginnt; bei Gleichstand die Herausforderer.
 
-## Optional: Ein Spiel mit Netlify online stellen
+Im Finale startet die Spielleitung jede Frage mit **„Frage starten“**. Die Antwort wird laut gegeben. Nach Zeitablauf oder „Antwort gegeben · aufdecken“ bewertet die Spielleitung, ob die rechtzeitig gegebene Antwort richtig war.
 
-Du möchtest ein eigenes Spiel über einen Link teilen? Öffne [Netlify Drop](https://app.netlify.com/drop), melde dich bei Netlify an und ziehe die fertige Spiel-HTML in das Upload-Feld oder wähle sie dort aus. Falls Netlify fragt, ob die Datei in `index.html` umbenannt werden soll, bestätige das: So öffnet sich das Spiel direkt unter seiner neuen Webadresse. Alternativ kannst du eine Kopie vorher selbst `index.html` nennen und in einem eigenen Ordner hochladen. Nach der Veröffentlichung erhältst du einen Link, den du mit der Klasse teilen oder am Schuldisplay öffnen kannst. Programmieren und eine Verbindung zu GitHub sind dafür nicht nötig. **Das ist freiwillig: Die heruntergeladenen Spiele funktionieren weiterhin lokal in einem geeigneten Browser, auch ohne Netlify und ohne Internet.** Zum Laden der Online-Version ist eine Internetverbindung erforderlich. Weitere Hilfe bietet die [Netlify-Anleitung zum Hochladen](https://docs.netlify.com/deploy/create-deploys/).
+**Die Finalzeit beträgt standardmäßig 5 Sekunden je Frage.** Du kannst sie beim Spielstart und nochmals vor dem Finale auf ganze **5–600 Sekunden** einstellen. Beim Wechsel in einen anderen Tab pausiert die Zeit. Bei Gleichstand folgt eine Stichfrage, deren Lösung erst beim Aufdecken erscheint.
+
+Der Tonschalter aktiviert auf Wunsch kurze Signale. Eine Musikdatei wird dafür nicht benötigt. „Neue Partie“ übernimmt die Namen und die eingestellte Finalzeit.
+
+**Die laufende Quizduell-Partie wird nicht gespeichert.** Lass den Spieltab während der Partie geöffnet; Neuladen beginnt neu. Jeopardy merkt sich den Spielstand dagegen nach Möglichkeit im verwendeten Browser.
+
+## Spiele mitnehmen und teilen
+
+**Ohne Internet spielen:** Lade dein eigenes Spiel herunter oder [lade die Spielesammlung als ZIP herunter](https://github.com/FisherSteve/Jeopardy_fuer_den_Unterricht/archive/refs/heads/main.zip). Entpacke die Sammlung und öffne `index.html` im Hauptordner. Einzelne fertige Spiele findest du im Ordner `spiele`, jeweils als `index.html` im passenden Unterordner.
+
+Zum Weitergeben reicht die fertige HTML-Datei. Sie funktioniert offline, wenn das Gerät lokale HTML-Dateien im Browser ausführt. Für selbst erstellte Spiele kannst du einen aussagekräftigen Dateinamen vergeben.
+
+**Am iPad oder iPhone:** Die Dateien-App zeigt HTML-Dateien manchmal nur als Vorschau; dort funktionieren Spielknöpfe möglicherweise nicht. Nutze dann einen geeigneten Browser-Öffnungsweg oder eine schulische Webadresse. Teste das Öffnen einmal auf dem Unterrichtsgerät. Zum Laden einer Webadresse brauchst du eine Internetverbindung.
+
+**Per Link teilen:** Du kannst die fertige HTML-Datei über eine geeignete schulische Webablage veröffentlichen. Eine weitere Möglichkeit ist [Netlify Drop](https://app.netlify.com/drop); die [Anleitung zum Hochladen](https://docs.netlify.com/deploy/create-deploys/) beschreibt den Ablauf. Für eine eigene GitHub-Pages-Kopie findest du Hinweise in der [technischen Anleitung](docs/TECHNIK.md).
+
+<details>
+<summary>Musik zu einem Jeopardy hinzufügen</summary>
+
+Bei den Spielen auf unserer Spieleseite ist die Musik bereits verfügbar. Du schaltest sie im Menü ein. Sie startet beim Öffnen einer Frage und stoppt beim Aufdecken, Abgeben oder Schließen. Nach dem Neuladen ist sie wieder ausgeschaltet.
+
+Bei einem selbst erstellten oder einzeln heruntergeladenen Spiel legst du eine MP3 mit dem genauen Namen **Jeopardy-theme-song.mp3** neben die HTML-Datei. Der Spiel-Ersteller lädt die Musik nicht mit herunter. Ohne MP3 funktioniert das Spiel ebenfalls.
+
+Beim Verlassen des Tabs stoppt die Musik. Bei geöffneten Lehrkräftehinweisen pausiert sie und läuft danach weiter, solange noch Bedenkzeit bleibt und die Antwort nicht aufgedeckt wurde.
+
+</details>
+
+## Wenn etwas nicht klappt
+
+| Situation | Das hilft |
+| --- | --- |
+| Der Spiel-Ersteller meldet einen Fehler | Kopiere die Meldung in denselben KI-Chat und bitte um einen korrigierten, vollständigen JSON-Aufgabensatz. Füge die neue Fassung ein und prüfe erneut. |
+| GitHub zeigt nur Text oder Programmcode | Öffne die [Spieleseite](https://fishersteve.github.io/Jeopardy_fuer_den_Unterricht/). Alternativ: HTML-Datei herunterladen und im Browser öffnen. |
+| Eine Frage oder Lösung passt nicht | Lass die KI den JSON-Aufgabensatz korrigieren und erstelle das Spiel erneut. |
+| Das Spiel ist auf dem Display zu klein | Nutze die Vollbildfunktion, sofern verfügbar, oder ändere den Browserzoom. Querformat bietet mehr Überblick. |
+| Jeopardy zeigt noch den alten Spielstand | Wähle im Menü „Spiel zurücksetzen“, bevor eine neue Gruppe beginnt. |
+
+<details>
+<summary>Bedienung mit der Tastatur</summary>
+
+Mit **Tab** wechselst du zwischen Bedienelementen; **Enter oder Leertaste** betätigen einen ausgewählten Button. Alle Spielaktionen sind auch per Touch möglich.
+
+Bei **Jeopardy**: **A** zeigt oder verbirgt die Antwort, sofern manuelle Bewertung freigegeben ist. Nach dem Aufdecken bewerten **R** und **F** richtig oder falsch. **H** öffnet freigegebene Lehrkräftehinweise, **Esc** schließt die Frage ohne Bewertung. Im Zahlenfeld funktionieren Ziffern, Komma, Punkt und Rücktaste; **Enter** gibt die Antwort ab.
+
+Bei **Quizduell** gibt der Olymp seine Auswahl mit **1–4** ein. Im Finale bewerten **R** und **F** nach dem Aufdecken die mündliche Antwort.
+
+</details>
+
+<details>
+<summary>Aufbau, Weiterentwicklung und Tests</summary>
+
+Die [technische Anleitung](docs/TECHNIK.md) beschreibt den Aufbau, die Spielregeln im Detail, die Veröffentlichung und die Prüfungen. Die Spielinhalte liegen in `content/`, die gemeinsame Spieltechnik in `framework/`. Mit `node build.js` werden alle Spiele, der Spiel-Ersteller und die Startseite aktualisiert.
+
+Für beide Spielarten gilt: Neue Aufgaben werden als JSON erstellt. Die [Framework-Prompt](Framework-Prompt.md) enthält die Vorgaben, auch für zufällig verteilte richtige Antwortpositionen und die lesbare Darstellung von Matrizen und Integralen im Quizduell.
+
+</details>

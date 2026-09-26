@@ -1,4 +1,8 @@
-# Wiederverwendbares Unterrichts-Jeopardy
+# Unterrichtsspiele: technische Anleitung
+
+[Zur Spielanleitung](../README.md) · [Framework-Prompt](../Framework-Prompt.md)
+
+Dateipfade und Befehle in dieser Anleitung beziehen sich auf den Hauptordner des Projekts.
 
 ## Zweiter Spieltyp: Quizduell Olymp
 
@@ -41,7 +45,7 @@ Eine kurze Animation zeigt den Wechsel. Sie entfällt bei der Systemeinstellung 
 
 Ohne Entwicklungswerkzeuge: `Spiel-Erstellen.html` öffnen, JSON einfügen oder laden, prüfen und als fertige HTML herunterladen. Der Ersteller enthält dieselbe Engine und Spielvorlage; er verarbeitet alles lokal. Die Anleitung für Lehrkräfte steht in `README.md`.
 
-1. `Framework-Prompt.md` zusammen mit den Unterrichtsdaten an den Agenten geben. Für Klasse 5 enthält `Beispielbefüllung – Jeopardy Mathematik Klasse 5.md` den konkreten Auftrag.
+1. `Framework-Prompt.md` zusammen mit den Unterrichtsdaten an den Agenten geben. Für Klasse 5 enthält `docs/Beispielbefüllung – Jeopardy Mathematik Klasse 5.md` den konkreten Auftrag.
 2. Der Agent erstellt einen Aufgabensatz in `content/`.
 3. Mit installiertem Node.js im Ordner ausführen:
 
@@ -67,14 +71,22 @@ Es gibt keine Build-Abhängigkeiten. `npm install` ist dafür nicht nötig. Ohne
 | `framework/home.html`, `index.html` | Vorlage und erzeugte Startseite mit Links zu allen Spielordnern |
 | `Spiel-Erstellen.html` | Eigenständiger Ersteller mit eingebetteter Engine und Spielvorlage |
 | `spiele/*/index.html` | Fertige Spiele zum Weitergeben |
-| `tests/` | Regeln, Browser-Verhalten und Screenshots |
-| `PRUEFPROTOKOLL.md` | Tatsächliche Prüfung und verbleibende Grenzen |
+| `tests/` | Versionierte Prüfprogramme für Regeln und Browser-Verhalten |
+| `docs/` | Technische Anleitung und ausführlicher Beispielauftrag |
+
+Lokale Agentenanweisungen (`AGENTS.md`), das ausführliche Sitzungsprotokoll (`PRUEFPROTOKOLL.md`), Screenshots, Testausgaben und temporäre Dateien werden durch `.gitignore` von neuen Commits ausgeschlossen. Bereits getrackte lokale Dateien müssen einmalig mit `git rm --cached` aus dem Index genommen werden; die lokalen Originale bleiben dabei erhalten. Framework, Build, Inhaltssätze und Prüfprogramme bleiben bewusst versioniert, damit ein neuer Checkout vollständig nutzbar und prüfbar ist.
 
 Für GitHub Pages liegt jedes Spiel unter `spiele/<kennung>/index.html`. Auch ein einzelner Build aktualisiert die Root-Startseite aus allen vorhandenen Spielordnern; neue Spiele erscheinen dadurch automatisch. Explizite relative `index.html`-Links funktionieren sowohl unter dem Repository-Unterpfad auf GitHub Pages als auch bei lokaler Nutzung. Die Spiel-Dateien benötigen keine zusätzlichen Assets zum Spielen; nur die freiwillig aktivierbare Musik verwendet einen relativen MP3-Pfad. `.nojekyll` verhindert einen zusätzlichen Jekyll-Verarbeitungsschritt.
 
 Neue Inhalte nicht durch Kopieren und Umschreiben einer Engine erstellen. Änderungen an der gemeinsamen Bedienung in `framework/` durchführen und alle Spiele neu bauen. Der Build prüft ein bis fünf Kategorien mit je fünf Aufgaben und eindeutige IDs. Inhalt wird als Text gerendert; HTML aus Aufgabensätzen wird nicht ausgeführt.
 
 Die Klasse-5-Daten übernehmen den vorhandenen Ansatz mit einzelnen Präzisierungen: Quadrat mit rechten Winkeln, gleichmäßige Verteilung der Äpfel und eine tatsächlich dargestellte Altpapier-Tabelle. Klasse 6 übernimmt die vorhandenen Themen; kurze Antworten und Erklärungen sind jetzt getrennt. Die Übernahme ist keine vollständige curriculare Neuentwicklung aller 50 Aufgaben.
+
+## Eigene Kopie auf GitHub Pages veröffentlichen
+
+Die Startseite liegt als `index.html` im Hauptordner. Unter den Repository-Einstellungen bei **Pages** den Branch mit den fertigen Dateien und dessen Hauptordner (`/`) als Quelle auswählen. Die Veröffentlichung der erzeugten HTML-Dateien benötigt keinen zusätzlichen Build auf GitHub. `.nojekyll` kennzeichnet die Website als direkt auslieferbare statische Dateien.
+
+Vor dem Hochladen `node build.js` ausführen und die erzeugte Startseite, den Spiel-Ersteller sowie `spiele/` mit veröffentlichen. Alle Spiellinks bleiben relativ, damit auch eine eigene Repository-Adresse mit Unterpfad funktioniert. Die optionale MP3 liegt im Hauptordner; ohne sie bleiben die Spiele nutzbar.
 
 ## Verhalten bei Unterbrechungen
 
@@ -95,6 +107,8 @@ Das Speicherverhalten für lokal geöffnete `file:`-URLs ist browserabhängig un
 **iOS/iPadOS:** Eine HTML-Vorschau in der Dateien-App ist nicht gleichbedeutend mit Ausführung in Safari. Ob eine einzelne lokale HTML direkt im Browser geöffnet werden kann, hängt vom konkreten Öffnungsweg ab. Wenn das Gerät nur eine Vorschau anbietet, dieselbe HTML über eine schulische statische Webadresse in Safari öffnen. Dafür wird beim Laden eine Verbindung benötigt; automatisches Offline-Neuladen dieser Webadresse wird nicht zugesichert. Auf allen Plattformen ist der tatsächliche Browser- und Dateiverteilungsweg Teil der Geräteprüfung.
 
 ## Prüfen
+
+Stand 26.09.2026: 19 Regel-/Datentests sowie die vorhandenen Browserprüfungen in Chrome/Chromium bestanden, einschließlich aller drei Quizduell-Sätze. Firefox/WebKit konnten für die Quizduell-Erweiterung mangels installierter Playwright-Browser nicht erneut ausgeführt werden. Echte Schuldisplays, iPads/iPhones, Android und Linux bleiben vor Ort zu prüfen. Ausführliche Laufprotokolle und Screenshots werden nur lokal aufbewahrt.
 
 ```sh
 npm test

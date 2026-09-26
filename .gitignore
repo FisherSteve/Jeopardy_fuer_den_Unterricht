@@ -1,7 +1,21 @@
+# Lokale Anweisungen und Protokolle aus der Entwicklungsarbeit
+/AGENTS.md
+/PRUEFPROTOKOLL.md
+/.codex/
+/.agents/
+/.local/
+
+# Installierte Werkzeuge, Testausgaben und Berichte
 node_modules/
-tests/screenshots/
-test-results/
-playwright-report/
+/tests/screenshots/
+/test-results/
+/playwright-report/
+/coverage/
 *.log
+
+# Temporäre Arbeitsdateien und Betriebssystem-Metadaten
+*.tmp
+*.bak
+*.swp
 .DS_Store
 Thumbs.db
