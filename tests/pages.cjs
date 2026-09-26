@@ -21,7 +21,7 @@ const server=http.createServer((req,res)=>{
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  const base='http://127.0.0.1:'+server.address().port+prefix;
  try{
-  for(const name of ['chromium','firefox','webkit']){
+  for(const name of (process.env.BROWSER_ENGINES||'chromium,firefox,webkit').split(',')){
    const browser=await playwright[name].launch({headless:true,timeout:20000,...(name==='chromium'&&process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
    try{
     const page=await browser.newPage({viewport:{width:1024,height:768}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -32,8 +32,8 @@ const server=http.createServer((req,res)=>{
     for(const url of localLinks)assert.equal((await page.request.get(url)).status(),200,url);
     for(const url of links){
       await page.goto(base);await page.locator('#games a').filter({hasText:await page.locator('#games a').evaluateAll((nodes,url)=>nodes.find(n=>n.href===url).textContent,url)}).click();
-      assert.equal(page.url(),url);assert.equal(await page.locator('#fatal').isVisible(),false);assert.ok(await page.locator('.tile').count()>0);
-      await page.locator('.tile').first().click();assert.equal(await page.locator('#overlay').isVisible(),true);await page.locator('#close').click();
+      assert.equal(page.url(),url);assert.equal(await page.locator('#fatal').isVisible(),false);if(await page.locator('#startBtn').count()){await page.locator('#startBtn').click();assert.equal(await page.locator('.cat').count(),3);}else{assert.ok(await page.locator('.tile').count()>0);
+      await page.locator('.tile').first().click();assert.equal(await page.locator('#overlay').isVisible(),true);await page.locator('#close').click();}
       assert.equal((await page.goto(url.replace(/index\.html$/,''))).status(),200,'Verzeichnis-URL funktioniert');
     }
     await page.goto(base);await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));

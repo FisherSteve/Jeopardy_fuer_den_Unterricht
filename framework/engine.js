@@ -6,6 +6,7 @@
     const errors = [];
     const str = (v, path, max) => { if (typeof v !== 'string' || !v.trim() || v.length > max) errors.push(path + ': Text erforderlich (max. ' + max + ' Zeichen).'); };
     if (!d || typeof d !== 'object') throw new Error('Spieldaten fehlen.');
+    if (d.gameType !== undefined && d.gameType !== 'jeopardy') errors.push('gameType muss jeopardy sein. Quizduell benötigt die Quizduell-Validierung.');
     if (d.schemaVersion !== 1) errors.push('schemaVersion muss 1 sein.');
     str(d.id, 'id', 80); str(d.title, 'title', 100);
     if (typeof d.id === 'string' && !/^[a-z0-9-]+$/.test(d.id)) errors.push('id: nur a–z, 0–9 und Bindestriche.');

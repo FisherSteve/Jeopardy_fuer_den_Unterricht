@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quizduell Olymp – Schulmodus</title>
+<style>/*__STYLE__*/</style>
+</head>
+<body>
+<div id="app">
+  <div class="floaters" id="floaters" aria-hidden="true"></div>
+  <div class="shell">
+    <div class="topbar">
+      <div>
+        <div class="brand"><div class="brand-main">Quizduell</div><div class="brand-olymp">Olymp</div></div>
+        <div class="micro">Schulmodus · Lehrer gegen Klasse</div>
+      </div>
+      <div class="iconrow">
+        <button class="iconbtn" id="soundBtn" title="Ton an/aus" aria-label="Ton an/aus">×</button>
+        <button class="iconbtn" id="hintBtn" title="Tastaturhilfe ein-/ausblenden" aria-label="Tastaturhilfe">?</button>
+        <button class="iconbtn" id="fullBtn" title="Vollbild" aria-label="Vollbild">⛶</button>
+      </div>
+    </div>
+    <main class="main"><div class="screen" id="screen" tabindex="-1"></div></main>
+  </div>
+  <div class="shortcuts" id="shortcuts"><span><kbd>1–4</kbd> Auswahl</span><span><kbd>Enter</kbd> bestätigen/weiter</span><span><kbd>R</kbd>/<kbd>F</kbd> Finale</span><span><kbd>H</kbd> Hilfe</span><span><kbd>V</kbd> Vollbild</span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+
+<dialog id="secretDialog" aria-labelledby="secretTitle"><div class="dialog-body"><h2 id="secretTitle">Olymp-Eingabe · Team bitte wegsehen</h2><p>Die gewählte Antwort wird nach dem Antippen verborgen. Das Antippen selbst ist auf dem gemeinsamen Bildschirm sichtbar.</p><div class="judge"><button class="btn primary" data-secret="0">A</button><button class="btn primary" data-secret="1">B</button><button class="btn primary" data-secret="2">C</button><button class="btn primary" data-secret="3">D</button></div><button class="btn ghost" id="secretClose">Abbrechen</button></div></dialog>
+<p id="fatal" hidden role="alert"></p>
+<script id="game-data" type="application/json">/*__DATA__*/</script>
+<script>/*__ENGINE__*/</script>
+<script>/*__APP__*/</script>
+</body></html>

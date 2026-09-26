@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Eigenes Jeopardy erstellen</title>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Jeopardy oder Quizduell erstellen</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#10141f;color:#f5f7ff;font:18px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1000px;margin:auto;padding:24px}h1{font-size:clamp(28px,5vw,46px);line-height:1.15}h2{font-size:24px;margin-top:28px}button,.download{display:inline-block;min-height:54px;border:0;border-radius:12px;background:#ffd166;color:#10141f;padding:14px 20px;font:700 18px system-ui;cursor:pointer;text-decoration:none}textarea{width:100%;min-height:300px;background:#1b2435;color:#f5f7ff;border:1px solid #65728a;border-radius:12px;padding:16px;font:16px/1.5 ui-monospace,monospace}input{font:inherit;max-width:100%;padding:12px 0}label{display:block;margin:12px 0}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid white;outline-offset:4px}#result{white-space:pre-wrap;border-radius:12px;padding:16px;background:#1b2435}#result.error{border:2px solid #ffb79f}[hidden]{display:none!important}.muted{color:#bec8da}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 </style></head><body><main>
-<p class="muted">UNTERRICHTS-JEOPARDY · OHNE INSTALLATION</p><h1>Aus KI-Aufgaben wird euer Spiel.</h1>
+<p class="muted">JEOPARDY & QUIZDUELL OLYMP · OHNE INSTALLATION</p><h1>Aus KI-Aufgaben wird euer Spiel.</h1>
 <p>Diese Seite baut die fertige HTML-Datei direkt auf deinem Gerät. Die Aufgaben werden nicht an einen Server geschickt.</p>
-<h2>1. Aufgaben von der KI erstellen lassen</h2><p>Öffne ChatGPT, Claude, Gemini oder eine andere KI. Gib ihr die Datei <strong>Framework-Prompt.md</strong>, ergänze Fach, Klasse und ein bis fünf Themen und bitte um den vollständigen JSON-Aufgabensatz für den Spiel-Ersteller.</p>
+<h2>1. Aufgaben von der KI erstellen lassen</h2><p>Öffne ChatGPT, Claude, Gemini oder eine andere KI. Gib ihr die Datei <strong>Framework-Prompt.md</strong>, ergänze Spielart, Fach, Klasse und Themen und bitte um den vollständigen JSON-Aufgabensatz für den Spiel-Ersteller. Jeopardy: 1–5 Themen mit je 5 Aufgaben. Quizduell: 8–20 Kategorien mit je 3 Fragen und mindestens 37 Finalfragen. Die Spielart wird aus dem JSON erkannt.</p>
 <h2>2. KI-Antwort hier einfügen</h2><label for="json">Den gesamten JSON-Aufgabensatz kopieren</label><textarea id="json" spellcheck="false" placeholder='{"schemaVersion": 1, "id": "mein-spiel", …}'></textarea>
 <label for="file">Oder eine gespeicherte JSON-Datei auswählen</label><input id="file" type="file" accept=".json,application/json">
-<p>Im fertigen Spiel lässt sich optional ein Fragentimer mit eigenen Zeiten je Punktewert einschalten.</p>
+<p>Jeopardy bietet einen optionalen Fragentimer je Punktewert. Im Quizduell ist die Finalzeit einstellbar (Standard: fünf Sekunden).</p>
 <h2>3. Spiel herunterladen</h2><p>Die technische Prüfung kontrolliert Aufbau und Antwortformate. Lies Fragen und Lösungen vor dem Unterricht zusätzlich fachlich durch.</p><div class="actions"><button id="build">Prüfen und Spiel erstellen</button><a id="download" class="download" hidden>Spiel herunterladen</a></div><p id="result" role="status" hidden></p>
 <p class="muted">Die heruntergeladene HTML enthält das vollständige Spiel. Auf einem Computer im Browser öffnen oder ans Schuldisplay weitergeben. Falls iPad/iPhone nur eine Dateivorschau öffnen, den Browser-Öffnungsweg mit der Schule klären oder das Spiel über eine schulische Webadresse öffnen.</p>
-<p class="muted">Musik ist optional: Lege Jeopardy-theme-song.mp3 neben die heruntergeladene HTML-Datei und schalte im Spiel unter Menü „Musik während der Fragen“ ein. Ohne MP3 funktioniert das Spiel ebenso. Die Musikdatei wird hier nicht mit heruntergeladen.</p>
+<p class="muted">Für Jeopardy ist Musik optional: Lege Jeopardy-theme-song.mp3 neben die heruntergeladene HTML-Datei und schalte im Spiel unter Menü „Musik während der Fragen“ ein. Ohne MP3 funktioniert das Spiel ebenso. Die Musikdatei wird hier nicht mit heruntergeladen.</p>
 </main>
 <script id="game-template" type="application/json">/*__GAME_TEMPLATE__*/</script>
 <script>/*__ENGINE__*/</script>
@@ -24,12 +24,14 @@ $('file').addEventListener('change',()=>{clearDownload();const file=$('file').fi
 $('build').addEventListener('click',()=>{clearDownload();try{
 let raw=$('json').value.trim();if(raw.length>1000000)throw new Error('Der Aufgabensatz ist zu groß (maximal 1 MB).');
 raw=raw.replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'');
-const data=window.JeopardyEngine.validate(JSON.parse(raw));
-const template=JSON.parse($('game-template').textContent);
+const parsed=JSON.parse(raw);
+const quizduell=parsed&&parsed.gameType==='quizduell';
+const data=(quizduell?window.QuizduellEngine:window.JeopardyEngine).validate(parsed);
+const template=JSON.parse($('game-template').textContent)[quizduell?'quizduell':'jeopardy'];
 const json=JSON.stringify(data,null,2).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029');
 const html=template.replace('/*__DATA__*/',()=>json);
 downloadURL=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));$('download').href=downloadURL;$('download').download=data.id+'.html';$('download').hidden=false;
-message('Fertig: '+data.title+'\n'+data.categories.length+' Themen · '+window.JeopardyEngine.questions(data).length+' Fragen · '+data.teams.length+' Teams zum Start.\nJetzt „Spiel herunterladen“ drücken.');$('download').focus();
+message('Fertig: '+data.title+'\n'+(quizduell?'Quizduell Olymp · 6 Runden mit je 3 Fragen · '+data.finalQuestions.length+' Finalfragen im Vorrat.':data.categories.length+' Themen · '+window.JeopardyEngine.questions(data).length+' Fragen · '+data.teams.length+' Teams zum Start.')+'\nJetzt „Spiel herunterladen“ drücken.');$('download').focus();
 }catch(e){message('Noch kein Spiel erstellt. Diesen Hinweis zusammen mit dem Aufgabensatz an die KI zurückgeben:\n\n'+e.message+'\n\nBitte korrigiere den vollständigen JSON-Aufgabensatz und gib ihn erneut aus.',true);}});
 })();
 </script></body></html>

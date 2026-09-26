@@ -2,7 +2,7 @@
 const p=require(process.env.PLAYWRIGHT_MODULE||'playwright'),assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url'),path=require('node:path');
 const {settleFeedback}=require('./helpers.cjs');
-(async()=>{for(const name of ['chromium','firefox','webkit']){
+(async()=>{for(const name of (process.env.BROWSER_ENGINES||'chromium,firefox,webkit').split(',')){
  const browser=await p[name].launch({headless:true,...(name==='chromium'&&process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
  try{const page=await browser.newPage({viewport:{width:1280,height:900}});
  await page.goto(pathToFileURL(path.resolve(__dirname,'../spiele/mathematik-klasse-5/index.html')).href);

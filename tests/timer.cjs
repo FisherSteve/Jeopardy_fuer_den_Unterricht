@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{pathToFileURL}=require('node:url');
 const pw=require(process.env.PLAYWRIGHT_MODULE||'playwright');
-(async()=>{for(const name of ['chromium','firefox','webkit']){
+(async()=>{for(const name of (process.env.BROWSER_ENGINES||'chromium,firefox,webkit').split(',')){
  const browser=await pw[name].launch({headless:true,...(name==='chromium'&&process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
  try{
  const page=await browser.newPage({viewport:{width:1024,height:768},hasTouch:true}),errors=[];page.on('pageerror',e=>errors.push(e.message));

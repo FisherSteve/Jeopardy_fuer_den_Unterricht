@@ -4,7 +4,7 @@ const p=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url');
 (async()=>{
- for(const name of ['chromium','firefox','webkit']){
+ for(const name of (process.env.BROWSER_ENGINES||'chromium,firefox,webkit').split(',')){
   const browser=await p[name].launch({headless:true,timeout:20000,...(name==='chromium'&&process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true});const page=await context.newPage();

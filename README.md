@@ -1,4 +1,34 @@
-# Jeopardy für den Unterricht
+# Jeopardy und Quizduell Olymp für den Unterricht
+
+Das Framework bietet jetzt **zwei Spielarten im selben Spiel-Ersteller**. Bestehende Jeopardy-Aufgabensätze funktionieren weiter.
+
+| Spielart | So wird gespielt | Aufgaben von der KI |
+| --- | --- | --- |
+| Jeopardy | Teams wählen Punktekarten; ein Team antwortet pro Karte | 1–5 Themen mit je 5 Aufgaben |
+| Quizduell Olymp | Kurs gegen Olymp; 6 Runden à 3 Fragen und ein Fünf-Sekunden-Finale | 8–20 Kategorien mit je 3 Auswahlfragen sowie mindestens 37 kurze Finalfragen |
+
+**[Quizduell Mathematik Klasse 8–13 öffnen](spiele/quizduell-olymp-mathe-8-13/index.html)** · [JSON-Aufgabensatz](content/quizduell-olymp-mathe-8-13.json)
+
+Zwei weitere Quizduelle für die **Realschule NRW**, jeweils mit 24 Auswahlfragen in acht Kategorien und 37 kurzen Finalfragen:
+
+- **[Mathematik bis Ende Klasse 8](spiele/quizduell-mathematik-ende-klasse-8-nrw/index.html)** · [JSON](content/quizduell-mathematik-ende-klasse-8-nrw.json): rationale Zahlen, Brüche, Terme, lineare Gleichungen, Zuordnungen, Prozent/Zinsen, Flächen/Körper, Winkel sowie Daten/Zufall. Ohne Stoff aus Klasse 9/10 oder Oberstufe.
+- **[Englisch bis Ende Klasse 5](spiele/quizduell-englisch-ende-klasse-5-nrw/index.html)** · [JSON](content/quizduell-englisch-ende-klasse-5-nrw.json): Alltag, Schule, Familie, Freizeit, einfache Dialoge, Wortschatz und grundlegende Grammatik. Fragen mit kurzen englischen Texten und deutschen Arbeitsaufträgen; Erklärungen auf Deutsch. Die landesweiten Englischziele gelten gemeinsam für Klasse 5/6; dieser Satz wählt bewusst grundlegenden Stoff für Ende Klasse 5. Die genaue Abfolge hängt vom schulinternen Lehrplan ab.
+
+Für ein eigenes Quizduell gib der KI dieselbe [Framework-Prompt.md](Framework-Prompt.md) und ergänze zum Beispiel:
+
+> Erstelle einen vollständigen Quizduell-Aufgabensatz mit gameType „quizduell“ für den Spiel-Ersteller. Fach: Biologie, Klasse 8, bereits behandelte Inhalte: Zelle, Atmung, Ernährung und Ökosysteme. Acht passende Kategorien mit je drei Auswahlfragen sowie 37 kurze mündliche Finalfragen. Teams: „Klasse 8“ und „Olymp“. Randomisiere die Antwortpositionen gemäß Framework-Prompt. Gib ausschließlich die JSON-Datei aus.
+
+Danach wie bei Jeopardy: JSON in **Spiel-Erstellen.html** einfügen, prüfen und die fertige HTML herunterladen. Der Ersteller erkennt die Spielart automatisch. Matrizen und Integrale im Quizduell erhalten eigene Mathefelder, damit sie lesbar gesetzt werden. In **beiden Spielarten** werden Antwortoptionen zusätzlich zufällig angeordnet; richtige Positionen sind bei Einzelauswahl über den Aufgabenvorrat möglichst gleichmäßig verteilt. Eine neue Partie oder Neuladen mischt neu.
+
+### So funktioniert Quizduell Olymp
+
+Olymp und Herausforderer wählen abwechselnd eine von drei angebotenen Kategorien; der Olymp beginnt. Eine gespielte Kategorie entfällt. Der Olymp beantwortet jede Frage zuerst mit Taste 1–4 oder über „Olymp: Touch-Eingabe“. **Das Team schaut dabei weg:** Auf einem gemeinsamen Touchdisplay kann das Antippen sichtbar sein. Danach wählt das Team eine Antwort und loggt sie ein. Beide Antworten werden automatisch geprüft, richtig gibt je einen Punkt. Lösung und Erklärung bleiben bis „Nächste Frage“ sichtbar.
+
+Nach sechs Runden wird jeder Punkt zu einer Finalfrage. Die Seite mit weniger Punkten beginnt, bei Gleichstand der Kurs. Die Finalzeit ist beim Spielstart und vor dem Finale auf ganze 5–600 Sekunden einstellbar (Standard: 5). „Neue Partie“ behält diese Einstellung. „Frage starten“ zeigt die Frage für die gewählte Zeit; „Antwort gegeben · aufdecken“ beendet die Bedenkzeit früher. Beim Tabwechsel pausiert die Zeit. Nach Ablauf oder Aufdecken bewertet die Spielleitung die rechtzeitig gegebene mündliche Antwort. Ein uneinholbarer Vorsprung beendet das Finale. Bei Gleichstand folgt eine Stichfrage; ihre Lösung wird erst über „Antwort anzeigen“ sichtbar. Falls niemand korrekt antwortet, könnt ihr unentschieden abschließen.
+
+Quizduell startet mit ausgeschaltetem Ton; der Tonschalter aktiviert kurze erzeugte Signale ohne MP3. **Die laufende Quizduell-Partie wird nicht gespeichert.** Neuladen beginnt neu. „Neue Partie“ im Ergebnis übernimmt die Namen. Der Mathematik-Beispielsatz umfasst bewusst Klasse 8 bis 13 einschließlich Oberstufe und ist nicht als gemeinsamer Lernstand einer achten Klasse gedacht. Vor dem Einsatz passend zur Lerngruppe auswählen oder einen neuen Satz erstellen lassen.
+
+Die folgenden Runden-, Menü-, Musik- und Timerhinweise beschreiben **Jeopardy**. Quizduell verwendet den oben beschriebenen eigenen Ablauf.
 
 Ein Lernspiel für Touchdisplays, Tablets und Computer. Eigene Aufgaben kannst du mit **ChatGPT, Claude, Gemini oder einer anderen KI** erstellen. Programmieren musst du dafür nicht.
 

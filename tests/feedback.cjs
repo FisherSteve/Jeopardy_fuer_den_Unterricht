@@ -6,7 +6,7 @@ const {settleFeedback}=require('./helpers.cjs');
 const output=path.join(__dirname,'screenshots');fs.mkdirSync(output,{recursive:true});
 const url=pathToFileURL(path.join(__dirname,'../spiele/mathematik-klasse-5/index.html')).href;
 (async()=>{
- for(const name of ['chromium','firefox','webkit']){
+ for(const name of (process.env.BROWSER_ENGINES||'chromium,firefox,webkit').split(',')){
   const browser=await p[name].launch({headless:true,timeout:20000,...(name==='chromium'&&process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
   try{
    const context=await browser.newContext({viewport:{width:1920,height:1080},hasTouch:true});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -30,7 +30,7 @@ const url=pathToFileURL(path.join(__dirname,'../spiele/mathematik-klasse-5/index
    await page.waitForFunction(()=>!document.getElementById('feedback-continue').disabled);await page.keyboard.press('Enter');
    assert.equal(await page.locator('#overlay').isVisible(),false);
    // Incorrect multiple choice: learning text is visible without teacher tools.
-   await page.locator('[data-question="k1-400"]').tap();await page.locator('#choices button').first().tap();await page.locator('#submit-response').tap();
+   await page.locator('[data-question="k1-400"]').tap();await page.locator('#choices [data-option-index="0"]').tap();await page.locator('#submit-response').tap();
    assert.match(await page.locator('#feedback-answer').innerText(),/600/);assert.match(await page.locator('#feedback-next-team').innerText(),/Team 1/);
    await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    await page.screenshot({path:path.join(output,name+'-feedback-phone.png'),fullPage:true,animations:'disabled'});

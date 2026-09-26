@@ -1,0 +1,708 @@
+{
+  "schemaVersion": 1,
+  "gameType": "quizduell",
+  "id": "quizduell-mathematik-ende-klasse-8-nrw",
+  "title": "Quizduell · Mathematik bis Ende Klasse 8 · Realschule NRW",
+  "teams": [
+    "Klasse 8",
+    "Olymp"
+  ],
+  "categories": [
+    {
+      "title": "Zahlen & Brüche",
+      "questions": [
+        {
+          "id": "runde-1-1",
+          "question": "Berechne: −7 + 12.",
+          "answer": "5",
+          "explanation": "Von −7 aus gehst du auf der Zahlengeraden zwölf Schritte nach rechts. Du landest bei 5.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "19",
+              "−5",
+              "−19",
+              "5"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-1-2",
+          "question": "Berechne: 3/4 : 1/2.",
+          "answer": "3/2",
+          "explanation": "Beim Teilen durch einen Bruch multiplizierst du mit seinem Kehrwert: 3/4 · 2/1 = 6/4 = 3/2.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2/3",
+              "1/4",
+              "3/8",
+              "3/2"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-1-3",
+          "question": "Berechne: −3 · (4 − 9).",
+          "answer": "15",
+          "explanation": "Zuerst die Klammer: 4 − 9 = −5. Das Produkt zweier negativer Zahlen ist positiv: −3 · (−5) = 15.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "15",
+              "−39",
+              "39",
+              "−15"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Terme durchschauen",
+      "questions": [
+        {
+          "id": "runde-2-1",
+          "question": "Fasse zusammen: 4a + 3 − 2a.",
+          "answer": "2a + 3",
+          "explanation": "Nur gleichartige Terme werden zusammengefasst: 4a − 2a = 2a. Die Zahl 3 bleibt als eigener Summand stehen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "5a",
+              "6a + 3",
+              "2a + 3",
+              "2a − 3"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-2-2",
+          "question": "Vereinfache: 2(x + 4) − x.",
+          "answer": "x + 8",
+          "explanation": "Multipliziere zuerst aus: 2x + 8 − x. Aus 2x − x wird x.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x + 4",
+              "3x + 8",
+              "x + 8",
+              "2x + 8"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-2-3",
+          "question": "Welcher Term ist für jedes x gleich (x + 3)²?",
+          "answer": "x² + 6x + 9",
+          "explanation": "Aus (x + 3)(x + 3) entstehen x², zweimal 3x und 9. Zusammen ist das x² + 6x + 9.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x² + 9",
+              "x² + 6x + 9",
+              "x² + 6x + 3",
+              "x² + 3x + 9"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Gleichungen & Modelle",
+      "questions": [
+        {
+          "id": "runde-3-1",
+          "question": "Löse: 5x − 4 = 21.",
+          "answer": "x = 5",
+          "explanation": "Addiere auf beiden Seiten 4: 5x = 25. Teile dann durch 5: x = 5.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x = 3,4",
+              "x = 5",
+              "x = 4",
+              "x = 25"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-3-2",
+          "question": "Löse: 3(x + 2) = 2x + 15.",
+          "answer": "x = 9",
+          "explanation": "Ausmultiplizieren ergibt 3x + 6 = 2x + 15. Ziehe 2x und anschließend 6 ab: x = 9.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x = 21",
+              "x = 7",
+              "x = 9",
+              "x = 3"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-3-3",
+          "question": "Eine Fahrt kostet 4 € Grundpreis und zusätzlich 2 € je Kilometer. Die Rechnung beträgt 18 €. Wie viele Kilometer wurden gefahren?",
+          "answer": "7 km",
+          "explanation": "Nach Abzug der 4 € Grundpreis bleiben 14 € für die Strecke. 14 € geteilt durch 2 € je Kilometer ergibt 7 km.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "14 km",
+              "7 km",
+              "11 km",
+              "9 km"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Zuordnungen",
+      "questions": [
+        {
+          "id": "runde-4-1",
+          "question": "Drei gleiche Hefte kosten zusammen 4,50 €. Wie viel kosten fünf dieser Hefte ohne Mengenrabatt?",
+          "answer": "7,50 €",
+          "explanation": "Ein Heft kostet 4,50 € : 3 = 1,50 €. Fünf Hefte kosten 5 · 1,50 € = 7,50 €.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "13,50 €",
+              "6,50 €",
+              "9,00 €",
+              "7,50 €"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-4-2",
+          "question": "Vier gleich leistungsstarke Pumpen leeren ein Becken in 6 Stunden. Wie lange brauchen drei dieser Pumpen bei unveränderter Leistung je Pumpe?",
+          "answer": "8 Stunden",
+          "explanation": "Die Arbeitsmenge beträgt 4 · 6 = 24 Pumpenstunden. Auf drei Pumpen verteilt sind das 24 : 3 = 8 Stunden.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "7 Stunden",
+              "18 Stunden",
+              "4,5 Stunden",
+              "8 Stunden"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-4-3",
+          "question": "Für die Zuordnung y = 3x − 2 gilt x = 4. Welchen Wert hat y?",
+          "answer": "10",
+          "explanation": "Setze 4 für x ein: y = 3 · 4 − 2 = 12 − 2 = 10.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "5",
+              "10",
+              "6",
+              "14"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Prozent & Zinsen",
+      "questions": [
+        {
+          "id": "runde-5-1",
+          "question": "Eine Jacke kostet 80 €. Der Preis wird um 15 % gesenkt. Wie hoch ist der neue Preis?",
+          "answer": "68 €",
+          "explanation": "15 % von 80 € sind 12 €. Der neue Preis beträgt 80 € − 12 € = 68 €.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "65 €",
+              "92 €",
+              "68 €",
+              "72 €"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-5-2",
+          "question": "Ein Preis beträgt nach einer Erhöhung um 20 % genau 72 €. Wie hoch war er vorher?",
+          "answer": "60 €",
+          "explanation": "72 € entsprechen 120 % des alten Preises. Teile durch 1,2: 72 € : 1,2 = 60 €.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "86,40 €",
+              "52 €",
+              "57,60 €",
+              "60 €"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-5-3",
+          "question": "400 € werden zwei Jahre lang mit 2 % pro Jahr verzinst. Die Zinsen bleiben auf dem Konto; es gibt keine Gebühren. Wie hoch ist das Guthaben danach?",
+          "answer": "416,16 €",
+          "explanation": "Nach einem Jahr sind es 400 € · 1,02 = 408 €. Im zweiten Jahr werden auch die ersten Zinsen verzinst: 408 € · 1,02 = 416,16 €.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "416,16 €",
+              "480,00 €",
+              "408,00 €",
+              "416,00 €"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Flächen & Körper",
+      "questions": [
+        {
+          "id": "runde-6-1",
+          "question": "Ein Dreieck hat eine Grundseite von 10 cm und die zugehörige Höhe von 6 cm. Wie groß ist seine Fläche?",
+          "answer": "30 cm²",
+          "explanation": "Die Fläche ist Grundseite mal zugehörige Höhe geteilt durch zwei: 10 · 6 : 2 = 30 cm².",
+          "response": {
+            "type": "choice",
+            "options": [
+              "30 cm²",
+              "16 cm²",
+              "120 cm²",
+              "60 cm²"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-6-2",
+          "question": "Die parallelen Seiten eines Trapezes sind 6 cm und 10 cm lang. Ihr Abstand beträgt 4 cm. Wie groß ist die Fläche?",
+          "answer": "32 cm²",
+          "explanation": "Der Mittelwert der parallelen Seiten ist (6 + 10) : 2 = 8 cm. Mit der Höhe multipliziert ergibt das 8 · 4 = 32 cm².",
+          "response": {
+            "type": "choice",
+            "options": [
+              "32 cm²",
+              "40 cm²",
+              "64 cm²",
+              "24 cm²"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-6-3",
+          "question": "Ein gerades Prisma hat eine Grundfläche von 12 cm² und eine Körperhöhe von 7 cm. Wie groß ist sein Volumen?",
+          "answer": "84 cm³",
+          "explanation": "Das Volumen eines Prismas ist Grundfläche mal Körperhöhe. Hier gilt V = 12 cm² · 7 cm = 84 cm³.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "168 cm³",
+              "84 cm³",
+              "42 cm³",
+              "19 cm³"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Winkel & Konstruktionen",
+      "questions": [
+        {
+          "id": "runde-7-1",
+          "question": "Zwei Innenwinkel eines Dreiecks sind 50° und 65° groß. Wie groß ist der dritte Innenwinkel?",
+          "answer": "65°",
+          "explanation": "Die Innenwinkel eines Dreiecks ergeben zusammen 180°. 180° − 50° − 65° = 65°.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "115°",
+              "245°",
+              "65°",
+              "75°"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-7-2",
+          "question": "Zwei Winkel sind Nebenwinkel an einer Geraden. Einer misst 128°. Wie groß ist der andere?",
+          "answer": "52°",
+          "explanation": "Nebenwinkel ergänzen sich zu 180°. Deshalb ist der andere Winkel 180° − 128° = 52° groß.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "52°",
+              "62°",
+              "232°",
+              "128°"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-7-3",
+          "question": "Welche Angaben legen ein Dreieck bis auf seine Lage und Spiegelung eindeutig fest?",
+          "answer": "Die drei Seitenlängen 4 cm, 5 cm und 6 cm.",
+          "explanation": "Drei konstruierbare Seitenlängen legen das Dreieck nach dem Kongruenzsatz SSS fest. Nur Winkel legen die Größe nicht fest; die anderen Angaben reichen ebenfalls nicht aus.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Der Umfang von 15 cm allein.",
+              "Die drei Winkel 50°, 60° und 70°.",
+              "Die drei Seitenlängen 4 cm, 5 cm und 6 cm.",
+              "Eine Seite von 5 cm und ein Winkel von 60°."
+            ],
+            "correct": [
+              2
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Daten & Zufall",
+      "questions": [
+        {
+          "id": "runde-8-1",
+          "question": "Ein Beutel enthält drei rote und zwei blaue, gleichartige Kugeln. Eine Kugel wird zufällig gezogen. Wie groß ist die Wahrscheinlichkeit für Rot?",
+          "answer": "3/5",
+          "explanation": "Drei der fünf gleich wahrscheinlichen Kugeln sind rot. Die Wahrscheinlichkeit ist daher 3/5.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "3/5",
+              "2/5",
+              "3/2",
+              "1/2"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-8-2",
+          "question": "Bestimme den Median der Werte: 4, 10, 2, 8, 6.",
+          "answer": "6",
+          "explanation": "Sortiert lauten die Werte 2, 4, 6, 8, 10. Der mittlere Wert und damit der Median ist 6.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "8",
+              "6",
+              "7",
+              "5"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-8-3",
+          "question": "Was beschreibt die Box zwischen dem unteren und oberen Quartil in einem Boxplot?",
+          "answer": "Den Bereich der mittleren 50 % der Daten.",
+          "explanation": "Die Box reicht vom unteren zum oberen Quartil. Sie kennzeichnet den Bereich, in dem die mittlere Hälfte der geordneten Daten liegt.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Den Bereich aller erhobenen Daten.",
+              "Den Bereich der größten 25 % der Daten.",
+              "Den Bereich der kleinsten 25 % der Daten.",
+              "Den Bereich der mittleren 50 % der Daten."
+            ],
+            "correct": [
+              3
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "finalQuestions": [
+    {
+      "id": "finale-1",
+      "question": "Berechne: −9 + 4.",
+      "answer": "−5",
+      "explanation": "Von −9 vier Schritte nach rechts ergibt −5."
+    },
+    {
+      "id": "finale-2",
+      "question": "Berechne: (−6) · (−7).",
+      "answer": "42",
+      "explanation": "Zwei negative Faktoren ergeben ein positives Produkt. 6 · 7 = 42."
+    },
+    {
+      "id": "finale-3",
+      "question": "Berechne: −18 : 3.",
+      "answer": "−6",
+      "explanation": "Eine negative Zahl geteilt durch eine positive Zahl ist negativ. 18 : 3 = 6."
+    },
+    {
+      "id": "finale-4",
+      "question": "Schreibe 2/5 als Dezimalzahl.",
+      "answer": "0,4",
+      "explanation": "Erweitere auf Zehntel: 2/5 = 4/10 = 0,4."
+    },
+    {
+      "id": "finale-5",
+      "question": "Berechne: 1/4 + 1/2.",
+      "answer": "3/4 oder 0,75",
+      "explanation": "1/2 sind 2/4. Zusammen mit 1/4 ergibt das 3/4."
+    },
+    {
+      "id": "finale-6",
+      "question": "Berechne: 0,6 · 10.",
+      "answer": "6",
+      "explanation": "Beim Multiplizieren mit 10 verschieben sich die Stellenwerte um eine Stelle."
+    },
+    {
+      "id": "finale-7",
+      "question": "Wie viel sind 3/8 von 40?",
+      "answer": "15",
+      "explanation": "Ein Achtel von 40 ist 5. Drei Achtel sind 15."
+    },
+    {
+      "id": "finale-8",
+      "question": "Berechne: 2,5 + 0,75.",
+      "answer": "3,25",
+      "explanation": "2,50 + 0,75 = 3,25."
+    },
+    {
+      "id": "finale-9",
+      "question": "Fasse zusammen: 3a + 5a.",
+      "answer": "8a",
+      "explanation": "Die Koeffizienten gleichartiger Terme werden addiert: 3 + 5 = 8."
+    },
+    {
+      "id": "finale-10",
+      "question": "Fasse zusammen: 7b − b.",
+      "answer": "6b",
+      "explanation": "Ein b wird von sieben b abgezogen. Es bleiben sechs b."
+    },
+    {
+      "id": "finale-11",
+      "question": "Multipliziere aus: 5(x − 2).",
+      "answer": "5x − 10",
+      "explanation": "Die 5 wird mit beiden Termen in der Klammer multipliziert."
+    },
+    {
+      "id": "finale-12",
+      "question": "Löse: x + 9 = 14.",
+      "answer": "x = 5 oder 5",
+      "explanation": "Ziehe auf beiden Seiten 9 ab."
+    },
+    {
+      "id": "finale-13",
+      "question": "Löse: 6x = 42.",
+      "answer": "x = 7 oder 7",
+      "explanation": "Teile beide Seiten durch 6."
+    },
+    {
+      "id": "finale-14",
+      "question": "Löse: x/3 = 4.",
+      "answer": "x = 12 oder 12",
+      "explanation": "Multipliziere beide Seiten mit 3."
+    },
+    {
+      "id": "finale-15",
+      "question": "Welchen Wert hat 8x für x = 2?",
+      "answer": "16",
+      "explanation": "Setze x = 2 ein: 8 · 2 = 16."
+    },
+    {
+      "id": "finale-16",
+      "question": "Wie viel sind 10 % von 90?",
+      "answer": "9",
+      "explanation": "10 % entsprechen einem Zehntel. 90 : 10 = 9."
+    },
+    {
+      "id": "finale-17",
+      "question": "Wie viel sind 25 % von 60?",
+      "answer": "15",
+      "explanation": "25 % sind ein Viertel. 60 : 4 = 15."
+    },
+    {
+      "id": "finale-18",
+      "question": "Wie viel Prozent sind 50 von 200?",
+      "answer": "25 %",
+      "explanation": "50/200 = 1/4 = 25 %."
+    },
+    {
+      "id": "finale-19",
+      "question": "Wie viel sind 1 % von 700?",
+      "answer": "7",
+      "explanation": "1 % entspricht einem Hundertstel. 700 : 100 = 7."
+    },
+    {
+      "id": "finale-20",
+      "question": "Welcher Wachstumsfaktor gehört zu einer Erhöhung um 10 %?",
+      "answer": "1,1",
+      "explanation": "100 % plus 10 % sind 110 %. Als Faktor ist das 1,1."
+    },
+    {
+      "id": "finale-21",
+      "question": "Wie viele Zentimeter sind 1,2 Meter?",
+      "answer": "120 cm oder 120",
+      "explanation": "Ein Meter sind 100 Zentimeter. 1,2 · 100 = 120."
+    },
+    {
+      "id": "finale-22",
+      "question": "Wie viele Milliliter sind 3 Liter?",
+      "answer": "3000 ml oder 3000",
+      "explanation": "Ein Liter sind 1000 Milliliter."
+    },
+    {
+      "id": "finale-23",
+      "question": "Wie viele Minuten sind 2,5 Stunden?",
+      "answer": "150 Minuten oder 150",
+      "explanation": "Zwei Stunden sind 120 Minuten, eine halbe Stunde sind 30 Minuten."
+    },
+    {
+      "id": "finale-24",
+      "question": "Wie viele Quadratzentimeter sind 2 m²?",
+      "answer": "20.000 cm² oder 20.000",
+      "explanation": "Ein Quadratmeter enthält 100 · 100 = 10.000 Quadratzentimeter."
+    },
+    {
+      "id": "finale-25",
+      "question": "Ein Quadrat hat Seitenlänge 7 cm. Wie groß ist sein Umfang?",
+      "answer": "28 cm",
+      "explanation": "Vier Seiten von je 7 cm ergeben 28 cm."
+    },
+    {
+      "id": "finale-26",
+      "question": "Ein Rechteck ist 4 cm breit und 6 cm lang. Wie groß ist seine Fläche?",
+      "answer": "24 cm²",
+      "explanation": "Die Fläche ist Länge mal Breite: 6 · 4 = 24 cm²."
+    },
+    {
+      "id": "finale-27",
+      "question": "Ein Würfel hat Kantenlänge 3 cm. Wie groß ist sein Volumen?",
+      "answer": "27 cm³",
+      "explanation": "Das Volumen ist 3 · 3 · 3 = 27 cm³."
+    },
+    {
+      "id": "finale-28",
+      "question": "Wie viele Grad hat ein rechter Winkel?",
+      "answer": "90°",
+      "explanation": "Ein rechter Winkel ist ein Viertel einer vollen Drehung."
+    },
+    {
+      "id": "finale-29",
+      "question": "Wie groß ist die Innenwinkelsumme eines Vierecks?",
+      "answer": "360°",
+      "explanation": "Ein Viereck lässt sich in zwei Dreiecke zerlegen. Zusammen sind das 2 · 180° = 360°."
+    },
+    {
+      "id": "finale-30",
+      "question": "Ein gleichschenkliges Dreieck hat einen Spitzenwinkel von 40°. Wie groß ist jeder Basiswinkel?",
+      "answer": "70°",
+      "explanation": "Die beiden gleichen Basiswinkel teilen sich 180° − 40° = 140°. Jeder ist 70° groß."
+    },
+    {
+      "id": "finale-31",
+      "question": "Ein Ereignis hat Wahrscheinlichkeit 20 %. Wie wahrscheinlich ist das Gegenereignis?",
+      "answer": "80 %",
+      "explanation": "Ereignis und Gegenereignis ergeben zusammen 100 %."
+    },
+    {
+      "id": "finale-32",
+      "question": "Ein fairer sechsseitiger Würfel wird geworfen. Wie wahrscheinlich ist eine Zahl größer als 4?",
+      "answer": "1/3 oder 2/6",
+      "explanation": "Die Ergebnisse 5 und 6 sind zwei von sechs gleich wahrscheinlichen Möglichkeiten."
+    },
+    {
+      "id": "finale-33",
+      "question": "Welche Wahrscheinlichkeit hat ein unmögliches Ereignis?",
+      "answer": "0 oder 0 %",
+      "explanation": "Ein unmögliches Ereignis kann nicht eintreten. Seine Wahrscheinlichkeit ist null."
+    },
+    {
+      "id": "finale-34",
+      "question": "Wie groß ist das arithmetische Mittel von 2 und 8?",
+      "answer": "5",
+      "explanation": "Addiere 2 und 8 und teile durch die Anzahl 2: 10 : 2 = 5."
+    },
+    {
+      "id": "finale-35",
+      "question": "Bestimme die Spannweite der Werte 9, 2 und 6.",
+      "answer": "7",
+      "explanation": "Die Spannweite ist Maximum minus Minimum: 9 − 2 = 7."
+    },
+    {
+      "id": "finale-36",
+      "question": "Für y = 2x + 1 gilt x = 3. Wie groß ist y?",
+      "answer": "7",
+      "explanation": "Setze ein: 2 · 3 + 1 = 7."
+    },
+    {
+      "id": "finale-37",
+      "question": "Bei einer proportionalen Zuordnung wird x verdoppelt. Was passiert mit y?",
+      "answer": "y verdoppelt sich.",
+      "explanation": "Bei einer proportionalen Zuordnung gilt y = k · x mit festem Faktor k. Derselbe Faktor der Veränderung gilt für x und y."
+    }
+  ]
+}

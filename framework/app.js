@@ -50,6 +50,7 @@
   document.addEventListener('visibilitychange', () => { if (document.hidden) stopMusic(); });
   window.addEventListener('pagehide', () => stopMusic());
   const all = E.questions(data);
+  let choiceOrders = window.ChoiceOrder.prepare(all);
   // Exact content identity prevents stale state when a question or rule changes.
   const signature = JSON.stringify(data);
   const storageKey = 'jeopardy-v2-' + data.id;
@@ -237,7 +238,7 @@
     if(type==='choice') {
       $('choice-help').textContent=current.response.correct.length===1?'Wählt eine Antwort.':'Wählt alle passenden Antworten.';
       $('choices').textContent='';
-      current.response.options.forEach((text,i)=>{const b=button(text,()=>{choices=current.response.correct.length===1?[i]:choices.includes(i)?choices.filter(x=>x!==i):choices.concat(i);renderQuestion();$('choices').children[i].focus();});b.setAttribute('aria-pressed',String(choices.includes(i)));$('choices').appendChild(b);});
+      choiceOrders.get(current.id).forEach((i,position)=>{const b=button(current.response.options[i],()=>{choices=current.response.correct.length===1?[i]:choices.includes(i)?choices.filter(x=>x!==i):choices.concat(i);renderQuestion();$('choices').children[position].focus();});b.dataset.optionIndex=i;b.setAttribute('aria-pressed',String(choices.includes(i)));$('choices').appendChild(b);});
     }
     $('submit-response').disabled=type==='number'?E.canonicalNumber(inputValue)===null:!choices.length;
     $('correct').textContent = state.names[selected] + ' · Richtig';
@@ -344,7 +345,7 @@
   $('undo').addEventListener('click', () => { if (view || !state.history.length) return; state.history.pop(); save(); render(); if (savedOK) say('Letzte abgeschlossene Karte zurückgenommen.'); });
   $('reset-open').addEventListener('click', () => { $('meta').textContent = 'NEUES SPIEL'; show('reset', 'Spiel zurücksetzen?', 'reset-cancel'); });
   $('reset-cancel').addEventListener('click', menu);
-  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names, state.scoring); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
+  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names, state.scoring); choiceOrders = window.ChoiceOrder.prepare(all); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
   // No backdrop close: accidental touches on large classroom screens are common.
   document.addEventListener('keydown', e => {
     if (e.repeat && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); return; }

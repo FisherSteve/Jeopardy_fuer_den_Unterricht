@@ -1,0 +1,708 @@
+{
+  "schemaVersion": 1,
+  "gameType": "quizduell",
+  "id": "quizduell-englisch-ende-klasse-5-nrw",
+  "title": "Quizduell · Englisch bis Ende Klasse 5 · Realschule NRW",
+  "teams": [
+    "Klasse 5",
+    "Olymp"
+  ],
+  "categories": [
+    {
+      "title": "Meeting people",
+      "questions": [
+        {
+          "id": "runde-1-1",
+          "question": "Ben fragt dich: “What is your name?” Welche Antwort passt?",
+          "answer": "My name is Alex.",
+          "explanation": "Die Frage fragt nach dem Namen. „My name is Alex“ nennt den Namen.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "My name is Alex.",
+              "I'm eleven years old.",
+              "I'm fine, thanks.",
+              "I live in Bristol."
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-1-2",
+          "question": "Du möchtest nach dem Alter fragen. Welcher Satz passt?",
+          "answer": "How old are you?",
+          "explanation": "„How old are you?“ bedeutet „Wie alt bist du?“. „How are you?“ fragt nach dem Befinden.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "How are you today?",
+              "How old are you?",
+              "Where are you from?",
+              "What is your name?"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-1-3",
+          "question": "Lies: “My name is Lily. I live in York with my dad.” Where does Lily live?",
+          "answer": "In York.",
+          "explanation": "Im kurzen Text steht „I live in York“. Lily wohnt also in York.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "In London.",
+              "In Bristol.",
+              "In Manchester.",
+              "In York."
+            ],
+            "correct": [
+              3
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "At school",
+      "questions": [
+        {
+          "id": "runde-2-1",
+          "question": "Die Lehrkraft sagt: “Open your books.” Was sollt ihr tun?",
+          "answer": "Die Bücher aufschlagen.",
+          "explanation": "„Open“ bedeutet hier „öffnen“ oder „aufschlagen“. Die Aufforderung bezieht sich auf die Bücher.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Die Bücher aufschlagen.",
+              "Die Bücher einpacken.",
+              "Die Bücher weitergeben.",
+              "Die Bücher schließen."
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-2-2",
+          "question": "Welches Schulfach passt zu “We run, jump and play basketball”?",
+          "answer": "PE",
+          "explanation": "PE ist die Abkürzung für Physical Education, also Sport. Die genannten Tätigkeiten passen zu diesem Fach.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Maths",
+              "English",
+              "PE",
+              "Music"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-2-3",
+          "question": "Du brauchst kurz das Lineal deiner Nachbarin. Welche Bitte passt?",
+          "answer": "Can I borrow your ruler, please?",
+          "explanation": "„Borrow your ruler“ bedeutet „dein Lineal ausleihen“. „Please“ macht die Bitte höflich.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Can I clean the board, please?",
+              "Can I open the window, please?",
+              "Can I close the door, please?",
+              "Can I borrow your ruler, please?"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Family & home",
+      "questions": [
+        {
+          "id": "runde-3-1",
+          "question": "Wie heißt der Bruder deiner Mutter auf Englisch?",
+          "answer": "uncle",
+          "explanation": "Der Bruder der Mutter ist ein Onkel. Das englische Wort ist „uncle“.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "aunt",
+              "uncle",
+              "grandfather",
+              "cousin"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-3-2",
+          "question": "Ergänze: “There are two … in my room.”",
+          "answer": "chairs",
+          "explanation": "Nach „two“ folgt die Mehrzahl. Die regelmäßige Mehrzahl von „chair“ lautet „chairs“.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "chair",
+              "chairs",
+              "chair is",
+              "a chair"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-3-3",
+          "question": "Lies: “My keys are in the bag, not on the desk.” Where are the keys?",
+          "answer": "In the bag.",
+          "explanation": "„In the bag“ nennt den Ort der Schlüssel. Der Text schließt „on the desk“ ausdrücklich aus.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "On the desk.",
+              "Behind the bag.",
+              "In the bag.",
+              "Under the desk."
+            ],
+            "correct": [
+              2
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Food & shopping",
+      "questions": [
+        {
+          "id": "runde-4-1",
+          "question": "Ein Sandwich kostet £2, ein Saft £1. Du kaufst beides. Welche Antwort auf “How much is it?” passt?",
+          "answer": "Three pounds.",
+          "explanation": "Zusammen kostet der Einkauf £2 + £1 = £3. Auf Englisch heißt das „three pounds“.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Two pounds.",
+              "Four pounds.",
+              "One pound.",
+              "Three pounds."
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-4-2",
+          "question": "Sam sagt: “I am thirsty.” Was möchtest du ihm passend dazu anbieten?",
+          "answer": "Some water.",
+          "explanation": "„Thirsty“ bedeutet „durstig“. Wasser passt dazu, weil es ein Getränk ist.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "A jacket.",
+              "Some water.",
+              "A sandwich.",
+              "A pencil."
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-4-3",
+          "question": "Lies: “Mia likes bread and cheese. She does not like eggs.” What does Mia NOT like?",
+          "answer": "Eggs.",
+          "explanation": "„She does not like eggs“ bedeutet, dass sie Eier nicht mag. Brot und Käse mag sie laut Text.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Bread and cheese.",
+              "Bread.",
+              "Eggs.",
+              "Cheese."
+            ],
+            "correct": [
+              2
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Everyday English",
+      "questions": [
+        {
+          "id": "runde-5-1",
+          "question": "Ergänze: “Ella … to school every day.”",
+          "answer": "walks",
+          "explanation": "Bei „he“, „she“ und „it“ erhält das Verb im Simple Present normalerweise ein -s. Ella ist eine einzelne Person: „Ella walks“.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "are walk",
+              "walk",
+              "walking",
+              "walks"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-5-2",
+          "question": "Welche Kurzantwort passt zu “Do they play football?”",
+          "answer": "Yes, they do.",
+          "explanation": "Eine Frage mit „do“ wird hier mit „do“ beantwortet. Das Personalpronomen „they“ bleibt erhalten.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Yes, they do.",
+              "Yes, they is.",
+              "Yes, they does.",
+              "Yes, they are."
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-5-3",
+          "question": "Welcher Satz ist grammatisch richtig?",
+          "answer": "He does not like carrots.",
+          "explanation": "Bei „he“ steht „does not“. Danach folgt das Hauptverb in der Grundform „like“, ohne zusätzliches -s.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "He does not like carrots.",
+              "He do not like carrots.",
+              "He not like carrots.",
+              "He does not likes carrots."
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Hobbies & abilities",
+      "questions": [
+        {
+          "id": "runde-6-1",
+          "question": "Noah kann schwimmen. Welcher Satz drückt das aus?",
+          "answer": "Noah can swim.",
+          "explanation": "Nach „can“ steht die Grundform des Verbs ohne „to“: „can swim“.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Noah can swim.",
+              "Noah can to swim.",
+              "Noah can swims.",
+              "Noah can swimming."
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-6-2",
+          "question": "Welche Frage erkundigt sich nach einem Hobby?",
+          "answer": "What do you do in your free time?",
+          "explanation": "Die Frage nach der Freizeit ist eine passende Frage nach Hobbys. Die anderen Fragen betreffen Zeit, Anzahl oder Ort.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "What do you do in your free time?",
+              "Where is the nearest bus stop?",
+              "How many windows has the room got?",
+              "What time does the lesson start?"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-6-3",
+          "question": "Lies: “I play tennis every Saturday. On Sunday I visit my grandma.” When does the child play tennis?",
+          "answer": "On Saturday.",
+          "explanation": "Der erste Satz nennt Saturday als Tennistag. Am Sonntag besucht das Kind die Großmutter.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "On Friday.",
+              "On Sunday.",
+              "On Saturday.",
+              "On Monday."
+            ],
+            "correct": [
+              2
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Numbers & time",
+      "questions": [
+        {
+          "id": "runde-7-1",
+          "question": "Welche Uhrzeit bedeutet “half past four”?",
+          "answer": "4:30",
+          "explanation": "„Half past four“ bedeutet eine halbe Stunde nach vier, also 4:30. Im Deutschen sagt man „halb fünf“.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "4:15",
+              "5:30",
+              "3:30",
+              "4:30"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-7-2",
+          "question": "Welcher Monat steht direkt vor March?",
+          "answer": "February",
+          "explanation": "Die Reihenfolge am Jahresanfang lautet January, February, March. Direkt vor March steht February.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "December",
+              "January",
+              "April",
+              "February"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-7-3",
+          "question": "Welche Zahl bedeutet “thirteen”?",
+          "answer": "13",
+          "explanation": "„Thirteen“ ist dreizehn. „Thirty“ wäre dreißig.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "30",
+              "13",
+              "3",
+              "14"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Words in sentences",
+      "questions": [
+        {
+          "id": "runde-8-1",
+          "question": "Die Bücher gehören Sara. Ergänze: “These are … books.”",
+          "answer": "her",
+          "explanation": "Für „ihre Bücher“, bezogen auf Sara, steht „her books“. „Her“ ist hier ein Possessivbegleiter.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "our",
+              "his",
+              "her",
+              "their"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-8-2",
+          "question": "Welches Wort ist das Gegenteil von “big”?",
+          "answer": "small",
+          "explanation": "„Big“ bedeutet „groß“, „small“ bedeutet „klein“. Die anderen Wörter beschreiben andere Eigenschaften.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "happy",
+              "small",
+              "long",
+              "fast"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-8-3",
+          "question": "Was bedeutet “The dog is behind the chair”?",
+          "answer": "Der Hund ist hinter dem Stuhl.",
+          "explanation": "„Behind“ bedeutet „hinter“. Damit wird der Ort des Hundes beschrieben.",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Der Hund ist vor dem Stuhl.",
+              "Der Hund ist auf dem Stuhl.",
+              "Der Hund ist hinter dem Stuhl.",
+              "Der Hund ist unter dem Stuhl."
+            ],
+            "correct": [
+              2
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "finalQuestions": [
+    {
+      "id": "finale-1",
+      "question": "Was heißt „blau“ auf Englisch?",
+      "answer": "blue",
+      "explanation": "Das englische Wort für die Farbe Blau ist „blue“."
+    },
+    {
+      "id": "finale-2",
+      "question": "Was heißt „sieben“ auf Englisch?",
+      "answer": "seven",
+      "explanation": "Die Zahl 7 heißt „seven“."
+    },
+    {
+      "id": "finale-3",
+      "question": "Was heißt „Katze“ auf Englisch?",
+      "answer": "cat",
+      "explanation": "„Cat“ ist das englische Wort für Katze."
+    },
+    {
+      "id": "finale-4",
+      "question": "Was heißt „Küche“ auf Englisch?",
+      "answer": "kitchen",
+      "explanation": "Der Raum zum Kochen heißt auf Englisch „kitchen“."
+    },
+    {
+      "id": "finale-5",
+      "question": "Was heißt „Schwester“ auf Englisch?",
+      "answer": "sister",
+      "explanation": "„Sister“ bedeutet Schwester."
+    },
+    {
+      "id": "finale-6",
+      "question": "Was heißt „Apfel“ auf Englisch?",
+      "answer": "apple",
+      "explanation": "„Apple“ bezeichnet einen Apfel."
+    },
+    {
+      "id": "finale-7",
+      "question": "Was heißt „kalt“ auf Englisch?",
+      "answer": "cold",
+      "explanation": "„Cold“ bedeutet kalt."
+    },
+    {
+      "id": "finale-8",
+      "question": "Was heißt „heute“ auf Englisch?",
+      "answer": "today",
+      "explanation": "Für den heutigen Tag verwendet man „today“."
+    },
+    {
+      "id": "finale-9",
+      "question": "Was heißt das Verb „lesen“ auf Englisch?",
+      "answer": "read oder to read",
+      "explanation": "Die Grundform des Verbs ist „read“, im Infinitiv auch „to read“."
+    },
+    {
+      "id": "finale-10",
+      "question": "Was heißt „zehn“ auf Englisch?",
+      "answer": "ten",
+      "explanation": "Die Zahl 10 heißt „ten“."
+    },
+    {
+      "id": "finale-11",
+      "question": "Ergänze: “I … happy.”",
+      "answer": "am",
+      "explanation": "Mit „I“ lautet die passende Form von „be“ hier „am“."
+    },
+    {
+      "id": "finale-12",
+      "question": "Ergänze: “We … friends.”",
+      "answer": "are",
+      "explanation": "„We“ wird mit „are“ verbunden: „We are friends“."
+    },
+    {
+      "id": "finale-13",
+      "question": "Ergänze mit der passenden Form von “have got”: “He … a red bike.”",
+      "answer": "has got",
+      "explanation": "Bei „he“ lautet die Form „has got“. Der Satz bedeutet, dass er ein rotes Fahrrad hat."
+    },
+    {
+      "id": "finale-14",
+      "question": "Bilde die Mehrzahl: “one box – two …”",
+      "answer": "boxes",
+      "explanation": "Nach einem Wortende auf x erhält das Nomen in der Mehrzahl -es: „boxes“."
+    },
+    {
+      "id": "finale-15",
+      "question": "Bilde die Mehrzahl: “one child – two …”",
+      "answer": "children",
+      "explanation": "„Child“ hat die unregelmäßige Mehrzahl „children“."
+    },
+    {
+      "id": "finale-16",
+      "question": "Bilde die Mehrzahl: “one foot – two …”",
+      "answer": "feet",
+      "explanation": "Die unregelmäßige Mehrzahl von „foot“ lautet „feet“."
+    },
+    {
+      "id": "finale-17",
+      "question": "Welcher Artikel passt: “… orange” – a oder an?",
+      "answer": "an",
+      "explanation": "„Orange“ beginnt mit einem Vokallaut. Deshalb heißt es „an orange“."
+    },
+    {
+      "id": "finale-18",
+      "question": "Ersetze Tom durch ein Pronomen: “Tom is eleven.”",
+      "answer": "He is eleven. oder He",
+      "explanation": "„He“ kann den Namen Tom ersetzen. Der Rest des Satzes bleibt gleich."
+    },
+    {
+      "id": "finale-19",
+      "question": "Ergänze mit “it” oder “they”: “The cat is hungry. Give … some food.”",
+      "answer": "it",
+      "explanation": "„It“ bezieht sich hier auf eine einzelne Katze. „They“ würde mehrere bezeichnen und passt außerdem nicht als Objekt an diese Stelle."
+    },
+    {
+      "id": "finale-20",
+      "question": "Verneine: “I like rain.”",
+      "answer": "I do not like rain. oder I don’t like rain.",
+      "explanation": "Im Simple Present wird die Verneinung mit „I“ durch „do not“ oder die Kurzform „don’t“ gebildet."
+    },
+    {
+      "id": "finale-21",
+      "question": "Setze “watch” passend ein: “She … TV every evening.”",
+      "answer": "watches",
+      "explanation": "Bei „she“ wird aus „watch“ im Simple Present „watches“."
+    },
+    {
+      "id": "finale-22",
+      "question": "Welches Wort fehlt: “… you like music?”",
+      "answer": "Do",
+      "explanation": "Die Frage im Simple Present mit „you“ beginnt hier mit „Do“."
+    },
+    {
+      "id": "finale-23",
+      "question": "Ergänze die Kurzantwort: “Are you ready?” – “Yes, I …”",
+      "answer": "am",
+      "explanation": "In der Antwort wechselt „you“ zu „I“. Dazu gehört die Verbform „am“."
+    },
+    {
+      "id": "finale-24",
+      "question": "Wie heißt das Gegenteil von “old”, wenn eine Sache neu ist?",
+      "answer": "new",
+      "explanation": "Bei einer Sache ist „new“ das Gegenteil von „old“. Bei einer Person würde man häufig „young“ verwenden."
+    },
+    {
+      "id": "finale-25",
+      "question": "Bilde die Mehrzahl: “one mouse – two …”",
+      "answer": "mice",
+      "explanation": "Die unregelmäßige Mehrzahl von „mouse“ lautet „mice“."
+    },
+    {
+      "id": "finale-26",
+      "question": "Sage die Zahl 16 auf Englisch.",
+      "answer": "sixteen",
+      "explanation": "Die Zahl 16 heißt „sixteen“."
+    },
+    {
+      "id": "finale-27",
+      "question": "Welcher Tag kommt nach Monday? Antworte auf Englisch.",
+      "answer": "Tuesday",
+      "explanation": "Auf Monday folgt Tuesday, also Dienstag."
+    },
+    {
+      "id": "finale-28",
+      "question": "Welcher Monat kommt direkt vor June? Antworte auf Englisch.",
+      "answer": "May",
+      "explanation": "May ist der Mai und steht direkt vor June, dem Juni."
+    },
+    {
+      "id": "finale-29",
+      "question": "Sage 8:00 Uhr auf Englisch.",
+      "answer": "eight o’clock",
+      "explanation": "Bei einer vollen Stunde kann „o’clock“ angehängt werden."
+    },
+    {
+      "id": "finale-30",
+      "question": "Welches Wort fehlt: “I get up … seven o’clock”?",
+      "answer": "at",
+      "explanation": "Vor einer genauen Uhrzeit steht „at“."
+    },
+    {
+      "id": "finale-31",
+      "question": "Welches Wort fehlt: “My birthday is … July”?",
+      "answer": "in",
+      "explanation": "Vor einem Monat steht in dieser Zeitangabe „in“."
+    },
+    {
+      "id": "finale-32",
+      "question": "Was heißt „Danke“ auf Englisch?",
+      "answer": "Thank you. oder Thanks.",
+      "explanation": "„Thank you“ und „Thanks“ sind gebräuchliche Ausdrücke zum Danken."
+    },
+    {
+      "id": "finale-33",
+      "question": "Jemand sagt “Thank you.” Antworte höflich auf Englisch.",
+      "answer": "You’re welcome. / No problem. / That’s OK.",
+      "explanation": "Diese Antworten zeigen, dass man gern geholfen hat. Auch eine andere passende, höfliche Antwort ist möglich."
+    },
+    {
+      "id": "finale-34",
+      "question": "Bitte auf Englisch darum, einen Satz zu wiederholen.",
+      "answer": "Can you repeat that, please? / Can you say that again, please?",
+      "explanation": "Beide Bitten verlangen höflich eine Wiederholung. Auch eine sinngleiche verständliche Bitte passt."
+    },
+    {
+      "id": "finale-35",
+      "question": "Verabschiede dich auf Englisch.",
+      "answer": "Goodbye. / Bye. / See you.",
+      "explanation": "Diese Wendungen sind übliche englische Verabschiedungen."
+    },
+    {
+      "id": "finale-36",
+      "question": "Was bedeutet die Aufforderung “Be quiet!” auf Deutsch?",
+      "answer": "Sei leise! / Seid leise!",
+      "explanation": "„Be quiet“ fordert dazu auf, leise zu sein. Ob eine oder mehrere Personen angesprochen sind, entscheidet der Zusammenhang."
+    },
+    {
+      "id": "finale-37",
+      "question": "Ein Schild zeigt: “Children: £4”. Wie viel kostet eine Kinderkarte? Antworte auf Englisch.",
+      "answer": "Four pounds.",
+      "explanation": "„Children“ bedeutet Kinder. Der angegebene Preis beträgt vier Pfund."
+    }
+  ]
+}

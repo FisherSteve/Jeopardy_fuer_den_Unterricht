@@ -1,4 +1,73 @@
-# Jeopardy erstellen — mit dem vorhandenen Framework
+# Unterrichtsspiele erstellen — Jeopardy und Quizduell Olymp
+
+## Zuerst den Spieltyp bestimmen
+
+Dieser Auftrag unterstützt **zwei verschiedene Spiele**. Die Lehrkraft nennt `jeopardy` oder `quizduell`; ohne Angabe gilt weiterhin Jeopardy. Beide werden ausschließlich als vollständiger JSON-Aufgabensatz für denselben `Spiel-Erstellen.html` ausgegeben. Keine neue Spieloberfläche programmieren. Mit Dateizugriff: `content/<kennung>.json` anlegen und `node build.js` verwenden.
+
+- **Jeopardy:** ein bis fünf Themen mit je fünf Punktekarten, zwei bis sechs Teams. `gameType: "jeopardy"` ist optional; alte JSONs ohne dieses Feld bleiben gültig. Der Abschnitt „Jeopardy-Daten und Spielregeln“ unten beschreibt diesen Modus.
+- **Quizduell Olymp:** `gameType: "quizduell"` ist Pflicht. Sechs Runden mit je drei Auswahlfragen, zwei Seiten (Herausforderer und Olymp), danach ein mündliches Fünf-Sekunden-Finale. Der folgende Quizduell-Abschnitt ersetzt für diesen Modus die Jeopardy-Regeln und dessen Kategorien-/Punktegrenzen. Allgemeine Anforderungen an fachliche Qualität, klare Sprache, Recherche, Offline-Nutzung und fehlende Lösungsverräter gelten für beide.
+
+## Verbindlich für beide Spieltypen: Antwortpositionen randomisieren
+
+**Die richtige Antwort darf nicht immer oder auffällig oft auf denselben Buchstaben bzw. derselben Position liegen.** Mische die Antwortoptionen jeder Auswahlfrage zufällig. Für Einzelauswahlfragen mit gleicher Optionszahl verteile die richtigen Positionen über den vollständigen Aufgabensatz möglichst gleichmäßig (Häufigkeitsunterschied höchstens eins), ordne diese Positionen aber zufällig zu. Kein vorhersehbares A–B–C–D-Schema, keine feste bevorzugte Position. Bei Mehrfachauswahl die richtigen Positionskombinationen variieren; nicht ständig dieselbe Kombination verwenden. Keine Buchstaben wie „A)“ in die Optionstexte schreiben; die Position bestimmt die Anzeige.
+
+Nach **jedem** Mischen `response.correct` neu zuordnen und gegen `answer` sowie `explanation` prüfen. Die Optionsreihenfolge darf die Lösung nicht über Länge, Grammatik, Hervorhebung oder Metaaussagen verraten. Keine positionsabhängigen Optionen wie „A und C“, „alle obigen“ oder „die vorige Antwort“: Die Engine mischt die Anzeige zusätzlich bei jeder neuen Partie bzw. jedem Neuladen. Innerhalb einer geöffneten Frage bleiben Reihenfolge und Auswahl stabil. Die Prüfung nutzt die richtige Zuordnung auch nach dem Mischen. Eine zufällige Reihenfolge kann lokal Wiederholungen enthalten; die ausgeglichene Gesamtverteilung verhindert systematische Häufungen.
+
+## Quizduell Olymp: Auftrag und Datenvertrag
+
+Erfrage oder übernimm Fach, Zielgruppe, Lernstand, behandelte Themen, Titel und Kennung wie bei Jeopardy. Erstelle **8 bis 20 Kategorien mit genau 3 Fragen je Kategorie**. Standard sind 8 Kategorien. Der Vorrat garantiert in allen sechs Runden drei noch ungespielte Kategorien zur Wahl; gespielt werden 18 Fragen aus sechs unterschiedlichen Kategorien. Nicht gewählte Kategorien bleiben im Vorrat. Olymp und Team wählen abwechselnd, der Olymp beginnt. Pro Frage antwortet erst der Olymp verdeckt, dann das Team. Richtig gibt jeder Seite einen Punkt, falsch null. Nach gemeinsamer Auflösung bleiben richtige Antwort und Erklärung bis zum Weiterklicken sichtbar.
+
+`teams` enthält genau zwei Namen: zuerst Herausforderer, dann Olymp. Alle Hauptrundenfragen haben vier unterschiedliche Optionen und **genau eine richtige Antwort**. `answer` entspricht exakt dem Text der richtigen Option. Jede Frage benötigt eine lernendengerechte `explanation`. Optionales `level` bezeichnet den Schwierigkeits- oder Jahrgangsbereich. Im fertigen Spiel gibt es keinen Inhaltseditor: Änderungen erfolgen am JSON und werden neu gebaut. Es gibt hier keine Jeopardy-Punktekarten, Minuspunkte, zusätzlichen Teams oder optionalen Jeopardy-Timer. Keine solchen Felder erzeugen.
+
+Erstelle zusätzlich **37 bis 200 unterschiedliche `finalQuestions`** (Standard: 37). Bis zu 18 Punkte pro Seite ergeben maximal 36 Finalfragen; eine weitere Frage wird für den Gleichstand benötigt. Das Finale verwendet verschiedene Fragen ohne Wiederholung. Der Finaltimer steht standardmäßig auf fünf Sekunden und lässt sich im Spiel auf ganze 5–600 Sekunden einstellen; keine Timerfelder in den JSON-Aufgabensatz aufnehmen. Eine Finalfrage verlangt eine kurze mündliche Antwort, die innerhalb der vorgesehenen Zeit realistisch möglich ist (ohne andere Vorgabe: fünf Sekunden). Lange Rechnungen oder umfangreiche Formelabfragen gehören in die Hauptrunde. Haupt- und Finalfragen dürfen einander keine Antworten vorwegnehmen. Die Seite mit weniger Punkten beginnt, bei Gleichstand die Herausforderer. Die Spielleitung bewertet die rechtzeitig mündlich gegebene Antwort nach Ablauf oder bewusstem Aufdecken; Zeitablauf allein behauptet keine automatische Prüfung einer gesprochenen Antwort. Bei Gleichstand gibt es eine Stichfrage mit zunächst verborgener Lösung; antwortet niemand richtig, ist ein Unentschieden möglich.
+
+Strukturbeispiel, **noch kein vollständiger Aufgabensatz**:
+
+```json
+{
+  "schemaVersion": 1,
+  "gameType": "quizduell",
+  "id": "quizduell-mathe-meine-klasse",
+  "title": "Quizduell Olymp · Mathematik",
+  "teams": ["Kurs", "Olymp"],
+  "categories": [{
+    "title": "Kopfrechnen",
+    "questions": [{
+      "id": "kopfrechnen-1",
+      "question": "Wie viel sind 15 % von 240?",
+      "answer": "36",
+      "explanation": "10 % sind 24 und 5 % sind 12. Zusammen ergibt das 36.",
+      "response": {"type": "choice", "options": ["30", "40", "36", "24"], "correct": [2]}
+    }]
+  }],
+  "finalQuestions": [{
+    "id": "finale-1",
+    "question": "Wie groß ist 7 · 8?",
+    "answer": "56",
+    "explanation": "7 · 8 = 56."
+  }]
+}
+```
+
+Vor Ausgabe auf mindestens 8 Kategorien mit je 3 Fragen und mindestens 37 Finalfragen ergänzen. IDs müssen über Haupt- und Finalfragen hinweg eindeutig sein. Die Textlängen und ID-Konventionen entsprechen Jeopardy. Finalfragen enthalten keine `response`. Unterstützte Fragenfelder: `id`, `question`, `answer`, `explanation`, optional `level`, `questionMath`, `answerMath`; nur in der Hauptrunde zusätzlich `response`. Keine `teacherNote`, `image`, `table`, HTML-, LaTeX- oder anderen nicht unterstützten Felder ausgeben. Validierung: `framework/quizduell-engine.js`. Vollständiges Beispiel: `content/quizduell-olymp-mathe-8-13.json`.
+
+### Mathematik im Quizduell lesbar setzen
+
+Matrizen nicht als `[[1,2],[3,4]]` in Fragetext schreiben. Integrale nicht als zusammengeschobene Textfolgen wie `∫₀² x dx` schreiben. Verwende `questionMath` für die mathematische Angabe und bei Bedarf `answerMath` für eine erst nach Abgabe sichtbare mathematische Lösung. Die Engine setzt diese Felder mit eingebautem MathML offline; externe Renderer werden nicht benötigt. Der Fragetext bleibt beispielsweise „Was ist die Determinante dieser Matrix?“ oder „Berechne das bestimmte Integral.“
+
+```json
+"questionMath": {"type": "matrix", "rows": [["1", "2"], ["3", "4"]]}
+```
+
+```json
+"questionMath": {"type": "integral", "lower": "0", "upper": "2", "integrand": "x", "variable": "x"}
+```
+
+Matrix: 1 bis 4 Zeilen und Spalten, gleich viele Textzellen pro Zeile. Integral: `integrand` als Text, `variable` als einzelner Buchstabe; `lower` und `upper` entweder beide als Text oder beide weglassen. Alle Teiltexte höchstens 80 Zeichen. In den Teiltexten sind einfache Unicode-Ausdrücke wie `x²` erlaubt, kein HTML und kein LaTeX. Bei komplizierteren Formeln die Aufgabe auf unterstützte Darstellung zuschneiden. `answer` und `explanation` bleiben immer Pflicht. **Niemals die Lösung in `questionMath` eintragen.**
+
+## Jeopardy-Daten und Spielregeln
+
+Die folgenden Jeopardy-spezifischen Abschnitte gelten nur für `gameType: "jeopardy"` bzw. JSON ohne `gameType`. Für Quizduell stattdessen den obigen Datenvertrag verwenden.
 
 Du bist eine erfahrene Lehrkraft und erstellst fachlich korrekte, altersgerechte Lernaufgaben. Verwende das mitgelieferte Jeopardy-Framework. Erfinde die Spieloberfläche oder Spiellogik nicht bei jedem Auftrag neu.
 
@@ -142,7 +211,7 @@ Formuliere sinnvolle, plausible Ablenkantworten ohne Tricks. Auswahlaufgaben nur
 
 Ist kein Dateizugriff möglich, liefere den vollständigen validen JSON-Aufgabensatz. Die Lehrkraft fügt ihn in `Spiel-Erstellen.html` ein und lädt das fertige Spiel herunter. Alternativ kann ein Agent `node build.js` nutzen. Keine neue Engine aus dem Gedächtnis erfinden.
 
-Wenn ausdrücklich eine fertige HTML-Datei verlangt wird und eine bereits gebaute Framework-HTML vollständig vorliegt, ersetze ausschließlich den Inhalt von `<script id="game-data" type="application/json">`. Ersetze darin jedes literale `<` durch `\u003c`, damit beispielsweise `</script>` die Einbettung nicht beendet. Alle anderen Teile unverändert übernehmen. Ohne vollständig vorliegende Vorlage keine angeblich framework-identische HTML behaupten; dann JSON liefern und die fehlende Vorlage benennen.
+Wenn ausdrücklich eine fertige HTML-Datei verlangt wird und eine bereits gebaute Framework-HTML **desselben Spieltyps** vollständig vorliegt, ersetze ausschließlich den Inhalt von `<script id="game-data" type="application/json">`. Ersetze darin jedes literale `<` durch `\u003c`, damit beispielsweise `</script>` die Einbettung nicht beendet. Alle anderen Teile unverändert übernehmen. Ohne vollständig vorliegende passende Vorlage keine angeblich framework-identische HTML behaupten; dann JSON liefern und die fehlende Vorlage benennen.
 
 ## Technische Leitplanken
 

@@ -593,7 +593,38 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     }
   ]
 }</script>
-<script>/* Jeopardy Engine 1.0 — pure rules, shared by browser and Node tests. */
+<script>/* Random display order; original indices remain the scoring contract. */
+(function(root){
+  'use strict';
+  function shuffle(items,random=Math.random){
+    const out=items.slice();
+    for(let i=out.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}
+    return out;
+  }
+  function prepare(questions,random=Math.random){
+    const orders=new Map(),groups=new Map();
+    for(const q of questions){
+      const r=q.response;if(!r||r.type!=='choice')continue;
+      if(r.correct.length!==1){orders.set(q.id,shuffle(r.options.map((_,i)=>i),random));continue;}
+      const n=r.options.length;if(!groups.has(n))groups.set(n,[]);groups.get(n).push(q);
+    }
+    for(const [n,group] of groups){
+      // Randomized balanced positions: no fixed ABCD cycle or dominant letter.
+      const offset=shuffle(Array.from({length:n},(_,i)=>i),random);
+      const targets=shuffle(group.map((_,i)=>offset[i%n]),random);
+      group.forEach((q,i)=>{
+        const correct=q.response.correct[0];
+        const order=shuffle(q.response.options.map((_,j)=>j).filter(j=>j!==correct),random);
+        order.splice(targets[i],0,correct);orders.set(q.id,order);
+      });
+    }
+    return orders;
+  }
+  const api={shuffle,prepare};
+  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.ChoiceOrder=api;
+})(typeof globalThis!=='undefined'?globalThis:window);
+
+/* Jeopardy Engine 1.0 — pure rules, shared by browser and Node tests. */
 (function (root) {
   'use strict';
   const copy = x => JSON.parse(JSON.stringify(x));
@@ -601,6 +632,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     const errors = [];
     const str = (v, path, max) => { if (typeof v !== 'string' || !v.trim() || v.length > max) errors.push(path + ': Text erforderlich (max. ' + max + ' Zeichen).'); };
     if (!d || typeof d !== 'object') throw new Error('Spieldaten fehlen.');
+    if (d.gameType !== undefined && d.gameType !== 'jeopardy') errors.push('gameType muss jeopardy sein. Quizduell benötigt die Quizduell-Validierung.');
     if (d.schemaVersion !== 1) errors.push('schemaVersion muss 1 sein.');
     str(d.id, 'id', 80); str(d.title, 'title', 100);
     if (typeof d.id === 'string' && !/^[a-z0-9-]+$/.test(d.id)) errors.push('id: nur a–z, 0–9 und Bindestriche.');
@@ -745,6 +777,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   document.addEventListener('visibilitychange', () => { if (document.hidden) stopMusic(); });
   window.addEventListener('pagehide', () => stopMusic());
   const all = E.questions(data);
+  let choiceOrders = window.ChoiceOrder.prepare(all);
   // Exact content identity prevents stale state when a question or rule changes.
   const signature = JSON.stringify(data);
   const storageKey = 'jeopardy-v2-' + data.id;
@@ -932,7 +965,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
     if(type==='choice') {
       $('choice-help').textContent=current.response.correct.length===1?'Wählt eine Antwort.':'Wählt alle passenden Antworten.';
       $('choices').textContent='';
-      current.response.options.forEach((text,i)=>{const b=button(text,()=>{choices=current.response.correct.length===1?[i]:choices.includes(i)?choices.filter(x=>x!==i):choices.concat(i);renderQuestion();$('choices').children[i].focus();});b.setAttribute('aria-pressed',String(choices.includes(i)));$('choices').appendChild(b);});
+      choiceOrders.get(current.id).forEach((i,position)=>{const b=button(current.response.options[i],()=>{choices=current.response.correct.length===1?[i]:choices.includes(i)?choices.filter(x=>x!==i):choices.concat(i);renderQuestion();$('choices').children[position].focus();});b.dataset.optionIndex=i;b.setAttribute('aria-pressed',String(choices.includes(i)));$('choices').appendChild(b);});
     }
     $('submit-response').disabled=type==='number'?E.canonicalNumber(inputValue)===null:!choices.length;
     $('correct').textContent = state.names[selected] + ' · Richtig';
@@ -1039,7 +1072,7 @@ h2{font-size:clamp(26px,3.5vw,54px);line-height:1.2;white-space:pre-line;overflo
   $('undo').addEventListener('click', () => { if (view || !state.history.length) return; state.history.pop(); save(); render(); if (savedOK) say('Letzte abgeschlossene Karte zurückgenommen.'); });
   $('reset-open').addEventListener('click', () => { $('meta').textContent = 'NEUES SPIEL'; show('reset', 'Spiel zurücksetzen?', 'reset-cancel'); });
   $('reset-cancel').addEventListener('click', menu);
-  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names, state.scoring); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
+  $('reset-confirm').addEventListener('click', () => { state = E.fresh(data, state.names, state.scoring); choiceOrders = window.ChoiceOrder.prepare(all); selected = 0; save(); render(); close(); if (savedOK) say('Neues Spiel gestartet.'); });
   // No backdrop close: accidental touches on large classroom screens are common.
   document.addEventListener('keydown', e => {
     if (e.repeat && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); return; }

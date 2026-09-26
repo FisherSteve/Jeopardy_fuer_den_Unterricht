@@ -1,5 +1,19 @@
 # Wiederverwendbares Unterrichts-Jeopardy
 
+## Zweiter Spieltyp: Quizduell Olymp
+
+`gameType` wählt den Datenvertrag und die wiederverwendbare Engine. Ohne Feld oder mit `jeopardy` gilt der bisherige Vertrag. `quizduell` verwendet `framework/quizduell-{engine.js,app.js,style.css,template.html}`. Andere Werte werden abgelehnt. `build.js` und der browserbasierte Ersteller verwenden dieselben Validatoren und Vorlagen. Neue Inhalte bleiben ausschließlich `content/*.json`; keine neuen Engines je Fach oder Klasse. Beide Formate bauen nach `spiele/<id>/index.html` und erscheinen auf der gemeinsamen Startseite.
+
+Quizduell verlangt zwei Seiten, 8–20 Kategorien mit exakt drei Fragen und 37–200 Finalfragen. Acht Kategorien garantieren auch in Runde sechs drei Angebote. Die Hauptrunde vergibt pro Seite 0/1 Punkt; Punkte werden zu Finalfragen. Ein gemeinsamer gemischter Finalvorrat verhindert wiederholte Fragen zwischen Seiten und Stichfrage. Lösungen und öffentliche Erklärungen werden erst nach Abgabe bzw. Aufdecken gezeigt. Der Finaltimer startet mit fünf Sekunden, ist vor Spielbeginn und vor dem Finale auf ganze 5–600 Sekunden einstellbar und bleibt bei einer neuen Partie erhalten. Er verwendet eine Deadline und pausiert bei verborgenem Tab. Die Bewertung mündlicher Antworten erfolgt manuell, auch nach Ablauf. Die Partie wird aktuell nicht persistiert. Das Touch-Eingabedialog ist eine organisatorische Verdeckung, keine Geheimhaltung auf einem gemeinsamen Display. Native Dialoge führen den Fokus zurück, bei Ansichtswechsel fokussiert die App die Spielansicht. Wiederholte Tasten und phasenfremde Wertungen werden ignoriert.
+
+`framework/choice-order.js` ist beiden Spieltypen gemeinsam: Fisher-Yates mischt Optionen und die Zuteilung ausgewogener richtiger Positionen pro Optionszahl. Bei Mehrfachauswahl werden alle Optionen ohne Änderung der korrekten Indexmenge permutiert. Jeopardy behält Originalindizes und unveränderte Daten für Inhaltsidentität, Bewertung, Rückgängig und gespeicherte Resultate; das DOM-Attribut `data-option-index` benennt den ursprünglichen Index. Der Antwortplatz wird beim Start/Reset bzw. Neuladen neu gemischt und bleibt innerhalb der Frage stabil. Quizduell ordnet die richtige Option beim Erzeugen des Partievorrats um. Kein kryptografischer Zufall notwendig; keine feste ABCD-Rotation.
+
+`framework/math.js` validiert und rendert optionale Quizduell-Felder `questionMath`/`answerMath`: kleine rechteckige Matrizen und bestimmte/unbestimmte Integrale. MathML wird aus streng definierten Strukturen und escapten Texten erzeugt. Keine Ausführung von HTML oder TeX, kein CDN. Formeln besitzen beschreibende `aria-label`s. Unbekannte Mathetypen und zusätzliche Quizduell-Felder werden abgelehnt. Die Anleitung mit JSON-Beispielen steht in `Framework-Prompt.md`.
+
+Zusätzliche Prüfungen: `npm test` umfasst beide Engines, Zufallszuordnung und Mathefelder; `node tests/quizduell.cjs` prüft echte Spielabläufe, Touch/Tastatur, Finale, Stichfrage, Mathedarstellung und beide Downloads. Die Browser-Skripte akzeptieren weiterhin `PLAYWRIGHT_MODULE`, `CHROMIUM_EXECUTABLE` und `BROWSER_ENGINES`.
+
+Mit `QUIZDUELL_CONTENT=quizduell-mathematik-ende-klasse-8-nrw` bzw. `quizduell-englisch-ende-klasse-5-nrw` prüft dasselbe Quizduell-Browserskript die neuen Inhaltssätze. Ohne Variable wird der übernommene Mathematik-Satz Klasse 8–13 verwendet.
+
 Die Spiele werden aus einer gemeinsamen Engine und separaten Aufgabensätzen gebaut. Für ein neues Thema werden nur Inhalte erstellt; die Bedienung bleibt gleich.
 
 ## Direkt spielen

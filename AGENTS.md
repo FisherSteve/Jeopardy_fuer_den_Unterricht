@@ -1,5 +1,9 @@
 # Arbeit an diesem Jeopardy-Framework
 
+- Zwei Spieltypen: fehlendes `gameType` oder `jeopardy` verwendet die bisherigen Jeopardy-Regeln unten. `gameType: quizduell` verwendet die eigene wiederverwendbare Quizduell-Engine: 8–20 Kategorien à 3 Auswahlfragen, 37–200 Finalfragen, zwei Seiten, sechs Runden und Fünf-Sekunden-Finale. Die Jeopardy-spezifischen Karten-, Team-, Musik- und Timerregeln gelten nur für Jeopardy. JSON, Build, Ersteller und gemeinsame Framework-Prompt bedienen beide Spielarten.
+- Für beide Spieltypen richtige Antwortpositionen zufällig und möglichst ausgeglichen verteilen, keine bevorzugten Buchstaben oder feste ABCD-Zyklen. Nach Mischen Lösungsindizes anpassen. Laufzeit-Mischung und Indexzuordnung erhalten; keine positionsabhängigen Antworttexte.
+- Quizduell-Mathematik: Matrizen und Integrale über validierte questionMath/answerMath-Felder darstellen, kein rohes HTML/TeX oder externe Renderer. Lösungen erst nach Abgabe/Aufdecken, auch in der Stichfrage.
+
 - Zuerst README.md und Framework-Prompt.md lesen.
 - Neue Unterrichtsthemen ausschließlich als content/*.json anlegen und mit node build.js bauen. Engine und Oberfläche nicht pro Klasse duplizieren oder neu erzeugen.
 - Verbindliche Nutzerentscheidungen: standardmäßig kein Punktabzug, optionaler Punktabzug mit wählbarer Untergrenze 0 oder negativen Punkteständen; automatische zyklische Teamreihenfolge; klar sichtbares aktives Team mit kurzer optionaler Animation; Lehrkräftehinweise standardmäßig verborgen; Touch zuerst, Tastatur weiter unterstützen.

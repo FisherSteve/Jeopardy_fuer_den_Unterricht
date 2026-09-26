@@ -1,0 +1,1212 @@
+{
+  "schemaVersion": 1,
+  "gameType": "quizduell",
+  "id": "quizduell-olymp-mathe-8-13",
+  "title": "Quizduell Olymp · Mathematik · Klasse 8–13",
+  "teams": [
+    "Mathe-Kurs",
+    "Olymp"
+  ],
+  "categories": [
+    {
+      "title": "Terme & Gleichungen · 8–9",
+      "questions": [
+        {
+          "id": "runde-1-1",
+          "question": "Löse die Gleichung: 3(x − 2) = 15",
+          "answer": "x = 7",
+          "explanation": "Zuerst durch 3 teilen: x − 2 = 5. Dann 2 addieren: x = 7.",
+          "level": "Klasse 8–9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x = 5",
+              "x = 7",
+              "x = 9",
+              "x = 11"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-1-2",
+          "question": "Vereinfache: 2a + 5a − 3",
+          "answer": "7a − 3",
+          "explanation": "Gleichartige Terme zusammenfassen: 2a + 5a = 7a. Die −3 bleibt stehen.",
+          "level": "Klasse 8–9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "7a − 3",
+              "7a + 3",
+              "10a − 3",
+              "7a − 6"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-1-3",
+          "question": "Für x + y = 10 und x − y = 4 gilt …",
+          "answer": "x = 7, y = 3",
+          "explanation": "Addition beider Gleichungen ergibt 2x = 14. Damit ist x = 7 und y = 3.",
+          "level": "Klasse 9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x = 6, y = 4",
+              "x = 7, y = 3",
+              "x = 8, y = 2",
+              "x = 5, y = 5"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Prozent & Zins · 8–9",
+      "questions": [
+        {
+          "id": "runde-2-1",
+          "question": "Wie viel sind 15 % von 240?",
+          "answer": "36",
+          "explanation": "10 % sind 24 und 5 % sind 12. Zusammen sind das 36.",
+          "level": "Klasse 8",
+          "response": {
+            "type": "choice",
+            "options": [
+              "36",
+              "30",
+              "24",
+              "40"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-2-2",
+          "question": "Ein Preis steigt von 80 € auf 92 €. Um wie viel Prozent ist er gestiegen?",
+          "answer": "15 %",
+          "explanation": "Der Preis steigt um 12 €. Bezogen auf 80 € sind das 12 / 80 = 0,15 = 15 %.",
+          "level": "Klasse 8–9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "10 %",
+              "15 %",
+              "12 %",
+              "20 %"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-2-3",
+          "question": "1.200 € werden ein Jahr lang mit 3 % verzinst. Wie hoch ist das Kapital danach?",
+          "answer": "1.236 €",
+          "explanation": "3 % von 1.200 € sind 36 €. Mit den Zinsen beträgt das Kapital 1.236 €.",
+          "level": "Klasse 9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "1.203 €",
+              "1.236 €",
+              "1.230 €",
+              "1.260 €"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Geometrie · 8–10",
+      "questions": [
+        {
+          "id": "runde-3-1",
+          "question": "Ein Dreieck hat Grundseite 8 cm und Höhe 5 cm. Wie groß ist seine Fläche?",
+          "answer": "20 cm²",
+          "explanation": "Die Dreiecksfläche ist Grundseite mal Höhe geteilt durch 2: 8 · 5 / 2 = 20 cm².",
+          "level": "Klasse 8",
+          "response": {
+            "type": "choice",
+            "options": [
+              "40 cm²",
+              "26 cm²",
+              "32 cm²",
+              "20 cm²"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-3-2",
+          "question": "Wie lautet der Umfang eines Kreises mit Radius r = 4?",
+          "answer": "8π",
+          "explanation": "Der Kreisumfang ist 2πr. Mit r = 4 ergibt das 8π.",
+          "level": "Klasse 8–9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "4π",
+              "16π",
+              "8π",
+              "32π"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-3-3",
+          "question": "Ein rechtwinkliges Dreieck hat Katheten 6 und 8. Wie lang ist die Hypotenuse?",
+          "answer": "10",
+          "explanation": "Nach Pythagoras gilt c² = 6² + 8² = 100. Also ist c = 10.",
+          "level": "Klasse 9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "10",
+              "9",
+              "12",
+              "14"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Funktionen · 9–11",
+      "questions": [
+        {
+          "id": "runde-4-1",
+          "question": "Für f(x) = 2x − 3: Wie groß ist f(4)?",
+          "answer": "5",
+          "explanation": "Setze 4 für x ein: 2 · 4 − 3 = 5.",
+          "level": "Klasse 9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "3",
+              "11",
+              "8",
+              "5"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-4-2",
+          "question": "Wo liegt die Nullstelle von f(x) = 3x − 12?",
+          "answer": "x = 4",
+          "explanation": "An der Nullstelle ist 3x − 12 = 0. Daraus folgt x = 4.",
+          "level": "Klasse 9–10",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x = 4",
+              "x = 3",
+              "x = 6",
+              "x = 12"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-4-3",
+          "question": "Welchen Scheitelpunkt hat f(x) = (x − 2)² − 5?",
+          "answer": "S(2|−5)",
+          "explanation": "In der Scheitelpunktform (x − h)² + k liegt der Scheitel bei (h|k), hier also (2|−5).",
+          "level": "Klasse 10–11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "S(−2|−5)",
+              "S(2|5)",
+              "S(−5|2)",
+              "S(2|−5)"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Potenzen & Logarithmen · 9–11",
+      "questions": [
+        {
+          "id": "runde-5-1",
+          "question": "Vereinfache: 2⁵ · 2³",
+          "answer": "2⁸",
+          "explanation": "Bei gleicher Basis werden beim Multiplizieren die Exponenten addiert: 5 + 3 = 8.",
+          "level": "Klasse 9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2²",
+              "4⁸",
+              "2¹⁵",
+              "2⁸"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-5-2",
+          "question": "Wie groß ist √196?",
+          "answer": "14",
+          "explanation": "14 · 14 = 196. Die Quadratwurzel ist die nichtnegative Zahl 14.",
+          "level": "Klasse 9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "12",
+              "13",
+              "14",
+              "16"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-5-3",
+          "question": "Wie groß ist log₁₀(1000)?",
+          "answer": "3",
+          "explanation": "10³ = 1000. Der Logarithmus zur Basis 10 ist deshalb 3.",
+          "level": "Klasse 10–11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2",
+              "10",
+              "3",
+              "100"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Trigonometrie · 9–11",
+      "questions": [
+        {
+          "id": "runde-6-1",
+          "question": "Im rechtwinkligen Dreieck gilt für sin(α) …",
+          "answer": "Gegenkathete / Hypotenuse",
+          "explanation": "Der Sinus ist das Verhältnis von Gegenkathete zu Hypotenuse.",
+          "level": "Klasse 9–10",
+          "response": {
+            "type": "choice",
+            "options": [
+              "Ankathete / Hypotenuse",
+              "Hypotenuse / Gegenkathete",
+              "Gegenkathete / Ankathete",
+              "Gegenkathete / Hypotenuse"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-6-2",
+          "question": "Wie groß ist tan(45°)?",
+          "answer": "1",
+          "explanation": "Bei 45° sind die beiden Katheten gleich lang. Ihr Verhältnis ist 1.",
+          "level": "Klasse 10",
+          "response": {
+            "type": "choice",
+            "options": [
+              "0",
+              "1/2",
+              "√2",
+              "1"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-6-3",
+          "question": "Ein rechtwinkliges Dreieck hat Hypotenuse 10 cm und einen Winkel von 30°. Wie lang ist die Gegenkathete zu 30°?",
+          "answer": "5 cm",
+          "explanation": "sin(30°) = 0,5. Die Gegenkathete ist deshalb 10 · 0,5 = 5 cm lang.",
+          "level": "Klasse 10–11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2,5 cm",
+              "10 cm",
+              "5√2 cm",
+              "5 cm"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Stochastik · 9–12",
+      "questions": [
+        {
+          "id": "runde-7-1",
+          "question": "Wie groß ist beim fairen Würfel die Wahrscheinlichkeit für eine gerade Zahl?",
+          "answer": "1/2",
+          "explanation": "Die Zahlen 2, 4 und 6 sind gerade. Drei von sechs gleich wahrscheinlichen Ergebnissen ergeben 1/2.",
+          "level": "Klasse 9",
+          "response": {
+            "type": "choice",
+            "options": [
+              "1/6",
+              "1/3",
+              "1/2",
+              "2/3"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-7-2",
+          "question": "Eine faire Münze wird zweimal geworfen. Wie groß ist P(Kopf, Kopf)?",
+          "answer": "1/4",
+          "explanation": "Die unabhängigen Würfe haben jeweils die Wahrscheinlichkeit 1/2 für Kopf. Das Produkt ist 1/4.",
+          "level": "Klasse 9–10",
+          "response": {
+            "type": "choice",
+            "options": [
+              "1/2",
+              "1/4",
+              "1/3",
+              "1/8"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-7-3",
+          "question": "X ~ B(5; 0,5). Welchen Erwartungswert hat X?",
+          "answer": "2,5",
+          "explanation": "Für eine Binomialverteilung gilt E(X) = n · p. Hier ist das 5 · 0,5 = 2,5.",
+          "level": "Klasse 11–12",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2,5",
+              "2",
+              "1",
+              "5"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Folgen & Reihen · 10–12",
+      "questions": [
+        {
+          "id": "runde-8-1",
+          "question": "Wie geht die arithmetische Folge 4, 7, 10, … weiter?",
+          "answer": "13",
+          "explanation": "Die Differenz aufeinanderfolgender Glieder ist 3. Daher folgt auf 10 die Zahl 13.",
+          "level": "Klasse 10",
+          "response": {
+            "type": "choice",
+            "options": [
+              "13",
+              "12",
+              "11",
+              "14"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-8-2",
+          "question": "Wie geht die geometrische Folge 3, 6, 12, … weiter?",
+          "answer": "24",
+          "explanation": "Jedes Glied wird verdoppelt. Auf 12 folgt deshalb 24.",
+          "level": "Klasse 10–11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "15",
+              "18",
+              "24",
+              "21"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-8-3",
+          "question": "Wie groß ist 1 + 2 + 3 + … + 10?",
+          "answer": "55",
+          "explanation": "Die Summenformel n(n + 1)/2 liefert 10 · 11 / 2 = 55.",
+          "level": "Klasse 10–12",
+          "response": {
+            "type": "choice",
+            "options": [
+              "45",
+              "55",
+              "50",
+              "60"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Differentialrechnung · 11–13",
+      "questions": [
+        {
+          "id": "runde-9-1",
+          "question": "Wie lautet die Ableitung von f(x) = x³?",
+          "answer": "3x²",
+          "explanation": "Die Potenzregel lautet (xⁿ)′ = n · xⁿ⁻¹. Für n = 3 ergibt das 3x².",
+          "level": "Klasse 11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x²",
+              "2x²",
+              "3x²",
+              "3x"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-9-2",
+          "question": "f(x) = x² − 4x. Wie groß ist die Steigung bei x = 3?",
+          "answer": "2",
+          "explanation": "Die Ableitung lautet f′(x) = 2x − 4. Bei x = 3 ist sie 2.",
+          "level": "Klasse 11–12",
+          "response": {
+            "type": "choice",
+            "options": [
+              "−2",
+              "0",
+              "2",
+              "6"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-9-3",
+          "question": "Welche notwendige Bedingung gilt an einer inneren Extremstelle x₀ einer differenzierbaren Funktion?",
+          "answer": "f′(x₀)=0",
+          "explanation": "An einer inneren Extremstelle einer differenzierbaren Funktion ist die Tangente waagerecht. Deshalb gilt f′(x₀) = 0.",
+          "level": "Klasse 11–13",
+          "response": {
+            "type": "choice",
+            "options": [
+              "f′(x₀)=0",
+              "f(x₀)=0",
+              "f″(x₀)=0",
+              "f′(x₀)=1"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Integralrechnung · 11–13",
+      "questions": [
+        {
+          "id": "runde-10-1",
+          "question": "Berechne das bestimmte Integral.",
+          "answer": "2",
+          "explanation": "Eine Stammfunktion ist x²/2. Die Differenz der Werte bei 2 und 0 ist 2.",
+          "level": "Klasse 11–12",
+          "response": {
+            "type": "choice",
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "correct": [
+              1
+            ]
+          },
+          "questionMath": {
+            "type": "integral",
+            "lower": "0",
+            "upper": "2",
+            "integrand": "x",
+            "variable": "x"
+          }
+        },
+        {
+          "id": "runde-10-2",
+          "question": "Welche Funktion ist eine Stammfunktion von f(x) = 3x²?",
+          "answer": "x³ + C",
+          "explanation": "Die Ableitung von x³ + C ist 3x², da die Konstante beim Ableiten entfällt.",
+          "level": "Klasse 11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "3x³ + C",
+              "x³ + C",
+              "6x + C",
+              "x² + C"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "runde-10-3",
+          "question": "Welche Fläche liegt unter f(x)=2 im Intervall [0;5]?",
+          "answer": "10",
+          "explanation": "Das Rechteck hat Breite 5 und Höhe 2. Seine Fläche beträgt 10 Flächeneinheiten.",
+          "level": "Klasse 11–12",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2",
+              "10",
+              "7",
+              "5"
+            ],
+            "correct": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vektoren · 11–13",
+      "questions": [
+        {
+          "id": "runde-11-1",
+          "question": "Berechne (2|−1) + (3|4).",
+          "answer": "(5|3)",
+          "explanation": "Vektoren werden komponentenweise addiert: 2 + 3 = 5 und −1 + 4 = 3.",
+          "level": "Klasse 11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "(6|−4)",
+              "(5|−5)",
+              "(1|3)",
+              "(5|3)"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-11-2",
+          "question": "Wie groß ist das Skalarprodukt (1|2) · (3|−1)?",
+          "answer": "1",
+          "explanation": "Das Skalarprodukt ist 1 · 3 + 2 · (−1) = 1.",
+          "level": "Klasse 11–12",
+          "response": {
+            "type": "choice",
+            "options": [
+              "−1",
+              "0",
+              "1",
+              "5"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "runde-11-3",
+          "question": "A(2|4) und B(6|10). Welchen Mittelpunkt hat AB?",
+          "answer": "M(4|7)",
+          "explanation": "Die Koordinaten des Mittelpunkts sind die Mittelwerte: (2 + 6)/2 = 4 und (4 + 10)/2 = 7.",
+          "level": "Klasse 11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "M(3|7)",
+              "M(4|6)",
+              "M(4|7)",
+              "M(8|14)"
+            ],
+            "correct": [
+              2
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Oberstufen-Mix · 11–13",
+      "questions": [
+        {
+          "id": "runde-12-1",
+          "question": "Löse 2ˣ = 8.",
+          "answer": "x = 3",
+          "explanation": "2³ = 8. Daher ist der gesuchte Exponent x = 3.",
+          "level": "Klasse 10–11",
+          "response": {
+            "type": "choice",
+            "options": [
+              "x = 2",
+              "x = 8",
+              "x = 4",
+              "x = 3"
+            ],
+            "correct": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "runde-12-2",
+          "question": "Wie lautet die Ableitung von f(x) = e^(2x)?",
+          "answer": "2e^(2x)",
+          "explanation": "Die Kettenregel ergänzt die Ableitung des inneren Terms 2x als Faktor 2. Das Ergebnis ist 2e^(2x).",
+          "level": "Klasse 12–13",
+          "response": {
+            "type": "choice",
+            "options": [
+              "2e^(2x)",
+              "e^(2x)",
+              "2xe^(2x)",
+              "eˣ"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "runde-12-3",
+          "question": "Welchen Grenzwert hat die Folge aₙ = 1/n für n → ∞?",
+          "answer": "0",
+          "explanation": "Mit wachsendem positivem n wird 1/n beliebig klein. Der Grenzwert ist 0.",
+          "level": "Klasse 11–13",
+          "response": {
+            "type": "choice",
+            "options": [
+              "0",
+              "−∞",
+              "1",
+              "∞"
+            ],
+            "correct": [
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "finalQuestions": [
+    {
+      "id": "finale-1",
+      "question": "Wie viel sind 18 % von 250?",
+      "answer": "45",
+      "explanation": "0,18 · 250 = 45.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-2",
+      "question": "Löse: 5x − 7 = 18.",
+      "answer": "x = 5",
+      "explanation": "Addiere 7 und teile durch 5: x = 25/5 = 5.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-3",
+      "question": "Wie groß ist 3² + 4²?",
+      "answer": "25",
+      "explanation": "9 + 16 = 25.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-4",
+      "question": "Wie lautet die Quadratwurzel aus 225?",
+      "answer": "15",
+      "explanation": "15 · 15 = 225.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-5",
+      "question": "Ein Dreieck hat Grundseite 12 und Höhe 7. Wie groß ist die Fläche?",
+      "answer": "42",
+      "explanation": "Die Dreiecksfläche ist 12 · 7 / 2 = 42.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-6",
+      "question": "Wie viel Prozent sind 30 von 120?",
+      "answer": "25 %",
+      "explanation": "30/120 = 1/4 = 25 %.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-7",
+      "question": "Löse: 2(x + 3) = 14.",
+      "answer": "x = 4",
+      "explanation": "Durch 2 teilen und 3 abziehen ergibt x = 4.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-8",
+      "question": "Wie lautet die nächste Zahl: 5, 9, 13, 17, …?",
+      "answer": "21",
+      "explanation": "Die Differenz ist jeweils 4. Auf 17 folgt 21.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-9",
+      "question": "Wie groß ist der Umfang eines Quadrats mit Seitenlänge 6?",
+      "answer": "24",
+      "explanation": "Vier Seiten von je 6 ergeben 24.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-10",
+      "question": "Was ist 0,75 als vollständig gekürzter Bruch?",
+      "answer": "3/4",
+      "explanation": "75/100 lässt sich durch 25 auf 3/4 kürzen.",
+      "level": "8–9"
+    },
+    {
+      "id": "finale-11",
+      "question": "Wie groß ist 2⁶?",
+      "answer": "64",
+      "explanation": "Sechs Faktoren 2 ergeben 64.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-12",
+      "question": "Wo liegt die Nullstelle von f(x)=4x−20?",
+      "answer": "x = 5",
+      "explanation": "4x − 20 = 0 ergibt x = 5.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-13",
+      "question": "Wie groß ist sin(0°)?",
+      "answer": "0",
+      "explanation": "Auf dem Einheitskreis hat der Punkt bei 0° die y-Koordinate 0.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-14",
+      "question": "Wie groß ist tan(0°)?",
+      "answer": "0",
+      "explanation": "tan(0°) = sin(0°)/cos(0°) = 0/1 = 0.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-15",
+      "question": "Ein Kreis hat Radius 3. Wie lautet seine Fläche?",
+      "answer": "9π",
+      "explanation": "Die Kreisfläche ist πr² = π · 3² = 9π.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-16",
+      "question": "Wie groß ist die Summe der Lösungen von x² − 5x + 6 = 0?",
+      "answer": "5",
+      "explanation": "Nach dem Satz von Vieta ist die Summe der Lösungen das Negative des Koeffizienten von x, also 5.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-17",
+      "question": "Wie groß ist log₁₀(100)?",
+      "answer": "2",
+      "explanation": "10² = 100.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-18",
+      "question": "Löse 3ˣ = 27.",
+      "answer": "x = 3",
+      "explanation": "3³ = 27.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-19",
+      "question": "Welchen Scheitelpunkt hat f(x)=(x+1)²−4?",
+      "answer": "S(−1|−4)",
+      "explanation": "Die Scheitelpunktform zeigt h = −1 und k = −4.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-20",
+      "question": "Wie groß ist die Summe der Innenwinkel eines Sechsecks?",
+      "answer": "720°",
+      "explanation": "Vier Dreiecke zerlegen das Sechseck. 4 · 180° = 720°.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-21",
+      "question": "Wie groß ist die Wahrscheinlichkeit für eine 6 beim fairen Würfel?",
+      "answer": "1/6",
+      "explanation": "Eine von sechs gleich wahrscheinlichen Augenzahlen ist die 6.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-22",
+      "question": "Zwei faire Münzen: Wie groß ist die Wahrscheinlichkeit für genau einmal Kopf?",
+      "answer": "1/2",
+      "explanation": "Kopf–Zahl und Zahl–Kopf sind zwei von vier gleich wahrscheinlichen Ergebnissen.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-23",
+      "question": "X ~ B(10; 0,3). Wie groß ist E(X)?",
+      "answer": "3",
+      "explanation": "Bei einer Binomialverteilung ist E(X) = n · p = 10 · 0,3.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-24",
+      "question": "Wie lautet die Ableitung von x⁴?",
+      "answer": "4x³",
+      "explanation": "Die Potenzregel gibt 4x³.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-25",
+      "question": "Wie lautet die Ableitung von sin(x)?",
+      "answer": "cos(x)",
+      "explanation": "Im Bogenmaß ist die Ableitung der Sinusfunktion die Kosinusfunktion.",
+      "level": "11–13"
+    },
+    {
+      "id": "finale-26",
+      "question": "Wie lautet die Ableitung von eˣ?",
+      "answer": "eˣ",
+      "explanation": "Die natürliche Exponentialfunktion ist ihre eigene Ableitung.",
+      "level": "11–13"
+    },
+    {
+      "id": "finale-27",
+      "question": "Wie lautet eine Stammfunktion von 2x?",
+      "answer": "x² + C",
+      "explanation": "Die Ableitung von x² + C ist 2x.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-28",
+      "question": "Berechne das bestimmte Integral.",
+      "answer": "1/3",
+      "explanation": "Mit der Stammfunktion x³/3 ergibt sich 1/3 − 0.",
+      "level": "12–13",
+      "questionMath": {
+        "type": "integral",
+        "lower": "0",
+        "upper": "1",
+        "integrand": "x²",
+        "variable": "x"
+      }
+    },
+    {
+      "id": "finale-29",
+      "question": "Berechne das bestimmte Integral.",
+      "answer": "6",
+      "explanation": "Das Integral der konstanten Funktion 2 über ein Intervall der Länge 3 ist 6.",
+      "level": "11–12",
+      "questionMath": {
+        "type": "integral",
+        "lower": "0",
+        "upper": "3",
+        "integrand": "2",
+        "variable": "x"
+      }
+    },
+    {
+      "id": "finale-30",
+      "question": "f(x)=x². Wie groß ist f′(5)?",
+      "answer": "10",
+      "explanation": "f′(x) = 2x, daher ist f′(5) = 10.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-31",
+      "question": "f(x)=x³−3x. Wie lautet f′(x)?",
+      "answer": "3x² − 3",
+      "explanation": "Die Potenzregel und die Ableitung des linearen Terms liefern 3x² − 3.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-32",
+      "question": "f′(x) = 2x − 6. An welcher Stelle ist die Tangente waagerecht?",
+      "answer": "x = 3",
+      "explanation": "Die Tangente ist bei f′(x) = 0 waagerecht: 2x − 6 = 0 ergibt x = 3.",
+      "level": "11–13"
+    },
+    {
+      "id": "finale-33",
+      "question": "Welche notwendige Bedingung gilt an einer Wendestelle x₀, wenn f zweimal stetig differenzierbar ist?",
+      "answer": "f″(x₀)=0",
+      "explanation": "Bei stetiger zweiter Ableitung verlangt der Krümmungswechsel eine Nullstelle der zweiten Ableitung.",
+      "level": "12–13"
+    },
+    {
+      "id": "finale-34",
+      "question": "Welchen Grenzwert hat die Folge aₙ = 2 + 1/n für n → ∞?",
+      "answer": "2",
+      "explanation": "Der Summand 1/n geht gegen null. Übrig bleibt 2.",
+      "level": "11–13"
+    },
+    {
+      "id": "finale-35",
+      "question": "Wie lautet der Grenzwert von (1 + 1/n)ⁿ für n→∞?",
+      "answer": "e",
+      "explanation": "Diese Folge ist eine Standarddarstellung der Eulerschen Zahl e.",
+      "level": "12–13"
+    },
+    {
+      "id": "finale-36",
+      "question": "Berechne das Skalarprodukt (2|1)·(3|4).",
+      "answer": "10",
+      "explanation": "2 · 3 + 1 · 4 = 10.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-37",
+      "question": "Zwei von null verschiedene Vektoren haben das Skalarprodukt 0. Stehen sie orthogonal oder parallel zueinander?",
+      "answer": "orthogonal",
+      "explanation": "Das Skalarprodukt zweier von null verschiedener Vektoren ist genau bei einem rechten Winkel null.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-38",
+      "question": "Wie lautet der Betrag des Vektors (3|4)?",
+      "answer": "5",
+      "explanation": "Die Länge ist √(3² + 4²) = 5.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-39",
+      "question": "A(0|0), B(6|8): Wie lang ist AB?",
+      "answer": "10",
+      "explanation": "Der Abstand ist √(6² + 8²) = 10.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-40",
+      "question": "A(2|6), B(8|10): Welchen Mittelpunkt hat AB?",
+      "answer": "M(5|8)",
+      "explanation": "Die Mittelwerte der Koordinaten sind 5 und 8.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-41",
+      "question": "Wie groß ist cos(0°)?",
+      "answer": "1",
+      "explanation": "Auf dem Einheitskreis hat der Punkt bei 0° die x-Koordinate 1.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-42",
+      "question": "Wie groß ist sin(90°)?",
+      "answer": "1",
+      "explanation": "Auf dem Einheitskreis hat der Punkt bei 90° die y-Koordinate 1.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-43",
+      "question": "Wie groß ist cos(180°)?",
+      "answer": "−1",
+      "explanation": "Auf dem Einheitskreis hat der Punkt bei 180° die x-Koordinate −1.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-44",
+      "question": "Vereinfache a³·a⁵.",
+      "answer": "a⁸",
+      "explanation": "Bei gleicher Basis werden die Exponenten beim Multiplizieren addiert.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-45",
+      "question": "Vereinfache a⁷/a³ für a≠0.",
+      "answer": "a⁴",
+      "explanation": "Bei gleicher Basis werden beim Dividieren die Exponenten subtrahiert: 7 − 3 = 4.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-46",
+      "question": "Wie groß ist 16^(1/2)?",
+      "answer": "4",
+      "explanation": "Der Exponent 1/2 bedeutet Quadratwurzel. √16 = 4.",
+      "level": "9–10"
+    },
+    {
+      "id": "finale-47",
+      "question": "Löse ln(x)=0.",
+      "answer": "x = 1",
+      "explanation": "ln(1) = 0.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-48",
+      "question": "Löse eˣ=1.",
+      "answer": "x = 0",
+      "explanation": "e⁰ = 1.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-49",
+      "question": "Wie lautet die Produktregel?",
+      "answer": "(fg)′ = f′g + fg′",
+      "explanation": "Einmal wird der erste und einmal der zweite Faktor abgeleitet; die beiden Produkte werden addiert.",
+      "level": "11–13"
+    },
+    {
+      "id": "finale-50",
+      "question": "Wie lautet die Kettenregel für h(x)=f(g(x))?",
+      "answer": "h′(x)=f′(g(x))·g′(x)",
+      "explanation": "Die äußere Ableitung wird an der inneren Funktion ausgewertet und mit der inneren Ableitung multipliziert.",
+      "level": "11–13"
+    },
+    {
+      "id": "finale-51",
+      "question": "Eine arithmetische Folge hat a₁ = 2 und Differenz 5. Wie lautet a₄?",
+      "answer": "17",
+      "explanation": "Vom ersten bis zum vierten Glied sind es drei Schritte: 2 + 3 · 5 = 17.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-52",
+      "question": "Eine geometrische Folge startet 2, 6, 18, … Wie lautet der Quotient q?",
+      "answer": "3",
+      "explanation": "Das Verhältnis aufeinanderfolgender Glieder ist 6/2 = 18/6 = 3.",
+      "level": "10–11"
+    },
+    {
+      "id": "finale-53",
+      "question": "Wie groß ist 1+2+…+20?",
+      "answer": "210",
+      "explanation": "Die Summenformel ergibt 20 · 21 / 2 = 210.",
+      "level": "10–12"
+    },
+    {
+      "id": "finale-54",
+      "question": "Wie groß ist 5! ?",
+      "answer": "120",
+      "explanation": "5! = 5 · 4 · 3 · 2 · 1 = 120.",
+      "level": "10–12"
+    },
+    {
+      "id": "finale-55",
+      "question": "Wie viele ungeordnete Paare lassen sich aus 5 Personen auswählen?",
+      "answer": "10",
+      "explanation": "Ohne Reihenfolge und ohne Zurücklegen gilt 5 · 4 / 2 = 10.",
+      "level": "10–12"
+    },
+    {
+      "id": "finale-56",
+      "question": "Wie groß ist der Erwartungswert eines fairen sechsseitigen Würfels?",
+      "answer": "3,5",
+      "explanation": "Alle Augenzahlen sind gleich wahrscheinlich: (1 + 2 + 3 + 4 + 5 + 6)/6 = 3,5.",
+      "level": "10–12"
+    },
+    {
+      "id": "finale-57",
+      "question": "Wie groß ist die Varianz einer Bernoulli-Verteilung mit p=0,5?",
+      "answer": "0,25",
+      "explanation": "Die Varianz ist p(1 − p) = 0,5 · 0,5 = 0,25.",
+      "level": "11–12"
+    },
+    {
+      "id": "finale-58",
+      "question": "Wie lautet die Normalenform einer Geraden in der Ebene allgemein?",
+      "answer": "n·(x−a)=0",
+      "explanation": "Der Normalenvektor n ist ungleich null und steht senkrecht auf jedem Richtungsvektor x − a der Geraden.",
+      "level": "12–13"
+    },
+    {
+      "id": "finale-59",
+      "question": "Was ist die Determinante dieser Matrix?",
+      "answer": "−2",
+      "explanation": "Für eine 2×2-Matrix gilt ad − bc. Hier ist das 1 · 4 − 2 · 3 = −2.",
+      "level": "12–13",
+      "questionMath": {
+        "type": "matrix",
+        "rows": [
+          [
+            "1",
+            "2"
+          ],
+          [
+            "3",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "finale-60",
+      "question": "Wie groß ist i² in den komplexen Zahlen?",
+      "answer": "−1",
+      "explanation": "Die imaginäre Einheit i ist durch i² = −1 definiert.",
+      "level": "13"
+    }
+  ]
+}
