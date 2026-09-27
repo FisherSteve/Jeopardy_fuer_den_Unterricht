@@ -134,8 +134,10 @@ button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:4
 #secretDialog [data-secret]{-webkit-tap-highlight-color:transparent;transition:none;user-select:none;-webkit-user-select:none}
 #secretDialog [data-secret]:hover,#secretDialog [data-secret]:active{transform:none;filter:none}
 #secretDialog.pointer-input [data-secret]:focus{outline:none}
-.answer.conceal-glow .letter{background:#304d83;border-color:#c3d9ff;color:#fff;box-shadow:0 0 16px #a9ccff55}
-@media(prefers-reduced-motion:reduce){.answer.conceal-glow .letter{background:rgba(0,8,30,.38);border-color:rgba(188,218,255,.24);color:#a9ccff;box-shadow:none}}
+#secretDialog [data-secret]:disabled{opacity:1;cursor:default}
+#secretDialog [data-secret].conceal-glow{background:#ffd071;border-color:#fff1c2;color:#08162e;box-shadow:0 0 20px #ffd07177}
+#secretStatus{min-height:1.5em}
+@media(prefers-reduced-motion:reduce){#secretDialog [data-secret].conceal-glow{box-shadow:none}}
 #screen:focus{outline:none}
 .iconbtn{width:52px;height:52px}
 .side,.side-badge,.panel,.question-stage,.field,.hero>div{min-width:0}
